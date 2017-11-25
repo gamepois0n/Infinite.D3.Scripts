@@ -1,0 +1,775 @@
+Radar = { }
+Radar.Running = false
+Radar.Actors = {}
+Radar.RActors = {}
+Radar.Monsters = {Count = 0, Normal = {List = {}, Count = 0}, Elite = {List = {}, Count = 0}, Boss = {List = {}, Count = 0}}
+Radar.Players = {List = {}, Count = 0}
+Radar.Gizmos = {List = {}, Count = 0}
+Radar.GroundEffects = {List = {}, Count = 0}
+Radar.Items = {List = {}, Count = 0}
+Radar.Pylons = {List = {}, Count = 0}
+Radar.Shrines = {List = {}, Count = 0}
+Radar.Goblins = {List = {}, Count = 0}
+
+Radar.TTSBlackList = {}
+
+Radar.Settings = Settings()
+
+function Radar.Start()
+  Radar.Running = true
+
+  RadarSettings.LoadSettings()    
+end
+
+function Radar.Stop()
+  Radar.Running = false
+
+  RadarSettings.SaveSettings()
+end
+
+function Radar.SortActors()
+  local Monsters = {Count = 0, Normal = {List = {}, Count = 0}, Elite = {List = {}, Count = 0}, Boss = {List = {}, Count = 0}}
+  local Players = {List = {}, Count = 0}
+  local Gizmos = {List = {}, Count = 0}
+  local GroundEffects = {List = {}, Count = 0}
+  local Items = {List = {}, Count = 0}
+  local Pylons = {List = {}, Count = 0}
+  local Shrines = {List = {}, Count = 0}
+  local Goblins = {List = {}, Count = 0}
+
+  for k,v in pairs(Radar.Actors) do  
+    local aType = v:GetActorType()  
+
+    if aType == Enums.ActorType.Monster then
+      Monsters.Count = Monsters.Count + 1
+
+      local mQuality = v:GetMonsterQuality()
+
+      if AttributeHelper.IsGoblin(v) then
+        table.insert(Goblins.List, v)
+      else
+        if mQuality == Normal then
+          Monsters.Normal.Count = Monsters.Normal.Count + 1
+          table.insert(Monsters.Normal.List, v)
+        elseif mQuality == Champion or mQuality == Rare or mQuality == Minion or mQuality == Unique then
+          Monsters.Elite.Count = Monsters.Elite.Count + 1
+          table.insert(Monsters.Elite.List, v)
+        elseif mQuality == Boss then
+          Monsters.Boss.Count = Monsters.Boss.Count + 1
+          table.insert(Monsters.Boss.List, v)
+        end
+      end
+    end
+
+    if aType == Enums.ActorType.Player then
+      Players.Count = Players.Count + 1
+      table.insert(Players.List, v)
+    end
+
+    if aType == Enums.ActorType.Gizmo then
+      Gizmos.Count = Gizmos.Count + 1
+      table.insert(Gizmos.List, v)
+    end
+
+    if aType == Enums.ActorType.Item and v:GetItemLocation() == -1 then
+      Items.Count = Items.Count + 1
+      table.insert(Items.List, v)
+    end
+
+    if  GroundEffectHelper.IsPlagued(v) or
+        GroundEffectHelper.IsDesecrator(v) or
+        GroundEffectHelper.IsPoisonEnchanted(v) or
+        GroundEffectHelper.IsMolten(v) or
+        GroundEffectHelper.IsMortar(v) or 
+        GroundEffectHelper.IsOccuCircle(v) or
+        GroundEffectHelper.IsFrozen(v) or
+        GroundEffectHelper.IsWormwhole(v) or
+        GroundEffectHelper.IsArcane(v) or
+        GroundEffectHelper.IsFrozenPulse(v) or
+        GroundEffectHelper.IsOrbiter(v) or
+        GroundEffectHelper.IsThunderstorm(v) then
+      GroundEffects.Count = GroundEffects.Count + 1
+      table.insert(GroundEffects.List, v)
+    end
+
+    if  AttributeHelper.IsPowerPylon(v) or
+        AttributeHelper.IsConduitPylon(v) or
+        AttributeHelper.IsChannelingPylon(v) or
+        AttributeHelper.IsShieldPylon(v) or
+       AttributeHelper.IsSpeedPylon(v) then
+      Pylons.Count = Pylons.Count + 1
+      table.insert(Pylons.List, v)
+    end
+
+    if  AttributeHelper.IsProtectionShrine(v) or
+        AttributeHelper.IsEnlightenedShrine(v) or
+        AttributeHelper.IsFortuneShrine(v) or
+        AttributeHelper.IsFrenziedShrine(v) or
+       AttributeHelper.IsFleetingShrine(v) or
+       AttributeHelper.IsEmpoweredShrine(v) or
+       AttributeHelper.IsBanditShrine(v) then
+      Shrines.Count = Shrines.Count + 1
+      table.insert(Shrines.List, v)
+    end
+  end
+
+  Radar.Monsters = Monsters
+  Radar.Players = Players
+  Radar.Gizmos = Gizmos
+  Radar.GroundEffects = GroundEffects
+  Radar.Items = Items
+  Radar.Pylons = Pylons
+  Radar.Shrines = Shrines
+  Radar.Goblins = Goblins
+end
+
+function Radar.CollectActors()
+  local acds = {}
+  
+    for k,v in pairs(Infinity.D3.GetACDList()) do
+      if v:GetActorId() ~= -1 then      
+        table.insert(acds, v)
+      end
+    end
+    
+    Radar.Actors = acds  
+end
+
+function Radar.CollectRActors()
+  local ractor = {}
+  
+    for k,v in pairs(Infinity.D3.GetRActorList()) do
+      if v:GetActorId() ~= -1 then      
+        table.insert(ractor, v)
+      end
+    end
+    
+    Radar.RActors = ractor  
+end
+
+function Radar.TestGlow()
+  for k,v in pairs(Radar.RActors) do
+    Infinity.D3.SetRActorGlow(v)    
+  end
+end
+
+function Radar.TTS()
+  for k,v in pairs(Radar.Items.List) do
+    if AttributeHelper.IsAncientLegendaryItem(v) and not table.find(Radar.TTSBlackList, v:GetActorId()) then
+      TTSHelper.Speak("Ancient " .. AttributeHelper.GetItemName(v))
+      table.insert(Radar.TTSBlackList, v:GetActorId())
+    elseif AttributeHelper.IsPrimalLegendaryItem(v) and not table.find(Radar.TTSBlackList, v:GetActorId()) then
+      TTSHelper.Speak("Primal " .. AttributeHelper.GetItemName(v))
+      table.insert(Radar.TTSBlackList, v:GetActorId())
+    end
+  end
+end
+
+function Radar.OnPulse()
+  if Radar.Running == false then
+    return
+  end   
+  
+  Radar.CollectActors()
+  --Radar.CollectRActors()
+  Radar.SortActors()
+
+  Radar.TTS()
+  --Radar.TestGlow()
+end
+
+function Radar.RenderMonstersNormal()
+  for k,v in pairs(Radar.Monsters.Normal.List) do      
+    local radius =  1
+
+          if Radar.Settings.Monsters.Normal.CustomRadius then
+            radius = Radar.Settings.Monsters.Normal.CustomRadiusValue
+          else
+            radius =  v:GetRadius()
+          end
+
+          if Radar.Settings.Monsters.Normal.ColorFill == nil then
+            RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.Monsters.Normal.ColorOutline, Radar.Settings.Monsters.Normal.Thickness, Radar.Settings.Monsters.Normal.Fill) 
+          else
+            RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Monsters.Normal.ColorOutline, Radar.Settings.Monsters.Normal.ColorFill, Radar.Settings.Monsters.Normal.Thickness) 
+          end
+  end
+end
+
+function Radar.RenderAffixLabels(acd)
+  local labels = {}
+  
+  if AttributeHelper.HasMolten(acd) then
+    table.insert(labels, {Text = "Mol", Size = 16, LabelColor = {A = 0xFF, R = 0xE1, G = 0x77, B = 0x0E}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasArcane(acd) then
+    table.insert(labels, {Text = "Arc", Size = 16, LabelColor = {A = 0xFF, R = 0x8B, G = 0x21, B = 0x8B}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasAvenger(acd) then
+    table.insert(labels, {Text = "Ave", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasMortar(acd) then
+    table.insert(labels, {Text = "Mor", Size = 16, LabelColor = {A = 0xFF, R = 0xB8, G = 0x79, B = 0x46}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasDesecrator(acd) then
+    table.insert(labels, {Text = "Des", Size = 16, LabelColor = {A = 0xFF, R = 0xE1, G = 0x77, B = 0x0E}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasElectrified(acd) then
+    table.insert(labels, {Text = "Ele", Size = 16, LabelColor = {A = 0xFF, R = 0x46, G = 0xB8, B = 0xB3}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasExtraHealth(acd) then
+    table.insert(labels, {Text = "EHP", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasFast(acd) then
+    table.insert(labels, {Text = "Fst", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasFrozen(acd) then
+    table.insert(labels, {Text = "Frz", Size = 16, LabelColor = {A = 0xFF, R = 0x37, G = 0x9A, B = 0xF0}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasHealthlink(acd) then
+    table.insert(labels, {Text = "HPL", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasIllusionist(acd) then
+    table.insert(labels, {Text = "Ill", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasJailer(acd) then
+    table.insert(labels, {Text = "Jlr", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasKnockback(acd) then
+    table.insert(labels, {Text = "Knb", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasMissileDampening(acd) then
+    table.insert(labels, {Text = "Mis", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasNightmarish(acd) then
+    table.insert(labels, {Text = "Nmr", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasPlagued(acd) then
+    table.insert(labels, {Text = "Plg", Size = 16, LabelColor = {A = 0xFF, R = 0x17, G = 0xAC, B = 0x15}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasReflectsDamage(acd) then
+    table.insert(labels, {Text = "Ref", Size = 16, LabelColor = {A = 0xFF, R = 0xAC, G = 0x42, B = 0x15}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasShielding(acd) then
+    table.insert(labels, {Text = "Shd", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasTeleporter(acd) then
+    table.insert(labels, {Text = "Tel", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasThunderstorm(acd) then
+    table.insert(labels, {Text = "Thu", Size = 16, LabelColor = {A = 0xFF, R = 0x46, G = 0xB8, B = 0xB3}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasVortex(acd) then
+    table.insert(labels, {Text = "Vtx", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasWaller(acd) then
+    table.insert(labels, {Text = "Wal", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasFirechains(acd) then
+    table.insert(labels, {Text = "Fch", Size = 16, LabelColor = {A = 0xFF, R = 0xE1, G = 0x77, B = 0x0E}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasOrbiter(acd) then
+    table.insert(labels, {Text = "Orb", Size = 16, LabelColor = {A = 0xFF, R = 0x46, G = 0xB8, B = 0xB3}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasFrozenPulse(acd) then
+    table.insert(labels, {Text = "Frp", Size = 16, LabelColor = {A = 0xFF, R = 0x37, G = 0x9A, B = 0xF0}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasPoisonEnchanted(acd) then
+    table.insert(labels, {Text = "Psn", Size = 16, LabelColor = {A = 0xFF, R = 0x17, G = 0xAC, B = 0x15}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasJuggernaut(acd) then
+    table.insert(labels, {Text = "Jug", Size = 16, LabelColor = {A = 0xFF, R = 0xD1, G = 0x0E, B = 0x0E}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+
+  if AttributeHelper.HasWormhole(acd) then
+    table.insert(labels, {Text = "Who", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  end
+  
+  RenderHelper.DrawWorldTextLabels(labels, acd:GetPosition(), false)
+end
+
+function Radar.RenderMonstersElite()
+for k,v in pairs(Radar.Monsters.Elite.List) do      
+    local mQuality = v:GetMonsterQuality()
+
+        if mQuality == Champion and Radar.Settings.Monsters.Elite.Champion.Enabled then
+          local radius =  1
+
+          if Radar.Settings.Monsters.Elite.Champion.CustomRadius then
+            radius = Radar.Settings.Monsters.Elite.Champion.CustomRadiusValue
+          else
+            radius =  v:GetRadius()
+          end
+
+          if Radar.Settings.Monsters.Elite.Champion.ColorFill == nil then
+            RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Champion.ColorOutline, Radar.Settings.Monsters.Elite.Champion.Thickness, Radar.Settings.Monsters.Elite.Champion.Fill) 
+          else
+            RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Champion.ColorOutline, Radar.Settings.Monsters.Elite.Champion.ColorFill, Radar.Settings.Monsters.Elite.Champion.Thickness) 
+          end
+        elseif mQuality == Rare and Radar.Settings.Monsters.Elite.Rare.Enabled then
+          local radius =  1
+
+          if Radar.Settings.Monsters.Elite.Rare.CustomRadius then
+            radius = Radar.Settings.Monsters.Elite.Rare.CustomRadiusValue
+          else
+            radius =  v:GetRadius()
+          end
+
+          if Radar.Settings.Monsters.Elite.Rare.ColorFill == nil then
+            RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Rare.ColorOutline, Radar.Settings.Monsters.Elite.Rare.Thickness, Radar.Settings.Monsters.Elite.Rare.Fill) 
+          else
+            RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Rare.ColorOutline, Radar.Settings.Monsters.Elite.Rare.ColorFill, Radar.Settings.Monsters.Elite.Rare.Thickness) 
+          end
+        elseif mQuality == Minion and Radar.Settings.Monsters.Elite.Minion.Enabled then
+          local radius =  1
+
+          if Radar.Settings.Monsters.Elite.Minion.CustomRadius then
+            radius = Radar.Settings.Monsters.Elite.Minion.CustomRadiusValue
+          else
+            radius =  v:GetRadius()
+          end
+
+          if Radar.Settings.Monsters.Elite.Minion.ColorFill == nil then
+            RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Minion.ColorOutline, Radar.Settings.Monsters.Elite.Minion.Thickness, Radar.Settings.Monsters.Elite.Minion.Fill) 
+          else
+            RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Minion.ColorOutline, Radar.Settings.Monsters.Elite.Minion.ColorFill, Radar.Settings.Monsters.Elite.Minion.Thickness) 
+          end
+        elseif mQuality == Unique and Radar.Settings.Monsters.Elite.Unique.Enabled then
+          local radius =  1
+
+          if Radar.Settings.Monsters.Elite.Unique.CustomRadius then
+            radius = Radar.Settings.Monsters.Elite.Unique.CustomRadiusValue
+          else
+            radius =  v:GetRadius()
+          end
+
+          if Radar.Settings.Monsters.Elite.Unique.ColorFill == nil then
+            RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Unique.ColorOutline, Radar.Settings.Monsters.Elite.Unique.Thickness, Radar.Settings.Monsters.Elite.Unique.Fill) 
+          else
+            RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Unique.ColorOutline, Radar.Settings.Monsters.Elite.Unique.ColorFill, Radar.Settings.Monsters.Elite.Unique.Thickness) 
+          end
+        end           
+
+      Radar.RenderAffixLabels(v)
+  end
+end
+
+function Radar.RenderMonstersBoss()
+for k,v in pairs(Radar.Monsters.Boss.List) do      
+    local radius =  1
+
+    if Radar.Settings.Monsters.Boss.CustomRadius then
+      radius = Radar.Settings.Monsters.Boss.CustomRadiusValue
+    else
+      radius =  v:GetRadius()
+    end
+
+    if Radar.Settings.Monsters.Boss.ColorFill == nil then
+      RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.Monsters.Boss.ColorOutline, Radar.Settings.Monsters.Boss.Thickness, Radar.Settings.Monsters.Boss.Fill) 
+    else
+      RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Monsters.Boss.ColorOutline, Radar.Settings.Monsters.Boss.ColorFill, Radar.Settings.Monsters.Boss.Thickness) 
+    end 
+  end
+end
+
+function Radar.RenderMonsters()
+if Radar.Settings.Monsters.Normal.Enabled then
+  Radar.RenderMonstersNormal()
+end
+
+if Radar.Settings.Monsters.Elite.Enabled then
+  Radar.RenderMonstersElite()
+end
+
+if Radar.Settings.Monsters.Boss.Enabled then
+  Radar.RenderMonstersBoss()
+end
+end
+
+function Radar.RenderPlayers()
+  for k,v in pairs(Radar.Players.List) do
+    local radius =  1
+
+    if Radar.Settings.Players.CustomRadius then
+      radius = Radar.Settings.Players.CustomRadiusValue
+    else
+      radius =  v:GetRadius()
+    end
+
+    if Radar.Settings.Players.ColorFill == nil then
+      RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.Players.ColorOutline, Radar.Settings.Players.Thickness, Radar.Settings.Players.Fill) 
+    else
+      RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Players.ColorOutline, Radar.Settings.Players.ColorFill, Radar.Settings.Players.Thickness) 
+    end         
+  end
+end
+
+function Radar.RenderGizmos()
+  for k,v in pairs(Radar.Gizmos.List) do      
+    local radius =  1
+
+    if Radar.Settings.Gizmos.CustomRadius then
+      radius = Radar.Settings.Gizmos.CustomRadiusValue
+    else
+      radius =  v:GetRadius()
+    end
+
+    if Radar.Settings.Gizmos.ColorFill == nil then
+      RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.Gizmos.ColorOutline, Radar.Settings.Gizmos.Thickness, Radar.Settings.Gizmos.Fill) 
+    else
+      RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Gizmos.ColorOutline, Radar.Settings.Gizmos.ColorFill, Radar.Settings.Gizmos.Thickness) 
+    end  
+  end
+end
+
+function Radar.RenderGroundEffects()
+  for k,v in pairs(Radar.GroundEffects.List) do    
+    if GroundEffectHelper.IsPlagued(v) and Radar.Settings.GroundEffects.Plagued.Enabled then
+      local radius =  1
+
+      if Radar.Settings.GroundEffects.Plagued.CustomRadius then
+        radius = Radar.Settings.GroundEffects.Plagued.CustomRadiusValue
+      else
+        radius =  v:GetCollisionRadius()
+      end
+
+      if Radar.Settings.GroundEffects.Plagued.ColorFill == nil then
+        RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.GroundEffects.Plagued.ColorOutline, Radar.Settings.GroundEffects.Plagued.Thickness, Radar.Settings.GroundEffects.Plagued.Fill) 
+      else
+        RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.GroundEffects.Plagued.ColorOutline, Radar.Settings.GroundEffects.Plagued.ColorFill, Radar.Settings.GroundEffects.Plagued.Thickness) 
+      end
+    elseif GroundEffectHelper.IsDesecrator(v) and Radar.Settings.GroundEffects.Desecrator.Enabled then
+      local radius =  1
+
+      if Radar.Settings.GroundEffects.Desecrator.CustomRadius then
+        radius = Radar.Settings.GroundEffects.Desecrator.CustomRadiusValue
+      else
+        radius =  v:GetCollisionRadius()
+      end
+
+      if Radar.Settings.GroundEffects.Desecrator.ColorFill == nil then
+        RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.GroundEffects.Desecrator.ColorOutline, Radar.Settings.GroundEffects.Desecrator.Thickness, Radar.Settings.GroundEffects.Desecrator.Fill) 
+      else
+        RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.GroundEffects.Desecrator.ColorOutline, Radar.Settings.GroundEffects.Desecrator.ColorFill, Radar.Settings.GroundEffects.Desecrator.Thickness) 
+      end      
+    elseif GroundEffectHelper.IsPoisonEnchanted(v) and Radar.Settings.GroundEffects.PoisonEnchanted.Enabled then
+      local radius =  1
+
+      if Radar.Settings.GroundEffects.PoisonEnchanted.CustomRadius then
+        radius = Radar.Settings.GroundEffects.PoisonEnchanted.CustomRadiusValue
+      else
+        radius =  v:GetCollisionRadius()
+      end
+
+      if Radar.Settings.GroundEffects.PoisonEnchanted.ColorFill == nil then
+        RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.GroundEffects.PoisonEnchanted.ColorOutline, Radar.Settings.GroundEffects.PoisonEnchanted.Thickness, Radar.Settings.GroundEffects.PoisonEnchanted.Fill) 
+      else
+        RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.GroundEffects.PoisonEnchanted.ColorOutline, Radar.Settings.GroundEffects.PoisonEnchanted.ColorFill, Radar.Settings.GroundEffects.PoisonEnchanted.Thickness) 
+      end            
+    elseif GroundEffectHelper.IsMolten(v) and Radar.Settings.GroundEffects.Molten.Enabled then
+      local radius =  1
+
+      if Radar.Settings.GroundEffects.Molten.CustomRadius then
+        radius = Radar.Settings.GroundEffects.Molten.CustomRadiusValue
+      else
+        radius =  v:GetCollisionRadius()
+      end
+
+      if Radar.Settings.GroundEffects.Molten.ColorFill == nil then
+        RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.GroundEffects.Molten.ColorOutline, Radar.Settings.GroundEffects.Molten.Thickness, Radar.Settings.GroundEffects.Molten.Fill) 
+      else
+        RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.GroundEffects.Molten.ColorOutline, Radar.Settings.GroundEffects.Molten.ColorFill, Radar.Settings.GroundEffects.Molten.Thickness) 
+      end      
+    elseif GroundEffectHelper.IsMortar(v) and Radar.Settings.GroundEffects.Mortar.Enabled then
+      local radius =  1
+
+      if Radar.Settings.GroundEffects.Mortar.CustomRadius then
+        radius = Radar.Settings.GroundEffects.Mortar.CustomRadiusValue
+      else
+        radius =  v:GetCollisionRadius()
+      end
+
+      if Radar.Settings.GroundEffects.Mortar.ColorFill == nil then
+        RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.GroundEffects.Mortar.ColorOutline, Radar.Settings.GroundEffects.Mortar.Thickness, Radar.Settings.GroundEffects.Mortar.Fill) 
+      else
+        RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.GroundEffects.Mortar.ColorOutline, Radar.Settings.GroundEffects.Mortar.ColorFill, Radar.Settings.GroundEffects.Mortar.Thickness) 
+      end      
+    elseif GroundEffectHelper.IsOccuCircle(v) and Radar.Settings.GroundEffects.OccuCircle.Enabled then
+      local radius =  1
+
+      if Radar.Settings.GroundEffects.OccuCircle.CustomRadius then
+        radius = Radar.Settings.GroundEffects.OccuCircle.CustomRadiusValue
+      else
+        radius =  v:GetCollisionRadius()
+      end
+
+      if Radar.Settings.GroundEffects.OccuCircle.ColorFill == nil then
+        RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.GroundEffects.OccuCircle.ColorOutline, Radar.Settings.GroundEffects.OccuCircle.Thickness, Radar.Settings.GroundEffects.OccuCircle.Fill) 
+      else
+        RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.GroundEffects.OccuCircle.ColorOutline, Radar.Settings.GroundEffects.OccuCircle.ColorFill, Radar.Settings.GroundEffects.OccuCircle.Thickness) 
+      end
+    elseif GroundEffectHelper.IsFrozen(v) and Radar.Settings.GroundEffects.Frozen.Enabled then
+      local radius =  1
+
+      if Radar.Settings.GroundEffects.Frozen.CustomRadius then
+        radius = Radar.Settings.GroundEffects.Frozen.CustomRadiusValue
+      else
+        radius =  v:GetCollisionRadius()
+      end
+
+      if Radar.Settings.GroundEffects.Frozen.ColorFill == nil then
+        RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.GroundEffects.Frozen.ColorOutline, Radar.Settings.GroundEffects.Frozen.Thickness, Radar.Settings.GroundEffects.Frozen.Fill) 
+      else
+        RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.GroundEffects.Frozen.ColorOutline, Radar.Settings.GroundEffects.Frozen.ColorFill, Radar.Settings.GroundEffects.Frozen.Thickness) 
+      end
+     elseif GroundEffectHelper.IsWormwhole(v) and Radar.Settings.GroundEffects.Wormwhole.Enabled then
+      local radius =  1
+
+      if Radar.Settings.GroundEffects.Wormwhole.CustomRadius then
+        radius = Radar.Settings.GroundEffects.Wormwhole.CustomRadiusValue
+      else
+        radius =  v:GetCollisionRadius()
+      end
+
+      if Radar.Settings.GroundEffects.Wormwhole.ColorFill == nil then
+        RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.GroundEffects.Wormwhole.ColorOutline, Radar.Settings.GroundEffects.Wormwhole.Thickness, Radar.Settings.GroundEffects.Wormwhole.Fill) 
+      else
+        RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.GroundEffects.Wormwhole.ColorOutline, Radar.Settings.GroundEffects.Wormwhole.ColorFill, Radar.Settings.GroundEffects.Wormwhole.Thickness) 
+      end 
+     elseif GroundEffectHelper.IsArcane(v) and Radar.Settings.GroundEffects.Arcane.Enabled then
+      local radius =  1
+
+      if Radar.Settings.GroundEffects.Arcane.CustomRadius then
+        radius = Radar.Settings.GroundEffects.Arcane.CustomRadiusValue
+      else
+        radius =  v:GetCollisionRadius()
+      end
+
+      if Radar.Settings.GroundEffects.Arcane.ColorFill == nil then
+        RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.GroundEffects.Arcane.ColorOutline, Radar.Settings.GroundEffects.Arcane.Thickness, Radar.Settings.GroundEffects.Arcane.Fill) 
+      else
+        RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.GroundEffects.Arcane.ColorOutline, Radar.Settings.GroundEffects.Arcane.ColorFill, Radar.Settings.GroundEffects.Arcane.Thickness) 
+      end
+     elseif GroundEffectHelper.IsFrozenPulse(v) and Radar.Settings.GroundEffects.FrozenPulse.Enabled then
+      local radius =  1
+
+      if Radar.Settings.GroundEffects.FrozenPulse.CustomRadius then
+        radius = Radar.Settings.GroundEffects.FrozenPulse.CustomRadiusValue
+      else
+        radius =  v:GetCollisionRadius()
+      end
+
+      if Radar.Settings.GroundEffects.FrozenPulse.ColorFill == nil then
+        RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.GroundEffects.FrozenPulse.ColorOutline, Radar.Settings.GroundEffects.FrozenPulse.Thickness, Radar.Settings.GroundEffects.FrozenPulse.Fill) 
+      else
+        RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.GroundEffects.FrozenPulse.ColorOutline, Radar.Settings.GroundEffects.FrozenPulse.ColorFill, Radar.Settings.GroundEffects.FrozenPulse.Thickness) 
+      end
+     elseif GroundEffectHelper.IsOrbiter(v) and Radar.Settings.GroundEffects.Orbiter.Enabled then
+      local radius =  1
+
+      if Radar.Settings.GroundEffects.Orbiter.CustomRadius then
+        radius = Radar.Settings.GroundEffects.Orbiter.CustomRadiusValue
+      else
+        radius =  v:GetCollisionRadius()
+      end
+
+      if Radar.Settings.GroundEffects.Orbiter.ColorFill == nil then
+        RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.GroundEffects.Orbiter.ColorOutline, Radar.Settings.GroundEffects.Orbiter.Thickness, Radar.Settings.GroundEffects.Orbiter.Fill) 
+      else
+        RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.GroundEffects.Orbiter.ColorOutline, Radar.Settings.GroundEffects.Orbiter.ColorFill, Radar.Settings.GroundEffects.Orbiter.Thickness) 
+      end
+     elseif GroundEffectHelper.IsThunderstorm(v) and Radar.Settings.GroundEffects.Thunderstorm.Enabled then
+      local radius =  1
+
+      if Radar.Settings.GroundEffects.Thunderstorm.CustomRadius then
+        radius = Radar.Settings.GroundEffects.Thunderstorm.CustomRadiusValue
+      else
+        radius =  v:GetCollisionRadius()
+      end
+
+      if Radar.Settings.GroundEffects.Thunderstorm.ColorFill == nil then
+        RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.GroundEffects.Thunderstorm.ColorOutline, Radar.Settings.GroundEffects.Thunderstorm.Thickness, Radar.Settings.GroundEffects.Thunderstorm.Fill) 
+      else
+        RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.GroundEffects.Thunderstorm.ColorOutline, Radar.Settings.GroundEffects.Thunderstorm.ColorFill, Radar.Settings.GroundEffects.Thunderstorm.Thickness) 
+      end     
+    end
+  end
+end
+
+function Radar.RenderGroundItems()
+  for k,v in pairs(Radar.Items.List) do
+    local labels = {}
+
+    if AttributeHelper.IsLegendaryItem(v) and Radar.Settings.Items.Legendary.Enabled then      
+      if AttributeHelper.IsAncientLegendaryItem(v) and Radar.Settings.Items.Legendary.Ancient.Enabled then
+        local radius =  1
+
+        if Radar.Settings.Items.Legendary.Ancient.CustomRadius then
+          radius = Radar.Settings.Items.Legendary.Ancient.CustomRadiusValue
+        else
+          radius =  v:GetRadius()
+        end
+
+        if Radar.Settings.Items.Legendary.Ancient.ColorFill == nil then
+          RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.Items.Legendary.Ancient.ColorOutline, Radar.Settings.Items.Legendary.Ancient.Thickness, Radar.Settings.Items.Legendary.Ancient.Fill) 
+        else
+          RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Items.Legendary.Ancient.ColorOutline, Radar.Settings.Items.Legendary.Ancient.ColorFill, Radar.Settings.Items.Legendary.Ancient.Thickness) 
+        end
+
+        table.insert(labels, {Text = "[A] " .. AttributeHelper.GetItemName(v), Size = 16, LabelColor = Radar.Settings.Items.Legendary.Ancient.ColorOutline, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+      elseif AttributeHelper.IsPrimalLegendaryItem(v) and Radar.Settings.Items.Legendary.Primal.Enabled then
+        local radius =  1
+
+        if Radar.Settings.Items.Legendary.Primal.CustomRadius then
+          radius = Radar.Settings.Items.Legendary.Primal.CustomRadiusValue
+        else
+          radius =  v:GetRadius()
+        end
+
+        if Radar.Settings.Items.Legendary.Primal.ColorFill == nil then
+          RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.Items.Legendary.Primal.ColorOutline, Radar.Settings.Items.Legendary.Primal.Thickness, Radar.Settings.Items.Legendary.Primal.Fill) 
+        else
+          RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Items.Legendary.Primal.ColorOutline, Radar.Settings.Items.Legendary.Primal.ColorFill, Radar.Settings.Items.Legendary.Primal.Thickness) 
+        end
+
+        table.insert(labels, {Text = "[P] " .. AttributeHelper.GetItemName(v), Size = 16, LabelColor = Radar.Settings.Items.Legendary.Primal.ColorOutline, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 3})
+      else
+        local radius =  1
+
+        if Radar.Settings.Items.Legendary.Normal.CustomRadius then
+          radius = Radar.Settings.Items.Legendary.Normal.CustomRadiusValue
+        else
+          radius =  v:GetRadius()
+        end
+
+        if Radar.Settings.Items.Legendary.Normal.ColorFill == nil then
+          RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.Items.Legendary.Normal.ColorOutline, Radar.Settings.Items.Legendary.Normal.Thickness, Radar.Settings.Items.Legendary.Normal.Fill) 
+        else
+          RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Items.Legendary.Normal.ColorOutline, Radar.Settings.Items.Legendary.Normal.ColorFill, Radar.Settings.Items.Legendary.Normal.Thickness) 
+        end
+
+        table.insert(labels, {Text = AttributeHelper.GetItemName(v), Size = 16, LabelColor = Radar.Settings.Items.Legendary.Normal.ColorOutline, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 1})
+      end
+    end
+
+    RenderHelper.DrawWorldTextLabels(labels, v:GetPosition(), false)
+  end
+end
+
+function Radar.RenderPylons()
+  for k,v in pairs(Radar.Pylons.List) do  
+    if not AttributeHelper.IsOperated(v) then
+      if AttributeHelper.IsPowerPylon(v) and Radar.Settings.Pylons.Power.Enabled then
+        RenderHelper.DrawWorldTriangleFilledMulticolor(v:GetPosition(), 4, Radar.Settings.Pylons.Power.ColorOutline, Radar.Settings.Pylons.Power.ColorFill, 3)
+        RenderHelper.DrawWorldText(Radar.Settings.Pylons.Power.Text, Radar.Settings.Pylons.Power.TextSize, Radar.Settings.Pylons.Power.ColorText, v:GetPosition(), 0, -10)
+      elseif AttributeHelper.IsConduitPylon(v) and Radar.Settings.Pylons.Conduit.Enabled then
+        RenderHelper.DrawWorldTriangleFilledMulticolor(v:GetPosition(), 4, Radar.Settings.Pylons.Conduit.ColorOutline, Radar.Settings.Pylons.Conduit.ColorFill, 3)
+        RenderHelper.DrawWorldText(Radar.Settings.Pylons.Conduit.Text, Radar.Settings.Pylons.Conduit.TextSize, Radar.Settings.Pylons.Conduit.ColorText, v:GetPosition(), 0, -10)
+      elseif AttributeHelper.IsChannelingPylon(v) and Radar.Settings.Pylons.Channeling.Enabled then
+        RenderHelper.DrawWorldTriangleFilledMulticolor(v:GetPosition(), 4, Radar.Settings.Pylons.Channeling.ColorOutline, Radar.Settings.Pylons.Channeling.ColorFill, 3)
+        RenderHelper.DrawWorldText(Radar.Settings.Pylons.Channeling.Text, Radar.Settings.Pylons.Channeling.TextSize, Radar.Settings.Pylons.Channeling.ColorText, v:GetPosition(), 0, -10)
+      elseif AttributeHelper.IsShieldPylon(v) and Radar.Settings.Pylons.Shield.Enabled then
+        RenderHelper.DrawWorldTriangleFilledMulticolor(v:GetPosition(), 4, Radar.Settings.Pylons.Shield.ColorOutline, Radar.Settings.Pylons.Shield.ColorFill, 3)
+        RenderHelper.DrawWorldText(Radar.Settings.Pylons.Shield.Text, Radar.Settings.Pylons.Shield.TextSize, Radar.Settings.Pylons.Shield.ColorText, v:GetPosition(), 0, -10)
+      elseif AttributeHelper.IsSpeedPylon(v) and Radar.Settings.Pylons.Speed.Enabled then
+        RenderHelper.DrawWorldTriangleFilledMulticolor(v:GetPosition(), 4, Radar.Settings.Pylons.Speed.ColorOutline, Radar.Settings.Pylons.Speed.ColorFill, 3)
+        RenderHelper.DrawWorldText(Radar.Settings.Pylons.Speed.Text, Radar.Settings.Pylons.Speed.TextSize, Radar.Settings.Pylons.Speed.ColorText, v:GetPosition(), 0, -10)
+      end
+    end
+  end  
+end
+
+function Radar.RenderShrines()
+  for k,v in pairs(Radar.Shrines.List) do  
+    if not AttributeHelper.IsOperated(v) then
+      if AttributeHelper.IsProtectionShrine(v) and Radar.Settings.Shrines.Protection.Enabled then
+        RenderHelper.DrawWorldTriangleFilledMulticolor(v:GetPosition(), 4, Radar.Settings.Shrines.Protection.ColorOutline, Radar.Settings.Shrines.Protection.ColorFill, 3)
+        RenderHelper.DrawWorldText(Radar.Settings.Shrines.Protection.Text, Radar.Settings.Shrines.Protection.TextSize, Radar.Settings.Shrines.Protection.ColorText, v:GetPosition(), 0, -10)
+      elseif AttributeHelper.IsEnlightenedShrine(v) and Radar.Settings.Shrines.Enlightened.Enabled then
+        RenderHelper.DrawWorldTriangleFilledMulticolor(v:GetPosition(), 4, Radar.Settings.Shrines.Enlightened.ColorOutline, Radar.Settings.Shrines.Enlightened.ColorFill, 3)
+        RenderHelper.DrawWorldText(Radar.Settings.Shrines.Enlightened.Text, Radar.Settings.Shrines.Enlightened.TextSize, Radar.Settings.Shrines.Enlightened.ColorText, v:GetPosition(), 0, -10)  
+      elseif AttributeHelper.IsFortuneShrine(v) and Radar.Settings.Shrines.Fortune.Enabled then
+        RenderHelper.DrawWorldTriangleFilledMulticolor(v:GetPosition(), 4, Radar.Settings.Shrines.Fortune.ColorOutline, Radar.Settings.Shrines.Fortune.ColorFill, 3)
+        RenderHelper.DrawWorldText(Radar.Settings.Shrines.Fortune.Text, Radar.Settings.Shrines.Fortune.TextSize, Radar.Settings.Shrines.Fortune.ColorText, v:GetPosition(), 0, -10)
+      elseif AttributeHelper.IsFrenziedShrine(v) and Radar.Settings.Shrines.Frenzied.Enabled then
+        RenderHelper.DrawWorldTriangleFilledMulticolor(v:GetPosition(), 4, Radar.Settings.Shrines.Frenzied.ColorOutline, Radar.Settings.Shrines.Frenzied.ColorFill, 3)
+        RenderHelper.DrawWorldText(Radar.Settings.Shrines.Frenzied.Text, Radar.Settings.Shrines.Frenzied.TextSize, Radar.Settings.Shrines.Frenzied.ColorText, v:GetPosition(), 0, -10)
+      elseif AttributeHelper.IsFleetingShrine(v) and Radar.Settings.Shrines.Fleeting.Enabled then
+        RenderHelper.DrawWorldTriangleFilledMulticolor(v:GetPosition(), 4, Radar.Settings.Shrines.Fleeting.ColorOutline, Radar.Settings.Shrines.Fleeting.ColorFill, 3)
+        RenderHelper.DrawWorldText(Radar.Settings.Shrines.Fleeting.Text, Radar.Settings.Shrines.Fleeting.TextSize, Radar.Settings.Shrines.Fleeting.ColorText, v:GetPosition(), 0, -10)
+      elseif AttributeHelper.IsEmpoweredShrine(v) and Radar.Settings.Shrines.Empowered.Enabled then
+        RenderHelper.DrawWorldTriangleFilledMulticolor(v:GetPosition(), 4, Radar.Settings.Shrines.Empowered.ColorOutline, Radar.Settings.Shrines.Empowered.ColorFill, 3)
+        RenderHelper.DrawWorldText(Radar.Settings.Shrines.Empowered.Text, Radar.Settings.Shrines.Empowered.TextSize, Radar.Settings.Shrines.Empowered.ColorText, v:GetPosition(), 0, -10)
+      elseif AttributeHelper.IsBanditShrine(v) and Radar.Settings.Shrines.Bandit.Enabled then
+        RenderHelper.DrawWorldTriangleFilledMulticolor(v:GetPosition(), 4, Radar.Settings.Shrines.Bandit.ColorOutline, Radar.Settings.Shrines.Bandit.ColorFill, 3)
+        RenderHelper.DrawWorldText(Radar.Settings.Shrines.Bandit.Text, Radar.Settings.Shrines.Bandit.TextSize, Radar.Settings.Shrines.Bandit.ColorText, v:GetPosition(), 0, -10)             
+      end
+    end
+  end  
+end
+
+function Radar.RenderGoblins()
+  for k,v in pairs(Radar.Goblins.List) do  
+    RenderHelper.DrawWorldSquareFilledMulticolor(v:GetPosition(), Radar.Settings.Goblins.CustomRadiusValue, Radar.Settings.Goblins.ColorOutline, Radar.Settings.Goblins.ColorFill, Radar.Settings.Goblins.Thickness)
+  end  
+end
+
+function Radar.OnRenderD2D()
+if Radar.Settings.Monsters.Enabled then
+  Radar.RenderMonsters()
+end
+
+if Radar.Settings.Players.Enabled then
+  Radar.RenderPlayers()
+end
+
+if Radar.Settings.Gizmos.Enabled then
+  Radar.RenderGizmos()
+end
+
+if Radar.Settings.GroundEffects.Enabled then
+  Radar.RenderGroundEffects()
+end
+
+if Radar.Settings.Items.Enabled then
+  Radar.RenderGroundItems()
+end
+
+if Radar.Settings.Pylons.Enabled then
+  Radar.RenderPylons()
+end
+
+if Radar.Settings.Shrines.Enabled then
+  Radar.RenderShrines()
+end
+
+if Radar.Settings.Goblins.Enabled then
+  Radar.RenderGoblins()
+end
+end

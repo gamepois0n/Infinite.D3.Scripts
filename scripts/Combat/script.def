@@ -1,0 +1,15 @@
+[script]
+name=Combat
+type=script
+
+[files]
+file=Data/Settings.lua
+file=GUI/CombatSettings.lua
+file=Combat.lua
+file=Main.lua
+
+[dependencies]
+file=../libs/table/script.def
+file=../libs/rendering/script.def
+file=../libs/json/script.def
+file=../libs/d3/script.def

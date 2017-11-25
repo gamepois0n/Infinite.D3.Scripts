@@ -1,0 +1,19 @@
+[script]
+name=[Infinity] D3
+type=lib
+
+[files]
+file=AttributeHelper.lua
+file=GroundEffectHelper.lua
+file=UIControlHelper.lua
+file=TargetHelper.lua
+file=SkillHelper.lua
+file=PickitHelper.lua
+file=UIInteractionHelper.lua
+file=InputHelper.lua
+file=ParagonPointHelper.lua
+file=RActorHelper.lua
+file=LevelAreaHelper.lua
+file=TTSHelper.lua
+
+[dependencies]
