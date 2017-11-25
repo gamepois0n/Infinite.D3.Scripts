@@ -1,0 +1,1045 @@
+[ {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452572928,
+  "Distance": 613.6953125,
+  "Name": "\""
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452573856,
+  "Distance": 537.189453125,
+  "Name": "n"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452574784,
+  "Distance": 606.74035644531,
+  "Name": "\u0001"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452575712,
+  "Distance": 604.27709960938,
+  "Name": "\u0002"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452576640,
+  "Distance": 608.35528564453,
+  "Name": "\u0003"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452577568,
+  "Distance": 492.78805541992,
+  "Name": "\u0004"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452578496,
+  "Distance": 492.45397949219,
+  "Name": "\u0005"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452579424,
+  "Distance": 497.43795776367,
+  "Name": "\u0006"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452580352,
+  "Distance": 532.51348876953,
+  "Name": ""
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452581280,
+  "Distance": 996.22766113281,
+  "Name": "9"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452582208,
+  "Distance": 551.23870849609,
+  "Name": ";"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452583136,
+  "Distance": 996.22766113281,
+  "Name": "0"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452584064,
+  "Distance": 493.92193603516,
+  "Name": "\u0007"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452584992,
+  "Distance": 996.22766113281,
+  "Name": ","
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452585920,
+  "Distance": 485.33386230469,
+  "Name": "\f"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452586848,
+  "Distance": 485.6943359375,
+  "Name": "\u000e"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452587776,
+  "Distance": 533.52972412109,
+  "Name": "\u000f"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452588704,
+  "Distance": 996.22766113281,
+  "Name": "\u001e"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452589632,
+  "Distance": 494.19760131836,
+  "Name": "L\u0001_UniqueVendor_Collector_InTown_01-3008"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452590560,
+  "Distance": 996.22766113281,
+  "Name": "+"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452591488,
+  "Distance": 996.22766113281,
+  "Name": "'"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452592416,
+  "Distance": 996.22766113281,
+  "Name": "\u0014"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452593344,
+  "Distance": 615.8720703125,
+  "Name": "\u0010"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452594272,
+  "Distance": 624.55535888672,
+  "Name": "\u0016"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452595200,
+  "Distance": 620.48706054688,
+  "Name": "\u0017"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452596128,
+  "Distance": 996.22766113281,
+  "Name": ":"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452597056,
+  "Distance": 996.22766113281,
+  "Name": "]"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452597984,
+  "Distance": 996.22766113281,
+  "Name": ">"
+}, {
+  "ActorID": -2079129576,
+  "ActorType": 2,
+  "Address": 452598912,
+  "Distance": 47.386455535889,
+  "Name": "trDun_Cath_LionPost_Top-3780"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452599840,
+  "Distance": 996.22766113281,
+  "Name": "\u0013"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452600768,
+  "Distance": 996.22766113281,
+  "Name": "f"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452601696,
+  "Distance": 996.22766113281,
+  "Name": "%"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452602624,
+  "Distance": 996.22766113281,
+  "Name": "#"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452603552,
+  "Distance": 604.63922119141,
+  "Name": "."
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452604480,
+  "Distance": 488.04565429688,
+  "Name": ""
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452605408,
+  "Distance": 996.22766113281,
+  "Name": "_"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452606336,
+  "Distance": 996.22766113281,
+  "Name": "\t"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452607264,
+  "Distance": 996.22766113281,
+  "Name": " "
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452608192,
+  "Distance": 996.22766113281,
+  "Name": "<"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452609120,
+  "Distance": 996.22766113281,
+  "Name": "\u0011"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452610048,
+  "Distance": 996.22766113281,
+  "Name": "\u001d"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452610976,
+  "Distance": 607.66796875,
+  "Name": "4"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452611904,
+  "Distance": 996.22766113281,
+  "Name": "5"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452612832,
+  "Distance": 996.22766113281,
+  "Name": "\u001b"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452613760,
+  "Distance": 996.22766113281,
+  "Name": "("
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452614688,
+  "Distance": 646.40576171875,
+  "Name": "o\u0001rkerLocation-56"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452615616,
+  "Distance": 996.22766113281,
+  "Name": "*"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452616544,
+  "Distance": 604.36254882813,
+  "Name": "C"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452617472,
+  "Distance": 996.22766113281,
+  "Name": "\u001f"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452618400,
+  "Distance": 996.22766113281,
+  "Name": "N\u0001_chestArmor_hell_base_08-3153"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452619328,
+  "Distance": 136.81224060059,
+  "Name": "2\u0001mbieSkinny_B-3894"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452620256,
+  "Distance": 139.81492614746,
+  "Name": "\\\u0001mbieSkinny_B-3893"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452621184,
+  "Distance": 996.22766113281,
+  "Name": "7"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452622112,
+  "Distance": 996.22766113281,
+  "Name": "\u000b"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452623040,
+  "Distance": 996.22766113281,
+  "Name": "\u001a"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452623968,
+  "Distance": 544.14904785156,
+  "Name": "!"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452624896,
+  "Distance": 996.22766113281,
+  "Name": "j\u0001_1HWeapon-3030"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452625824,
+  "Distance": 996.22766113281,
+  "Name": "&"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452626752,
+  "Distance": 996.22766113281,
+  "Name": "$"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452627680,
+  "Distance": 687.52154541016,
+  "Name": "ï"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452628608,
+  "Distance": 996.22766113281,
+  "Name": "^"
+}, {
+  "ActorID": -1,
+  "ActorType": 2,
+  "Address": 452629536,
+  "Distance": 710.04571533203,
+  "Name": ")"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452630464,
+  "Distance": 996.22766113281,
+  "Name": "?"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452631392,
+  "Distance": 996.22766113281,
+  "Name": "/"
+}, {
+  "ActorID": -1,
+  "ActorType": 2,
+  "Address": 452632320,
+  "Distance": 715.92468261719,
+  "Name": "="
+}, {
+  "ActorID": -1,
+  "ActorType": 2,
+  "Address": 452633248,
+  "Distance": 597.48950195313,
+  "Name": "@"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452634176,
+  "Distance": 740.10595703125,
+  "Name": "ñ"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452635104,
+  "Distance": 741.43194580078,
+  "Name": "à"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452636032,
+  "Distance": 680.20373535156,
+  "Name": "\n"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452636960,
+  "Distance": 674.80358886719,
+  "Name": "D"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452637888,
+  "Distance": 692.13928222656,
+  "Name": "E"
+}, {
+  "ActorID": -1,
+  "ActorType": 2,
+  "Address": 452638816,
+  "Distance": 588.81884765625,
+  "Name": "h\u0001ven_Perched_fliesAway-3301"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452639744,
+  "Distance": 674.56567382813,
+  "Name": "a\u0001Out_NewTristram_hanging_cloth_A-3055"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452640672,
+  "Distance": 996.22766113281,
+  "Name": "6"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452641600,
+  "Distance": 719.02563476563,
+  "Name": "R\u0001rkerLocation-3745"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452642528,
+  "Distance": 548.03997802734,
+  "Name": "H"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452643456,
+  "Distance": 621.03881835938,
+  "Name": "K"
+}, {
+  "ActorID": -1,
+  "ActorType": 2,
+  "Address": 452644384,
+  "Distance": 573.51806640625,
+  "Name": "L"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452645312,
+  "Distance": 711.08697509766,
+  "Name": "M"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452646240,
+  "Distance": 609.43841552734,
+  "Name": "N"
+}, {
+  "ActorID": -2079195113,
+  "ActorType": 2,
+  "Address": 452647168,
+  "Distance": 83.037857055664,
+  "Name": "trDun_Cath_Bannister_x6-3779"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452648096,
+  "Distance": 653.10778808594,
+  "Name": "O"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452649024,
+  "Distance": 713.10247802734,
+  "Name": "Q"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452649952,
+  "Distance": 663.56182861328,
+  "Name": "R"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452650880,
+  "Distance": 572.49627685547,
+  "Name": "S"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452651808,
+  "Distance": 628.16070556641,
+  "Name": "l\u0001_Blacksmith_RepairShortcut-3065"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452652736,
+  "Distance": 581.13873291016,
+  "Name": "U"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452653664,
+  "Distance": 996.22766113281,
+  "Name": "T"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452654592,
+  "Distance": 996.22766113281,
+  "Name": "W"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452655520,
+  "Distance": 996.22766113281,
+  "Name": "X"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452656448,
+  "Distance": 996.22766113281,
+  "Name": "Y"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452657376,
+  "Distance": 996.22766113281,
+  "Name": "Z"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452658304,
+  "Distance": 996.22766113281,
+  "Name": "\r"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452659232,
+  "Distance": 996.22766113281,
+  "Name": "\\"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452660160,
+  "Distance": 996.22766113281,
+  "Name": "I"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452661088,
+  "Distance": 996.22766113281,
+  "Name": "8"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452662016,
+  "Distance": 996.22766113281,
+  "Name": "["
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452662944,
+  "Distance": 996.22766113281,
+  "Name": "`"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452663872,
+  "Distance": 618.51953125,
+  "Name": "V"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452664800,
+  "Distance": 635.03076171875,
+  "Name": "b"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452665728,
+  "Distance": 657.6337890625,
+  "Name": "8\u0001rdrobeTest-3077"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452666656,
+  "Distance": 685.37921142578,
+  "Name": "d"
+}, {
+  "ActorID": -1,
+  "ActorType": 2,
+  "Address": 452667584,
+  "Distance": 551.60668945313,
+  "Name": "i\u0001_AdventureMode_HubBanterTrigger-3022"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452668512,
+  "Distance": 681.20666503906,
+  "Name": "e"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452669440,
+  "Distance": 674.04241943359,
+  "Name": "g"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452670368,
+  "Distance": 683.58605957031,
+  "Name": "h"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452671296,
+  "Distance": 619.56225585938,
+  "Name": "i"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452672224,
+  "Distance": 617.92095947266,
+  "Name": "j"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452673152,
+  "Distance": 628.24987792969,
+  "Name": "k"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452674080,
+  "Distance": 602.74432373047,
+  "Name": "l"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452675008,
+  "Distance": 644.81970214844,
+  "Name": "-"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452675936,
+  "Distance": 996.22766113281,
+  "Name": "u"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452676864,
+  "Distance": 560.10040283203,
+  "Name": "n\u0001rkerLocation_EquipmentManager_MM_Icon-3088"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452677792,
+  "Distance": 566.48181152344,
+  "Name": "p"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452678720,
+  "Distance": 585.42846679688,
+  "Name": "q"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452679648,
+  "Distance": 566.20733642578,
+  "Name": "r"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452680576,
+  "Distance": 996.22766113281,
+  "Name": "k\u0001_shoulderPads_hell_base_07-3094"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452681504,
+  "Distance": 996.22766113281,
+  "Name": "t"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452682432,
+  "Distance": 500.64221191406,
+  "Name": "\u0018"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452683360,
+  "Distance": 482.91390991211,
+  "Name": "v"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452684288,
+  "Distance": 572.64599609375,
+  "Name": "s"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452685216,
+  "Distance": 996.22766113281,
+  "Name": "o"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452686144,
+  "Distance": 996.22766113281,
+  "Name": "y"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452687072,
+  "Distance": 996.22766113281,
+  "Name": "z"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452688000,
+  "Distance": 996.22766113281,
+  "Name": "{"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452688928,
+  "Distance": 996.22766113281,
+  "Name": "|"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452689856,
+  "Distance": 996.22766113281,
+  "Name": "}"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452690784,
+  "Distance": 562.79888916016,
+  "Name": "w"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452691712,
+  "Distance": 996.22766113281,
+  "Name": "~"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452692640,
+  "Distance": 996.22766113281,
+  "Name": "Ä"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452693568,
+  "Distance": 996.22766113281,
+  "Name": "Å"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452694496,
+  "Distance": 996.22766113281,
+  "Name": "Ç"
+}, {
+  "ActorID": -2079391724,
+  "ActorType": 2,
+  "Address": 452695424,
+  "Distance": 86.364158630371,
+  "Name": "trDun_Magic_Painting_E_NoSpawn-3776"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452696352,
+  "Distance": 996.22766113281,
+  "Name": "É"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452697280,
+  "Distance": 996.22766113281,
+  "Name": "Ö"
+}, {
+  "ActorID": -1,
+  "ActorType": 2,
+  "Address": 452698208,
+  "Distance": 619.32800292969,
+  "Name": "ç"
+}, {
+  "ActorID": -1,
+  "ActorType": 1,
+  "Address": 452699136,
+  "Distance": 551.61102294922,
+  "Name": "c"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452700064,
+  "Distance": 996.22766113281,
+  "Name": ">\u0001_Cloak_norm_base_01-3113"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452700992,
+  "Distance": 996.22766113281,
+  "Name": "â"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452701920,
+  "Distance": 533.86822509766,
+  "Name": "ä"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452702848,
+  "Distance": 573.83660888672,
+  "Name": "ã"
+}, {
+  "ActorID": -1,
+  "ActorType": 2,
+  "Address": 452703776,
+  "Distance": 596.44177246094,
+  "Name": "9\u0001art_Location_0-3132"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452704704,
+  "Distance": 621.08532714844,
+  "Name": "å"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452705632,
+  "Distance": 996.22766113281,
+  "Name": "é"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452706560,
+  "Distance": 996.22766113281,
+  "Name": "è"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452707488,
+  "Distance": 996.22766113281,
+  "Name": "ê"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452708416,
+  "Distance": 996.22766113281,
+  "Name": "ë"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452709344,
+  "Distance": 996.22766113281,
+  "Name": "í"
+}, {
+  "ActorID": -2078474206,
+  "ActorType": 4,
+  "Address": 452710272,
+  "Distance": 32.807075500488,
+  "Name": "Crypt_Fading_Block_Collision_Small-3790"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452711200,
+  "Distance": 543.59881591797,
+  "Name": "A"
+}, {
+  "ActorID": -1,
+  "ActorType": 4,
+  "Address": 452712128,
+  "Distance": 641.50823974609,
+  "Name": "[\u0001acksmith_Crafting_Backbone-3128"
+}, {
+  "ActorID": -2072444890,
+  "ActorType": 2,
+  "Address": 452713056,
+  "Distance": 86.047966003418,
+  "Name": "trDun_book_pile_c-3881"
+}, {
+  "ActorID": -2080178168,
+  "ActorType": 7,
+  "Address": 452713984,
+  "Distance": 0.0,
+  "Name": "Barbarian_Male-167"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452714912,
+  "Distance": 996.22766113281,
+  "Name": "healthPotion_Bottomless-178"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452715840,
+  "Distance": 996.22766113281,
+  "Name": "Helm_norm_unique_12-179"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452716768,
+  "Distance": 996.22766113281,
+  "Name": "Ring_25-180"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452717696,
+  "Distance": 996.22766113281,
+  "Name": "x1_Amethyst_06-181"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452718624,
+  "Distance": 996.22766113281,
+  "Name": "x1_Sword_norm_unique_12-182"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452719552,
+  "Distance": 996.22766113281,
+  "Name": "p6_chestArmor_norm_unique_21-183"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452720480,
+  "Distance": 996.22766113281,
+  "Name": "x1_Diamond_06-184"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452721408,
+  "Distance": 996.22766113281,
+  "Name": "Belt_norm_unique_02-185"
+}, {
+  "ActorID": -2077884373,
+  "ActorType": 1,
+  "Address": 452722336,
+  "Distance": 12.922149658203,
+  "Name": "Hireling_Templar-186"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452723264,
+  "Distance": 996.22766113281,
+  "Name": "Ring_norm_unique_017-190"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452724192,
+  "Distance": 996.22766113281,
+  "Name": "Shield_norm_unique_01-191"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452725120,
+  "Distance": 996.22766113281,
+  "Name": "x1_FollowerItem_Templar_Legendary_01-192"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452726048,
+  "Distance": 996.22766113281,
+  "Name": "mightyWeapon_1H_norm_unique_06-193"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452726976,
+  "Distance": 996.22766113281,
+  "Name": "x1_Emerald_10-194"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452727904,
+  "Distance": 996.22766113281,
+  "Name": "p2_Boots_norm_set_01-195"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452728832,
+  "Distance": 996.22766113281,
+  "Name": "Bracers_norm_unique_07-196"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452729760,
+  "Distance": 996.22766113281,
+  "Name": "p2_Pants_norm_set_01-197"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452730688,
+  "Distance": 996.22766113281,
+  "Name": "x1_Ruby_10-198"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452731616,
+  "Distance": 996.22766113281,
+  "Name": "x1_Ruby_10-199"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452732544,
+  "Distance": 996.22766113281,
+  "Name": "x1_Ring_norm_set_001-200"
+}, {
+  "ActorID": -1,
+  "ActorType": 8,
+  "Address": 452733472,
+  "Distance": 996.22766113281,
+  "Name": "Unique_Gem_016_x1-201"
+} ]

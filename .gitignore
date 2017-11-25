@@ -6,6 +6,9 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.ffs_db
+*.sublime-project
+*.sublime-workspace
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -21,7 +24,9 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
-
+.git/
+scripts/Performance Test/
+scripts/TestScript/
 # Visual Studio 2015 cache/options directory
 .vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot

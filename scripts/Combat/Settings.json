@@ -1,0 +1,12 @@
+{
+  "Attack": {
+    "Enabled": true
+  },
+  "Buff": {
+    "Enabled": true
+  },
+  "Defend": {
+    "Enabled": true
+  },
+  "LastCombatScript": "Barb_Whirlwind.lua"
+}

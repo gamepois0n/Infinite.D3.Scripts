@@ -1,0 +1,356 @@
+[ {
+  "ID": 588,
+  "Modifier": 65535,
+  "Name": "Buff_Visual_Effect",
+  "Value": 1
+}, {
+  "ID": 588,
+  "Modifier": 131071,
+  "Name": "Buff_Visual_Effect",
+  "Value": 1
+}, {
+  "ID": 588,
+  "Modifier": 196607,
+  "Name": "Buff_Visual_Effect",
+  "Value": 1
+}, {
+  "ID": 588,
+  "Modifier": 262143,
+  "Name": "Buff_Visual_Effect",
+  "Value": 1
+}, {
+  "ID": 588,
+  "Modifier": 327679,
+  "Name": "Buff_Visual_Effect",
+  "Value": 1
+}, {
+  "ID": 588,
+  "Modifier": 393215,
+  "Name": "Buff_Visual_Effect",
+  "Value": 1
+}, {
+  "ID": 588,
+  "Modifier": 458751,
+  "Name": "Buff_Visual_Effect",
+  "Value": 1
+}, {
+  "ID": 590,
+  "Modifier": 25216,
+  "Name": "Buff_Icon_Start_Tick1",
+  "Value": 5985
+}, {
+  "ID": 590,
+  "Modifier": 90752,
+  "Name": "Buff_Icon_Start_Tick1",
+  "Value": 5985
+}, {
+  "ID": 590,
+  "Modifier": 156288,
+  "Name": "Buff_Icon_Start_Tick1",
+  "Value": 5985
+}, {
+  "ID": 590,
+  "Modifier": 221824,
+  "Name": "Buff_Icon_Start_Tick1",
+  "Value": 5985
+}, {
+  "ID": 590,
+  "Modifier": 287360,
+  "Name": "Buff_Icon_Start_Tick1",
+  "Value": 5985
+}, {
+  "ID": 590,
+  "Modifier": 352896,
+  "Name": "Buff_Icon_Start_Tick1",
+  "Value": 5985
+}, {
+  "ID": 590,
+  "Modifier": 418432,
+  "Name": "Buff_Icon_Start_Tick1",
+  "Value": 5985
+}, {
+  "ID": 590,
+  "Modifier": 483968,
+  "Name": "Buff_Icon_Start_Tick1",
+  "Value": 5985
+}, {
+  "ID": 622,
+  "Modifier": 25216,
+  "Name": "Buff_Icon_End_Tick1",
+  "Value": 6075
+}, {
+  "ID": 622,
+  "Modifier": 90752,
+  "Name": "Buff_Icon_End_Tick1",
+  "Value": 6075
+}, {
+  "ID": 622,
+  "Modifier": 156288,
+  "Name": "Buff_Icon_End_Tick1",
+  "Value": 6075
+}, {
+  "ID": 622,
+  "Modifier": 221824,
+  "Name": "Buff_Icon_End_Tick1",
+  "Value": 6075
+}, {
+  "ID": 622,
+  "Modifier": 287360,
+  "Name": "Buff_Icon_End_Tick1",
+  "Value": 6075
+}, {
+  "ID": 622,
+  "Modifier": 352896,
+  "Name": "Buff_Icon_End_Tick1",
+  "Value": 6075
+}, {
+  "ID": 622,
+  "Modifier": 418432,
+  "Name": "Buff_Icon_End_Tick1",
+  "Value": 6075
+}, {
+  "ID": 622,
+  "Modifier": 483968,
+  "Name": "Buff_Icon_End_Tick1",
+  "Value": 6075
+}, {
+  "ID": 762,
+  "Modifier": 22473,
+  "Name": "Buff_Icon_Count0",
+  "Value": 1
+}, {
+  "ID": 762,
+  "Modifier": 25216,
+  "Name": "Buff_Icon_Count0",
+  "Value": 1
+}, {
+  "ID": 762,
+  "Modifier": 88009,
+  "Name": "Buff_Icon_Count0",
+  "Value": 1
+}, {
+  "ID": 762,
+  "Modifier": 90752,
+  "Name": "Buff_Icon_Count0",
+  "Value": 1
+}, {
+  "ID": 762,
+  "Modifier": 153545,
+  "Name": "Buff_Icon_Count0",
+  "Value": 1
+}, {
+  "ID": 762,
+  "Modifier": 156288,
+  "Name": "Buff_Icon_Count0",
+  "Value": 1
+}, {
+  "ID": 762,
+  "Modifier": 219081,
+  "Name": "Buff_Icon_Count0",
+  "Value": 1
+}, {
+  "ID": 762,
+  "Modifier": 221824,
+  "Name": "Buff_Icon_Count0",
+  "Value": 1
+}, {
+  "ID": 762,
+  "Modifier": 284617,
+  "Name": "Buff_Icon_Count0",
+  "Value": 1
+}, {
+  "ID": 762,
+  "Modifier": 287360,
+  "Name": "Buff_Icon_Count0",
+  "Value": 1
+}, {
+  "ID": 762,
+  "Modifier": 350153,
+  "Name": "Buff_Icon_Count0",
+  "Value": 1
+}, {
+  "ID": 762,
+  "Modifier": 352896,
+  "Name": "Buff_Icon_Count0",
+  "Value": 1
+}, {
+  "ID": 762,
+  "Modifier": 415689,
+  "Name": "Buff_Icon_Count0",
+  "Value": 1
+}, {
+  "ID": 762,
+  "Modifier": 418432,
+  "Name": "Buff_Icon_Count0",
+  "Value": 1
+}, {
+  "ID": 762,
+  "Modifier": 481225,
+  "Name": "Buff_Icon_Count0",
+  "Value": 1
+}, {
+  "ID": 762,
+  "Modifier": 483968,
+  "Name": "Buff_Icon_Count0",
+  "Value": 1
+}, {
+  "ID": 763,
+  "Modifier": 25216,
+  "Name": "Buff_Icon_Count1",
+  "Value": 8
+}, {
+  "ID": 763,
+  "Modifier": 90752,
+  "Name": "Buff_Icon_Count1",
+  "Value": 8
+}, {
+  "ID": 763,
+  "Modifier": 156288,
+  "Name": "Buff_Icon_Count1",
+  "Value": 8
+}, {
+  "ID": 763,
+  "Modifier": 221824,
+  "Name": "Buff_Icon_Count1",
+  "Value": 8
+}, {
+  "ID": 763,
+  "Modifier": 287360,
+  "Name": "Buff_Icon_Count1",
+  "Value": 8
+}, {
+  "ID": 763,
+  "Modifier": 352896,
+  "Name": "Buff_Icon_Count1",
+  "Value": 8
+}, {
+  "ID": 763,
+  "Modifier": 418432,
+  "Name": "Buff_Icon_Count1",
+  "Value": 8
+}, {
+  "ID": 763,
+  "Modifier": 483968,
+  "Name": "Buff_Icon_Count1",
+  "Value": 8
+}, {
+  "ID": 860,
+  "Modifier": 22473,
+  "Name": "Power_Buff_0_Visual_Effect_None",
+  "Value": 1
+}, {
+  "ID": 860,
+  "Modifier": 25216,
+  "Name": "Power_Buff_0_Visual_Effect_None",
+  "Value": 1
+}, {
+  "ID": 860,
+  "Modifier": 88009,
+  "Name": "Power_Buff_0_Visual_Effect_None",
+  "Value": 1
+}, {
+  "ID": 860,
+  "Modifier": 90752,
+  "Name": "Power_Buff_0_Visual_Effect_None",
+  "Value": 1
+}, {
+  "ID": 860,
+  "Modifier": 153545,
+  "Name": "Power_Buff_0_Visual_Effect_None",
+  "Value": 1
+}, {
+  "ID": 860,
+  "Modifier": 156288,
+  "Name": "Power_Buff_0_Visual_Effect_None",
+  "Value": 1
+}, {
+  "ID": 860,
+  "Modifier": 219081,
+  "Name": "Power_Buff_0_Visual_Effect_None",
+  "Value": 1
+}, {
+  "ID": 860,
+  "Modifier": 221824,
+  "Name": "Power_Buff_0_Visual_Effect_None",
+  "Value": 1
+}, {
+  "ID": 860,
+  "Modifier": 284617,
+  "Name": "Power_Buff_0_Visual_Effect_None",
+  "Value": 1
+}, {
+  "ID": 860,
+  "Modifier": 287360,
+  "Name": "Power_Buff_0_Visual_Effect_None",
+  "Value": 1
+}, {
+  "ID": 860,
+  "Modifier": 350153,
+  "Name": "Power_Buff_0_Visual_Effect_None",
+  "Value": 1
+}, {
+  "ID": 860,
+  "Modifier": 352896,
+  "Name": "Power_Buff_0_Visual_Effect_None",
+  "Value": 1
+}, {
+  "ID": 860,
+  "Modifier": 415689,
+  "Name": "Power_Buff_0_Visual_Effect_None",
+  "Value": 1
+}, {
+  "ID": 860,
+  "Modifier": 418432,
+  "Name": "Power_Buff_0_Visual_Effect_None",
+  "Value": 1
+}, {
+  "ID": 860,
+  "Modifier": 481225,
+  "Name": "Power_Buff_0_Visual_Effect_None",
+  "Value": 1
+}, {
+  "ID": 860,
+  "Modifier": 483968,
+  "Name": "Power_Buff_0_Visual_Effect_None",
+  "Value": 1
+}, {
+  "ID": 866,
+  "Modifier": 25216,
+  "Name": "Power_Buff_1_Visual_Effect_None",
+  "Value": 1
+}, {
+  "ID": 866,
+  "Modifier": 90752,
+  "Name": "Power_Buff_1_Visual_Effect_None",
+  "Value": 1
+}, {
+  "ID": 866,
+  "Modifier": 156288,
+  "Name": "Power_Buff_1_Visual_Effect_None",
+  "Value": 1
+}, {
+  "ID": 866,
+  "Modifier": 221824,
+  "Name": "Power_Buff_1_Visual_Effect_None",
+  "Value": 1
+}, {
+  "ID": 866,
+  "Modifier": 287360,
+  "Name": "Power_Buff_1_Visual_Effect_None",
+  "Value": 1
+}, {
+  "ID": 866,
+  "Modifier": 352896,
+  "Name": "Power_Buff_1_Visual_Effect_None",
+  "Value": 1
+}, {
+  "ID": 866,
+  "Modifier": 418432,
+  "Name": "Power_Buff_1_Visual_Effect_None",
+  "Value": 1
+}, {
+  "ID": 866,
+  "Modifier": 483968,
+  "Name": "Power_Buff_1_Visual_Effect_None",
+  "Value": 1
+} ]

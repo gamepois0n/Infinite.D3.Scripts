@@ -1,0 +1,17 @@
+{
+  "CraftMaterial": {
+    "Enabled": true
+  },
+  "Gem": {
+    "Enabled": true
+  },
+  "Legendary": {
+    "Ancient": true,
+    "Normal": false,
+    "Primal": true
+  },
+  "PickupRadius": 20,
+  "RiftKey": {
+    "Enabled": true
+  }
+}

@@ -1,0 +1,707 @@
+{
+  "Gizmos": {
+    "ColorOutline": {
+      "A": 120,
+      "B": 255,
+      "G": 255,
+      "R": 255
+    },
+    "CustomRadius": false,
+    "CustomRadiusValue": 1,
+    "Enabled": false,
+    "Fill": true,
+    "Thickness": 1
+  },
+  "Goblins": {
+    "ColorFill": {
+      "A": 80,
+      "B": 235,
+      "G": 235,
+      "R": 49
+    },
+    "ColorOutline": {
+      "A": 255,
+      "B": 163,
+      "G": 163,
+      "R": 15
+    },
+    "CustomRadius": true,
+    "CustomRadiusValue": 3,
+    "Enabled": true,
+    "Fill": true,
+    "Thickness": 2
+  },
+  "GroundEffects": {
+    "Arcane": {
+      "ColorFill": {
+        "A": 120,
+        "B": 223,
+        "G": 123,
+        "R": 173
+      },
+      "ColorOutline": {
+        "A": 255,
+        "B": 191,
+        "G": 63,
+        "R": 127
+      },
+      "CustomRadius": false,
+      "CustomRadiusValue": 1,
+      "Enabled": true,
+      "Fill": false,
+      "Thickness": 2
+    },
+    "Desecrator": {
+      "ColorFill": {
+        "A": 120,
+        "B": 32,
+        "G": 81,
+        "R": 171
+      },
+      "ColorOutline": {
+        "A": 255,
+        "B": 65,
+        "G": 123,
+        "R": 230
+      },
+      "CustomRadius": false,
+      "CustomRadiusValue": 1,
+      "Enabled": true,
+      "Fill": false,
+      "Thickness": 3
+    },
+    "Enabled": true,
+    "Frozen": {
+      "ColorOutline": {
+        "A": 255,
+        "B": 191,
+        "G": 127,
+        "R": 63
+      },
+      "CustomRadius": true,
+      "CustomRadiusValue": 14,
+      "Enabled": true,
+      "Fill": false,
+      "Thickness": 3
+    },
+    "FrozenPulse": {
+      "ColorFill": {
+        "A": 120,
+        "B": 191,
+        "G": 127,
+        "R": 63
+      },
+      "ColorOutline": {
+        "A": 255,
+        "B": 191,
+        "G": 127,
+        "R": 63
+      },
+      "CustomRadius": false,
+      "CustomRadiusValue": 1,
+      "Enabled": true,
+      "Fill": false,
+      "Thickness": 3
+    },
+    "Molten": {
+      "ColorFill": {
+        "A": 120,
+        "B": 7,
+        "G": 99,
+        "R": 160
+      },
+      "ColorOutline": {
+        "A": 255,
+        "B": 33,
+        "G": 161,
+        "R": 246
+      },
+      "CustomRadius": false,
+      "CustomRadiusValue": 1,
+      "Enabled": true,
+      "Fill": false,
+      "Thickness": 3
+    },
+    "Mortar": {
+      "ColorFill": {
+        "A": 120,
+        "B": 67,
+        "G": 105,
+        "R": 131
+      },
+      "ColorOutline": {
+        "A": 255,
+        "B": 114,
+        "G": 157,
+        "R": 185
+      },
+      "CustomRadius": false,
+      "CustomRadiusValue": 1,
+      "Enabled": true,
+      "Fill": false,
+      "Thickness": 3
+    },
+    "OccuCircle": {
+      "ColorFill": {
+        "A": 120,
+        "B": 135,
+        "G": 22,
+        "R": 130
+      },
+      "ColorOutline": {
+        "A": 255,
+        "B": 223,
+        "G": 67,
+        "R": 215
+      },
+      "CustomRadius": false,
+      "CustomRadiusValue": 1,
+      "Enabled": true,
+      "Fill": false,
+      "Thickness": 3
+    },
+    "Orbiter": {
+      "ColorFill": {
+        "A": 120,
+        "B": 157,
+        "G": 232,
+        "R": 53
+      },
+      "ColorOutline": {
+        "A": 255,
+        "B": 109,
+        "G": 172,
+        "R": 21
+      },
+      "CustomRadius": false,
+      "CustomRadiusValue": 1,
+      "Enabled": true,
+      "Fill": false,
+      "Thickness": 3
+    },
+    "Plagued": {
+      "ColorFill": {
+        "A": 120,
+        "B": 27,
+        "G": 114,
+        "R": 27
+      },
+      "ColorOutline": {
+        "A": 255,
+        "B": 45,
+        "G": 183,
+        "R": 45
+      },
+      "CustomRadius": false,
+      "CustomRadiusValue": 1,
+      "Enabled": true,
+      "Fill": false,
+      "Thickness": 3
+    },
+    "PoisonEnchanted": {
+      "ColorFill": {
+        "A": 120,
+        "B": 27,
+        "G": 114,
+        "R": 27
+      },
+      "ColorOutline": {
+        "A": 255,
+        "B": 45,
+        "G": 183,
+        "R": 45
+      },
+      "CustomRadius": false,
+      "CustomRadiusValue": 1,
+      "Enabled": true,
+      "Fill": false,
+      "Thickness": 3
+    },
+    "Thunderstorm": {
+      "ColorFill": {
+        "A": 120,
+        "B": 157,
+        "G": 232,
+        "R": 53
+      },
+      "ColorOutline": {
+        "A": 255,
+        "B": 109,
+        "G": 172,
+        "R": 21
+      },
+      "CustomRadius": false,
+      "CustomRadiusValue": 1,
+      "Enabled": true,
+      "Fill": false,
+      "Thickness": 3
+    },
+    "Wormwhole": {
+      "ColorOutline": {
+        "A": 120,
+        "B": 191,
+        "G": 63,
+        "R": 127
+      },
+      "CustomRadius": false,
+      "CustomRadiusValue": 1,
+      "Enabled": true,
+      "Fill": false,
+      "Thickness": 2
+    }
+  },
+  "Items": {
+    "Enabled": true,
+    "Legendary": {
+      "Ancient": {
+        "ColorOutline": {
+          "A": 255,
+          "B": 19,
+          "G": 57,
+          "R": 117
+        },
+        "CustomRadius": true,
+        "CustomRadiusValue": 1.5,
+        "Enabled": true,
+        "Fill": false,
+        "Thickness": 3
+      },
+      "Enabled": true,
+      "Normal": {
+        "ColorOutline": {
+          "A": 255,
+          "B": 19,
+          "G": 57,
+          "R": 117
+        },
+        "CustomRadius": true,
+        "CustomRadiusValue": 1.5,
+        "Enabled": true,
+        "Fill": false,
+        "Thickness": 1
+      },
+      "Primal": {
+        "ColorFill": {
+          "A": 120,
+          "B": 19,
+          "G": 82,
+          "R": 184
+        },
+        "ColorOutline": {
+          "A": 255,
+          "B": 19,
+          "G": 57,
+          "R": 117
+        },
+        "CustomRadius": true,
+        "CustomRadiusValue": 1.5,
+        "Enabled": true,
+        "Fill": false,
+        "Thickness": 3
+      }
+    }
+  },
+  "Monsters": {
+    "Boss": {
+      "ColorFill": {
+        "A": 120,
+        "B": 19,
+        "G": 133,
+        "R": 199
+      },
+      "ColorOutline": {
+        "A": 255,
+        "B": 80,
+        "G": 82,
+        "R": 126
+      },
+      "CustomRadius": false,
+      "CustomRadiusValue": 1,
+      "Enabled": true,
+      "Fill": false,
+      "Thickness": 1
+    },
+    "Elite": {
+      "Champion": {
+        "ColorFill": {
+          "A": 120,
+          "B": 219,
+          "G": 128,
+          "R": 86
+        },
+        "ColorOutline": {
+          "A": 255,
+          "B": 158,
+          "G": 60,
+          "R": 14
+        },
+        "CustomRadius": false,
+        "CustomRadiusValue": 1,
+        "Enabled": true,
+        "Fill": false,
+        "Thickness": 3
+      },
+      "Enabled": true,
+      "Minion": {
+        "ColorOutline": {
+          "A": 255,
+          "B": 66,
+          "G": 226,
+          "R": 229
+        },
+        "CustomRadius": false,
+        "CustomRadiusValue": 1,
+        "Enabled": true,
+        "Fill": false,
+        "Thickness": 2
+      },
+      "Rare": {
+        "ColorFill": {
+          "A": 120,
+          "B": 66,
+          "G": 226,
+          "R": 229
+        },
+        "ColorOutline": {
+          "A": 255,
+          "B": 29,
+          "G": 179,
+          "R": 209
+        },
+        "CustomRadius": false,
+        "CustomRadiusValue": 1,
+        "Enabled": true,
+        "Fill": false,
+        "Thickness": 3
+      },
+      "Unique": {
+        "ColorFill": {
+          "A": 120,
+          "B": 135,
+          "G": 74,
+          "R": 196
+        },
+        "ColorOutline": {
+          "A": 255,
+          "B": 81,
+          "G": 32,
+          "R": 130
+        },
+        "CustomRadius": false,
+        "CustomRadiusValue": 1,
+        "Enabled": true,
+        "Fill": false,
+        "Thickness": 3
+      }
+    },
+    "Enabled": true,
+    "Normal": {
+      "ColorOutline": {
+        "A": 255,
+        "B": 153,
+        "G": 153,
+        "R": 153
+      },
+      "CustomRadius": false,
+      "CustomRadiusValue": 1,
+      "Enabled": false,
+      "Fill": false,
+      "Thickness": 1
+    }
+  },
+  "Players": {
+    "ColorOutline": {
+      "A": 255,
+      "B": 43,
+      "G": 199,
+      "R": 19
+    },
+    "CustomRadius": false,
+    "CustomRadiusValue": 1,
+    "Enabled": false,
+    "Fill": false,
+    "Thickness": 1
+  },
+  "Pylons": {
+    "Channeling": {
+      "ColorFill": {
+        "A": 120,
+        "B": 80,
+        "G": 158,
+        "R": 235
+      },
+      "ColorOutline": {
+        "A": 255,
+        "B": 16,
+        "G": 109,
+        "R": 202
+      },
+      "ColorText": {
+        "A": 255,
+        "B": 255,
+        "G": 255,
+        "R": 255
+      },
+      "Enabled": true,
+      "Text": "Chn",
+      "TextSize": 20
+    },
+    "Conduit": {
+      "ColorFill": {
+        "A": 120,
+        "B": 80,
+        "G": 158,
+        "R": 235
+      },
+      "ColorOutline": {
+        "A": 255,
+        "B": 16,
+        "G": 109,
+        "R": 202
+      },
+      "ColorText": {
+        "A": 255,
+        "B": 255,
+        "G": 255,
+        "R": 255
+      },
+      "Enabled": true,
+      "Text": "Cdt",
+      "TextSize": 20
+    },
+    "Enabled": true,
+    "Power": {
+      "ColorFill": {
+        "A": 120,
+        "B": 80,
+        "G": 158,
+        "R": 235
+      },
+      "ColorOutline": {
+        "A": 255,
+        "B": 16,
+        "G": 109,
+        "R": 202
+      },
+      "ColorText": {
+        "A": 255,
+        "B": 255,
+        "G": 255,
+        "R": 255
+      },
+      "Enabled": true,
+      "Text": "Pwr",
+      "TextSize": 20
+    },
+    "Shield": {
+      "ColorFill": {
+        "A": 120,
+        "B": 80,
+        "G": 158,
+        "R": 235
+      },
+      "ColorOutline": {
+        "A": 255,
+        "B": 16,
+        "G": 109,
+        "R": 202
+      },
+      "ColorText": {
+        "A": 255,
+        "B": 255,
+        "G": 255,
+        "R": 255
+      },
+      "Enabled": true,
+      "Text": "Shd",
+      "TextSize": 20
+    },
+    "Speed": {
+      "ColorFill": {
+        "A": 120,
+        "B": 80,
+        "G": 158,
+        "R": 235
+      },
+      "ColorOutline": {
+        "A": 255,
+        "B": 16,
+        "G": 109,
+        "R": 202
+      },
+      "ColorText": {
+        "A": 255,
+        "B": 255,
+        "G": 255,
+        "R": 255
+      },
+      "Enabled": true,
+      "Text": "Spd",
+      "TextSize": 20
+    }
+  },
+  "Shrines": {
+    "Bandit": {
+      "ColorFill": {
+        "A": 80,
+        "B": 125,
+        "G": 125,
+        "R": 159
+      },
+      "ColorOutline": {
+        "A": 255,
+        "B": 74,
+        "G": 74,
+        "R": 98
+      },
+      "ColorText": {
+        "A": 255,
+        "B": 255,
+        "G": 255,
+        "R": 255
+      },
+      "Enabled": true,
+      "Text": "Bnd",
+      "TextSize": 20
+    },
+    "Empowered": {
+      "ColorFill": {
+        "A": 80,
+        "B": 125,
+        "G": 125,
+        "R": 159
+      },
+      "ColorOutline": {
+        "A": 255,
+        "B": 74,
+        "G": 74,
+        "R": 98
+      },
+      "ColorText": {
+        "A": 255,
+        "B": 255,
+        "G": 255,
+        "R": 255
+      },
+      "Enabled": true,
+      "Text": "Emp",
+      "TextSize": 20
+    },
+    "Enabled": true,
+    "Enlightened": {
+      "ColorFill": {
+        "A": 80,
+        "B": 125,
+        "G": 125,
+        "R": 159
+      },
+      "ColorOutline": {
+        "A": 255,
+        "B": 74,
+        "G": 74,
+        "R": 98
+      },
+      "ColorText": {
+        "A": 255,
+        "B": 255,
+        "G": 255,
+        "R": 255
+      },
+      "Enabled": true,
+      "Text": "Exp",
+      "TextSize": 20
+    },
+    "Fleeting": {
+      "ColorFill": {
+        "A": 80,
+        "B": 125,
+        "G": 125,
+        "R": 159
+      },
+      "ColorOutline": {
+        "A": 255,
+        "B": 74,
+        "G": 74,
+        "R": 98
+      },
+      "ColorText": {
+        "A": 255,
+        "B": 255,
+        "G": 255,
+        "R": 255
+      },
+      "Enabled": true,
+      "Text": "Fle",
+      "TextSize": 20
+    },
+    "Fortune": {
+      "ColorFill": {
+        "A": 80,
+        "B": 125,
+        "G": 125,
+        "R": 159
+      },
+      "ColorOutline": {
+        "A": 255,
+        "B": 74,
+        "G": 74,
+        "R": 98
+      },
+      "ColorText": {
+        "A": 255,
+        "B": 255,
+        "G": 255,
+        "R": 255
+      },
+      "Enabled": true,
+      "Text": "Ftn",
+      "TextSize": 20
+    },
+    "Frenzied": {
+      "ColorFill": {
+        "A": 80,
+        "B": 125,
+        "G": 125,
+        "R": 159
+      },
+      "ColorOutline": {
+        "A": 255,
+        "B": 74,
+        "G": 74,
+        "R": 98
+      },
+      "ColorText": {
+        "A": 255,
+        "B": 255,
+        "G": 255,
+        "R": 255
+      },
+      "Enabled": true,
+      "Text": "Frz",
+      "TextSize": 20
+    },
+    "Protection": {
+      "ColorFill": {
+        "A": 80,
+        "B": 125,
+        "G": 125,
+        "R": 159
+      },
+      "ColorOutline": {
+        "A": 255,
+        "B": 74,
+        "G": 74,
+        "R": 98
+      },
+      "ColorText": {
+        "A": 255,
+        "B": 255,
+        "G": 255,
+        "R": 255
+      },
+      "Enabled": true,
+      "Text": "Prt",
+      "TextSize": 20
+    }
+  }
+}
