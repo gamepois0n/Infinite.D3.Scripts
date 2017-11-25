@@ -9,6 +9,8 @@
 *.ffs_db
 *.sublime-project
 *.sublime-workspace
+*.txt
+*.json
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
