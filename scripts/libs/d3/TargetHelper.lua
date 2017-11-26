@@ -55,6 +55,27 @@ function TargetHelper.GetMonsterCountAroundLocalPlayer(radius)
 	return table.length(nearby)
 end
 
+function TargetHelper.GetMonstersAroundLocalPlayer(radius, outNormal, outElite, outBoss)	
+	outNormal = {}
+	outElite = {}
+	outBoss = {}
+
+	for k,v in pairs(Infinity.D3.GetACDList()) do
+		if v:GetActorId() ~= -1 and v:GetActorType() == Enums.ActorType.Monster then
+			if v:GetPosition():GetDistanceFromMe() <= radius then
+				if v:GetMonsterQuality() == Normal then
+					table.insert(outNormal, v)
+				elseif v:GetMonsterQuality() == Champion or v:GetMonsterQuality() == Rare or v:GetMonsterQuality() == Minion or v:GetMonsterQuality() == Unique then
+					table.insert(outElite, v)
+				elseif v:GetMonsterQuality() == Boss then
+					table.insert(outBoss, v)
+				end	
+			end
+		end
+	end
+	return
+end
+
 function TargetHelper.GetClosestTarget(radius)	
 	local closest = nil
 	local lastDist = 100000
