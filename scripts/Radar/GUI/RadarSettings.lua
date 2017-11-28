@@ -171,6 +171,15 @@ function RadarSettings.DrawMainWindow()
 		_, Radar.Settings.Items.Color.G = ImGui.SliderInt("G##id_settings_Items_color_g", Radar.Settings.Items.Color.G, 0, 255)
 		_, Radar.Settings.Items.Color.B = ImGui.SliderInt("B##id_settings_Items_color_b", Radar.Settings.Items.Color.B, 0, 255)
 	end]]--
+
+	--for k,v in pairs(Radar.Settings) do
+		--ImGui.Text(type(v) .. " " .. k)
+	--end
+
+	for k,v in pairs(Radar.Settings) do
+		
+	end
+
   ImGui.End()
 end
 

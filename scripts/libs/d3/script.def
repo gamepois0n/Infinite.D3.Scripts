@@ -15,5 +15,6 @@ file=ParagonPointHelper.lua
 file=RActorHelper.lua
 file=LevelAreaHelper.lua
 file=TTSHelper.lua
+file=Collector.lua
 
 [dependencies]
