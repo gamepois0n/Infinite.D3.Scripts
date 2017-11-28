@@ -173,7 +173,7 @@ function CombatScript:Attack(player, monsterTarget, actors)
 	if AttributeHelper.IsInTown(player) or AttributeHelper.IsTeleportingTown(player) then
 		return
 	end
-
+	
 	if monsterTarget ~= nil and monsterTarget:GetActorType() == Enums.ActorType.Monster and monsterTarget:GetMonsterQuality() == Boss then			
 		self:UseSkill(self.Whirlwind, monsterTarget:GetPosition())
 	end
