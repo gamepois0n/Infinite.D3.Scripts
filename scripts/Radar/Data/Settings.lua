@@ -10,6 +10,8 @@ setmetatable(Settings, {
 function Settings.new()
   local self = setmetatable({}, Settings)
 
+    self.MapReveal = false
+
     self.Monsters = {Enabled = true}
     self.Monsters.Normal = {Enabled = false, Minimap = true, MinimapRadius = 4, ColorMinimap = "66999999", CustomRadius = false, CustomRadiusValue = 1, Thickness = 1, Fill = false, ColorOutline = "FF999999", ColorFill = nil}
     

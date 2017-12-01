@@ -35,7 +35,9 @@ function Radar.OnPulse()
     return
   end   
 
-  LevelAreaHelper.RevealAllScenes()
+  if Radar.Settings.MapReveal == true then
+    LevelAreaHelper.RevealAllScenes()
+  end
 
   Radar.Collector:Collect()
     
