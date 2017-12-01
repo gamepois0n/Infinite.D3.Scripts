@@ -31,14 +31,11 @@ end
 function RenderHelper.TransformUIRectToClientRect(uiRect)	
   local rootRect = UIControlHelper.GetUIControlByName("Root"):GetUIRect()
   local clientRect = Infinity.D3.GetClientRect()
-
-  local cRectWidth = clientRect.Right - clientRect.Left
-  local cRectHeight = clientRect.Bottom - clientRect.Top
-
-  local Left = clientRect.Left + (cRectWidth * ((uiRect.Left - rootRect.Left) / rootRect.Width))
-  local Top = clientRect.Top + (cRectHeight * ((uiRect.Top - rootRect.Top) / rootRect.Height))
-  local Width = cRectWidth * (uiRect.Width / rootRect.Width)
-  local Height = cRectHeight * (uiRect.Height / rootRect.Height)
+  
+  local Left = clientRect.Left + (clientRect.Width * ((uiRect.Left - rootRect.Left) / rootRect.Width))
+  local Top = clientRect.Top + (clientRect.Height * ((uiRect.Top - rootRect.Top) / rootRect.Height))
+  local Width = clientRect.Width * (uiRect.Width / rootRect.Width)
+  local Height = clientRect.Height * (uiRect.Height / rootRect.Height)
 
   return Infinity.D3.UIRect(Left, Top, Left + Width, Top + Height)
 end
