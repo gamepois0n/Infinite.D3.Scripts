@@ -28,6 +28,39 @@ function RenderHelper.ToUIControlRectArea(uicontrol, pos)
 	return screen
 end
 
+function RenderHelper.TransformUIRectToClientRect(uiRect)	
+  local rootRect = UIControlHelper.GetUIControlByName("Root"):GetUIRect()
+  local clientRect = Infinity.D3.GetClientRect()
+
+  local Left = clientRect.Left + (clientRect.Width * ((uiRect.Left - rootRect.Left) / rootRect.Width))
+  local Top = clientRect.Top + (clientRect.Height * ((uiRect.Top - rootRect.Top) / rootRect.Height))
+  local Width = clientRect.Width * (uiRect.Width / rootRect.Width)
+  local Height = clientRect.Height * (uiRect.Height / rootRect.Height)
+
+  return Infinity.D3.UIRect(Left, Top, Left + Width, Top + Height)
+end
+
+function RenderHelper.ToMinimap(pos)
+	local mmap = UIControlHelper.GetUIControlByName("Root.NormalLayer.minimap_dialog_backgroundScreen.minimap_dialog_pve.minimap_pve_main")
+	local mmapRealPoint = RenderHelper.ToUIControlRectArea(mmap, pos)
+	local mmapRealRect = mmap:GetUIRect()
+	local mmapClientRect = RenderHelper.TransformUIRectToClientRect(mmap:GetUIRect())
+	
+	local offsetX = (mmapRealPoint.X - mmapRealRect.Left) / mmapRealRect.Width
+	local offsetY = (mmapRealPoint.Y - mmapRealRect.Top) / mmapRealRect.Height
+
+	return Vector2(math.floor(mmapClientRect.Left + (mmapClientRect.Width * offsetX)), math.floor(mmapClientRect.Top + (mmapClientRect.Height * offsetY)))
+end
+
+function RenderHelper.GetColorImVec4FromHexColorString(hexColorString)
+local a = tonumber(string.sub(hexColorString, 1, 2), 16)
+local r = tonumber(string.sub(hexColorString, 3, 4), 16)
+local g = tonumber(string.sub(hexColorString, 5, 6), 16)
+local b = tonumber(string.sub(hexColorString, 7, 8), 16)
+
+return ImVec4(r / 255, g / 255, b / 255, a / 255)
+end
+
 function RenderHelper.DrawWorldTextLabels(labels, startpos, vertical, offsetx, offsety)
 	local screen = RenderHelper.ToScreen(startpos)
 
@@ -59,7 +92,7 @@ function RenderHelper.DrawWorldTextLabels(labels, startpos, vertical, offsetx, o
 			RenderHelper.DrawRect(screen, width + 2 + (v.BorderThickness * 2), height + 2 + (v.BorderThickness * 2), v.LabelBorderColor, v.BorderThickness, 2, false)
 		end
 
-		Infinity.Rendering.DrawText(v.Text, Vector2(screen.X , screen.Y - (height/2)), height, ImVec4(v.TextColor.R / 255, v.TextColor.G / 255, v.TextColor.B / 255, v.TextColor.A / 255), true)
+		Infinity.Rendering.DrawText(v.Text, Vector2(screen.X , screen.Y - (height/2)), height, RenderHelper.GetColorImVec4FromHexColorString(v.TextColor), true)
 
 		if not vertical then
 			screen = Vector2(screen.X + (width / 2), screen.Y)
@@ -94,7 +127,7 @@ function RenderHelper.DrawWorldText(text, size, textColor, startpos, offsetx, of
 	
 	screen = Vector2(screen.X + offsetx, screen.Y + offsety)
 	
-	Infinity.Rendering.DrawText(text, screen, size, ImVec4(textColor.R / 255, textColor.G / 255, textColor.B / 255, textColor.A / 255), true)	
+	Infinity.Rendering.DrawText(text, screen, size, RenderHelper.GetColorImVec4FromHexColorString(textColor), true)	
 end
 
 function RenderHelper.DrawSquare(center, size, color, thickness, filled)
@@ -102,7 +135,7 @@ if filled == nil then
 	filled = false
 end
 
-Infinity.Rendering.DrawSquare(center, size, ImVec4(color.R / 255, color.G / 255, color.B / 255, color.A / 255), thickness, filled)
+Infinity.Rendering.DrawSquare(center, size, RenderHelper.GetColorImVec4FromHexColorString(color), thickness, filled)
 end
 
 function RenderHelper.DrawRect(center, width, height, color, thickness, rounding, filled)
@@ -117,7 +150,7 @@ end
 local a = ImVec2(center.X - (width / 2), center.Y - (height / 2))
 local b = ImVec2(center.X + (width / 2), center.Y + (height / 2))
 
-Infinity.Rendering.DrawRect(a, b, ImVec4(color.R / 255, color.G / 255, color.B / 255, color.A / 255), thickness, rounding, filled)
+Infinity.Rendering.DrawRect(a, b, RenderHelper.GetColorImVec4FromHexColorString(color), thickness, rounding, filled)
 end
 
 function RenderHelper.DrawCircle(center, size, color, thickness, filled)
@@ -125,11 +158,11 @@ if filled == nil then
 	filled = false
 end
 
-Infinity.Rendering.DrawCircle(center, size, ImVec4(color.R / 255, color.G / 255, color.B / 255, color.A / 255), thickness, filled)
+Infinity.Rendering.DrawCircle(center, size, RenderHelper.GetColorImVec4FromHexColorString(color), thickness, filled)
 end
 
 function RenderHelper.DrawLine(from, to, color, thickness)
-Infinity.Rendering.DrawLine(from, to, ImVec4(color.R / 255, color.G / 255, color.B / 255, color.A / 255), thickness)
+Infinity.Rendering.DrawLine(from, to, RenderHelper.GetColorImVec4FromHexColorString(color), thickness)
 end
 
 function RenderHelper.DrawWorldSquare(center, size, color, thickness, filled)
@@ -172,11 +205,15 @@ end
 
 table.insert(pts, Vector2(screen.X, screen.Y))			
 
-Infinity.Rendering.DrawWorldSquare(pts, size, ImVec4(color.R / 255, color.G / 255, color.B / 255, color.A / 255), thickness, filled)			
+Infinity.Rendering.DrawWorldSquare(pts, size, RenderHelper.GetColorImVec4FromHexColorString(color), thickness, filled)			
 end
 
 function RenderHelper.DrawHitBox(actor, color, thickness)
-RenderHelper.DrawWorldBox(actor:GetPosition(), actor:GetBodySize(), ImVec4(color.R / 255, color.G / 255, color.B / 255, color.A / 255), thickness, actor:GetBodyHeight())
+RenderHelper.DrawWorldBox(actor:GetPosition(), actor:GetBodySize(), RenderHelper.GetColorImVec4FromHexColorString(color), thickness, actor:GetBodyHeight())
+end
+
+function RenderHelper.DrawHitBox(actor, color, thickness)
+RenderHelper.DrawWorldBox(actor:GetPosition(), actor:GetBodySize(), RenderHelper.GetColorImVec4FromHexColorString(color), thickness, actor:GetBodyHeight())
 end
 
 function RenderHelper.DrawWorldBox(center, size, color, thickness, height)
@@ -234,7 +271,7 @@ if screen == nil then
 end
 table.insert(pts, Vector2(screen.X, screen.Y))
 
-Infinity.Rendering.DrawWorldBox(pts, size, ImVec4(color.R / 255, color.G / 255, color.B / 255, color.A / 255), thickness, filled, height)			
+Infinity.Rendering.DrawWorldBox(pts, size, RenderHelper.GetColorImVec4FromHexColorString(color), thickness, filled, height)			
 end
 
 function RenderHelper.DrawWorldCircle(center, size, color, thickness, filled)
@@ -267,7 +304,7 @@ for angle = 0, 360, segmentSize do
 	angle = angle + segmentSize
 end						
 
-Infinity.Rendering.DrawWorldCircle(pts, size, ImVec4(color.R / 255, color.G / 255, color.B / 255, color.A / 255), thickness, filled)			
+Infinity.Rendering.DrawWorldCircle(pts, size, RenderHelper.GetColorImVec4FromHexColorString(color), thickness, filled)			
 end
 
 function RenderHelper.DrawWorldCircleFilledMulticolor(center, size, colorOutline, colorFill, thickness)
@@ -296,7 +333,7 @@ for angle = 0, 360, segmentSize do
 	angle = angle + segmentSize
 end						
 
-Infinity.Rendering.DrawWorldCircleFilledMulticolor(pts, size, ImVec4(colorOutline.R / 255, colorOutline.G / 255, colorOutline.B / 255, colorOutline.A / 255), ImVec4(colorFill.R / 255, colorFill.G / 255, colorFill.B / 255, colorFill.A / 255), thickness)			
+Infinity.Rendering.DrawWorldCircleFilledMulticolor(pts, size, RenderHelper.GetColorImVec4FromHexColorString(colorOutline), RenderHelper.GetColorImVec4FromHexColorString(colorFill), thickness)			
 end
 
 function RenderHelper.DrawWorldTriangleFilledMulticolor(center, size, colorOutline, colorFill, thickness)
@@ -323,7 +360,7 @@ for angle = 0, 360, segmentSize do
 	angle = angle + segmentSize
 end						
 
-Infinity.Rendering.DrawWorldCircleFilledMulticolor(pts, size, ImVec4(colorOutline.R / 255, colorOutline.G / 255, colorOutline.B / 255, colorOutline.A / 255), ImVec4(colorFill.R / 255, colorFill.G / 255, colorFill.B / 255, colorFill.A / 255), thickness)			
+Infinity.Rendering.DrawWorldCircleFilledMulticolor(pts, size, RenderHelper.GetColorImVec4FromHexColorString(colorOutline), RenderHelper.GetColorImVec4FromHexColorString(colorFill), thickness)			
 end
 
 function RenderHelper.DrawWorldSquareFilledMulticolor(center, size, colorOutline, colorFill, thickness)
@@ -350,48 +387,7 @@ for angle = 0, 360, segmentSize do
 	angle = angle + segmentSize
 end						
 
-Infinity.Rendering.DrawWorldCircleFilledMulticolor(pts, size, ImVec4(colorOutline.R / 255, colorOutline.G / 255, colorOutline.B / 255, colorOutline.A / 255), ImVec4(colorFill.R / 255, colorFill.G / 255, colorFill.B / 255, colorFill.A / 255), thickness)			
-end
-
-function RenderHelper.DrawMinimapCircle(center, size, color, thickness, filled)
-if filled == nil then
-	filled = false
-end
-
-size = size * 4
-
-local control = UIControlHelper.GetUIControlByName("Root.NormalLayer.minimap_dialog_backgroundScreen.minimap_dialog_pve.minimap_pve_main")
-
-if control == nil or control:GetIsVisible() == false then
-	return
-end
-
-local pts = {}
-
-local segments = 20;
---local angle = 0;
-local segmentSize = 360 / segments;
-
-local sCenter = RenderHelper.ToUIControlRectArea(control, center)
-if sCenter == nil then
-	return
-end
-
-for angle = 0, 360, segmentSize do
-	local x = center.X + (size * math.cos(angle / (180 / math.pi)))
-	local y = center.Y + (size * math.sin(angle / (180 / math.pi)))
-
-	local screen = RenderHelper.ToUIControlRectArea(control, Vector3(x, y, center.Z))
-	if screen == nil then
-		return
-	end
-
-	table.insert(pts, Vector2(screen.X, screen.Y))
-
-	angle = angle + segmentSize
-end						
-
-Infinity.Rendering.DrawWorldCircle(pts, size, ImVec4(color.R / 255, color.G / 255, color.B / 255, color.A / 255), thickness, filled)			
+Infinity.Rendering.DrawWorldCircleFilledMulticolor(pts, size, RenderHelper.GetColorImVec4FromHexColorString(colorOutline), RenderHelper.GetColorImVec4FromHexColorString(colorFill), thickness)			
 end
 
 function RenderHelper.DrawWorldLine(from, to, color, thickness)
@@ -402,5 +398,5 @@ if sFrom == nil or sTo == nil then
 	return
 end
 
-Infinity.Rendering.DrawWorldLine(sFrom, sTo, ImVec4(color.R / 255, color.G / 255, color.B / 255, color.A / 255), thickness)
+Infinity.Rendering.DrawWorldLine(sFrom, sTo, RenderHelper.GetColorImVec4FromHexColorString(color), thickness)
 end

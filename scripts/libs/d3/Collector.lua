@@ -112,7 +112,7 @@ function Collector:GetActors()
                     table.insert(self.Actors.GroundEffect.OccuCircle, acd)
                 elseif AttributeHelper.IsGoblin(acd) then
                     table.insert(self.Actors.Monster.Goblin, acd)
-                elseif mQuality == Normal then
+                elseif mQuality == Normal and not AttributeHelper.IsNPC(acd) and not AttributeHelper.IsPet(acd) then
                     table.insert(self.Actors.Monster.Normal, acd)
                 elseif mQuality == Champion then
                     table.insert(self.Actors.Monster.Champion, acd)

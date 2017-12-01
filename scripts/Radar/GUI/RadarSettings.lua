@@ -1,7 +1,7 @@
 RadarSettings = { }
 
 function RadarSettings.DrawMainWindow()  
-  ImGui.Begin("Radar Settings", true)    
+  --ImGui.Begin("Radar Settings", true)    
     --[[if ImGui.Button("Save settings", ImVec2(ImGui.GetContentRegionAvailWidth() / 2, 20)) then
 		RadarSettings.SaveSettings()
 		print("Settings saved")
@@ -176,11 +176,11 @@ function RadarSettings.DrawMainWindow()
 		--ImGui.Text(type(v) .. " " .. k)
 	--end
 
-	for k,v in pairs(Radar.Settings) do
+	--for k,v in pairs(Radar.Settings) do
 		
-	end
+	--end
 
-  ImGui.End()
+  --ImGui.End()
 end
 
 function RadarSettings.SaveSettings()

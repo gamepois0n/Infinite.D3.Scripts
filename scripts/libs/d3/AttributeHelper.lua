@@ -127,6 +127,14 @@ function AttributeHelper.GetMonsterAffixes(acd)
   return affixes
 end
 
+function AttributeHelper.IsNPC(acd)
+  return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Is_NPC, -1) == 1
+end
+
+function AttributeHelper.IsPet(acd)
+  return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Pet_Type, -1) >= 0
+end
+
 function AttributeHelper.HasArcane(acd)
   return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Power_Buff_0_Visual_Effect_None, 214594) ~= 0 or
   AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Power_Buff_0_Visual_Effect_None, 221130) ~= 0 or

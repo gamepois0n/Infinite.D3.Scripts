@@ -43,138 +43,148 @@ function Radar.OnPulse()
 end
 
 function Radar.RenderMonstersNormal()
-  for k,v in pairs(Radar.Collector.Actors.Monster.Normal) do      
-    local radius =  1
+for k,v in pairs(Radar.Collector.Actors.Monster.Normal) do      
+  local radius =  1
 
-          if Radar.Settings.Monsters.Normal.CustomRadius then
-            radius = Radar.Settings.Monsters.Normal.CustomRadiusValue
-          else
-            radius =  v:GetRadius()
-          end
-
-          if Radar.Settings.Monsters.Normal.ColorFill == nil then
-            RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.Monsters.Normal.ColorOutline, Radar.Settings.Monsters.Normal.Thickness, Radar.Settings.Monsters.Normal.Fill) 
-          else
-            RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Monsters.Normal.ColorOutline, Radar.Settings.Monsters.Normal.ColorFill, Radar.Settings.Monsters.Normal.Thickness) 
-          end
+  if Radar.Settings.Monsters.Normal.CustomRadius then
+    radius = Radar.Settings.Monsters.Normal.CustomRadiusValue
+  else
+    radius =  v:GetRadius()
   end
+
+  if Radar.Settings.Monsters.Normal.Enabled == true then
+    if Radar.Settings.Monsters.Normal.ColorFill == nil then
+      RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.Monsters.Normal.ColorOutline, Radar.Settings.Monsters.Normal.Thickness, Radar.Settings.Monsters.Normal.Fill) 
+    else
+      RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Monsters.Normal.ColorOutline, Radar.Settings.Monsters.Normal.ColorFill, Radar.Settings.Monsters.Normal.Thickness) 
+    end
+  end
+
+  if Radar.Settings.Monsters.Normal.Minimap == true then
+    Radar.RenderACDOnMinimap("Circle", v, Radar.Settings.Monsters.Normal.MinimapRadius, Radar.Settings.Monsters.Normal.ColorMinimap, Radar.Settings.Monsters.Normal.Thickness, true)
+  end
+end
 end
 
 function Radar.RenderAffixLabels(acd)
+if Radar.Settings.Affixes.Enabled == false then
+  return
+end
+
   local labels = {}
   
-  if AttributeHelper.HasMolten(acd) then
-    table.insert(labels, {Text = "Mol", Size = 16, LabelColor = {A = 0xFF, R = 0xE1, G = 0x77, B = 0x0E}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  if Radar.Settings.Affixes.Molten and AttributeHelper.HasMolten(acd) then
+    table.insert(labels, Radar.Settings.Affixes.Molten)
   end
 
-  if AttributeHelper.HasArcane(acd) then
-    table.insert(labels, {Text = "Arc", Size = 16, LabelColor = {A = 0xFF, R = 0x8B, G = 0x21, B = 0x8B}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  if Radar.Settings.Affixes.Arcane and AttributeHelper.HasArcane(acd) then
+    table.insert(labels, Radar.Settings.Affixes.Arcane)
   end
 
-  if AttributeHelper.HasAvenger(acd) then
-    table.insert(labels, {Text = "Ave", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  if Radar.Settings.Affixes.Avenger and AttributeHelper.HasAvenger(acd) then
+    table.insert(labels, Radar.Settings.Affixes.Avenger)
   end
 
-  if AttributeHelper.HasMortar(acd) then
-    table.insert(labels, {Text = "Mor", Size = 16, LabelColor = {A = 0xFF, R = 0xB8, G = 0x79, B = 0x46}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasDesecrator(acd) then
-    table.insert(labels, {Text = "Des", Size = 16, LabelColor = {A = 0xFF, R = 0xE1, G = 0x77, B = 0x0E}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasElectrified(acd) then
-    table.insert(labels, {Text = "Ele", Size = 16, LabelColor = {A = 0xFF, R = 0x46, G = 0xB8, B = 0xB3}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasExtraHealth(acd) then
-    table.insert(labels, {Text = "EHP", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasFast(acd) then
-    table.insert(labels, {Text = "Fst", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasFrozen(acd) then
-    table.insert(labels, {Text = "Frz", Size = 16, LabelColor = {A = 0xFF, R = 0x37, G = 0x9A, B = 0xF0}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasHealthlink(acd) then
-    table.insert(labels, {Text = "HPL", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasIllusionist(acd) then
-    table.insert(labels, {Text = "Ill", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasJailer(acd) then
-    table.insert(labels, {Text = "Jlr", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasKnockback(acd) then
-    table.insert(labels, {Text = "Knb", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasMissileDampening(acd) then
-    table.insert(labels, {Text = "Mis", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasNightmarish(acd) then
-    table.insert(labels, {Text = "Nmr", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasPlagued(acd) then
-    table.insert(labels, {Text = "Plg", Size = 16, LabelColor = {A = 0xFF, R = 0x17, G = 0xAC, B = 0x15}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasReflectsDamage(acd) then
-    table.insert(labels, {Text = "Ref", Size = 16, LabelColor = {A = 0xFF, R = 0xAC, G = 0x42, B = 0x15}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasShielding(acd) then
-    table.insert(labels, {Text = "Shd", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasTeleporter(acd) then
-    table.insert(labels, {Text = "Tel", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasThunderstorm(acd) then
-    table.insert(labels, {Text = "Thu", Size = 16, LabelColor = {A = 0xFF, R = 0x46, G = 0xB8, B = 0xB3}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasVortex(acd) then
-    table.insert(labels, {Text = "Vtx", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasWaller(acd) then
-    table.insert(labels, {Text = "Wal", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasFirechains(acd) then
-    table.insert(labels, {Text = "Fch", Size = 16, LabelColor = {A = 0xFF, R = 0xE1, G = 0x77, B = 0x0E}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasOrbiter(acd) then
-    table.insert(labels, {Text = "Orb", Size = 16, LabelColor = {A = 0xFF, R = 0x46, G = 0xB8, B = 0xB3}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasFrozenPulse(acd) then
-    table.insert(labels, {Text = "Frp", Size = 16, LabelColor = {A = 0xFF, R = 0x37, G = 0x9A, B = 0xF0}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasPoisonEnchanted(acd) then
-    table.insert(labels, {Text = "Psn", Size = 16, LabelColor = {A = 0xFF, R = 0x17, G = 0xAC, B = 0x15}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasJuggernaut(acd) then
-    table.insert(labels, {Text = "Jug", Size = 16, LabelColor = {A = 0xFF, R = 0xD1, G = 0x0E, B = 0x0E}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
-  end
-
-  if AttributeHelper.HasWormhole(acd) then
-    table.insert(labels, {Text = "Who", Size = 16, LabelColor = {A = 0xFF, R = 0x87, G = 0x87, B = 0x87}, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+  if Radar.Settings.Affixes.Mortar and AttributeHelper.HasMortar(acd) then
+    table.insert(labels, Radar.Settings.Affixes.Mortar)
   end
   
+  if Radar.Settings.Affixes.Desecrator and AttributeHelper.HasDesecrator(acd) then
+    table.insert(labels, Radar.Settings.Affixes.Desecrator)
+  end
+
+  if Radar.Settings.Affixes.Electrified and AttributeHelper.HasElectrified(acd) then
+    table.insert(labels, Radar.Settings.Affixes.Electrified)
+  end
+
+  if Radar.Settings.Affixes.ExtraHealth and AttributeHelper.HasExtraHealth(acd) then
+    table.insert(labels, Radar.Settings.Affixes.ExtraHealth)
+  end
+  
+  if Radar.Settings.Affixes.Fast and AttributeHelper.HasFast(acd) then
+    table.insert(labels, Radar.Settings.Affixes.Fast)
+  end
+
+  if Radar.Settings.Affixes.Frozen and AttributeHelper.HasFrozen(acd) then
+    table.insert(labels, Radar.Settings.Affixes.Frozen)
+  end
+
+  if Radar.Settings.Affixes.Healthlink and AttributeHelper.HasHealthlink(acd) then
+    table.insert(labels, Radar.Settings.Affixes.Healthlink)
+  end
+
+  if Radar.Settings.Affixes.Illusionist and AttributeHelper.HasIllusionist(acd) then
+    table.insert(labels, Radar.Settings.Affixes.Illusionist)
+  end
+
+  if Radar.Settings.Affixes.Jailer and AttributeHelper.HasJailer(acd) then
+    table.insert(labels, Radar.Settings.Affixes.Jailer)
+  end
+
+  if Radar.Settings.Affixes.Knockback and AttributeHelper.HasKnockback(acd) then
+    table.insert(labels, Radar.Settings.Affixes.Knockback)
+  end
+
+  if Radar.Settings.Affixes.MissileDampening and AttributeHelper.HasMissileDampening(acd) then
+    table.insert(labels, Radar.Settings.Affixes.MissileDampening)
+  end
+
+  if Radar.Settings.Affixes.Nightmarish and AttributeHelper.HasNightmarish(acd) then
+    table.insert(labels, Radar.Settings.Affixes.Nightmarish)
+  end
+
+  if Radar.Settings.Affixes.Plagued and AttributeHelper.HasPlagued(acd) then
+    table.insert(labels, Radar.Settings.Affixes.Plagued)
+  end
+
+  if Radar.Settings.Affixes.ReflectsDamage and AttributeHelper.HasReflectsDamage(acd) then
+    table.insert(labels, Radar.Settings.Affixes.ReflectsDamage)
+  end
+
+  if Radar.Settings.Affixes.Shielding and AttributeHelper.HasShielding(acd) then
+    table.insert(labels, Radar.Settings.Affixes.Shielding)
+  end
+
+  if Radar.Settings.Affixes.Teleporter and AttributeHelper.HasTeleporter(acd) then
+    table.insert(labels, Radar.Settings.Affixes.Teleporter)
+  end
+
+  if Radar.Settings.Affixes.Thunderstorm and AttributeHelper.HasThunderstorm(acd) then
+    table.insert(labels, Radar.Settings.Affixes.Thunderstorm)
+  end
+
+  if Radar.Settings.Affixes.Vortex and AttributeHelper.HasVortex(acd) then
+    table.insert(labels, Radar.Settings.Affixes.Vortex)
+  end
+
+  if Radar.Settings.Affixes.Waller and AttributeHelper.HasWaller(acd) then
+    table.insert(labels, Radar.Settings.Affixes.Waller)
+  end
+
+  if Radar.Settings.Affixes.Firechains and AttributeHelper.HasFirechains(acd) then
+    table.insert(labels, Radar.Settings.Affixes.Firechains)
+  end
+
+  if Radar.Settings.Affixes.Orbiter and AttributeHelper.HasOrbiter(acd) then
+    table.insert(labels, Radar.Settings.Affixes.Orbiter)
+  end
+
+  if Radar.Settings.Affixes.FrozenPulse and AttributeHelper.HasFrozenPulse(acd) then
+    table.insert(labels, Radar.Settings.Affixes.FrozenPulse)
+  end
+
+  if Radar.Settings.Affixes.HasPoisonEnchanted and AttributeHelper.HasPoisonEnchanted(acd) then
+    table.insert(labels, Radar.Settings.Affixes.HasPoisonEnchanted)
+  end
+
+  if Radar.Settings.Affixes.HasJuggernaut and AttributeHelper.HasJuggernaut(acd) then
+    table.insert(labels, Radar.Settings.Affixes.HasJuggernaut)
+  end
+
+  if Radar.Settings.Affixes.HasWormhole and AttributeHelper.HasWormhole(acd) then
+    table.insert(labels, Radar.Settings.Affixes.HasWormhole)
+  end
+    
   RenderHelper.DrawWorldTextLabels(labels, acd:GetPosition(), false)
 end
 
@@ -193,6 +203,10 @@ if Radar.Settings.Monsters.Elite.Champion.Enabled then
       RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Champion.ColorOutline, Radar.Settings.Monsters.Elite.Champion.Thickness, Radar.Settings.Monsters.Elite.Champion.Fill) 
     else
       RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Champion.ColorOutline, Radar.Settings.Monsters.Elite.Champion.ColorFill, Radar.Settings.Monsters.Elite.Champion.Thickness) 
+    end
+
+    if Radar.Settings.Monsters.Elite.Champion.Minimap == true then
+      Radar.RenderACDOnMinimap("Circle", v, Radar.Settings.Monsters.Elite.Champion.MinimapRadius, Radar.Settings.Monsters.Elite.Champion.ColorMinimap, Radar.Settings.Monsters.Elite.Champion.Thickness, true)
     end
 
     Radar.RenderAffixLabels(v)
@@ -215,6 +229,10 @@ if Radar.Settings.Monsters.Elite.Rare.Enabled then
       RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Rare.ColorOutline, Radar.Settings.Monsters.Elite.Rare.ColorFill, Radar.Settings.Monsters.Elite.Rare.Thickness) 
     end
 
+    if Radar.Settings.Monsters.Elite.Rare.Minimap == true then
+      Radar.RenderACDOnMinimap("Circle", v, Radar.Settings.Monsters.Elite.Rare.MinimapRadius, Radar.Settings.Monsters.Elite.Rare.ColorMinimap, Radar.Settings.Monsters.Elite.Rare.Thickness, true)
+    end
+
     Radar.RenderAffixLabels(v)
   end
 end
@@ -233,6 +251,10 @@ if Radar.Settings.Monsters.Elite.Minion.Enabled then
       RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Minion.ColorOutline, Radar.Settings.Monsters.Elite.Minion.Thickness, Radar.Settings.Monsters.Elite.Minion.Fill) 
     else
       RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Minion.ColorOutline, Radar.Settings.Monsters.Elite.Minion.ColorFill, Radar.Settings.Monsters.Elite.Minion.Thickness) 
+    end
+
+    if Radar.Settings.Monsters.Elite.Minion.Minimap == true then
+      Radar.RenderACDOnMinimap("Circle", v, Radar.Settings.Monsters.Elite.Minion.MinimapRadius, Radar.Settings.Monsters.Elite.Minion.ColorMinimap, Radar.Settings.Monsters.Elite.Minion.Thickness, true)
     end
 
     Radar.RenderAffixLabels(v)
@@ -255,6 +277,10 @@ if Radar.Settings.Monsters.Elite.Unique.Enabled then
       RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Unique.ColorOutline, Radar.Settings.Monsters.Elite.Unique.ColorFill, Radar.Settings.Monsters.Elite.Unique.Thickness) 
     end
 
+    if Radar.Settings.Monsters.Elite.Unique.Minimap == true then
+      Radar.RenderACDOnMinimap("Circle", v, Radar.Settings.Monsters.Elite.Unique.MinimapRadius, Radar.Settings.Monsters.Elite.Unique.ColorMinimap, Radar.Settings.Monsters.Elite.Unique.Thickness, true)
+    end
+
     Radar.RenderAffixLabels(v)
   end
 end
@@ -275,13 +301,15 @@ for k,v in pairs(Radar.Collector.Actors.Monster.Boss) do
     else
       RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Monsters.Boss.ColorOutline, Radar.Settings.Monsters.Boss.ColorFill, Radar.Settings.Monsters.Boss.Thickness) 
     end 
+
+    if Radar.Settings.Monsters.Boss.Minimap == true then
+      Radar.RenderACDOnMinimap("Circle", v, Radar.Settings.Monsters.Boss.MinimapRadius, Radar.Settings.Monsters.Boss.ColorMinimap, Radar.Settings.Monsters.Boss.Thickness, true)
+    end
   end
 end
 
 function Radar.RenderMonsters()
-if Radar.Settings.Monsters.Normal.Enabled then
   Radar.RenderMonstersNormal()
-end
 
 if Radar.Settings.Monsters.Elite.Enabled then
   Radar.RenderMonstersElite()
@@ -306,8 +334,12 @@ for k,v in pairs(Radar.Collector.Actors.Player) do
     RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.Players.ColorOutline, Radar.Settings.Players.Thickness, Radar.Settings.Players.Fill) 
   else
     RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Players.ColorOutline, Radar.Settings.Players.ColorFill, Radar.Settings.Players.Thickness) 
-  end         
-end
+  end
+
+  if Radar.Settings.Players.Minimap == true then
+      Radar.RenderACDOnMinimap("Circle", v, Radar.Settings.Players.MinimapRadius, Radar.Settings.Players.ColorMinimap, Radar.Settings.Players.Thickness, true)
+    end         
+  end
 end
 
 function Radar.RenderGroundEffects()
@@ -548,7 +580,7 @@ function Radar.RenderGroundItems()
           RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Items.Legendary.Ancient.ColorOutline, Radar.Settings.Items.Legendary.Ancient.ColorFill, Radar.Settings.Items.Legendary.Ancient.Thickness) 
         end
 
-        table.insert(labels, {Text = "[A] " .. AttributeHelper.GetItemName(v), Size = 16, LabelColor = Radar.Settings.Items.Legendary.Ancient.ColorOutline, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 2})
+        table.insert(labels, {Text = "[A] " .. AttributeHelper.GetItemName(v), Size = 16, LabelColor = Radar.Settings.Items.Legendary.Ancient.ColorOutline, LabelBorderColor = "FF000000", TextColor = "FFFFFFFF", Filled = true, Border = true, BorderThickness = 2})
       elseif AttributeHelper.IsPrimalLegendaryItem(v) and Radar.Settings.Items.Legendary.Primal.Enabled then
         local radius =  1
 
@@ -564,7 +596,7 @@ function Radar.RenderGroundItems()
           RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Items.Legendary.Primal.ColorOutline, Radar.Settings.Items.Legendary.Primal.ColorFill, Radar.Settings.Items.Legendary.Primal.Thickness) 
         end
 
-        table.insert(labels, {Text = "[P] " .. AttributeHelper.GetItemName(v), Size = 16, LabelColor = Radar.Settings.Items.Legendary.Primal.ColorOutline, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 3})
+        table.insert(labels, {Text = "[P] " .. AttributeHelper.GetItemName(v), Size = 16, LabelColor = Radar.Settings.Items.Legendary.Primal.ColorOutline, LabelBorderColor = "FF000000", TextColor = "FFFFFFFF", Filled = true, Border = true, BorderThickness = 3})
       else
         local radius =  1
 
@@ -580,7 +612,7 @@ function Radar.RenderGroundItems()
           RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Items.Legendary.Normal.ColorOutline, Radar.Settings.Items.Legendary.Normal.ColorFill, Radar.Settings.Items.Legendary.Normal.Thickness) 
         end
 
-        table.insert(labels, {Text = AttributeHelper.GetItemName(v), Size = 16, LabelColor = Radar.Settings.Items.Legendary.Normal.ColorOutline, LabelBorderColor = {A = 0xFF, R = 0x00, G = 0x00, B = 0x00}, TextColor = {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, Filled = true, Border = true, BorderThickness = 1})
+        table.insert(labels, {Text = AttributeHelper.GetItemName(v), Size = 16, LabelColor = Radar.Settings.Items.Legendary.Normal.ColorOutline, LabelBorderColor = "FF000000", TextColor = "FFFFFFFF", Filled = true, Border = true, BorderThickness = 1})
       end
     end
 
@@ -703,7 +735,25 @@ end
 function Radar.RenderGoblins()
   for k,v in pairs(Radar.Collector.Actors.Monster.Goblin) do  
     RenderHelper.DrawWorldSquareFilledMulticolor(v:GetPosition(), Radar.Settings.Goblins.CustomRadiusValue, Radar.Settings.Goblins.ColorOutline, Radar.Settings.Goblins.ColorFill, Radar.Settings.Goblins.Thickness)
+
+    if Radar.Settings.Goblins.Minimap == true then
+      Radar.RenderACDOnMinimap("Square", v, Radar.Settings.Goblins.MinimapRadius, Radar.Settings.Goblins.ColorMinimap, Radar.Settings.Goblins.Thickness, true)
+    end
   end  
+end
+
+function Radar.MinimapTest()
+  --for k,v in pairs(Radar.Collector.Actors.Monster.Normal) do      
+    --RenderHelper.DrawSquare(RenderHelper.ToMinimap(v:GetPosition()), 6, {A = 0xFF, R = 0x99, G = 0x99, B = 0x99}, 1, false)
+  --end
+end
+
+function Radar.RenderACDOnMinimap(geometry, acd, size, color, thickness, filled)
+  if geometry == "Circle" then
+    RenderHelper.DrawCircle(RenderHelper.ToMinimap(acd:GetPosition()), size, color, thickness, filled)
+  elseif geometry == "Square" then
+    RenderHelper.DrawSquare(RenderHelper.ToMinimap(acd:GetPosition()), size, color, thickness, filled)
+  end
 end
 
 function Radar.OnRenderD2D()
@@ -734,4 +784,6 @@ end
 if Radar.Settings.Goblins.Enabled then
   Radar.RenderGoblins()
 end
+
+--Radar.MinimapTest()
 end
