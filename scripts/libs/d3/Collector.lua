@@ -108,7 +108,9 @@ function Collector:GetActors()
             if aType == Enums.ActorType.Monster then
                 local mQuality = acd:GetMonsterQuality()
 
-                if AttributeHelper.IsGoblin(acd) then
+                if GroundEffectHelper.IsOccuCircle(acd) then
+                    table.insert(self.Actors.GroundEffect.OccuCircle, acd)
+                elseif AttributeHelper.IsGoblin(acd) then
                     table.insert(self.Actors.Monster.Goblin, acd)
                 elseif mQuality == Normal then
                     table.insert(self.Actors.Monster.Normal, acd)
@@ -161,9 +163,7 @@ function Collector:GetActors()
                 elseif GroundEffectHelper.IsMolten(acd) then
                     table.insert(self.Actors.GroundEffect.Molten, acd)
                 elseif GroundEffectHelper.IsMortar(acd) then
-                    table.insert(self.Actors.GroundEffect.Mortar, acd)
-                elseif GroundEffectHelper.IsOccuCircle(acd) then
-                    table.insert(self.Actors.GroundEffect.OccuCircle, acd)
+                    table.insert(self.Actors.GroundEffect.Mortar, acd)                
                 elseif GroundEffectHelper.IsFrozen(acd) then
                     table.insert(self.Actors.GroundEffect.Frozen, acd)
                 elseif GroundEffectHelper.IsWormwhole(acd) then
