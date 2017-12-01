@@ -173,6 +173,8 @@ function MainWindow.DrawMainWindow()
     if MainWindow.SelectedUIControl ~= nil then
       if ImGui.CollapsingHeader(MainWindow.SelectedUIControl:GetName(), "id_uicontrol_" .. MainWindow.SelectedUIControl:GetKey(), true, false) then
         _, MainWindow.RenderSelectedUIControl = ImGui.Checkbox("Draw##id_draw", MainWindow.RenderSelectedUIControl)
+        local rect = MainWindow.SelectedUIControl:GetUIRect()
+        ImGui.Text("UIRect: Left " .. rect.Left .. " Top " .. rect.Top .. " Right " .. rect.Right .. " Bottom " .. rect.Bottom .. " Width " .. rect.Width .. " Height " .. rect.Height)
       end
     end
 
