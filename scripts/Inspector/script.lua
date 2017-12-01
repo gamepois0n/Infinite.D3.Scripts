@@ -26,6 +26,6 @@ function Inspector.OnRenderD2D()
 
 		--print(MainWindow.SelectedUIControl:GetUIRect().Left .. " , " .. MainWindow.SelectedUIControl:GetUIRect().Top .. " , " .. MainWindow.SelectedUIControl:GetUIRect().Right .. " , " .. MainWindow.SelectedUIControl:GetUIRect().Bottom)
 
-		RenderHelper.DrawRect(center, uirect.Width, uirect.Height, {A = 0xFF, R = 0xFF, G = 0xFF, B = 0xFF}, 2)
+		RenderHelper.DrawRect(center, uirect.Width, uirect.Height, "FFFFFFFF", 2)
 	end
 end
