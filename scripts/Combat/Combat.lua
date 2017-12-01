@@ -2,6 +2,7 @@ Combat = { }
 Combat.Running = false
 Combat.Settings = Settings()
 Combat.CombatScript = nil
+Combat.Collector = Collector()
 
 function Combat.Start()
   Combat.Running = true
@@ -64,9 +65,10 @@ function Combat.OnPulse()
     return
   end
 
+  Combat.Collector:Collect()
+
   if Combat.CombatScript ~= nil then
-    local monsterTarget = TargetHelper.GetMonsterTargetACD()
-    local actors = Infinity.D3.GetACDList()
+    local monsterTarget = TargetHelper.GetMonsterTargetACD()    
     local player = Infinity.D3.GetLocalACD()
     
     --[[if not Combat.CombatScript.InitDone then
@@ -74,15 +76,15 @@ function Combat.OnPulse()
     end]]--
 
     if Combat.Settings.Defend.Enabled then
-      Combat.CombatScript:Defend(player, monsterTarget, actors)
+      Combat.CombatScript:Defend(player, monsterTarget)
     end
 
     if Combat.Settings.Buff.Enabled then
-      Combat.CombatScript:Buff(player, monsterTarget, actors)
+      Combat.CombatScript:Buff(player, monsterTarget)
     end
 
     if Combat.Settings.Attack.Enabled then
-      Combat.CombatScript:Attack(player, monsterTarget, actors)
+      Combat.CombatScript:Attack(player, monsterTarget)
     end
   end    
 end

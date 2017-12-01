@@ -109,12 +109,11 @@ function CombatScript:Init(player)-- this function gets called once per OnPulse 
 	
 end
 
-function CombatScript:Defend(player, monsterTarget, actors)
+function CombatScript:Defend(player, monsterTarget)
 --[[
 	this function gets called once per OnPulse tick which is 10 times per sec
 	(ActorCommonData) as player
-	(ActorCommonData) as monsterTarget
-	(map<int, ActorCommonData>) as actors , iterate this with (for k,v in pairs(actors) do ... end) where v is the ActorCommonData
+	(ActorCommonData) as monsterTarget	
 ]]--
 	if player == nil then -- player nil checkup
 		return
@@ -129,12 +128,11 @@ function CombatScript:Defend(player, monsterTarget, actors)
 	end	
 end
 
-function CombatScript:Buff(player, monsterTarget, actors)
+function CombatScript:Buff(player, monsterTarget)
 --[[
 	this function gets called once per OnPulse tick which is 10 times per sec
 	(ActorCommonData) as player
 	(ActorCommonData) as monsterTarget
-	(map<int, ActorCommonData>) as actors , iterate this with (for k,v in pairs(actors) do ... end) where v is the ActorCommonData
 ]]--	
 	if player == nil then
 		return
@@ -145,12 +143,11 @@ function CombatScript:Buff(player, monsterTarget, actors)
 	end	
 end
 
-function CombatScript:Attack(player, monsterTarget, actors)
+function CombatScript:Attack(player, monsterTarget)
 --[[
 	this function gets called once per OnPulse tick which is 10 times per sec
 	(ActorCommonData) as player
 	(ActorCommonData) as monsterTarget
-	(map<int, ActorCommonData>) as actors , iterate this with (for k,v in pairs(actors) do ... end) where v is the ActorCommonData
 ]]--		
 	if player == nil then
 		return

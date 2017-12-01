@@ -35,6 +35,8 @@ function Radar.OnPulse()
     return
   end   
 
+  LevelAreaHelper.RevealAllScenes()
+
   Radar.Collector:Collect()
     
   Radar.TTS()  

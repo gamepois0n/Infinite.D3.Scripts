@@ -115,7 +115,7 @@ function CombatScript:Init(player)
 	self.InitDone = true
 end
 
-function CombatScript:Defend(player, monsterTarget, actors)	
+function CombatScript:Defend(player, monsterTarget)	
 	if player == nil then
 		return
 	end
@@ -133,7 +133,7 @@ function CombatScript:Defend(player, monsterTarget, actors)
 	end]]--
 end
 
-function CombatScript:Buff(player, monsterTarget, actors)	
+function CombatScript:Buff(player, monsterTarget)	
 	if player == nil then
 		return
 	end
@@ -165,7 +165,7 @@ function CombatScript:Buff(player, monsterTarget, actors)
 	end	
 end
 
-function CombatScript:Attack(player, monsterTarget, actors)		
+function CombatScript:Attack(player, monsterTarget)		
 	if player == nil then
 		return
 	end
