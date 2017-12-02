@@ -27,13 +27,7 @@ function Combat.LoadCombatScripts()
         Combat.CombatScript = nil
         return
     end
-
-    if not Combat.CombatScript.Init then
-        print("Combat script doesn't have .Init function !")
-        Combat.CombatScript = nil
-        return
-    end
-
+    
     if not Combat.CombatScript.Attack then
         print("Combat script doesn't have .Attack function !")
         Combat.CombatScript = nil
@@ -70,11 +64,7 @@ function Combat.OnPulse()
   if Combat.CombatScript ~= nil then
     local monsterTarget = TargetHelper.GetMonsterTargetACD()    
     local player = Infinity.D3.GetLocalACD()
-    
-    --[[if not Combat.CombatScript.InitDone then
-      Combat.CombatScript:Init(player)
-    end]]--
-
+      
     if Combat.Settings.Defend.Enabled then
       Combat.CombatScript:Defend(player, monsterTarget)
     end

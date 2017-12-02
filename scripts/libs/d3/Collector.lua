@@ -17,6 +17,7 @@ function Collector.new()
     self.Actors.Pylon = {}
     self.Actors.Shrine = {}
 
+    self.Actors.Monster.All = {}
     self.Actors.Monster.Normal = {}
     self.Actors.Monster.Champion = {}
     self.Actors.Monster.Minion = {}
@@ -24,6 +25,7 @@ function Collector.new()
     self.Actors.Monster.Unique = {}
     self.Actors.Monster.Boss = {}
     self.Actors.Monster.Goblin = {}
+    self.Actors.Monster.Elites = {}
 
     self.Actors.Player = {}
     
@@ -60,6 +62,7 @@ function Collector.new()
 end
 
 function Collector:ClearTables()
+    self.Actors.Monster.All = {}
     self.Actors.Monster.Normal = {}
     self.Actors.Monster.Champion = {}
     self.Actors.Monster.Minion = {}
@@ -67,6 +70,7 @@ function Collector:ClearTables()
     self.Actors.Monster.Unique = {}
     self.Actors.Monster.Boss = {}
     self.Actors.Monster.Goblin = {}
+    self.Actors.Monster.Elites = {}
     
     self.Actors.Player = {}
     
@@ -112,18 +116,30 @@ function Collector:GetActors()
                     table.insert(self.Actors.GroundEffect.OccuCircle, acd)
                 elseif AttributeHelper.IsGoblin(acd) then
                     table.insert(self.Actors.Monster.Goblin, acd)
+                    table.insert(self.Actors.Monster.All, acd)
+                    table.insert(self.Actors.Monster.Elites, acd)
                 elseif mQuality == Normal and not AttributeHelper.IsNPC(acd) and not AttributeHelper.IsPet(acd) then
                     table.insert(self.Actors.Monster.Normal, acd)
+                    table.insert(self.Actors.Monster.All, acd)
                 elseif mQuality == Champion then
                     table.insert(self.Actors.Monster.Champion, acd)
+                    table.insert(self.Actors.Monster.All, acd)
+                    table.insert(self.Actors.Monster.Elites, acd)
                 elseif mQuality == Minion then
                     table.insert(self.Actors.Monster.Minion, acd)
+                    table.insert(self.Actors.Monster.All, acd)
+                    table.insert(self.Actors.Monster.Elites, acd)
                 elseif mQuality == Rare then
                     table.insert(self.Actors.Monster.Rare, acd)
+                    table.insert(self.Actors.Monster.All, acd)
+                    table.insert(self.Actors.Monster.Elites, acd)
                 elseif mQuality == Unique then
                     table.insert(self.Actors.Monster.Unique, acd)
+                    table.insert(self.Actors.Monster.All, acd)
+                    table.insert(self.Actors.Monster.Elites, acd)
                 elseif mQuality == Boss then          
                     table.insert(self.Actors.Monster.Boss, acd)
+                    table.insert(self.Actors.Monster.All, acd)
                 end
             elseif aType == Enums.ActorType.Gizmo then
 

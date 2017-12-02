@@ -416,5 +416,6 @@ function AttributeHelper.IsGoblin(acd)
           acd:GetActorSNO() == 326803 or
           acd:GetActorSNO() == 408354 or
           acd:GetActorSNO() == 410572 or
-          acd:GetActorSNO() == 410574 
+          acd:GetActorSNO() == 410574 or
+          acd:GetActorSNO() == 429161 
 end

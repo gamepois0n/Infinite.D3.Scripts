@@ -1,0 +1,8 @@
+[script]
+name=[Infinity] Combat
+type=lib
+
+[files]
+file=Skill.lua
+
+[dependencies]

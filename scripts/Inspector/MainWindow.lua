@@ -5,6 +5,11 @@ MainWindow.SNOFilter = ""
 MainWindow.GBIdFilter = ""
 MainWindow.NameFilter = ""
 
+MainWindow.AttributeIdFilter = ""
+MainWindow.AttributeNameFilter = ""
+MainWindow.AttributePowerSNOFilter = ""
+MainWindow.AttributePowerNameFilter = ""
+
 MainWindow.UIControlNameFilter = ""
 MainWindow.UIFunctionNameFilter = ""
 MainWindow.SelectedUIControl = nil
@@ -26,34 +31,12 @@ function MainWindow.DrawMainWindow()
       end
     end
 
-    if ImGui.CollapsingHeader("All Attributes", "id_localplayer_all_attributes", true, false) then            
-      ImGui.Columns(5)
-      ImGui.Text("AttributeId")
-      ImGui.NextColumn()
-      ImGui.Text("AttributeName")
-      ImGui.NextColumn()
-      ImGui.Text("PowerSNO")
-      ImGui.NextColumn()
-      ImGui.Text("PowerName")
-      ImGui.NextColumn()
-      ImGui.Text("Value")      
-      ImGui.NextColumn()
-      
-      for k,v in pairs(AttributeHelper.GetAllAttributes(Infinity.D3.GetLocalACD())) do 
-            ImGui.Text(v.AttributeId)
-            ImGui.NextColumn()
-            ImGui.Text(v.AttributeName)
-            ImGui.NextColumn()
-            ImGui.Text(v.PowerSNO)
-            ImGui.NextColumn()
-            ImGui.Text(v.PowerName)
-            ImGui.NextColumn()
-            ImGui.Text(v.Value)
-            ImGui.NextColumn()          
-      end
-    end
+    if ImGui.CollapsingHeader("All Attributes", "id_localplayer_all_attributes", true, false) then
+      _, MainWindow.AttributeIdFilter = ImGui.InputText("Filter by AttributeId##attribid", MainWindow.AttributeIdFilter)
+      _, MainWindow.AttributeNameFilter = ImGui.InputText("Filter by AttributeName##attribname", MainWindow.AttributeNameFilter)
+      _, MainWindow.AttributePowerSNOFilter = ImGui.InputText("Filter by PowerSNO##attrib_powersno", MainWindow.AttributePowerSNOFilter)
+      _, MainWindow.AttributePowerNameFilter = ImGui.InputText("Filter by PowerName##attrib_powername", MainWindow.AttributePowerNameFilter)
 
-    if ImGui.CollapsingHeader("NoMod Attributes", "id_localplayer_nomod_attributes", true, false) then            
       ImGui.Columns(5)
       ImGui.Text("AttributeId")
       ImGui.NextColumn()
@@ -66,34 +49,26 @@ function MainWindow.DrawMainWindow()
       ImGui.Text("Value")      
       ImGui.NextColumn()
       
-      for k,v in pairs(AttributeHelper.GetNoModifierAttributes(Infinity.D3.GetLocalACD())) do 
-            ImGui.Text(v.AttributeId)
-            ImGui.NextColumn()
-            ImGui.Text(v.AttributeName)
-            ImGui.NextColumn()
-            ImGui.Text(v.PowerSNO)
-            ImGui.NextColumn()
-            ImGui.Text(v.PowerName)
-            ImGui.NextColumn()
-            ImGui.Text(v.Value)
-            ImGui.NextColumn()          
-      end
-    end
+      for k,v in pairs(AttributeHelper.GetAllAttributes(Infinity.D3.GetLocalACD())) do
+        local attrib = v
 
-    if ImGui.CollapsingHeader("Mod Attributes", "id_localplayer_mod_attributes", true, false) then            
-      ImGui.Columns(5)
-      ImGui.Text("AttributeId")
-      ImGui.NextColumn()
-      ImGui.Text("AttributeName")
-      ImGui.NextColumn()
-      ImGui.Text("PowerSNO")
-      ImGui.NextColumn()
-      ImGui.Text("PowerName")
-      ImGui.NextColumn()
-      ImGui.Text("Value")      
-      ImGui.NextColumn()
-      
-      for k,v in pairs(AttributeHelper.GetModifierAttributes(Infinity.D3.GetLocalACD())) do 
+          if MainWindow.AttributeIdFilter ~= "" and string.find(tostring(v.AttributeId), MainWindow.AttributeIdFilter) == nil then
+            attrib = nil
+          end
+
+          if MainWindow.AttributeNameFilter ~= "" and string.find(tostring(v.AttributeName), MainWindow.AttributeNameFilter) == nil then
+            attrib = nil
+          end
+
+          if MainWindow.AttributePowerSNOFilter ~= "" and string.find(tostring(v.PowerSNO), MainWindow.AttributePowerSNOFilter) == nil then
+            attrib = nil
+          end
+
+          if MainWindow.AttributePowerNameFilter ~= "" and string.find(tostring(v.PowerName), MainWindow.AttributePowerNameFilter) == nil then
+            attrib = nil
+          end
+
+            if attrib ~= nil then 
             ImGui.Text(v.AttributeId)
             ImGui.NextColumn()
             ImGui.Text(v.AttributeName)
@@ -103,9 +78,10 @@ function MainWindow.DrawMainWindow()
             ImGui.Text(v.PowerName)
             ImGui.NextColumn()
             ImGui.Text(v.Value)
-            ImGui.NextColumn()          
+            ImGui.NextColumn()   
+            end       
       end
-    end
+    end    
   end
 
   if ImGui.CollapsingHeader("ACDs", "id_acds", true, false) then
