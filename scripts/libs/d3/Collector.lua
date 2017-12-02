@@ -29,6 +29,8 @@ function Collector.new()
 
     self.Actors.Player = {}
     
+    self.Actors.Corpse = {}
+
     self.Actors.Item.Ground = {}
     
     self.Actors.GroundEffect.Plagued = {}
@@ -73,6 +75,8 @@ function Collector:ClearTables()
     self.Actors.Monster.Elites = {}
     
     self.Actors.Player = {}
+
+    self.Actors.Corpse = {}
     
     self.Actors.Item.Ground = {}
 
@@ -143,7 +147,9 @@ function Collector:GetActors()
                 end
             elseif aType == Enums.ActorType.Gizmo then
 
-                if  AttributeHelper.IsPowerPylon(acd) then
+                if acd:GetGizmoType() == 84 then
+                    table.insert(self.Actors.Corpse, acd)
+                elseif  AttributeHelper.IsPowerPylon(acd) then
                     table.insert(self.Actors.Pylon.Power, acd)
                 elseif AttributeHelper.IsConduitPylon(acd) then
                     table.insert(self.Actors.Pylon.Conduit, acd)

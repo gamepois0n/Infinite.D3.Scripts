@@ -55,6 +55,18 @@ function TargetHelper.GetMonsterCountAroundLocalPlayer(radius)
 	return table.length(nearby)
 end
 
+function TargetHelper.GetACDsAroundLocalPlayer(acdtable, radius)	
+	local nearby = {}
+
+	for k,v in pairs(acdtable) do
+		if v:GetPosition():GetDistanceFromMe() <= radius then
+			table.insert(nearby, v)
+		end
+	end
+
+	return nearby
+end
+
 function TargetHelper.GetMonstersAroundLocalPlayer(radius, outNormal, outElite, outMinion, outBoss, outGoblin)	
 	for k,v in pairs(Infinity.D3.GetACDList()) do
 		if v:GetActorId() ~= -1 and v:GetActorType() == Enums.ActorType.Monster then
