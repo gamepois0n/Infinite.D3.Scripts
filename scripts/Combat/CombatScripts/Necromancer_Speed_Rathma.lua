@@ -59,7 +59,7 @@ function CombatScript:Buff(player, monsterTarget)
 		self.BoneArmor:CastAtLocation(player:GetPosition())
 	end
 	
-	if table.length(Combat.Collector.Actors.Corpse) > 1 then
+	if table.length(Combat.Collector.Actors.Corpse) > 1 or AttributeHelper.IsBuffActive(player, 465839) then
 		self.Devour:CastAtLocation(player:GetPosition())
 	end
 
