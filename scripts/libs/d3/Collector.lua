@@ -26,6 +26,7 @@ function Collector.new()
     self.Actors.Monster.Boss = {}
     self.Actors.Monster.Goblin = {}
     self.Actors.Monster.Elites = {}
+    self.Actors.Monster.Pets = {}
 
     self.Actors.Player = {}
     
@@ -73,7 +74,8 @@ function Collector:ClearTables()
     self.Actors.Monster.Boss = {}
     self.Actors.Monster.Goblin = {}
     self.Actors.Monster.Elites = {}
-    
+    self.Actors.Monster.Pets = {}
+
     self.Actors.Player = {}
 
     self.Actors.Corpse = {}
@@ -124,6 +126,9 @@ function Collector:GetActors()
                     table.insert(self.Actors.Monster.Elites, acd)
                 elseif mQuality == Normal and not AttributeHelper.IsNPC(acd) and not AttributeHelper.IsPet(acd) then
                     table.insert(self.Actors.Monster.Normal, acd)
+                    table.insert(self.Actors.Monster.All, acd)
+                elseif mQuality == Normal and AttributeHelper.IsPet(acd) then
+                    table.insert(self.Actors.Monster.Pets, acd)
                     table.insert(self.Actors.Monster.All, acd)
                 elseif mQuality == Champion then
                     table.insert(self.Actors.Monster.Champion, acd)

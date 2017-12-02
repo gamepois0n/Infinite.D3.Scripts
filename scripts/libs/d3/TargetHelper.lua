@@ -67,6 +67,18 @@ function TargetHelper.GetACDsAroundLocalPlayer(acdtable, radius)
 	return nearby
 end
 
+function TargetHelper.FilterACDsByActorSNO(acdtable, actorsno)	
+	local acds = {}
+
+	for k,v in pairs(acdtable) do
+		if v:GetActorSNO() == actorsno then
+			table.insert(acds, v)
+		end
+	end
+
+	return acds
+end
+
 function TargetHelper.GetMonstersAroundLocalPlayer(radius, outNormal, outElite, outMinion, outBoss, outGoblin)	
 	for k,v in pairs(Infinity.D3.GetACDList()) do
 		if v:GetActorId() ~= -1 and v:GetActorType() == Enums.ActorType.Monster then

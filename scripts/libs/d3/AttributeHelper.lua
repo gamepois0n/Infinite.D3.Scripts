@@ -12,6 +12,10 @@ function AttributeHelper.GetAttributeValue(acd, attribid, modifier)
 		modifier = -1
 	end
 
+  if acd == nil or acd.Address == 0 then
+    return 0
+  end
+
 	local valueType = AttributeHelper.AttributeDescriptors[attribid]:GetDataType()
 
 	if valueType == 1 then

@@ -63,7 +63,9 @@ function CombatScript:Buff(player, monsterTarget)
 		self.Devour:CastAtLocation(player:GetPosition())
 	end
 
-	if (AttributeHelper.GetAttributeValue(player, Enums.AttributeId.Resource_Cur, 8) / AttributeHelper.GetAttributeValue(player, Enums.AttributeId.Resource_Max_Total, 8)) >= 0.90 and table.length(all60yards) >= 1 then
+	local skeletalMages = TargetHelper.FilterACDsByActorSNO(Combat.Collector.Actors.Monster.Pets, 472606)	
+
+	if table.length(skeletalMages) < 10 and (AttributeHelper.GetAttributeValue(player, Enums.AttributeId.Resource_Cur, 8) / AttributeHelper.GetAttributeValue(player, Enums.AttributeId.Resource_Max_Total, 8)) >= 0.90 and table.length(all60yards) >= 1 then
 		self.RaiseDead:CastAtLocation(player:GetPosition())
 	end	
 end
