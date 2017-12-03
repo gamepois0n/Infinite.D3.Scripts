@@ -13,7 +13,7 @@ function Settings.new()
     self.MapReveal = false
 
     self.Monsters = {Enabled = true}
-    self.Monsters.Normal = {Enabled = false, Minimap = true, MinimapRadius = 4, ColorMinimap = "66999999", CustomRadius = false, CustomRadiusValue = 1, Thickness = 1, Fill = false, ColorOutline = "FF999999", ColorFill = nil}
+    self.Monsters.Normal = {Enabled = false, Minimap = true, MinimapRadius = 2, ColorMinimap = "66999999", CustomRadius = false, CustomRadiusValue = 1, Thickness = 1, Fill = false, ColorOutline = "FF999999", ColorFill = nil}
     
     self.Monsters.Elite = {Enabled = true}
     self.Monsters.Elite.Champion = {Enabled = true, Minimap = true, MinimapRadius = 5, ColorMinimap = "FF0E3C9E", CustomRadius = false, CustomRadiusValue = 1, Thickness = 3, Fill = false, ColorOutline = "FF0E3C9E", ColorFill = "785680DB"}
