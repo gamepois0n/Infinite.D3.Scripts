@@ -199,8 +199,7 @@ function AttributeHelper.HasHealthlink(acd)
 end
 
 function AttributeHelper.HasIllusionist(acd)
-  return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Power_Buff_0_Visual_Effect_None, 71108) ~= 0 or
-  AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Power_Buff_0_Visual_Effect_None, 264185) ~= 0 
+  return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Power_Buff_0_Visual_Effect_None, 71108) ~= 0
 end
 
 function AttributeHelper.HasJailer(acd)

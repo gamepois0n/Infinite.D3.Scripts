@@ -50,9 +50,11 @@ function CombatScript:Buff(player, monsterTarget)
 	end
 	
 	table.sort(Combat.Collector.Actors.Monster.All, function(a, b) return a:GetPosition():GetDistanceFromMe() < b:GetPosition():GetDistanceFromMe() end)
+	table.sort(Combat.Collector.Actors.Monster.Elites, function(a, b) return a:GetPosition():GetDistanceFromMe() < b:GetPosition():GetDistanceFromMe() end)
 	
 	local all20yards = TargetHelper.GetACDsAroundLocalPlayer(Combat.Collector.Actors.Monster.All, 20)
 	local all60yards = TargetHelper.GetACDsAroundLocalPlayer(Combat.Collector.Actors.Monster.All, 60)
+	local elites60yards = TargetHelper.GetACDsAroundLocalPlayer(Combat.Collector.Actors.Monster.Elites, 60)
 
 	if table.length(all20yards) >= 10 then
 		self.BoneArmor:CastAtLocation(player:GetPosition())
@@ -64,9 +66,15 @@ function CombatScript:Buff(player, monsterTarget)
 
 	local skeletalMages = TargetHelper.FilterACDsByActorSNO(Combat.Collector.Actors.Monster.Pets, 472606)	
 
-	if table.length(skeletalMages) < 10 and (AttributeHelper.GetAttributeValue(player, Enums.AttributeId.Resource_Cur, 8) / AttributeHelper.GetAttributeValue(player, Enums.AttributeId.Resource_Max_Total, 8)) >= 0.90 and table.length(all60yards) >= 1 then
-		self.RaiseDead:CastAtLocation(player:GetPosition())
-	end	
+	if table.length(elites60yards) == 0 then
+		if table.length(skeletalMages) < 10 and (AttributeHelper.GetAttributeValue(player, Enums.AttributeId.Resource_Cur, 8) / AttributeHelper.GetAttributeValue(player, Enums.AttributeId.Resource_Max_Total, 8)) >= 0.90 and table.length(all60yards) >= 1 then
+			self.RaiseDead:CastAtLocation(player:GetPosition())
+		end	
+	else
+		if (AttributeHelper.GetAttributeValue(player, Enums.AttributeId.Resource_Cur, 8) / AttributeHelper.GetAttributeValue(player, Enums.AttributeId.Resource_Max_Total, 8)) >= 0.90 then
+			self.RaiseDead:CastAtLocation(Combat.Collector.Actors.Monster.Elites[1]:GetPosition())
+		end	
+	end
 end
 
 function CombatScript:Attack(player, monsterTarget)		
