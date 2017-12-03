@@ -3,6 +3,7 @@ Combat.Running = false
 Combat.Settings = Settings()
 Combat.CombatScript = nil
 Combat.Collector = Collector()
+Combat.LocalData = Infinity.D3.GetLocalData()
 
 function Combat.Start()
   Combat.Running = true
@@ -59,12 +60,17 @@ function Combat.OnPulse()
     return
   end
 
+  local player = Infinity.D3.GetLocalACD()
+
+  if not Combat.LocalData:GetIsPlayerValid() or player == nil or AttributeHelper.GetHitpointPercentage(player) < 0.00001 then
+    return
+  end
+
   Combat.Collector:Collect()
 
   if Combat.CombatScript ~= nil then
     local monsterTarget = TargetHelper.GetMonsterTargetACD()    
-    local player = Infinity.D3.GetLocalACD()
-      
+          
     if Combat.Settings.Defend.Enabled then
       Combat.CombatScript:Defend(player, monsterTarget)
     end
