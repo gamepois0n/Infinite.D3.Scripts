@@ -41,7 +41,12 @@ function RenderHelper.TransformUIRectToClientRect(uiRect)
 end
 
 function RenderHelper.ToMinimap(pos)
-	local mmap = UIControlHelper.GetUIControlByName("Root.NormalLayer.minimap_dialog_backgroundScreen.minimap_dialog_pve.minimap_pve_main")
+	local mmap = UIControlHelper.GetUIControlByName("Root.NormalLayer.map_dialog_mainPage.localmap")
+
+	if mmap:GetFlag() == 3 then
+	mmap = UIControlHelper.GetUIControlByName("Root.NormalLayer.minimap_dialog_backgroundScreen.minimap_dialog_pve.minimap_pve_main")
+	end
+	
 	local mmapRealPoint = RenderHelper.ToUIControlRectArea(mmap, pos)
 	local mmapRealRect = mmap:GetUIRect()
 	local mmapClientRect = RenderHelper.TransformUIRectToClientRect(mmap:GetUIRect())

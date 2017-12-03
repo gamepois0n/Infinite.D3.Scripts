@@ -32,6 +32,8 @@ function Collector.new()
     
     self.Actors.Corpse = {}
 
+    self.Actors.Marker = {}
+
     self.Actors.Item.Ground = {}
     
     self.Actors.GroundEffect.Plagued = {}
@@ -80,6 +82,8 @@ function Collector:ClearTables()
 
     self.Actors.Corpse = {}
     
+    self.Actors.Marker = {}
+
     self.Actors.Item.Ground = {}
 
     self.Actors.GroundEffect.Plagued = {}
@@ -181,6 +185,9 @@ function Collector:GetActors()
                 end
             elseif aType == Enums.ActorType.ServerProp then
 
+                --if acd:GetActorSNO() == 4675 then
+                    --table.insert(self.Actors.Marker, acd)
+                --elseif  GroundEffectHelper.IsPlagued(acd) then
                 if  GroundEffectHelper.IsPlagued(acd) then
                     table.insert(self.Actors.GroundEffect.Plagued, acd)
                 elseif GroundEffectHelper.IsDesecrator(acd) then

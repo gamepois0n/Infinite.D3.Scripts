@@ -750,6 +750,13 @@ function Radar.MinimapTest()
   --end
 end
 
+function Radar.RenderMarkers()
+  for k,v in pairs(Radar.Collector.Actors.Marker) do      
+    RenderHelper.DrawWorldSquareFilledMulticolor(v:GetPosition(), Radar.Settings.Goblins.CustomRadiusValue, Radar.Settings.Goblins.ColorOutline, Radar.Settings.Goblins.ColorFill, Radar.Settings.Goblins.Thickness)
+    Radar.RenderACDOnMinimap("Square", v, 5, Radar.Settings.Goblins.ColorMinimap, Radar.Settings.Goblins.Thickness, true)
+  end
+end
+
 function Radar.RenderACDOnMinimap(geometry, acd, size, color, thickness, filled)
   if geometry == "Circle" then
     RenderHelper.DrawCircle(RenderHelper.ToMinimap(acd:GetPosition()), size, color, thickness, filled)
@@ -788,4 +795,5 @@ if Radar.Settings.Goblins.Enabled then
 end
 
 --Radar.MinimapTest()
+--Radar.RenderMarkers()
 end
