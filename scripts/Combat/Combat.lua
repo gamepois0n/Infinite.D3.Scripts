@@ -62,7 +62,7 @@ function Combat.OnPulse()
 
   local player = Infinity.D3.GetLocalACD()
 
-  if not Combat.LocalData:GetIsPlayerValid() or player == nil or AttributeHelper.GetHitpointPercentage(player) < 0.00001 then
+  if Infinity.D3.GetIsGamePaused() or not Combat.LocalData:GetIsPlayerValid() or player == nil or AttributeHelper.GetHitpointPercentage(player) < 0.00001 then
     return
   end
 
