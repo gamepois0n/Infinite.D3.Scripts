@@ -192,50 +192,54 @@ end
 
 function Radar.RenderMonstersElite()
 if Radar.Settings.Monsters.Elite.Champion.Enabled then
-  for k,v in pairs(Radar.Collector.Actors.Monster.Champion) do        
-    local radius =  1
+  for k,v in pairs(Radar.Collector.Actors.Monster.Champion) do
+    if not AttributeHelper.IsIllusion(v) then
+      local radius =  1
 
-    if Radar.Settings.Monsters.Elite.Champion.CustomRadius then
-      radius = Radar.Settings.Monsters.Elite.Champion.CustomRadiusValue
-    else
-      radius =  v:GetRadius()
+      if Radar.Settings.Monsters.Elite.Champion.CustomRadius then
+        radius = Radar.Settings.Monsters.Elite.Champion.CustomRadiusValue
+      else
+        radius =  v:GetRadius()
+      end
+
+      if Radar.Settings.Monsters.Elite.Champion.ColorFill == nil then
+        RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Champion.ColorOutline, Radar.Settings.Monsters.Elite.Champion.Thickness, Radar.Settings.Monsters.Elite.Champion.Fill) 
+      else
+        RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Champion.ColorOutline, Radar.Settings.Monsters.Elite.Champion.ColorFill, Radar.Settings.Monsters.Elite.Champion.Thickness) 
+      end
+
+      if Radar.Settings.Monsters.Elite.Champion.Minimap == true then
+        Radar.RenderACDOnMinimap("Circle", v, Radar.Settings.Monsters.Elite.Champion.MinimapRadius, Radar.Settings.Monsters.Elite.Champion.ColorMinimap, Radar.Settings.Monsters.Elite.Champion.Thickness, true)
+      end
+
+      Radar.RenderAffixLabels(v)
     end
-
-    if Radar.Settings.Monsters.Elite.Champion.ColorFill == nil then
-      RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Champion.ColorOutline, Radar.Settings.Monsters.Elite.Champion.Thickness, Radar.Settings.Monsters.Elite.Champion.Fill) 
-    else
-      RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Champion.ColorOutline, Radar.Settings.Monsters.Elite.Champion.ColorFill, Radar.Settings.Monsters.Elite.Champion.Thickness) 
-    end
-
-    if Radar.Settings.Monsters.Elite.Champion.Minimap == true then
-      Radar.RenderACDOnMinimap("Circle", v, Radar.Settings.Monsters.Elite.Champion.MinimapRadius, Radar.Settings.Monsters.Elite.Champion.ColorMinimap, Radar.Settings.Monsters.Elite.Champion.Thickness, true)
-    end
-
-    Radar.RenderAffixLabels(v)
   end
 end
 
 if Radar.Settings.Monsters.Elite.Rare.Enabled then
-  for k,v in pairs(Radar.Collector.Actors.Monster.Rare) do  
-    local radius =  1
+  for k,v in pairs(Radar.Collector.Actors.Monster.Rare) do
+    if not AttributeHelper.IsIllusion(v) then  
+      local radius =  1
 
-    if Radar.Settings.Monsters.Elite.Rare.CustomRadius then
-      radius = Radar.Settings.Monsters.Elite.Rare.CustomRadiusValue
-    else
-      radius =  v:GetRadius()
+      if Radar.Settings.Monsters.Elite.Rare.CustomRadius then
+        radius = Radar.Settings.Monsters.Elite.Rare.CustomRadiusValue
+      else
+        radius =  v:GetRadius()
+      end
+
+      if Radar.Settings.Monsters.Elite.Rare.ColorFill == nil then
+        RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Rare.ColorOutline, Radar.Settings.Monsters.Elite.Rare.Thickness, Radar.Settings.Monsters.Elite.Rare.Fill) 
+      else
+        RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Rare.ColorOutline, Radar.Settings.Monsters.Elite.Rare.ColorFill, Radar.Settings.Monsters.Elite.Rare.Thickness) 
+      end
+
+      if Radar.Settings.Monsters.Elite.Rare.Minimap == true then
+        Radar.RenderACDOnMinimap("Circle", v, Radar.Settings.Monsters.Elite.Rare.MinimapRadius, Radar.Settings.Monsters.Elite.Rare.ColorMinimap, Radar.Settings.Monsters.Elite.Rare.Thickness, true)
+      end
+
+      Radar.RenderAffixLabels(v)
     end
-
-    if Radar.Settings.Monsters.Elite.Rare.ColorFill == nil then
-      RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Rare.ColorOutline, Radar.Settings.Monsters.Elite.Rare.Thickness, Radar.Settings.Monsters.Elite.Rare.Fill) 
-    else
-      RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Rare.ColorOutline, Radar.Settings.Monsters.Elite.Rare.ColorFill, Radar.Settings.Monsters.Elite.Rare.Thickness) 
-    end
-
-    if Radar.Settings.Monsters.Elite.Rare.Minimap == true then
-      Radar.RenderACDOnMinimap("Circle", v, Radar.Settings.Monsters.Elite.Rare.MinimapRadius, Radar.Settings.Monsters.Elite.Rare.ColorMinimap, Radar.Settings.Monsters.Elite.Rare.Thickness, true)
-    end
-
-    Radar.RenderAffixLabels(v)
   end
 end
 
@@ -265,31 +269,34 @@ end
 
 if Radar.Settings.Monsters.Elite.Unique.Enabled then
   for k,v in pairs(Radar.Collector.Actors.Monster.Unique) do
-    local radius =  1
+    if not AttributeHelper.IsIllusion(v) then
+      local radius =  1
 
-    if Radar.Settings.Monsters.Elite.Unique.CustomRadius then
-      radius = Radar.Settings.Monsters.Elite.Unique.CustomRadiusValue
-    else
-      radius =  v:GetRadius()
+      if Radar.Settings.Monsters.Elite.Unique.CustomRadius then
+        radius = Radar.Settings.Monsters.Elite.Unique.CustomRadiusValue
+      else
+        radius =  v:GetRadius()
+      end
+
+      if Radar.Settings.Monsters.Elite.Unique.ColorFill == nil then
+        RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Unique.ColorOutline, Radar.Settings.Monsters.Elite.Unique.Thickness, Radar.Settings.Monsters.Elite.Unique.Fill) 
+      else
+        RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Unique.ColorOutline, Radar.Settings.Monsters.Elite.Unique.ColorFill, Radar.Settings.Monsters.Elite.Unique.Thickness) 
+      end
+
+      if Radar.Settings.Monsters.Elite.Unique.Minimap == true then
+        Radar.RenderACDOnMinimap("Circle", v, Radar.Settings.Monsters.Elite.Unique.MinimapRadius, Radar.Settings.Monsters.Elite.Unique.ColorMinimap, Radar.Settings.Monsters.Elite.Unique.Thickness, true)
+      end
+
+      Radar.RenderAffixLabels(v)
     end
-
-    if Radar.Settings.Monsters.Elite.Unique.ColorFill == nil then
-      RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Unique.ColorOutline, Radar.Settings.Monsters.Elite.Unique.Thickness, Radar.Settings.Monsters.Elite.Unique.Fill) 
-    else
-      RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Monsters.Elite.Unique.ColorOutline, Radar.Settings.Monsters.Elite.Unique.ColorFill, Radar.Settings.Monsters.Elite.Unique.Thickness) 
-    end
-
-    if Radar.Settings.Monsters.Elite.Unique.Minimap == true then
-      Radar.RenderACDOnMinimap("Circle", v, Radar.Settings.Monsters.Elite.Unique.MinimapRadius, Radar.Settings.Monsters.Elite.Unique.ColorMinimap, Radar.Settings.Monsters.Elite.Unique.Thickness, true)
-    end
-
-    Radar.RenderAffixLabels(v)
   end
 end
 end
 
 function Radar.RenderMonstersBoss()
-for k,v in pairs(Radar.Collector.Actors.Monster.Boss) do      
+for k,v in pairs(Radar.Collector.Actors.Monster.Boss) do  
+  if not AttributeHelper.IsIllusion(v) then    
     local radius =  1
 
     if Radar.Settings.Monsters.Boss.CustomRadius then
@@ -308,6 +315,7 @@ for k,v in pairs(Radar.Collector.Actors.Monster.Boss) do
       Radar.RenderACDOnMinimap("Circle", v, Radar.Settings.Monsters.Boss.MinimapRadius, Radar.Settings.Monsters.Boss.ColorMinimap, Radar.Settings.Monsters.Boss.Thickness, true)
     end
   end
+end
 end
 
 function Radar.RenderMonsters()

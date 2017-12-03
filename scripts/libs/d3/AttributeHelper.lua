@@ -202,6 +202,10 @@ function AttributeHelper.HasIllusionist(acd)
   return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Power_Buff_0_Visual_Effect_None, 71108) ~= 0
 end
 
+function AttributeHelper.IsIllusion(acd)
+  return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Power_Buff_0_Visual_Effect_None, 264185) ~= 0
+end
+
 function AttributeHelper.HasJailer(acd)
   return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Power_Buff_0_Visual_Effect_None, 222743) ~= 0 or
   AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Power_Buff_0_Visual_Effect_None, 222745) ~= 0 or
