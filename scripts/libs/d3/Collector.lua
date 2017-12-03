@@ -217,7 +217,13 @@ function Collector:GetActors()
     end
 end
 
+function Collector:InitReloads()
+    UIControlHelper.Reload()
+end
+
 function Collector:Collect()
+    self:InitReloads()
+
     self:ClearTables()
 
     self:GetActors()

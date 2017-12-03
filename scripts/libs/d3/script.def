@@ -16,5 +16,6 @@ file=RActorHelper.lua
 file=LevelAreaHelper.lua
 file=TTSHelper.lua
 file=Collector.lua
+file=SNOGroups.lua
 
 [dependencies]

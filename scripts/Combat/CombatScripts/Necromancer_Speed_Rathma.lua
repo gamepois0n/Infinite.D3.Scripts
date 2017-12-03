@@ -50,8 +50,7 @@ function CombatScript:Buff(player, monsterTarget)
 	end
 	
 	table.sort(Combat.Collector.Actors.Monster.All, function(a, b) return a:GetPosition():GetDistanceFromMe() < b:GetPosition():GetDistanceFromMe() end)
-	table.sort(Combat.Collector.Actors.Corpse, function(a, b) return a:GetPosition():GetDistanceFromMe() < b:GetPosition():GetDistanceFromMe() end)
-
+	
 	local all20yards = TargetHelper.GetACDsAroundLocalPlayer(Combat.Collector.Actors.Monster.All, 20)
 	local all60yards = TargetHelper.GetACDsAroundLocalPlayer(Combat.Collector.Actors.Monster.All, 60)
 
