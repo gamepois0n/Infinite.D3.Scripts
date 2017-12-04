@@ -1,5 +1,32 @@
 RenderHelper = {}
 
+function RenderHelper.LoadImageFileFromCurrentScriptDirectory(filePath)
+	return ImGui.LoadImageTexture(Infinity.Scripting.CurrentScript.Directory .. filePath)
+end
+
+function RenderHelper.LoadImageFile(filePath)
+	return ImGui.LoadImageTexture(filePath)
+end
+
+function RenderHelper.LoadDDSFileFromCurrentScriptDirectory(filePath)
+	return ImGui.LoadDDSTexture(Infinity.Scripting.CurrentScript.Directory .. filePath)
+end
+
+function RenderHelper.LoadDDSFile(filePath)
+	return ImGui.LoadDDSTexture(filePath)
+end
+
+function RenderHelper.DrawImage(imageTexture, screenPos, size)
+	if imageTexture == nil then
+		return
+	end
+
+	local a = ImVec2(screenPos.x - (size.x / 2), screenPos.y - (size.y / 2))
+	local b = ImVec2(screenPos.x + (size.x / 2), screenPos.y + (size.y / 2))
+
+	Infinity.Rendering.DrawImage(imageTexture, a, b)
+end
+
 function RenderHelper.ToScreen(pos)
 	local screen = Infinity.Rendering.Helpers.WorldToScreen(pos)
 
