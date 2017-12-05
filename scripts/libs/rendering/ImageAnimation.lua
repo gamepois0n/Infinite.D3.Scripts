@@ -50,31 +50,35 @@ function ImageAnimation:InitDDS()
 	self.LastFrame = table.length(self.ImageTexture.Atlas)
 end
 
-function ImageAnimation:DrawDDS()
+function ImageAnimation:DrawDDS(renderPosition)
 	if self.CurrentFrame > self.LastFrame then
 		self.CurrentFrame = 1
 	end
 
-	RenderHelper.DrawImageFromDDS(self.ImageTexture, self.RenderPosition, self.RenderSize, self.ImageSize, self.CurrentFrame)
+	RenderHelper.DrawImageFromDDS(self.ImageTexture, renderPosition, self.RenderSize, self.ImageSize, self.CurrentFrame)
 
 	self.LastDraw = Infinity.Win32.GetTickCount()
 	self.CurrentFrame = self.CurrentFrame + 1
 end
 
-function ImageAnimation:Draw()
+function ImageAnimation:Draw(renderPosition)
 	--[[if self.LastDraw + (1000 / self.FPS) >= Infinity.Win32.GetTickCount() then
 		return
 	end]]--
 
+	if renderPosition == nil then
+		renderPosition = self.RenderPosition
+	end
+
 	if type(self.ImageTexture) == "table" then
-		self:DrawDDS()
+		self:DrawDDS(renderPosition)
 	else
 
 		if self.CurrentFrame > self.LastFrame then
 			self.CurrentFrame = 1
 		end
 
-		RenderHelper.DrawImage(self.ImageTexture, self.RenderPosition, self.RenderSize, self.ImageSize, self.Frames[self.CurrentFrame].a, self.Frames[self.CurrentFrame].b)
+		RenderHelper.DrawImage(self.ImageTexture, renderPosition, self.RenderSize, self.ImageSize, self.Frames[self.CurrentFrame].a, self.Frames[self.CurrentFrame].b)
 
 		self.LastDraw = Infinity.Win32.GetTickCount()
 		self.CurrentFrame = self.CurrentFrame + 1
