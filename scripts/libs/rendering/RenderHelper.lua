@@ -9,22 +9,92 @@ function RenderHelper.LoadImageFile(filePath)
 end
 
 function RenderHelper.LoadDDSFileFromCurrentScriptDirectory(filePath)
-	return ImGui.LoadDDSTexture(Infinity.Scripting.CurrentScript.Directory .. filePath)
+	local texture = ImGui.LoadDDSTexture(Infinity.Scripting.CurrentScript.Directory .. filePath)
+	local atlasFile
+
+	for w in string.gmatch(filePath,  "[^.]+") do
+   		atlasFile = w .. "_atlas.txt"
+   		break	
+   	end
+   	
+	local atlas = RenderHelper.LoadDDSAtlas(atlasFile)
+	
+	return {Texture = texture, Atlas = atlas}
 end
 
 function RenderHelper.LoadDDSFile(filePath)
 	return ImGui.LoadDDSTexture(filePath)
 end
 
-function RenderHelper.DrawImage(imageTexture, screenPos, size)
+function RenderHelper.LoadDDSAtlas(filePath)
+	local content = Infinity.FileSystem.ReadFile(filePath)
+	local atlas = {}
+
+	local index = 0
+
+	for i in string.gmatch(content,  "[^\r\n]+") do
+		if index > 0 then
+			local words = {}
+
+   			for w in string.gmatch(i,  "(.-)%c") do
+   				table.insert(words, w)	
+   			end
+
+   			table.insert(atlas, {Name = words[1], A = ImVec2(tonumber(words[2]), tonumber(words[3])), B = ImVec2(tonumber(words[4]), tonumber(words[5]))})
+   		end
+
+   		index = index + 1
+	end
+
+	return atlas
+end
+
+function RenderHelper.GetAtlasIndexByName(atlas, name)
+	local index = 1
+
+	for k,v in pairs(atlas) do
+		if v.Name == name then
+			break
+		end
+
+		index = index + 1
+	end
+
+	return index
+end
+
+function RenderHelper.DrawImage(imageTexture, screenPos, renderSize, originalSize, workingArea_a, workingArea_b)
 	if imageTexture == nil then
 		return
 	end
 
-	local a = ImVec2(screenPos.x - (size.x / 2), screenPos.y - (size.y / 2))
-	local b = ImVec2(screenPos.x + (size.x / 2), screenPos.y + (size.y / 2))
+	local uv_a = ImVec2(0, 0)
+	local uv_b = ImVec2(1, 1)
+	
+	if originalSize ~= nil and workingArea_a ~= nil and workingArea_b ~= nil then
+		uv_a = ImVec2(workingArea_a.x / originalSize.x, workingArea_a.y / originalSize.y)
+		uv_b = ImVec2(workingArea_b.x / originalSize.x, workingArea_b.y / originalSize.y)
+	end
+	
+	local a = ImVec2(screenPos.x - (renderSize.x / 2), screenPos.y - (renderSize.y / 2))
+	local b = ImVec2(screenPos.x + (renderSize.x / 2), screenPos.y + (renderSize.y / 2))
 
-	Infinity.Rendering.DrawImage(imageTexture, a, b)
+	Infinity.Rendering.DrawImage(imageTexture, a, b, uv_a, uv_b, ImVec4(1.0, 1.0, 1.0, 1.0))
+end
+
+function RenderHelper.DrawImageFromDDS(dds, screenPos, renderSize, originalSize, atlasIndex)
+	if dds == nil then
+		return
+	end
+	
+	if atlasIndex == nil then
+		atlasIndex = 1
+	end
+
+	local a = ImVec2(screenPos.x - (renderSize.x / 2), screenPos.y - (renderSize.y / 2))
+	local b = ImVec2(screenPos.x + (renderSize.x / 2), screenPos.y + (renderSize.y / 2))
+
+	Infinity.Rendering.DrawImage(dds.Texture, a, b, dds.Atlas[atlasIndex].A, dds.Atlas[atlasIndex].B, ImVec4(1.0, 1.0, 1.0, 1.0))
 end
 
 function RenderHelper.ToScreen(pos)

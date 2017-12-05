@@ -4,5 +4,6 @@ type=lib
 
 [files]
 file=RenderHelper.lua
+file=ImageAnimation.lua
 
 [dependencies]
