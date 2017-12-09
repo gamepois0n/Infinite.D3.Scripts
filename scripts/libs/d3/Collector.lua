@@ -35,6 +35,7 @@ function Collector.new()
     self.Actors.Monster.Boss = {}
     self.Actors.Monster.Goblin = {}
     self.Actors.Monster.Elites = {}
+    self.Actors.Monster.ElitesLeaders = {}
     self.Actors.Monster.Pets = {}
 
     self.Actors.Player = {}
@@ -92,6 +93,7 @@ function Collector:ClearTables()
     self.Actors.Monster.Boss = {}
     self.Actors.Monster.Goblin = {}
     self.Actors.Monster.Elites = {}
+    self.Actors.Monster.ElitesLeaders = {}
     self.Actors.Monster.Pets = {}
 
     self.Actors.Player = {}
@@ -146,6 +148,7 @@ function Collector:GetActors()
                     table.insert(self.Actors.Monster.Goblin, acd)
                     table.insert(self.Actors.Monster.All, acd)
                     table.insert(self.Actors.Monster.Elites, acd)
+                    table.insert(self.Actors.Monster.ElitesLeaders, acd)
                 elseif mQuality == Normal and not AttributeHelper.IsNPC(acd) and not AttributeHelper.IsPet(acd) then
                     table.insert(self.Actors.Monster.Normal, acd)
                     table.insert(self.Actors.Monster.All, acd)
@@ -156,6 +159,7 @@ function Collector:GetActors()
                     table.insert(self.Actors.Monster.Champion, acd)
                     table.insert(self.Actors.Monster.All, acd)
                     table.insert(self.Actors.Monster.Elites, acd)
+                    table.insert(self.Actors.Monster.ElitesLeaders, acd)
                 elseif mQuality == Minion then
                     table.insert(self.Actors.Monster.Minion, acd)
                     table.insert(self.Actors.Monster.All, acd)
@@ -164,10 +168,12 @@ function Collector:GetActors()
                     table.insert(self.Actors.Monster.Rare, acd)
                     table.insert(self.Actors.Monster.All, acd)
                     table.insert(self.Actors.Monster.Elites, acd)
+                    table.insert(self.Actors.Monster.ElitesLeaders, acd)
                 elseif mQuality == Unique then
                     table.insert(self.Actors.Monster.Unique, acd)
                     table.insert(self.Actors.Monster.All, acd)
                     table.insert(self.Actors.Monster.Elites, acd)
+                    table.insert(self.Actors.Monster.ElitesLeaders, acd)
                 elseif mQuality == Boss then          
                     table.insert(self.Actors.Monster.Boss, acd)
                     table.insert(self.Actors.Monster.All, acd)
