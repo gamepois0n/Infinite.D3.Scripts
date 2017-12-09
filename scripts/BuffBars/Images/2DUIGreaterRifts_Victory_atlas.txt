@@ -1,8 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-GreaterRifts_Reward_Background_p2	0.003906	0.003906	0.700195	0.475098	8	8	1434	973	
-GreaterRifts_Reward_PartyBackground_p2	0.003906	0.482910	0.675781	0.704102	8	989	1384	1442	
-GreaterRifts_Reward_RibbonBase_p2	0.855469	0.188477	0.995117	0.225586	1752	386	2038	462	
-GreaterRifts_Reward_RibbonTrim_p2	0.708008	0.188477	0.847656	0.225586	1450	386	1736	462	
-GreaterRifts_Reward_MaxBloodshardIcon_p2	0.952148	0.003906	0.986816	0.038574	1950	8	2021	79	
-GreaterRifts_Reward_InfoBackground_p2	0.708008	0.003906	0.944336	0.157227	1450	8	1934	322	
-GreaterRifts_Reward_ListBackground_p2	0.708008	0.165039	0.915039	0.180664	1450	338	1874	370	

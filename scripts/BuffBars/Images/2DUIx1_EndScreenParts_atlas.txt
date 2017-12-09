@@ -1,3 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-x1_EndScreen_EndCapLeft	0.267578	0.000977	0.529297	0.586914	274	2	542	1202	
-x1_EndScreen_EndCapRight	0.001953	0.000977	0.263672	0.586914	2	2	270	1202	

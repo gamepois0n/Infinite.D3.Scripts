@@ -1,7 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-ChatBlackCornerUpperLeft	0.429688	0.062500	0.554688	0.562500	220	4	284	36	
-ChatBlackCornerUpperRight	0.007813	0.062500	0.132813	0.562500	4	4	68	36	
-ChatBlackCornerLowerLeft	0.148438	0.062500	0.273438	0.562500	76	4	140	36	
-ChatBlackCornerLowerRight	0.289063	0.062500	0.414063	0.562500	148	4	212	36	
-ChatBlackArrowDown	0.570313	0.062500	0.632813	0.562500	292	4	324	36	
-ChatBlackFill	0.648438	0.062500	0.656250	0.125000	332	4	336	8	

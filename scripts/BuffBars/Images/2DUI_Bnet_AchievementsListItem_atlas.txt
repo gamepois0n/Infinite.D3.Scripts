@@ -1,2 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-BattleNetAchievements_ListBackground	0.000000	0.000000	0.868164	1.000000	0	0	889	2048	

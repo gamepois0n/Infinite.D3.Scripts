@@ -1,3 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-Blizzcon_Background	0.000977	0.001953	0.671875	0.781250	2	2	1376	800	
-Blizzcon_Solid	0.673828	0.001953	0.674316	0.002930	1380	2	1381	3	

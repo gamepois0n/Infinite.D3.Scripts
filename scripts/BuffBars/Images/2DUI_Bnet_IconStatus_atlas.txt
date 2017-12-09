@@ -1,6 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-BattleNetIconStatus_Available	0.015625	0.796875	0.281250	0.929688	1	102	18	119	
-BattleNetIconStatus_Away	0.671875	0.617188	0.937500	0.750000	43	79	60	96	
-BattleNetIconStatus_Busy	0.671875	0.468750	0.937500	0.601563	43	60	60	77	
-BattleNetIconStatus_Offline	0.015625	0.468750	0.640625	0.781250	1	60	41	100	
-BattleNetIconStatus_Loading	0.015625	0.007813	0.921875	0.453125	1	1	59	58	

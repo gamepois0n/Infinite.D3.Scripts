@@ -1,4 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-p2_Mojo_norm_unique_01	0.500000	0.000000	0.750000	0.921875	128	0	192	118	
-p2_Mojo_norm_unique_02	0.000000	0.000000	0.250000	1.000000	0	0	64	128	
-p2_Mojo_norm_unique_03	0.250000	0.000000	0.500000	1.000000	64	0	128	128	

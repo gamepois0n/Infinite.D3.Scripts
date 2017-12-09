@@ -1,4 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-Credits_EndCapLeft_x1	0.267578	0.000977	0.529297	0.586914	274	2	542	1202	
-Credits_EndCapRight_x1	0.001953	0.000977	0.263672	0.586914	2	2	270	1202	
-Credits_Divider_x1	0.533203	0.000977	0.996094	0.059082	546	2	1020	121	

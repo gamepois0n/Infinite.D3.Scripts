@@ -1,4 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-Console_Vignette	0.001953	0.001953	0.646484	0.705078	2	2	662	722	
-Console_VignetteBottom	0.650391	0.001953	0.652344	0.106445	666	2	668	109	
-Console_WhiteBox	0.656250	0.001953	0.664063	0.009766	672	2	680	10	

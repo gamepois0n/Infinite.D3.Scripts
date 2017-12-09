@@ -1,6 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-BattleNetWhatsNew_P1bg	0.000977	0.395508	0.675293	0.788086	2	810	1383	1614	
-BattleNetWhatsNew_P1_FrontHeroes	0.000977	0.790039	0.337891	0.983887	2	1618	692	2015	
-BattleNetWhatsNew_P2_3_bg	0.000977	0.000977	0.675293	0.393555	2	2	1383	806	
-BattleNetWhatsNew_P2_3_bgForeground	0.677246	0.000977	0.805664	0.101563	1387	2	1650	208	
-BattleNetWhatsNew_TitleBreak	0.807617	0.000977	0.912598	0.011230	1654	2	1869	23	

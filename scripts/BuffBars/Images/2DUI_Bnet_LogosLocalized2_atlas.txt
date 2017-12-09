@@ -1,3 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-BattleNetLogo_Diablo3_Header_zhTW	0.471680	0.001953	0.940430	0.626953	966	2	1926	642	
-BattleNetLogo_Diablo3_Header_x1_zhTW	0.000977	0.001953	0.469727	0.626953	2	2	962	642	

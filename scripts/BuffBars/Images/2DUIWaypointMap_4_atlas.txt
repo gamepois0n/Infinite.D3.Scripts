@@ -1,3 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-WaypointMap_ACT04	0.000977	0.471191	0.694336	0.939453	2	965	1422	1924	
-WaypointMap_ACT05	0.000977	0.000977	0.694336	0.469238	2	2	1422	961	

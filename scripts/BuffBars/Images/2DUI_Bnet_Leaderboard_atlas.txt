@@ -1,9 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-BattleNetLeaderboard_TabBackground	0.001953	0.000977	0.927734	0.322754	2	2	950	661	
-BattleNetLeaderboard_ListHighlight	0.001953	0.351074	0.870117	0.372559	2	719	891	763	
-BattleNetLeaderboard_ListBackground	0.001953	0.324707	0.877930	0.349121	2	665	899	715	
-BattleNetLeaderboard_UpdateFrame	0.415039	0.374512	0.859375	0.398438	425	767	880	816	
-BattleNetLeaderboard_LeftNavContainer	0.001953	0.374512	0.411133	0.764648	2	767	421	1566	
-BattleNetLeaderboard_PlayerInspect_Powers	0.001953	0.766602	0.402344	0.864258	2	1570	412	1770	
-BattleNetLeaderboard_PlayerInspect_Skills	0.415039	0.614258	0.815430	0.711914	425	1258	835	1458	
-BattleNetLeaderboard_PlayerInspect_SheetFrame	0.415039	0.400391	0.712891	0.612305	425	820	730	1254	

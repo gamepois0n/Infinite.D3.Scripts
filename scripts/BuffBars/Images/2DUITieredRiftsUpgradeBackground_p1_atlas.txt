@@ -1,4 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-TieredRifts_UpgradePanel_p1	0.258789	0.007813	0.505859	0.839844	530	8	1036	860	
-TieredRifts_UpgradeStarField_p1	0.513672	0.007813	0.855469	0.691406	1052	8	1752	708	
-TieredRifts_UpgradeChoice_Background_p1	0.003906	0.007813	0.250977	0.839844	8	8	514	860	

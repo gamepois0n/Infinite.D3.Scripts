@@ -1,2 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-Skill_List_Base_Default	0.003906	0.001953	0.579102	0.587891	4	4	593	1204	

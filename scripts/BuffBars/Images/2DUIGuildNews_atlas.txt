@@ -1,6 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-GuildNews_Frame	0.000977	0.000977	0.674805	0.397949	2	2	1382	815	
-GuildNews_ItemFrame	0.553223	0.399902	0.926758	0.425293	1133	819	1898	871	
-GuildNews_ItemHighlight	0.177734	0.399902	0.551270	0.425293	364	819	1129	871	
-GuildRoster_NewsSticky	0.676758	0.000977	0.688477	0.012695	1386	2	1410	26	
-GuildNews_GuildBanner	0.000977	0.399902	0.175781	0.808105	2	819	360	1655	

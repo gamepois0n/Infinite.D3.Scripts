@@ -1,2 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-BattleNetGameMode_PartyLeaderIcon	0.015625	0.031250	0.578125	0.750000	1	1	37	24	

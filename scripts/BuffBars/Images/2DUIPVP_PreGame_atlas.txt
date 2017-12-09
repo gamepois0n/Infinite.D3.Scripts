@@ -1,4 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-PVP_PreGame_EndCapLeft	0.133789	0.170410	0.264648	0.756348	274	349	542	1549	
-PVP_PreGame_EndCapRight	0.000977	0.170410	0.131836	0.756348	2	349	270	1549	
-PVP_PreGame_Frames	0.000977	0.000977	0.782227	0.168457	2	2	1602	345	

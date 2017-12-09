@@ -1,3 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-Confirmation_Bottom	0.015625	0.625000	0.667969	0.687500	8	160	342	176	
-Confirmation_Top	0.015625	0.031250	0.667969	0.562500	8	8	342	144	

@@ -1,2 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-BattleNetLoadingScreen_Logo_zhCN_x1	0.000977	0.001953	0.570313	0.715820	2	2	1168	733	

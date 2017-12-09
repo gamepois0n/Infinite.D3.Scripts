@@ -1,7 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-icon_shape_chevron001_rgb_01_Beta	0.751953	0.000000	0.902344	0.601563	385	0	462	77	
-icon_shape_chevron002_rgb_01_Beta	0.000000	0.000000	0.150391	0.601563	0	0	77	77	
-icon_shape_chevron003_rgb_01_Beta	0.150391	0.000000	0.300781	0.601563	77	0	154	77	
-icon_shape_point001_rgb_01_Beta	0.300781	0.000000	0.451172	0.601563	154	0	231	77	
-icon_shape_point002_rgb_01_Beta	0.451172	0.000000	0.601563	0.601563	231	0	308	77	
-icon_shape_rectangle001_rgb_01_Beta	0.601563	0.000000	0.751953	0.601563	308	0	385	77	

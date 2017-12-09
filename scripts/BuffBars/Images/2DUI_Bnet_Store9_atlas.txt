@@ -1,6 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-BattleNetStore_MainBG	0.000977	0.000977	0.673828	0.393555	2	2	1380	806	
-BattleNetStore_AdPremiumPassAdventureMode	0.334961	0.395508	0.666992	0.668945	686	810	1366	1370	
-BattleNetStore_AdPremiumPassAdventureModeMore	0.000977	0.395508	0.333008	0.668945	2	810	682	1370	
-BattleNetStore_AdPremiumPassDeluxeHoTsValla	0.000977	0.670898	0.333008	0.956055	2	1374	682	1958	
-BattleNetStore_AdPremiumPassDeluxeGoodies	0.334961	0.670898	0.666992	0.956055	686	1374	1366	1958	

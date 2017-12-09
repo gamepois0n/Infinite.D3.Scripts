@@ -1,6 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-icon_cosmetic_pennant	0.601563	0.000000	0.751953	0.601563	308	0	385	77	
-icon_cosmetic_pet	0.000000	0.000000	0.150391	0.601563	0	0	77	77	
-icon_cosmetic_portrait	0.150391	0.000000	0.300781	0.601563	77	0	154	77	
-icon_cosmetic_wings	0.300781	0.000000	0.451172	0.601563	154	0	231	77	
-icon_stashtab_reward	0.451172	0.000000	0.601563	0.601563	231	0	308	77	

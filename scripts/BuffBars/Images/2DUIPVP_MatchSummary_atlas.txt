@@ -1,4 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-PVP_MatchSummary_Background	0.001953	0.003906	0.685547	0.811523	4	4	1404	831	
-PVP_MatchSummary_TeamSlot	0.833496	0.003906	0.973633	0.677734	1707	4	1994	694	
-PVP_MatchSummary_TeamSlotFrame	0.689453	0.003906	0.829590	0.677734	1412	4	1699	694	

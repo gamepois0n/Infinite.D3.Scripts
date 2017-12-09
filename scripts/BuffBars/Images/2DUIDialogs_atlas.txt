@@ -1,5 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-DialogLarge	0.003906	0.001953	0.653320	0.182129	4	4	669	373	
-ChatableBackground	0.661133	0.001953	0.954102	0.099609	677	4	977	204	
-GoldDropBackground	0.003906	0.186035	0.482422	0.305176	4	381	494	625	
-ItemShrineBackground	0.003906	0.309082	0.277344	0.633789	4	633	284	1298	

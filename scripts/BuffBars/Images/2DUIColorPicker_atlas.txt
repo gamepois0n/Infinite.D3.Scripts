@@ -1,6 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-ColorPicker_ColorSelection	0.603516	0.046875	0.639648	0.119141	618	24	655	61	
-ColorPicker_Dialog	0.001953	0.003906	0.498047	0.957031	2	2	510	490	
-ColorPicker_HueSelection	0.603516	0.003906	0.701172	0.039063	618	2	718	20	
-ColorPicker_Slider	0.501953	0.003906	0.599609	0.519531	514	2	614	266	
-ColorPicker_SwatchBevel	0.643555	0.046875	0.663086	0.085938	659	24	679	44	

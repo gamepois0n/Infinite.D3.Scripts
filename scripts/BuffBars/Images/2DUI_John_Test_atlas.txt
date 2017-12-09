@@ -1,2 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-John_Test_For_Lorenzo	0.007813	0.003906	0.914063	0.529297	2	2	234	271	

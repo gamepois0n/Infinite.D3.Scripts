@@ -1,2 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-BottomBar_GameRes_Overlay_Classic	0.007813	0.062500	0.727539	0.648438	8	8	745	83	

@@ -1,9 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-VanityPets_FavoriteIcon_HoverOff	0.756836	0.000977	0.793945	0.019043	775	2	813	39	
-VanityPets_FavoriteIcon_HoverOn	0.715820	0.000977	0.752930	0.019043	733	2	771	39	
-VanityPets_FavoriteIcon_Off	0.674805	0.000977	0.711914	0.019043	691	2	729	39	
-VanityPets_FavoriteIcon_On	0.633789	0.000977	0.670898	0.019043	649	2	687	39	
-VanityPets_Frame	0.001953	0.000977	0.577148	0.586914	2	2	591	1202	
-VanityPets_IconFrame	0.581055	0.000977	0.629883	0.025391	595	2	645	52	
-VanityPets_ListItem_Frame	0.001953	0.588867	0.448242	0.619141	2	1206	459	1268	
-VanityPets_ListItem_Frame_Hover	0.452148	0.588867	0.898438	0.619141	463	1206	920	1268	

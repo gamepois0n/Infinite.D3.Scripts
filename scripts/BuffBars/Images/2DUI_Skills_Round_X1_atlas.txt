@@ -1,6 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-Barbarian_Avalanche_Round	0.500000	0.000000	0.625000	1.000000	256	0	320	64	
-DemonHunter_VengeanceIsMine_Round	0.000000	0.000000	0.125000	1.000000	0	0	64	64	
-Monk_Epiphany_Round	0.125000	0.000000	0.250000	1.000000	64	0	128	64	
-Witchdoctor_Piranhas_Round	0.250000	0.000000	0.375000	1.000000	128	0	192	64	
-Wizard_BlackHole_Round	0.375000	0.000000	0.500000	1.000000	192	0	256	64	

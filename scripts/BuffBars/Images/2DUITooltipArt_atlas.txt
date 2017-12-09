@@ -1,5 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-TooltipStripe	0.007813	0.343750	0.507813	0.843750	4	44	260	108	
-TooltipStripeThin	0.007813	0.031250	0.507813	0.281250	4	4	260	36	
-TooltipRuneFrame	0.656250	0.343750	0.773438	0.812500	336	44	396	104	
-TooltipSkillFrame	0.523438	0.343750	0.640625	0.812500	268	44	328	104	

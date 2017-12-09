@@ -1,3 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-p2_Dagger_norm_unique_temp	0.500000	0.000000	1.000000	1.000000	64	0	128	128	
-p2_Dagger_norm_unique_01_Icon	0.000000	0.000000	0.500000	1.000000	0	0	64	128	

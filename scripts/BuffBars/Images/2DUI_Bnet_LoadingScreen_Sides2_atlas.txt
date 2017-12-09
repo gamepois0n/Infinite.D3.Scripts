@@ -1,7 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-BattleNetLoadingScreen_Act4_EndCapLeft	0.665039	0.000977	0.795898	0.586914	1362	2	1630	1202	
-BattleNetLoadingScreen_Act4_EndCapRight	0.000977	0.000977	0.131836	0.586914	2	2	270	1202	
-BattleNetLoadingScreen_Act5_EndCapLeft	0.133789	0.000977	0.264648	0.586914	274	2	542	1202	
-BattleNetLoadingScreen_Act5_EndCapRight	0.266602	0.000977	0.397461	0.586914	546	2	814	1202	
-BattleNetLoadingScreen_Blizzcon2014_EndCapLeft	0.399414	0.000977	0.530273	0.586914	818	2	1086	1202	
-BattleNetLoadingScreen_Blizzcon2014_EndCapRight	0.532227	0.000977	0.663086	0.586914	1090	2	1358	1202	

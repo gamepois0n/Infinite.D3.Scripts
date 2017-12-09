@@ -1,6 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-TextWindowCorner_LowerLeft	0.484375	0.062500	0.609375	0.562500	124	4	156	36	
-TextWindowCorner_LowerRight	0.015625	0.062500	0.140625	0.562500	4	4	36	36	
-TextWindowCorner_UpperLeft	0.171875	0.062500	0.296875	0.562500	44	4	76	36	
-TextWindowCorner_UpperRight	0.328125	0.062500	0.453125	0.562500	84	4	116	36	
-TextWindowCorner_Fill	0.640625	0.062500	0.656250	0.125000	164	4	168	8	

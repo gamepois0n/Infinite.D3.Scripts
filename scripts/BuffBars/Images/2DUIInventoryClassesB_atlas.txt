@@ -1,5 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-Class_Background_Monk_Female	0.728516	0.007813	0.966797	0.839844	1492	4	1980	430	
-Class_Background_Monk_Male	0.001953	0.007813	0.240234	0.839844	4	4	492	430	
-Class_Background_Witchdoctor_Female	0.244141	0.007813	0.482422	0.839844	500	4	988	430	
-Class_Background_Witchdoctor_Male	0.486328	0.007813	0.724609	0.839844	996	4	1484	430	

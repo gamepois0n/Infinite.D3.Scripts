@@ -1,3 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-Blizzcon_Spark2	0.641113	0.000977	0.925781	0.302734	1313	2	1896	620	
-Blizzcon_Splash2	0.000977	0.000977	0.639160	0.536133	2	2	1309	1098	

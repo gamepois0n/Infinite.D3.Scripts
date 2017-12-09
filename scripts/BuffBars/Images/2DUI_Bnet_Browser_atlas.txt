@@ -1,4 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-BattleNet_Button_Close-Hover	0.351563	0.031250	0.507813	0.656250	90	2	130	42	
-BattleNet_Button_Close-Up	0.007813	0.031250	0.164063	0.656250	2	2	42	42	
-BattleNet_Button_Close-Down	0.179688	0.031250	0.335938	0.656250	46	2	86	42	

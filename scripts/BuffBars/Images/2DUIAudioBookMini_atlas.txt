@@ -1,2 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-AudioBookMiniPlayer	0.015625	0.031250	0.746094	0.656250	4	4	191	84	

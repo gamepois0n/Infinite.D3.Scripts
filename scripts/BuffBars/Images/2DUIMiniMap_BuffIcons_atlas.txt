@@ -1,4 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-BuffMinimap_Icon_CowLevel_Up	0.531250	0.125000	0.718750	0.875000	68	4	92	28	
-BuffMinimap_Icon_Find_Up	0.031250	0.125000	0.218750	0.875000	4	4	28	28	
-BuffMinimap_Icon_Multiplayer_Up	0.281250	0.125000	0.468750	0.875000	36	4	60	28	

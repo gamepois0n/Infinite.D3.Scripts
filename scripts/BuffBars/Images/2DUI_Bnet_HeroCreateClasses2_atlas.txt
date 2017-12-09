@@ -1,4 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-BattleNetHeroCreate_DetailsWitchDoctor	0.537109	0.000977	0.803223	0.526855	1100	2	1645	1079	
-BattleNetHeroCreate_DetailsWizard	0.000977	0.000977	0.267090	0.526855	2	2	547	1079	
-BattleNetHeroCreate_DetailsCrusader	0.269043	0.000977	0.535156	0.526855	551	2	1096	1079	

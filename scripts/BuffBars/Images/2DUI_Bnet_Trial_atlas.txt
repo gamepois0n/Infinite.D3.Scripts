@@ -1,3 +1,0 @@
-Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
-BattleNetTrial_Background	0.000977	0.000977	0.671875	0.560547	1	1	688	574	
-BattleNetTrial_Banner	0.000977	0.562500	0.353516	0.939453	1	576	362	962	
