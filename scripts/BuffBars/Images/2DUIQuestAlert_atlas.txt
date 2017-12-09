@@ -1,0 +1,4 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+QuestAlertButton_Mouseover	0.578125	0.031250	0.828125	0.531250	148	4	212	68	
+QuestAlertButton_Normal	0.015625	0.031250	0.265625	0.531250	4	4	68	68	
+QuestAlertButton_Pushed	0.296875	0.031250	0.546875	0.531250	76	4	140	68	

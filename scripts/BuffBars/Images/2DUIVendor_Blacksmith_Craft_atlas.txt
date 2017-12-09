@@ -1,0 +1,4 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+VendorBase_Blacksmith_Craft2	0.015625	0.007813	0.740234	0.771484	8	8	379	790	
+Vendor_Craft_RecipeListSelect	0.015625	0.831055	0.572266	0.859375	8	851	293	880	
+Vendor_Craft_RecipeList_ProgressBar	0.015625	0.787109	0.572266	0.815430	8	806	293	835	

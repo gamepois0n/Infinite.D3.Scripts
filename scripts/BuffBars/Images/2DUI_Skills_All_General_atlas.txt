@@ -1,0 +1,17 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+General_Attack_Bow_Inactive	0.001953	0.031250	0.033203	0.531250	4	4	68	68	
+General_Attack_Bow_Mouseover	0.037109	0.031250	0.068359	0.531250	76	4	140	68	
+General_Attack_Bow_Normal	0.072266	0.031250	0.103516	0.531250	148	4	212	68	
+General_Attack_Bow_Pushed	0.107422	0.031250	0.138672	0.531250	220	4	284	68	
+General_Attack_Hand_Inactive	0.142578	0.031250	0.173828	0.531250	292	4	356	68	
+General_Attack_Hand_Mouseover	0.177734	0.031250	0.208984	0.531250	364	4	428	68	
+General_Attack_Hand_Normal	0.212891	0.031250	0.244141	0.531250	436	4	500	68	
+General_Attack_Hand_Pushed	0.248047	0.031250	0.279297	0.531250	508	4	572	68	
+General_Attack_Melee_Inactive	0.283203	0.031250	0.314453	0.531250	580	4	644	68	
+General_Attack_Melee_Mouseover	0.318359	0.031250	0.349609	0.531250	652	4	716	68	
+General_Attack_Melee_Normal	0.353516	0.031250	0.384766	0.531250	724	4	788	68	
+General_Attack_Melee_Pushed	0.388672	0.031250	0.419922	0.531250	796	4	860	68	
+General_Attack_Wand_Inactive	0.423828	0.031250	0.455078	0.531250	868	4	932	68	
+General_Attack_Wand_Mouseover	0.458984	0.031250	0.490234	0.531250	940	4	1004	68	
+General_Attack_Wand_Normal	0.494141	0.031250	0.525391	0.531250	1012	4	1076	68	
+General_Attack_Wand_Pushed	0.529297	0.031250	0.560547	0.531250	1084	4	1148	68	

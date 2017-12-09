@@ -1,0 +1,5 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetLogo_BattleNet	0.572266	0.000977	0.671875	0.024414	1172	2	1376	50	
+BattleNetLogo_Blizzard	0.572266	0.026367	0.635254	0.060059	1172	54	1301	123	
+BattleNetLogo_Diablo3	0.000977	0.359863	0.570313	0.716797	2	737	1168	1468	
+BattleNetLogo_Diablo3_x1	0.000977	0.000977	0.570313	0.357910	2	2	1168	733	

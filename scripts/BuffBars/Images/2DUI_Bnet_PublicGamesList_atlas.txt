@@ -1,0 +1,5 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetPublicGames_Background	0.000977	0.340332	0.386719	0.677734	2	697	792	1388	
+BattleNetPublicGames_DifficultyMenuBg	0.388672	0.340332	0.664063	0.432617	796	697	1360	886	
+BattleNetPublicGames_QuestDetails	0.388672	0.000977	0.774414	0.338379	796	2	1586	693	
+BattleNetPublicGames_LockedDetails	0.000977	0.000977	0.386719	0.338379	2	2	792	693	

@@ -1,0 +1,5 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetHeroDetails_Frame	0.531738	0.000977	0.748535	0.685547	1089	1	1533	702	
+BattleNetHeroDetails_CloseButton	0.749512	0.000977	0.771973	0.045898	1535	1	1581	47	
+BattleNetHeroDetails_SC2	0.266113	0.000977	0.530762	0.722656	545	1	1087	740	
+BattleNetHeroDetails_WoW	0.000488	0.000977	0.265137	0.722656	1	1	543	740	

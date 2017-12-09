@@ -1,0 +1,10 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+Artisan_ButtonChecked_Inactive	0.445313	0.914063	0.890625	0.982422	228	936	456	1006	
+Artisan_ButtonChecked_Mouseover	0.000000	0.708984	0.445313	0.777344	0	726	228	796	
+Artisan_ButtonChecked_Normal	0.445313	0.708984	0.890625	0.777344	228	726	456	796	
+Artisan_ButtonChecked_Pushed	0.000000	0.777344	0.445313	0.845703	0	796	228	866	
+Artisan_ButtonRandom_Inactive	0.445313	0.777344	0.890625	0.845703	228	796	456	866	
+Artisan_ButtonRandom_Mouseover	0.000000	0.845703	0.445313	0.914063	0	866	228	936	
+Artisan_ButtonRandom_Normal	0.445313	0.845703	0.890625	0.914063	228	866	456	936	
+Artisan_ButtonRandom_Pushed	0.000000	0.914063	0.445313	0.982422	0	936	228	1006	
+Artisan_Craft_Base2	0.000000	0.000000	0.957031	0.708984	0	0	490	726	

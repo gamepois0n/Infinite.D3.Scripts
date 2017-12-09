@@ -1,0 +1,7 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+Class_Background_DemonHunter_Female	0.244141	0.427734	0.482422	0.843750	500	438	988	864	
+Class_Background_DemonHunter_Male	0.001953	0.003906	0.240234	0.419922	4	4	492	430	
+Class_Background_Crusader_Female	0.244141	0.003906	0.482422	0.419922	500	4	988	430	
+Class_Background_Crusader_Male	0.486328	0.003906	0.724609	0.419922	996	4	1484	430	
+Class_Background_Necromancer_Female	0.728516	0.003906	0.966797	0.419922	1492	4	1980	430	
+Class_Background_Necromancer_Male	0.001953	0.427734	0.240234	0.843750	4	438	492	864	

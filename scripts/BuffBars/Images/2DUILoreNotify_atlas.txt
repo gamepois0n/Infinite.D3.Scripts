@@ -1,0 +1,4 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+LoreNotifyButton_Normal	0.384766	0.031250	0.567383	0.656250	394	4	581	84	
+LoreNotifyButton_Mouseover	0.003906	0.031250	0.186523	0.656250	4	4	191	84	
+LoreNotifyButton_Pushed	0.194336	0.031250	0.376953	0.656250	199	4	386	84	

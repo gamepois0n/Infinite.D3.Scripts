@@ -1,0 +1,12 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+TieredRifts_UpgradeGem_Off_p1	0.232422	0.633789	0.441406	0.859375	238	649	452	880	
+TieredRifts_UpgradeGem_Over_p1	0.007813	0.151367	0.216797	0.376953	8	155	222	386	
+TieredRifts_UpgradeGem_Down_p1	0.232422	0.151367	0.441406	0.376953	238	155	452	386	
+TieredRifts_UpgradeGem_Selected_p1	0.457031	0.151367	0.666016	0.376953	468	155	682	386	
+TieredRifts_UpgradeGem_Disabled_p1	0.681641	0.151367	0.890625	0.376953	698	155	912	386	
+TieredRifts_UpgradeKeystone_Off_p1	0.007813	0.392578	0.216797	0.618164	8	402	222	633	
+TieredRifts_UpgradeKeystone_Over_p1	0.232422	0.392578	0.441406	0.618164	238	402	452	633	
+TieredRifts_UpgradeKeystone_Down_p1	0.457031	0.392578	0.666016	0.618164	468	402	682	633	
+TieredRifts_UpgradeKeystone_Disabled_p1	0.681641	0.392578	0.890625	0.618164	698	402	912	633	
+TieredRifts_UpgradeKeystone_Selected_p1	0.007813	0.633789	0.216797	0.859375	8	649	222	880	
+TieredRifts_UpgradeTextGlow_p1	0.007813	0.007813	0.463867	0.135742	8	8	475	139	

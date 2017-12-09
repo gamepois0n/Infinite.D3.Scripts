@@ -1,0 +1,13 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetQuestIcons_Act_1_Quest_1_Completed	0.000977	0.000977	0.227539	0.263672	1	1	233	270	
+BattleNetQuestIcons_Act_1_Quest_1_Incomplete	0.229492	0.000977	0.456055	0.263672	235	1	467	270	
+BattleNetQuestIcons_Act_1_Quest_2_Completed	0.458008	0.000977	0.684570	0.263672	469	1	701	270	
+BattleNetQuestIcons_Act_1_Quest_2_Incomplete	0.686523	0.000977	0.913086	0.263672	703	1	935	270	
+BattleNetQuestIcons_Act_1_Quest_3_Completed	0.000977	0.265625	0.227539	0.528320	1	272	233	541	
+BattleNetQuestIcons_Act_1_Quest_3_Incomplete	0.229492	0.265625	0.456055	0.528320	235	272	467	541	
+BattleNetQuestIcons_Act_1_Quest_4_Completed	0.458008	0.265625	0.684570	0.528320	469	272	701	541	
+BattleNetQuestIcons_Act_1_Quest_4_Incomplete	0.686523	0.265625	0.913086	0.528320	703	272	935	541	
+BattleNetQuestIcons_Act_1_Quest_2_Completed_QuestSelect	0.000977	0.530273	0.227539	0.792969	1	543	233	812	
+BattleNetQuestIcons_Act_1_Quest_2_Incomplete_QuestSelect	0.229492	0.530273	0.456055	0.792969	235	543	467	812	
+BattleNetQuestIcons_Act_1_Quest_4_Completed_QuestSelect	0.458008	0.530273	0.684570	0.792969	469	543	701	812	
+BattleNetQuestIcons_Act_1_Quest_4_Incomplete_QuestSelect	0.686523	0.530273	0.913086	0.792969	703	543	935	812	

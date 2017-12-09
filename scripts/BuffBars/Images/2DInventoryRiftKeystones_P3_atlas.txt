@@ -1,0 +1,2 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+RiftKeystone_pentagram	0.000000	0.000000	1.000000	1.000000	0	0	64	64	

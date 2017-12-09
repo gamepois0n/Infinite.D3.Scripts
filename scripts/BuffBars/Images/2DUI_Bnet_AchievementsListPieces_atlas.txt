@@ -1,0 +1,17 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetAchievements_IconListIconBackground	0.347656	0.501953	0.497070	0.800781	356	257	509	410	
+BattleNetAchievements_ListIconBackground	0.499023	0.501953	0.630859	0.765625	511	257	646	392	
+BattleNetAchievements_ListIconCompare	0.000977	0.501953	0.345703	0.888672	1	257	354	455	
+BattleNetAchievements_ListMetaEarned	0.884766	0.275391	0.902344	0.318359	906	141	924	163	
+BattleNetAchievements_ListMetaUnearned	0.904297	0.275391	0.921875	0.318359	926	141	944	163	
+BattleNetAchievements_ListRewardContainer	0.000977	0.001953	0.848633	0.431641	1	1	869	221	
+BattleNetAchievements_ListRewardIcon	0.850586	0.275391	0.882813	0.341797	871	141	904	175	
+BattleNetAchievements_ListRewardSlot	0.896484	0.501953	0.976563	0.662109	918	257	1000	339	
+BattleNetAchievements_ListScoreRibbon	0.632813	0.501953	0.724609	0.753906	648	257	742	386	
+BattleNetAchievements_ListScoreRibbonEarned	0.726563	0.501953	0.818359	0.753906	744	257	838	386	
+BattleNetAchievements_ListProgressBar	0.000977	0.435547	0.496094	0.498047	1	223	508	255	
+BattleNetAchievements_ListProgressFill	0.498047	0.435547	0.993164	0.498047	510	223	1017	255	
+BattleNetAchievements_ListSeriesItem	0.820313	0.501953	0.894531	0.716797	840	257	916	367	
+BattleNetAchievements_CollapseIcon	0.940430	0.275391	0.955078	0.304688	963	141	978	156	
+BattleNetAchievements_ExpandIcon	0.923828	0.275391	0.938477	0.304688	946	141	961	156	
+BattleNetAchievements_ListIconBackgroundCompare	0.850586	0.001953	0.985352	0.271484	871	1	1009	139	

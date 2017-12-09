@@ -1,0 +1,5 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+General_Attack_Bow_Round	0.429688	0.031250	0.554688	0.531250	220	4	284	68	
+General_Attack_Hand_Round	0.007813	0.031250	0.132813	0.531250	4	4	68	68	
+General_Attack_Melee_Round	0.148438	0.031250	0.273438	0.531250	76	4	140	68	
+General_Attack_Wand_Round	0.289063	0.031250	0.414063	0.531250	148	4	212	68	

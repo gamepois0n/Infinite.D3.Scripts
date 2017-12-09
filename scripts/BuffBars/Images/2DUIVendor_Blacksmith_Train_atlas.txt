@@ -1,0 +1,6 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+VendorBase_Blacksmith_train	0.015625	0.007813	0.740234	0.771484	8	8	379	790	
+Vendor_Train_Meter_Base	0.015625	0.787109	0.662109	0.818359	8	806	339	838	
+Vendor_Train_MeterFill_Empty	0.015625	0.866211	0.523438	0.882813	8	887	268	904	
+Vendor_Train_MeterFill_Full	0.015625	0.833984	0.523438	0.850586	8	854	268	871	
+Vendor_Train_SmallSlot	0.771484	0.007813	0.916016	0.080078	395	8	469	82	

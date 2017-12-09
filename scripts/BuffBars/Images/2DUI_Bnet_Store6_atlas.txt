@@ -1,0 +1,15 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetStore_FeaturedMural_01	0.499023	0.000000	0.989258	0.190918	1022	0	2026	391	
+BattleNetStore_LargeStoneTexture	0.000000	0.000000	0.499023	0.392578	0	0	1022	804	
+BattleNetStore_FeaturedFrameLarge_Up	0.499023	0.190918	0.989258	0.382324	1022	391	2026	783	
+BattleNetStore_FeaturedFrameLarge_Over	0.000000	0.392578	0.490234	0.583984	0	804	1004	1196	
+BattleNetStore_FeaturedFrameLarge_Down	0.490234	0.392578	0.980469	0.583984	1004	804	2008	1196	
+BattleNetStore_FeaturedFrameLarge_Mask_Up	0.000000	0.583984	0.490234	0.775391	0	1196	1004	1588	
+BattleNetStore_FeaturedFrameLarge_Mask_Over	0.490234	0.583984	0.980469	0.775391	1004	1196	2008	1588	
+BattleNetStore_FeaturedFrameLarge_Mask_Down	0.000000	0.775391	0.490234	0.966797	0	1588	1004	1980	
+BattleNetStore_BannerFade	0.490234	0.876465	0.695313	0.917969	1004	1795	1424	1880	
+BattleNetStore_PlatinumBalance_Button_Default	0.490234	0.775391	0.719238	0.809082	1004	1588	1473	1657	
+BattleNetStore_PlatinumBalance_Button_Over	0.719238	0.775391	0.948242	0.809082	1473	1588	1942	1657	
+BattleNetStore_PlatinumBalance_Button_Selected	0.490234	0.809082	0.719238	0.842773	1004	1657	1473	1726	
+BattleNetStore_PlatinumBalance_Button_Frame	0.719238	0.809082	0.948242	0.842773	1473	1657	1942	1726	
+BattleNetStore_PlatinumBalance_Flash	0.490234	0.842773	0.719238	0.876465	1004	1726	1473	1795	

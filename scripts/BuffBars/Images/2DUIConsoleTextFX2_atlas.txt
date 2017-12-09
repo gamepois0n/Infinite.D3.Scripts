@@ -1,0 +1,8 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+Console_TextFX_BigStamp_MassacreResolved	0.000977	0.513672	0.286621	0.765625	2	526	587	784	
+Console_TextFX_BigStamp_DestructionResolved	0.000977	0.001953	0.286621	0.253906	2	2	587	260	
+Console_TextFX_BigStamp_UseEnvironmentKill	0.288574	0.001953	0.574219	0.253906	591	2	1176	260	
+Console_TextFX_BigStamp_Destruction	0.576172	0.001953	0.861816	0.253906	1180	2	1765	260	
+PC_TextFX_BigStamp_MassacreResolved	0.000977	0.257813	0.286621	0.509766	2	264	587	522	
+PC_TextFX_BigStamp_DestructionResolved	0.288574	0.257813	0.574219	0.509766	591	264	1176	522	
+PC_TextFX_BigStamp_UseEnvironmentKill	0.576172	0.257813	0.861816	0.509766	1180	264	1765	522	

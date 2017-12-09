@@ -1,0 +1,2 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+Credits_4x3_x1	0.000000	0.000000	0.781250	0.585938	0	0	1600	1200	

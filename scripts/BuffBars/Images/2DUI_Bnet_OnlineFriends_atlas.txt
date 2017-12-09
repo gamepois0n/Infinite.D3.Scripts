@@ -1,0 +1,16 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetOnlineFriends_IconMouse	0.796875	0.145508	0.828125	0.184570	816	149	848	189	
+BattleNetOnlineFriends_ListBackground	0.001953	0.001953	0.365234	0.587891	2	2	374	602	
+BattleNetOnlineFriends_ListFooter	0.705078	0.078125	0.915039	0.098633	722	80	937	101	
+BattleNetOnlineFriends_Tooltip	0.369141	0.001953	0.701172	0.295898	378	2	718	303	
+BattleNetOnlineFriends_ButtonArrowLeftUp	0.705078	0.102539	0.747070	0.141602	722	105	765	145	
+BattleNetOnlineFriends_ButtonArrowLeftOver	0.705078	0.145508	0.747070	0.184570	722	149	765	189	
+BattleNetOnlineFriends_ButtonArrowLeftDown	0.934570	0.102539	0.976563	0.141602	957	105	1000	145	
+BattleNetOnlineFriends_ButtonArrowLeftDisabled	0.750977	0.145508	0.792969	0.184570	769	149	812	189	
+BattleNetOnlineFriends_ButtonArrowRightUp	0.750977	0.102539	0.792969	0.141602	769	105	812	145	
+BattleNetOnlineFriends_ButtonArrowRightOver	0.796875	0.102539	0.838867	0.141602	816	105	859	145	
+BattleNetOnlineFriends_ButtonArrowRightDown	0.842773	0.102539	0.884766	0.141602	863	105	906	145	
+BattleNetOnlineFriends_ButtonArrowRightDisabled	0.888672	0.102539	0.930664	0.141602	910	105	953	145	
+BattleNetOnlineFriends_PartySlots	0.369141	0.299805	0.682617	0.379883	378	307	699	389	
+BattleNet_QuickJoinUp	0.705078	0.040039	0.968750	0.074219	722	41	992	76	
+BattleNet_QuickJoinOver	0.705078	0.001953	0.968750	0.036133	722	2	992	37	

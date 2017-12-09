@@ -1,0 +1,5 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetQuestSelection_ActI_Bg	0.387207	0.338867	0.772949	0.676270	793	694	1583	1385	
+BattleNetQuestSelection_ActII_Bg	0.000488	0.000488	0.386230	0.337891	1	1	791	692	
+BattleNetQuestSelection_ActIII_Bg	0.387207	0.000488	0.772949	0.337891	793	1	1583	692	
+BattleNetQuestSelection_ActIV_Bg	0.000488	0.338867	0.386230	0.676270	1	694	791	1385	

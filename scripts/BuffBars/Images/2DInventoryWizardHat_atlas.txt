@@ -1,0 +1,8 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+WizardHat_norm_base_01_icon	0.750000	0.000000	0.875000	1.000000	384	0	448	128	
+WizardHat_norm_base_02_icon	0.000000	0.000000	0.125000	1.000000	0	0	64	128	
+WizardHat_norm_base_03_icon	0.125000	0.000000	0.250000	1.000000	64	0	128	128	
+WizardHat_norm_base_04_icon	0.250000	0.000000	0.375000	1.000000	128	0	192	128	
+WizardHat_norm_unique_03_icon	0.375000	0.000000	0.500000	1.000000	192	0	256	128	
+WizardHat_norm_unique_04_icon	0.500000	0.000000	0.625000	1.000000	256	0	320	128	
+WizardHat_norm_unique_05_icon	0.625000	0.000000	0.750000	1.000000	320	0	384	128	

@@ -1,0 +1,5 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+Credits_4x3	0.000977	0.000977	0.782227	0.586914	2	2	1602	1202	
+Credits_Divider	0.000977	0.588867	0.232422	0.646973	2	1206	476	1325	
+Credits_FaderTop	0.795898	0.000977	0.805664	0.040039	1630	2	1650	82	
+Credits_FaderBottom	0.784180	0.000977	0.793945	0.040039	1606	2	1626	82	

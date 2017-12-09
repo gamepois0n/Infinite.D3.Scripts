@@ -1,0 +1,4 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetHeader_BG_4x3	0.000488	0.003906	0.781738	0.269531	1	1	1601	69	
+BattleNetHeader_BG_EndCapLeft	0.000488	0.277344	0.130859	0.542969	1	71	268	139	
+BattleNetHeader_BG_EndCapRight	0.782715	0.003906	0.913086	0.269531	1603	1	1870	69	

@@ -1,0 +1,9 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+InventoryGrid_BaseCraftingBtn	0.003906	0.001953	0.579102	0.587891	4	4	593	1204	
+CraftingInventoryDetailBG	0.586914	0.001953	0.955078	0.419922	601	4	978	860	
+CraftingInventoryBreak	0.586914	0.423828	0.910156	0.424805	601	868	932	870	
+Inventory_CraftingBtn_up114x33	0.586914	0.448730	0.698242	0.464844	601	919	715	952	
+Inventory_CraftingBtn_over114x33	0.586914	0.428711	0.698242	0.444824	601	878	715	911	
+Inventory_CraftingBtn_down114x33	0.706055	0.428711	0.817383	0.444824	723	878	837	911	
+CraftingInventory_AnvilIcon_32x24	0.962891	0.001953	0.994141	0.013672	986	4	1018	28	
+Inventory_CraftingBtn_NewOverlay114x33	0.825195	0.428711	0.936523	0.444824	845	878	959	911	

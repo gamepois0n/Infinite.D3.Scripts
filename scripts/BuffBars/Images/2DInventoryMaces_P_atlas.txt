@@ -1,0 +1,4 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+p1_Mace_norm_promo_01_icon	0.500000	0.000000	0.750000	1.000000	128	0	192	128	
+p4_Mace_norm_unique_01_icon	0.000000	0.000000	0.250000	1.000000	0	0	64	128	
+p4_Mace_norm_unique_02_icon	0.250000	0.000000	0.500000	1.000000	64	0	128	128	

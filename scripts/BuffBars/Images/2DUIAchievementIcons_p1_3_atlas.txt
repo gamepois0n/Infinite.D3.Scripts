@@ -1,0 +1,8 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+p1_Seasonal_Hardcore_WorldLore_ActIII	0.762695	0.003906	0.887695	0.503906	1562	2	1818	258	
+p1_Seasonal_WorldLore_ActIV	0.000977	0.003906	0.125977	0.503906	2	2	258	258	
+p1_Seasonal_Hardcore_WorldLore_ActIV	0.127930	0.003906	0.252930	0.503906	262	2	518	258	
+p1_Seasonal_WorldLore_ActV	0.254883	0.003906	0.379883	0.503906	522	2	778	258	
+p1_Seasonal_Hardcore_WorldLore_ActV	0.381836	0.003906	0.506836	0.503906	782	2	1038	258	
+p1_Season_pants_boots_transmog	0.508789	0.003906	0.633789	0.503906	1042	2	1298	258	
+p1_Season_chest_gloves_transmog	0.635742	0.003906	0.760742	0.503906	1302	2	1558	258	

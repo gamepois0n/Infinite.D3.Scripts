@@ -1,0 +1,9 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetQuestIcons_Act_5_Quest_1_Completed	0.807617	0.003906	0.920898	0.529297	1654	2	1886	271	
+BattleNetQuestIcons_Act_5_Quest_2_Completed	0.000977	0.003906	0.114258	0.529297	2	2	234	271	
+BattleNetQuestIcons_Act_5_Quest_3_Completed	0.116211	0.003906	0.229492	0.529297	238	2	470	271	
+BattleNetQuestIcons_Act_5_Quest_4_Completed	0.231445	0.003906	0.344727	0.529297	474	2	706	271	
+BattleNetQuestIcons_Act_5_Quest_5_Completed	0.346680	0.003906	0.459961	0.529297	710	2	942	271	
+BattleNetQuestIcons_Act_5_Quest_6_Completed	0.461914	0.003906	0.575195	0.529297	946	2	1178	271	
+BattleNetQuestIcons_Act_5_Quest_7_Completed	0.577148	0.003906	0.690430	0.529297	1182	2	1414	271	
+BattleNetQuestIcons_Act_5_Quest_8_Completed	0.692383	0.003906	0.805664	0.529297	1418	2	1650	271	

@@ -1,0 +1,8 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+icon_pattern_crack01_alt_01_Beta	0.000000	0.601563	0.300781	0.902344	0	154	77	231	
+icon_pattern_crack01_main_Beta	0.000000	0.000000	0.300781	0.300781	0	0	77	77	
+icon_pattern_crisscross01_main_Beta	0.300781	0.000000	0.601563	0.300781	77	0	154	77	
+icon_pattern_cross_main_Beta	0.601563	0.000000	0.902344	0.300781	154	0	231	77	
+icon_pattern_empty_main_Beta	0.000000	0.300781	0.300781	0.601563	0	77	77	154	
+icon_pattern_straight01_alt_01_Beta	0.300781	0.300781	0.601563	0.601563	77	77	154	154	
+icon_pattern_straight01_main_Beta	0.601563	0.300781	0.902344	0.601563	154	77	231	154	

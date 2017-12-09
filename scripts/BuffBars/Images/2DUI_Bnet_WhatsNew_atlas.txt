@@ -1,0 +1,5 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetWhatsNew_Reaper	0.000977	0.395508	0.675293	0.788086	2	810	1383	1614	
+BattleNetWhatsNew_Reaper2	0.000977	0.000977	0.675293	0.393555	2	2	1383	806	
+BattleNetWhatsNew_ButtonUp	0.677246	0.077148	0.905762	0.151367	1387	158	1855	310	
+BattleNetWhatsNew_ButtonOver	0.677246	0.000977	0.905762	0.075195	1387	2	1855	154	

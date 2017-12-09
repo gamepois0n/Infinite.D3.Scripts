@@ -1,0 +1,3 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetAchievements_Background	0.000488	0.000488	0.673828	0.392090	1	1	1380	803	
+BattleNetAchievements_RecentTabBackground	0.000488	0.393066	0.671387	0.797852	1	805	1375	1634	

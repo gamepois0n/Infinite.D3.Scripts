@@ -1,0 +1,7 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+EquipmentManager_KanaiPowerSlot_Empty	0.003906	0.343750	0.205078	0.980469	2	88	105	251	
+EquipmentManager_PotionSlot_Empty	0.212891	0.343750	0.451172	0.804688	109	88	231	206	
+EquipmentManager_PotionTitleBg	0.568359	0.175781	0.902344	0.328125	291	45	462	84	
+EquipmentManager_SkillsTitleBg	0.003906	0.007813	0.890625	0.160156	2	2	456	41	
+EquipmentManager_KanaiPowerTitleBg	0.003906	0.175781	0.560547	0.328125	2	45	287	84	
+EquipmentManager_PotionSlot_Default	0.458984	0.343750	0.583984	0.593750	235	88	299	152	

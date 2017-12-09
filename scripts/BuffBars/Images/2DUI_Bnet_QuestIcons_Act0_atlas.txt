@@ -1,0 +1,6 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetQuestIcons_Act_0_Quest_0_Completed	0.007813	0.534180	0.914063	0.665527	2	1094	234	1363	
+BattleNetQuestIcons_Event_Generic	0.007813	0.000977	0.914063	0.132324	2	2	234	271	
+BattleNetQuestIcons_Trial_Generic	0.007813	0.134277	0.914063	0.265625	2	275	234	544	
+BattleNetQuestIcons_Bounty_Generic	0.007813	0.267578	0.914063	0.398926	2	548	234	817	
+BattleNetQuestIcons_Platinum	0.007813	0.400879	0.914063	0.532227	2	821	234	1090	

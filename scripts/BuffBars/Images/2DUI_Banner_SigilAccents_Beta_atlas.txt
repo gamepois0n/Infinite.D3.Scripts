@@ -1,0 +1,9 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+icon_accent_axes_Beta	0.300781	0.601563	0.601563	0.902344	77	154	154	231	
+icon_accent_crossBones_Beta	0.000000	0.000000	0.300781	0.300781	0	0	77	77	
+icon_accent_curve_Beta	0.300781	0.000000	0.601563	0.300781	77	0	154	77	
+icon_accent_empty_Beta	0.601563	0.000000	0.902344	0.300781	154	0	231	77	
+icon_accent_swords_Beta	0.000000	0.300781	0.300781	0.601563	0	77	77	154	
+icon_accent_swords2_Beta	0.300781	0.300781	0.601563	0.601563	77	77	154	154	
+icon_accent_swords3_Beta	0.601563	0.300781	0.902344	0.601563	154	77	231	154	
+icon_accent_wings_Beta	0.000000	0.601563	0.300781	0.902344	0	154	77	231	

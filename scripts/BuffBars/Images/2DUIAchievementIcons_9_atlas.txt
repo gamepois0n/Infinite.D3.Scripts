@@ -1,0 +1,6 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+Feat_PlayedBeta	0.500000	0.000000	0.625000	1.000000	1024	0	1280	256	
+Feat_MoP_Collectors_edition	0.000000	0.000000	0.125000	1.000000	0	0	256	256	
+Feat_Hots_Collectors_edition	0.125000	0.000000	0.250000	1.000000	256	0	512	256	
+Feat_BC2013	0.250000	0.000000	0.375000	1.000000	512	0	768	256	
+p4_Feat_Legion_Collectors_edition	0.375000	0.000000	0.500000	1.000000	768	0	1024	256	

@@ -1,0 +1,9 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetWhatsNew_Cards1	0.000977	0.340332	0.656738	0.524902	2	697	1345	1075	
+BattleNetWhatsNew_Cards2	0.000977	0.000977	0.675293	0.338379	2	2	1383	693	
+BattleNetWhatsNew_CampaignButton_Up	0.286133	0.723145	0.569336	0.917480	586	1481	1166	1879	
+BattleNetWhatsNew_CampaignButton_Over	0.677246	0.000977	0.960449	0.195313	1387	2	1967	400	
+BattleNetWhatsNew_CampaignButton_Selected	0.000977	0.526855	0.284180	0.721191	2	1079	582	1477	
+BattleNetWhatsNew_AdventureButton_Up	0.286133	0.526855	0.569336	0.721191	586	1079	1166	1477	
+BattleNetWhatsNew_AdventureButton_Over	0.571289	0.526855	0.854492	0.721191	1170	1079	1750	1477	
+BattleNetWhatsNew_AdventureButton_Selected	0.000977	0.723145	0.284180	0.917480	2	1481	582	1879	

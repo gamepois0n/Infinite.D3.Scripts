@@ -1,0 +1,7 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+Artisan_Jeweler_ModifyItem	0.501953	0.007813	0.980469	0.716797	514	8	1004	734	
+Artisan_Jeweler_GemCombine	0.007813	0.007813	0.486328	0.716797	8	8	498	734	
+Artisan_Jeweler_GemSymbol01	0.179688	0.732422	0.250000	0.820313	184	750	256	840	
+Artisan_Jeweler_GemSymbol02	0.007813	0.732422	0.078125	0.820313	8	750	80	840	
+Artisan_Jeweler_GemSymbol03	0.093750	0.732422	0.164063	0.820313	96	750	168	840	
+Artisan_Jeweler_GemSocketGlow	0.265625	0.732422	0.341797	0.808594	272	750	350	828	

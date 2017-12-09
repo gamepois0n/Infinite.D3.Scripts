@@ -1,0 +1,5 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+SkillsPane_Paragon_Base	0.000488	0.000977	0.586426	0.977539	1	1	1201	1001	
+SkillsPane_Paragon_StatBase	0.587402	0.000977	0.969727	0.098633	1203	1	1986	101	
+SkillsPane_Paragon_BannerActive	0.657227	0.100586	0.726074	0.279297	1346	103	1487	286	
+SkillsPane_Paragon_BannerInactive	0.587402	0.100586	0.656250	0.279297	1203	103	1344	286	

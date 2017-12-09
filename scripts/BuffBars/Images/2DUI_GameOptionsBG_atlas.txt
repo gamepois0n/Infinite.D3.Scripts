@@ -1,0 +1,3 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+GameOptions_Background	0.000488	0.000977	0.474121	0.675781	1	1	971	692	
+GameOptions_BackgroundKeyBindings	0.475098	0.000977	0.928711	0.632813	973	1	1902	648	

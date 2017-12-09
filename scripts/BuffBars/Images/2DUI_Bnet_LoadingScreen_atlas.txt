@@ -1,0 +1,2 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetLoadingScreen_Arrow	0.007813	0.007813	0.859375	0.859375	1	1	110	110	

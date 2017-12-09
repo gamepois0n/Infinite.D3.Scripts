@@ -1,0 +1,2 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+Combat_Punch_Diablo_Round	0.000000	0.000000	1.000000	1.000000	0	0	256	256	

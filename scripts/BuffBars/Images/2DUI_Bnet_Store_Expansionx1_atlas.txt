@@ -1,0 +1,8 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetStore_Expansionx1_Deluxe_ViewSpaceBG	0.334961	0.574219	0.666992	0.858887	686	1176	1366	1759	
+BattleNetStore_Expansionx1_Deluxe_D3HelmTransmog	0.000977	0.000977	0.333008	0.285645	2	2	682	585	
+BattleNetStore_Expansionx1_Deluxe_D3WeaponTransmog	0.334961	0.000977	0.666992	0.285645	686	2	1366	585	
+BattleNetStore_Expansionx1_Deluxe_D3SpectralHound	0.000977	0.287598	0.333008	0.572266	2	589	682	1172	
+BattleNetStore_Expansionx1_Deluxe_SC2Portraits	0.334961	0.287598	0.666992	0.572266	686	589	1366	1172	
+BattleNetStore_Expansionx1_Deluxe_WoWGoblinPet	0.000977	0.574219	0.333008	0.858887	2	1176	682	1759	
+BattleNetStore_Expansionx1_DeluxeBullets	0.668945	0.000977	0.672852	0.084961	1370	2	1378	174	

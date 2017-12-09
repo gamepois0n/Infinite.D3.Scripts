@@ -1,0 +1,5 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+Helm_norm_set_01_icon	0.750000	0.000000	1.000000	1.000000	192	0	256	128	
+Helm_norm_set_02_icon	0.000000	0.000000	0.250000	1.000000	0	0	64	128	
+Helm_norm_set_03_icon	0.250000	0.000000	0.500000	1.000000	64	0	128	128	
+Helm_inferno_set_01_icon	0.500000	0.000000	0.750000	1.000000	128	0	192	128	

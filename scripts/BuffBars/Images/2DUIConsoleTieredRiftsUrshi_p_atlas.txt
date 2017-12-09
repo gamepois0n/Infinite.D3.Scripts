@@ -1,0 +1,12 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+Console_MenuBase_CenterSolo_Long_MenuBlinker_p1	0.614258	0.001953	0.950195	0.040039	629	2	973	41	
+Console_MenuBase_CenterSolo_Long_p1	0.001953	0.001953	0.362305	0.568359	2	2	371	582	
+Console_TieredRifts_GemKeystoneSelector_p1	0.366211	0.454102	0.514648	0.553711	375	465	527	567	
+Console_TieredRifts_UrshiPainting_p1	0.001953	0.572266	0.261719	0.862305	2	586	268	883	
+Console_TieredRifts_RingBase_p1	0.614258	0.043945	0.928711	0.357422	629	45	951	366	
+Console_TieredRifts_GemItem_p1	0.518555	0.454102	0.657227	0.543945	531	465	673	557	
+Console_TieredRifts_KeystoneItem_p1	0.661133	0.454102	0.799805	0.543945	677	465	819	557	
+Console_TieredRifts_InnerRingFade_p1	0.265625	0.572266	0.529297	0.835938	272	586	542	856	
+Console_TieredRifts_Glow_p1	0.614258	0.361328	0.861328	0.417969	629	370	882	428	
+Console_TieredRifts_GemUpgradeBaseFrame_p1	0.366211	0.001953	0.610352	0.450195	375	2	625	461	
+Console_TieredRifts_GemUpgradeBaseFrameFade_p1	0.533203	0.572266	0.753906	0.739258	546	586	772	757	

@@ -1,0 +1,9 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetStore_FeaturedBannerGeneric	0.550781	0.665039	0.826172	0.834961	1128	1362	1692	1710	
+BattleNetStore_FeaturedBannerFrame	0.275391	0.665039	0.550781	0.834961	564	1362	1128	1710	
+BattleNetStore_FeaturedBannerRActor	0.000000	0.665039	0.275391	0.834961	0	1362	564	1710	
+BattleNetStore_CharStashBaseBG	0.000000	0.000000	0.489258	0.379883	0	0	1002	778	
+BattleNetStore_AdPremiumPassDeluxeWings	0.332031	0.379883	0.664063	0.665039	680	778	1360	1362	
+BattleNetStore_AdPremiumPassDeluxeDIIIHound	0.489258	0.000000	0.821289	0.285156	1002	0	1682	584	
+BattleNetStore_AdPremiumPassDeluxeWoWPets	0.000000	0.379883	0.332031	0.665039	0	778	680	1362	
+BattleNetStore_AdPremiumPassDeluxeSCIIPortraits	0.664063	0.379883	0.996094	0.665039	1360	778	2040	1362	

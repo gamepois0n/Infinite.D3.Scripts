@@ -7,12 +7,13 @@ setmetatable(BuffIcon, {
   end,
 })
 
-function BuffIcon:new(texture, atlasindex, powersno, collector)
+function BuffIcon:new(texture, atlasindex, powersno, powerlayer, collector)
   local self = setmetatable({}, BuffIcon)
     
   self.Texture = texture
   self.AtlasIndex = atlasindex
   self.PowerSNO = powersno
+  self.PowerLayer = powerlayer
 
   self.Collector = collector  
 
@@ -20,7 +21,7 @@ function BuffIcon:new(texture, atlasindex, powersno, collector)
 end
 
 function BuffIcon:GetStackedCount()	
-	for k,v in pairs(self.Collector.LocalAttributes.BuffCount) do
+	--[[for k,v in pairs(self.Collector.LocalAttributes.BuffCount) do
 		if v.PowerSNO == self.PowerSNO then			
 			if v.Value > 1 then
 				return v.Value		
@@ -28,11 +29,13 @@ function BuffIcon:GetStackedCount()
 		end
 	end
 	
-	return 0
+	return 0]]--
+
+	return AttributeHelper.GetAttributeValue(Infinity.D3.GetLocalACD(), Enums.AttributeId.Buff_Icon_Count0 + self.PowerLayer, self.PowerSNO)
 end
 
 function BuffIcon:GetEndTick()	
-	for k,v in pairs(self.Collector.LocalAttributes.BuffEndTick) do
+	--[[for k,v in pairs(self.Collector.LocalAttributes.BuffEndTick) do
 		if v.PowerSNO == self.PowerSNO then			
 			if v.Value > 0 then
 				return v.Value		
@@ -40,7 +43,9 @@ function BuffIcon:GetEndTick()
 		end
 	end
 	
-	return 0
+	return 0]]--
+
+	return AttributeHelper.GetAttributeValue(Infinity.D3.GetLocalACD(), Enums.AttributeId.Buff_Icon_End_Tick0 + self.PowerLayer, self.PowerSNO)
 end
 
 function BuffIcon:Draw(renderPosition, renderSize)

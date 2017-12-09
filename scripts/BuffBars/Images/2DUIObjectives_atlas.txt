@@ -1,0 +1,5 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+SlashLeft	0.273438	0.109375	0.523438	0.609375	140	28	268	156	
+SlashRight	0.007813	0.109375	0.257813	0.609375	4	28	132	156	
+Objective_DividerLine	0.007813	0.015625	0.699219	0.078125	4	4	358	20	
+Objective_ItemFrame	0.539063	0.109375	0.626953	0.285156	276	28	321	73	

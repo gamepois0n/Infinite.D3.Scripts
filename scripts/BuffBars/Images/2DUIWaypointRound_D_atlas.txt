@@ -1,0 +1,7 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+Waypoint0038_TheVestibuleOfLight	0.253906	0.504883	0.501953	0.752930	260	517	514	771	
+Waypoint0039_GardensOfHope1stTier	0.001953	0.001953	0.250000	0.250000	2	2	256	256	
+Waypoint0040_GardensOfHope2ndTier	0.253906	0.001953	0.501953	0.250000	260	2	514	256	
+Waypoint0041_TheCrystalColonnade	0.505859	0.001953	0.753906	0.249023	518	2	772	255	
+Waypoint0042_TheGreatSpan	0.001953	0.253906	0.250000	0.500977	2	260	256	513	
+Waypoint0043_ThePinnacleOfHeaven	0.001953	0.504883	0.250000	0.752930	2	517	256	771	

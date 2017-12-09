@@ -1,0 +1,5 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetProfile_PVPMatchHistoryDefeat	0.360352	0.160156	0.687500	0.230469	738	82	1408	118	
+BattleNetProfile_PVPMatchHistoryDialog	0.000977	0.003906	0.358398	0.941406	2	2	734	482	
+BattleNetProfile_PVPMatchHistoryDraw	0.360352	0.003906	0.687500	0.074219	738	2	1408	38	
+BattleNetProfile_PVPMatchHistoryVictory	0.360352	0.082031	0.687500	0.152344	738	42	1408	78	

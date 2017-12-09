@@ -1,0 +1,4 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetLightBox	0.562500	0.250000	0.687500	0.750000	18	2	22	6	
+BattleNetLightBox_Blue	0.062500	0.250000	0.187500	0.750000	2	2	6	6	
+BattleNetLightBox_White	0.312500	0.250000	0.437500	0.750000	10	2	14	6	

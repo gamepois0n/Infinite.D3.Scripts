@@ -1,0 +1,2 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetTooltip_Basic	0.003906	0.015625	0.710938	0.625000	1	1	182	40	

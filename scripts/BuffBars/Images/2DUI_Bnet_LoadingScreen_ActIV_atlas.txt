@@ -1,0 +1,2 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetLoadingScreen_Act4_4x3	0.000977	0.000977	0.782227	0.586914	2	2	1602	1202	

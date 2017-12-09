@@ -1,0 +1,4 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+p43_RetroHelm_001_icon	0.539063	0.007813	0.789063	0.507813	138	2	202	130	
+p43_RetroHelm_002_icon	0.007813	0.007813	0.257813	0.507813	2	2	66	130	
+p43_RetroHelm_003_icon	0.273438	0.007813	0.523438	0.507813	70	2	134	130	

@@ -1,0 +1,9 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+chestArmor_norm_base_01_icon	0.560547	0.000000	0.640625	0.640625	574	0	656	164	
+chestArmor_norm_base_02_icon	0.000000	0.000000	0.080078	0.640625	0	0	82	164	
+chestArmor_norm_base_03_icon	0.080078	0.000000	0.160156	0.640625	82	0	164	164	
+chestArmor_norm_base_04_icon	0.160156	0.000000	0.240234	0.640625	164	0	246	164	
+chestArmor_norm_base_05_icon	0.240234	0.000000	0.320313	0.640625	246	0	328	164	
+chestArmor_norm_base_06_icon	0.320313	0.000000	0.400391	0.640625	328	0	410	164	
+Chest_ArmorSet05_Barbarian_Male	0.400391	0.000000	0.480469	0.640625	410	0	492	164	
+Chest_ArmorSet05_Wizard_Male	0.480469	0.000000	0.560547	0.640625	492	0	574	164	

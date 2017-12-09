@@ -1,0 +1,4 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetRecords_GoldStar	0.504883	0.003906	0.754883	0.507813	517	1	773	130	
+BattleNetRecords_SilverStar	0.000977	0.003906	0.250977	0.507813	1	1	257	130	
+BattleNetRecords_BronzeStar	0.252930	0.003906	0.502930	0.507813	259	1	515	130	

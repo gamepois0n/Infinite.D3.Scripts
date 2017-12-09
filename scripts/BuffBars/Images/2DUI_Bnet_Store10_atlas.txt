@@ -1,0 +1,5 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetStore_AdPremiumPassLanding	0.000977	0.001953	0.501465	0.787109	2	2	1027	806	
+BattleNetStore_AdPremiumPassLandingBanner	0.503418	0.001953	0.819336	0.091797	1031	2	1678	94	
+BattleNetStore_AdPremiumPassLandingCarousel	0.528809	0.095703	0.699707	0.205078	1083	98	1433	210	
+BattleNetStore_AdPremiumPassLandingGrayedStripPremium	0.503418	0.095703	0.526855	0.722656	1031	98	1079	740	

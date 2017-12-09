@@ -1,0 +1,9 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetPartyPanel_AchievementIcon	0.967773	0.003906	0.993164	0.078125	991	1	1017	20	
+BattleNetPartyPanel_NameplateTooltip	0.000977	0.003906	0.333008	0.652344	1	1	341	167	
+BattleNetPartyPanel_InvitePending	0.864258	0.167969	0.877930	0.222656	885	43	899	57	
+BattleNetPartyPanel_Nameplate	0.599609	0.003906	0.862305	0.464844	614	1	883	119	
+BattleNetPartyPanel_PartyLeaderIcon	0.864258	0.003906	0.903320	0.160156	885	1	925	41	
+BattleNetPartyPanel_CancelInviteIcon	0.905273	0.003906	0.934570	0.117188	927	1	957	30	
+BattleNetPartyPanel_CancelInviteIconDisabled	0.936523	0.003906	0.965820	0.117188	959	1	989	30	
+BattleNetPartyPanel_NameplatePending	0.334961	0.003906	0.597656	0.464844	343	1	612	119	

@@ -1,0 +1,4 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+LoadScreenBackground	0.000000	0.000000	0.581055	0.585938	0	0	595	1200	
+LoadScreenSlot	0.581055	0.104004	0.969727	0.208008	595	213	993	426	
+LoadScreenSlotSelected	0.581055	0.000000	0.969727	0.104004	595	0	993	213	

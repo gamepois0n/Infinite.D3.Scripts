@@ -1,0 +1,6 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+VendorBase_Blacksmith_Forge	0.007813	0.007813	0.370117	0.771484	8	8	379	790	
+ForgeButton_Normal	0.688477	0.082031	0.975586	0.140625	705	84	999	144	
+ForgeButton_Mouseover	0.385742	0.007813	0.672852	0.066406	395	8	689	68	
+ForgeButton_Pushed	0.688477	0.007813	0.975586	0.066406	705	8	999	68	
+ForgeButton_Inactive	0.385742	0.082031	0.672852	0.140625	395	84	689	144	

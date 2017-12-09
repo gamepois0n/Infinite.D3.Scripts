@@ -1,0 +1,8 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetProfile_HeroesTabStats	0.459961	0.000977	0.891602	0.710938	471	1	913	728	
+BattleNetProfile_ArrowButtonBg	0.893555	0.000977	0.951172	0.057617	915	1	974	59	
+BattleNetProfile_ArrowLeftDisabledIcon	0.944336	0.059570	0.967773	0.089844	967	61	991	92	
+BattleNetProfile_ArrowLeftIcon	0.918945	0.059570	0.942383	0.089844	941	61	965	92	
+BattleNetProfile_ArrowRightDisabledIcon	0.953125	0.000977	0.976563	0.031250	976	1	1000	32	
+BattleNetProfile_ArrowRightIcon	0.893555	0.059570	0.916992	0.089844	915	61	939	92	
+BattleNetProfile_HeroesSelectMenuBackground	0.000977	0.000977	0.458008	0.755859	1	1	469	774	

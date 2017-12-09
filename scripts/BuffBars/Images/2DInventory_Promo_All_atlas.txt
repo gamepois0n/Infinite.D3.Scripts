@@ -1,0 +1,4 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+Promo_Infernal_shoulders	0.250000	0.000000	0.500000	1.000000	64	0	128	128	
+Promo_Leoric_Crown	0.000000	0.000000	0.250000	1.000000	0	0	64	128	
+Promo_Ring_BlizzardSignet	0.500000	0.000000	0.750000	0.500000	128	0	192	64	

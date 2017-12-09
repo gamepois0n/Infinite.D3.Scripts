@@ -1,0 +1,10 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetAchievements_ListBackgroundFooter	0.000000	0.806641	0.868164	0.837891	0	826	889	858	
+BattleNetAchievements_ListBackgroundFooterHover	0.000000	0.837891	0.863281	0.847656	0	858	884	868	
+BattleNetAchievements_ListBackgroundCompareFooter	0.000000	0.847656	0.344727	0.982422	0	868	353	1006	
+BattleNetAchievements_FilterHeader	0.000000	0.000000	0.913086	0.050781	0	0	935	52	
+BattleNetAchievements_GridButtonDisabledIcon	0.965820	0.000000	0.992188	0.024414	989	0	1016	25	
+BattleNetAchievements_GridButtonIcon	0.913086	0.024414	0.939453	0.048828	935	25	962	50	
+BattleNetAchievements_ListButtonDisabledIcon	0.913086	0.000000	0.939453	0.024414	935	0	962	25	
+BattleNetAchievements_ListButtonIcon	0.939453	0.000000	0.965820	0.024414	962	0	989	25	
+BattleNetAchievements_ListContainer	0.000000	0.050781	0.913086	0.806641	0	52	935	826	

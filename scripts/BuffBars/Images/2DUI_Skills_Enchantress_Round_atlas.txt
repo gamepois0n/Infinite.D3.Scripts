@@ -1,0 +1,13 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+Enchantress_AmplifyDamage_Round	0.003906	0.031250	0.066406	0.531250	4	4	68	68	
+Enchantress_Charm_Round	0.074219	0.031250	0.136719	0.531250	76	4	140	68	
+Enchantress_Decoy_Round	0.144531	0.031250	0.207031	0.531250	148	4	212	68	
+Enchantress_Disorient_Round	0.214844	0.031250	0.277344	0.531250	220	4	284	68	
+Enchantress_Energize_Round	0.285156	0.031250	0.347656	0.531250	292	4	356	68	
+Enchantress_EnergyBomb_Round	0.355469	0.031250	0.417969	0.531250	364	4	428	68	
+Enchantress_FocusedMind_Round	0.425781	0.031250	0.488281	0.531250	436	4	500	68	
+Enchantress_ForcefulPush_Round	0.496094	0.031250	0.558594	0.531250	508	4	572	68	
+Enchantress_Guidance_Round	0.566406	0.031250	0.628906	0.531250	580	4	644	68	
+Enchantress_LowerResist_Round	0.636719	0.031250	0.699219	0.531250	652	4	716	68	
+Enchantress_PoweredArmor_Round	0.707031	0.031250	0.769531	0.531250	724	4	788	68	
+Enchantress_ReflectMissiles_Round	0.777344	0.031250	0.839844	0.531250	796	4	860	68	

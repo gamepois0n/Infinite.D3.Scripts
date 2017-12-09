@@ -1,0 +1,16 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+chestArmor_Goldskin_unique_icon	0.000000	0.000000	0.320313	0.160156	0	0	82	164	
+chestArmor_Tyrael'sMight_unique_icon	0.320313	0.000000	0.640625	0.160156	82	0	164	164	
+chestArmor_Chiangmail_unique_icon	0.640625	0.000000	0.960938	0.160156	164	0	246	164	
+chestArmor_Cindercoat_unique_icon	0.000000	0.160156	0.320313	0.320313	0	164	82	328	
+chestArmor_Zunimassa'sFerocity_unique_icon	0.320313	0.160156	0.640625	0.320313	82	164	164	328	
+chestArmor_Inna'sRefuge_unique_icon	0.640625	0.160156	0.960938	0.320313	164	164	246	328	
+chestArmor_BornsChest_unique_icon	0.000000	0.320313	0.320313	0.480469	0	328	82	492	
+chestArmor_ImmortalKingsCage_icon	0.320313	0.320313	0.640625	0.480469	82	328	164	492	
+chestArmor_HwaninsMajestyRefuge_icon	0.640625	0.320313	0.960938	0.480469	164	328	246	492	
+chestArmor_TalRashasguardianship_icon	0.000000	0.480469	0.320313	0.640625	0	492	82	656	
+chestArmor_HeartOfIron_unique_icon	0.320313	0.480469	0.640625	0.640625	82	492	164	656	
+chestArmor_norm_unique_043_icon	0.640625	0.480469	0.960938	0.640625	164	492	246	656	
+chestArmor_RobesOfTheHighCouncil_icon	0.000000	0.640625	0.320313	0.800781	0	656	82	820	
+chestArmor_AquilaCuirass_icon	0.320313	0.640625	0.640625	0.800781	82	656	164	820	
+chestArmor_norm_unique_demonskin	0.640625	0.640625	0.960938	0.800781	164	656	246	820	

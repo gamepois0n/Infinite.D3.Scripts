@@ -1,0 +1,11 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetAuctionHouse_Class_Background_Barbarian_Female	0.000488	0.000977	0.142578	0.412109	1	1	292	422	
+BattleNetAuctionHouse_Class_Background_Barbarian_Male	0.143555	0.000977	0.285645	0.412109	294	1	585	422	
+BattleNetAuctionHouse_Class_Background_DemonHunter_Female	0.286621	0.000977	0.428711	0.412109	587	1	878	422	
+BattleNetAuctionHouse_Class_Background_DemonHunter_Male	0.429688	0.000977	0.571777	0.412109	880	1	1171	422	
+BattleNetAuctionHouse_Class_Background_Monk_Female	0.572754	0.000977	0.714844	0.412109	1173	1	1464	422	
+BattleNetAuctionHouse_Class_Background_Monk_Male	0.715820	0.000977	0.857910	0.412109	1466	1	1757	422	
+BattleNetAuctionHouse_Class_Background_Witchdoctor_Female	0.000488	0.414063	0.142578	0.825195	1	424	292	845	
+BattleNetAuctionHouse_Class_Background_Witchdoctor_Male	0.143555	0.414063	0.285645	0.825195	294	424	585	845	
+BattleNetAuctionHouse_Class_Background_Wizard_Female	0.286621	0.414063	0.428711	0.825195	587	424	878	845	
+BattleNetAuctionHouse_Class_Background_Wizard_Male	0.429688	0.414063	0.571777	0.825195	880	424	1171	845	

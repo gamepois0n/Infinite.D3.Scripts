@@ -1,0 +1,5 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+p1_orb_norm_promo_01_icon	0.429688	0.015625	0.554688	0.515625	220	4	284	132	
+p2_orb_norm_unique_01_icon	0.007813	0.015625	0.132813	0.515625	4	4	68	132	
+p2_orb_norm_unique_02_icon	0.148438	0.015625	0.273438	0.515625	76	4	140	132	
+p2_orb_norm_unique_03_icon	0.289063	0.015625	0.414063	0.515625	148	4	212	132	

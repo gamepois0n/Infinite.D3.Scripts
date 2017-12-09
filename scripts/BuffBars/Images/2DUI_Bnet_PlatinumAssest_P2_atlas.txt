@@ -1,0 +1,4 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNet_PlatinumCounter_GoldBase	0.003906	0.554688	0.087891	0.925781	2	142	45	237	
+BattleNet_PlatinumCounter_Stone	0.003906	0.007813	0.638672	0.265625	2	2	327	68	
+BattleNet_PlatinumCounter_InnerGoldFiligree	0.003906	0.281250	0.638672	0.539063	2	72	327	138	

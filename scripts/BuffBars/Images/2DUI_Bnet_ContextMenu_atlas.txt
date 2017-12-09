@@ -1,0 +1,10 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+BattleNetContextMenu_SubItem	0.543945	0.139648	0.813477	0.172852	557	143	833	177	
+BattleNetContextMenu_SubItemSelected	0.543945	0.021484	0.813477	0.054688	557	22	833	56	
+BattleNetContextMenu_ItemSelected	0.543945	0.174805	0.813477	0.208008	557	179	833	213	
+BattleNetContextMenu_Bottom	0.543945	0.000977	0.813477	0.019531	557	1	833	20	
+BattleNetContextMenu_Background	0.000977	0.000977	0.270508	0.739258	1	1	277	757	
+BattleNetContextMenu_Title	0.543945	0.056641	0.813477	0.137695	557	58	833	141	
+BattleNetContextMenu_ItemNarrowSelected	0.543945	0.217773	0.748047	0.247070	557	223	766	253	
+BattleNetContextMenu_ItemBottomBorder	0.543945	0.209961	0.784180	0.215820	557	215	803	221	
+BattleNetContextMenu_BackgroundEmpty	0.272461	0.000977	0.541992	0.739258	279	1	555	757	

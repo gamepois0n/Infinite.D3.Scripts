@@ -1,0 +1,5 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+DebugBackground	0.003906	0.001953	0.785156	0.534180	4	4	804	1094	
+ButtonBugNormal	0.792969	0.001953	0.855469	0.033203	812	4	876	68	
+ButtonBugMouseover	0.863281	0.001953	0.925781	0.033203	884	4	948	68	
+ButtonBugPushed	0.933594	0.001953	0.996094	0.033203	956	4	1020	68	

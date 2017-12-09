@@ -1,0 +1,7 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+VendorBase_Blacksmith_Enhance2	0.007813	0.007813	0.370117	0.771484	8	8	379	790	
+Vendor_Enhance_ListButton2_Normal	0.385742	0.117188	0.671875	0.156250	395	120	688	160	
+Vendor_Enhance_ListButton2_Mouseover	0.385742	0.007813	0.671875	0.046875	395	8	688	48	
+Vendor_Enhance_ListButton2_Pushed	0.687500	0.007813	0.973633	0.046875	704	8	997	48	
+Vendor_Enhance_ListButton2_Inactive	0.385742	0.062500	0.671875	0.101563	395	64	688	104	
+Vendor_Enhance_ListButton2_ProgressBar	0.687500	0.062500	0.973633	0.101563	704	64	997	104	

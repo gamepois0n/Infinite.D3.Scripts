@@ -1,0 +1,3 @@
+Name	Xpos(f)	Ypos(f)	XposEnd(f)	YposEnd(t)	Xpos(i)	Ypos(i)	XposEnd(i)	YposEnd(i)	
+Talisman_Base_00	0.015625	0.015625	0.710938	0.710938	4	4	182	182	
+Talisman_Slot	0.742188	0.015625	0.914063	0.187500	190	4	234	48	
