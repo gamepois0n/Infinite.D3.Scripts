@@ -152,7 +152,7 @@ function Radar.OnPulse()
     LevelAreaHelper.RevealAllScenes()
   end
 
-  Radar.Collector:Collect()
+  Radar.Collector:Collect(false, true)
     
   Radar.TTS()  
 end
@@ -178,6 +178,8 @@ for k,v in pairs(Radar.Collector.Actors.Monster.Normal) do
   if Radar.Settings.Monsters.Normal.Minimap == true then
     Radar.RenderACDOnMinimap("Circle", v, Radar.Settings.Monsters.Normal.MinimapRadius, Radar.Settings.Monsters.Normal.ColorMinimap, Radar.Settings.Monsters.Normal.Thickness, true)
   end
+
+  Radar.RenderMinimapRiftProgress(v)
 end
 end
 
@@ -326,6 +328,7 @@ if Radar.Settings.Monsters.Elite.Champion.Enabled then
       end
 
       Radar.RenderAffixLabels(v)
+      Radar.RenderMinimapRiftProgress(v)
     end
   end
 end
@@ -352,6 +355,7 @@ if Radar.Settings.Monsters.Elite.Rare.Enabled then
       end
 
       Radar.RenderAffixLabels(v)
+      Radar.RenderMinimapRiftProgress(v)
     end
   end
 end
@@ -377,6 +381,7 @@ if Radar.Settings.Monsters.Elite.Minion.Enabled then
     end
 
     Radar.RenderAffixLabels(v)
+    Radar.RenderMinimapRiftProgress(v)
   end
 end
 
@@ -402,6 +407,7 @@ if Radar.Settings.Monsters.Elite.Unique.Enabled then
       end
 
       Radar.RenderAffixLabels(v)
+      Radar.RenderMinimapRiftProgress(v)
     end
   end
 end
@@ -874,6 +880,8 @@ function Radar.RenderGoblins()
     if Radar.Settings.Goblins.Minimap == true then
       Radar.RenderACDOnMinimap("Square", v, Radar.Settings.Goblins.MinimapRadius, Radar.Settings.Goblins.ColorMinimap, Radar.Settings.Goblins.Thickness, true)
     end
+
+    Radar.RenderMinimapRiftProgress(v)
   end  
 end
 
@@ -887,6 +895,49 @@ end
 
 function Radar.RenderACDOnMinimapAsText(acd, text, size, color)
   RenderHelper.DrawText(text, size, color, RenderHelper.ToMinimap(acd:GetPosition()))
+end
+
+function Radar.RenderRiftProgressOnMonsters()
+  for k,v in pairs(Radar.Collector.Actors.Monster.All) do
+    local progress = SNOGroups.GetMonsterRiftProgressByActorSNO(v:GetActorSNO())
+
+    if progress ~= 0.0 then
+      RenderHelper.DrawWorldText(string.format("%.2f", progress) .. "%", 16, "FFFFFFFF", v:GetPosition())    
+    end
+  end
+end
+
+function Radar.RenderMinimapRiftProgress(acd)  
+  --[[if AttributeHelper.IsInGreaterRift(Radar.Collector.LocalACD) == false then
+    return
+  end
+
+  local progress = SNOGroups.GetMonsterRiftProgressByActorSNO(acd:GetActorSNO())
+
+  if progress <= 1.00 then    
+    Radar.RenderACDOnMinimap("Circle", acd, 10, "30C8C8C8", 0.5, false)
+  elseif progress <= 2.00 then
+    Radar.RenderACDOnMinimap("Circle", acd, 10, "B400C800", 1, false)
+  elseif progress <= 3.00 then
+    Radar.RenderACDOnMinimap("Circle", acd, 10, "B4007D00", 1.5, false)
+  elseif progress <= 4.00 then
+    Radar.RenderACDOnMinimap("Circle", acd, 10, "B400C800", 2.0, false)
+  else
+    Radar.RenderACDOnMinimap("Circle", acd, 10, "B4007D00", 2.5, false)
+  end]]--
+end
+
+function Radar.RenderOnScreenRiftProgressAtCursor()
+  if AttributeHelper.IsInGreaterRift(Radar.Collector.LocalACD) == false then
+    return
+  end
+
+  local cursor = Infinity.Win32.GetCursorPos()
+  local tProgress = SNOGroups.GetRiftProgressPercentByPoints(Radar.Collector.MonsterRiftProgress)
+
+  if tProgress > 0.00 then
+    RenderHelper.DrawText(string.format("%.2f", tProgress) .. "%", 25, "FFFFFFFF", Vector2(cursor.x, cursor.y), -20, -20)
+  end
 end
 
 function Radar.OnRenderD2D()
@@ -925,4 +976,8 @@ end
 if Radar.Settings.Goblins.Enabled then
   Radar.RenderGoblins()
 end
+
+Radar.RenderOnScreenRiftProgressAtCursor()
+
+--Radar.RenderRiftProgressOnMonsters()
 end

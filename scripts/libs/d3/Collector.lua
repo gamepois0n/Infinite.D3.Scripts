@@ -12,6 +12,8 @@ function Collector.new()
 
     self.ClientRect = nil
     self.CurrentGameTick = 0
+    self.LocalACD = nil
+    self.MonsterRiftProgress = 0.0
 
     self.LocalAttributes = {}
     self.LocalAttributes.All = {}
@@ -79,6 +81,8 @@ function Collector.new()
 end
 
 function Collector:ClearTables()
+    self.MonsterRiftProgress = 0.0
+
     self.LocalAttributes.All = {}
     self.LocalAttributes.BuffCount = {}
     self.LocalAttributes.BuffStartTick = {}
@@ -134,7 +138,7 @@ function Collector:ClearTables()
     self.Actors.Shrine.Bandit = {}
 end
 
-function Collector:GetActors()
+function Collector:GetActors(getriftprogress)
     for k, acd in pairs(Infinity.D3.GetACDList()) do
         if acd:GetActorId() ~= -1 then
         local aType = acd:GetActorType()
@@ -149,9 +153,17 @@ function Collector:GetActors()
                     table.insert(self.Actors.Monster.All, acd)
                     table.insert(self.Actors.Monster.Elites, acd)
                     table.insert(self.Actors.Monster.ElitesLeaders, acd)
+
+                    if getriftprogress == true and acd:GetPosition():GetDistance(self.LocalACD:GetPosition()) <= 60 then
+                        self.MonsterRiftProgress = self.MonsterRiftProgress + SNOGroups.GetMonsterRiftProgressByActorSNO(acd:GetActorSNO())
+                    end
                 elseif mQuality == Normal and not AttributeHelper.IsNPC(acd) and not AttributeHelper.IsPet(acd) then
                     table.insert(self.Actors.Monster.Normal, acd)
                     table.insert(self.Actors.Monster.All, acd)
+
+                    if getriftprogress == true and acd:GetPosition():GetDistance(self.LocalACD:GetPosition()) <= 60 then
+                        self.MonsterRiftProgress = self.MonsterRiftProgress + SNOGroups.GetMonsterRiftProgressByActorSNO(acd:GetActorSNO())
+                    end
                 elseif mQuality == Normal and AttributeHelper.IsPet(acd) then
                     table.insert(self.Actors.Monster.Pets, acd)
                     table.insert(self.Actors.Monster.All, acd)
@@ -160,20 +172,36 @@ function Collector:GetActors()
                     table.insert(self.Actors.Monster.All, acd)
                     table.insert(self.Actors.Monster.Elites, acd)
                     table.insert(self.Actors.Monster.ElitesLeaders, acd)
+
+                    if getriftprogress == true and acd:GetPosition():GetDistance(self.LocalACD:GetPosition()) <= 60 then
+                        self.MonsterRiftProgress = self.MonsterRiftProgress + SNOGroups.GetMonsterRiftProgressByActorSNO(acd:GetActorSNO())
+                    end
                 elseif mQuality == Minion then
                     table.insert(self.Actors.Monster.Minion, acd)
                     table.insert(self.Actors.Monster.All, acd)
                     table.insert(self.Actors.Monster.Elites, acd)
+
+                    if getriftprogress == true and acd:GetPosition():GetDistance(self.LocalACD:GetPosition()) <= 60 then
+                        self.MonsterRiftProgress = self.MonsterRiftProgress + SNOGroups.GetMonsterRiftProgressByActorSNO(acd:GetActorSNO())
+                    end
                 elseif mQuality == Rare then
                     table.insert(self.Actors.Monster.Rare, acd)
                     table.insert(self.Actors.Monster.All, acd)
                     table.insert(self.Actors.Monster.Elites, acd)
                     table.insert(self.Actors.Monster.ElitesLeaders, acd)
+
+                    if getriftprogress == true and acd:GetPosition():GetDistance(self.LocalACD:GetPosition()) <= 60 then
+                        self.MonsterRiftProgress = self.MonsterRiftProgress + SNOGroups.GetMonsterRiftProgressByActorSNO(acd:GetActorSNO())
+                    end
                 elseif mQuality == Unique then
                     table.insert(self.Actors.Monster.Unique, acd)
                     table.insert(self.Actors.Monster.All, acd)
                     table.insert(self.Actors.Monster.Elites, acd)
                     table.insert(self.Actors.Monster.ElitesLeaders, acd)
+
+                    if getriftprogress == true and acd:GetPosition():GetDistance(self.LocalACD:GetPosition()) <= 60 then
+                        self.MonsterRiftProgress = self.MonsterRiftProgress + SNOGroups.GetMonsterRiftProgressByActorSNO(acd:GetActorSNO())
+                    end
                 elseif mQuality == Boss then          
                     table.insert(self.Actors.Monster.Boss, acd)
                     table.insert(self.Actors.Monster.All, acd)
@@ -241,6 +269,10 @@ function Collector:GetActors()
             elseif aType == Enums.ActorType.Item then
                 if AttributeHelper.IsRiftProgressOrb(acd) then
                     table.insert(self.Actors.Item.RiftProgress, acd)
+
+                    if getriftprogress == true and acd:GetPosition():GetDistance(self.LocalACD:GetPosition()) <= 60 then
+                        self.MonsterRiftProgress = self.MonsterRiftProgress + 6.5
+                    end
                 elseif acd:GetItemLocation() == -1 then
                     table.insert(self.Actors.Item.Ground, acd)
                 end
@@ -258,7 +290,7 @@ function Collector:GetTicks()
 end
 
 function Collector:GetLocalAttributes()
-    local attributes = Infinity.D3.GetLocalACD():GetAttributes()
+    local attributes = self.LocalACD:GetAttributes()
 
     for k,v in pairs(attributes) do
         local attribDescriptor = AttributeHelper.AttributeDescriptors[v:GetId()]
@@ -291,22 +323,24 @@ function Collector:GetLocalAttributes()
         end
     end
 
+function Collector:GetLocalACD()
+    self.LocalACD = Infinity.D3.GetLocalACD()
+end
+
 function Collector:InitReloads()
     UIControlHelper.Reload()
 end
 
-function Collector:Collect(getLocalAttributes)
-    if getLocalAttributes == nil then
-        getLocalAttributes = false
-    end
-
+function Collector:Collect(getLocalAttributes, getriftprogress)    
     self:InitReloads()
 
     self:ClearTables()
 
-    self:GetActors()
+    self:GetLocalACD()
 
-    if getLocalAttributes then
+    self:GetActors(getriftprogress)
+    
+    if getLocalAttributes == true then
         self:GetLocalAttributes()
     end
 

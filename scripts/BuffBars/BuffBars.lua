@@ -22,7 +22,7 @@ function BuffBars.OnPulse()
     return
   end   
  
-  BuffBars.Collector:Collect(true)
+  BuffBars.Collector:Collect(true, false)
 end
 
 function BuffBars.DrawBuffBar(index, buffbar)

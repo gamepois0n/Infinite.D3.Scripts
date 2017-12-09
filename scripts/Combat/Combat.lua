@@ -66,7 +66,7 @@ function Combat.OnPulse()
     return
   end
 
-  Combat.Collector:Collect()
+  Combat.Collector:Collect(false, false)
 
   if Combat.CombatScript ~= nil then
     local monsterTarget = TargetHelper.GetMonsterTargetACD()    

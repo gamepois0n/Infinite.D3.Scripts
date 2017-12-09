@@ -291,6 +291,10 @@ function AttributeHelper.GetMonsterAffixes(acd)
   return affixes
 end
 
+function AttributeHelper.IsInGreaterRift(acd)
+  return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.In_Tiered_Loot_Run_Level, -1) >= 0
+end
+
 function AttributeHelper.IsNPC(acd)
   return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Is_NPC, -1) == 1
 end
