@@ -5,6 +5,7 @@ type=script
 [files]
 file=Data/Settings.lua
 file=GUI/RadarSettings.lua
+file=GUI/TextureViewer.lua
 file=Radar.lua
 file=Main.lua
 

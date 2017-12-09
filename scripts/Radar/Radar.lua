@@ -6,16 +6,129 @@ Radar.TTSBlackList = {}
 
 Radar.Settings = Settings()
 
+Radar.SkillTextures = {}
+Radar.BuffTextures = {}
+
 function Radar.Start()
   Radar.Running = true
 
-  RadarSettings.LoadSettings()    
+  RadarSettings.LoadSettings()  
+  --Radar.LoadTextures()  
 end
 
 function Radar.Stop()
   Radar.Running = false
 
   RadarSettings.SaveSettings()
+end
+
+function Radar.GetPowerSNOByText(text)
+  for k,v in pairs(AttributeHelper.PowerSNOs) do
+    local key, value = string.find(v, text)
+
+    if key ~= nil and key < 5 then
+      return k
+    end
+  end
+
+  return -1
+end
+
+function Radar.GetSkillAtlas(dds)
+  local skillAtlas = {}
+
+  local index = 1
+
+  for k,v in pairs(dds.Atlas) do
+    if v ~= nil and string.find(v.Name, "_Normal") ~= nil then
+      local words = {}
+
+      for w in string.gmatch(v.Name,  "[^_]+") do
+        table.insert(words, w)     
+      end
+
+      if table.length(words) >= 2 then
+        local skill = words[1] .. "_" .. words[2]
+
+        local powerSNO = Radar.GetPowerSNOByText(skill)
+
+        if powerSNO ~= -1 then
+          table.insert(skillAtlas, {AtlasName = v.Name, AtlasIndex = index, PowerName = AttributeHelper.PowerSNOs[powerSNO], PowerSNO = powerSNO})
+        else
+          table.insert(skillAtlas, {AtlasName = v.Name, AtlasIndex = index, PowerName = "Not Found", PowerSNO = powerSNO})
+        end
+      end
+    end
+
+    index = index + 1
+  end
+
+  return skillAtlas
+end
+
+function Radar.LoadSkillTextures()
+  local skills = {}
+
+  local barb = RenderHelper.LoadDDSFileFromCurrentScriptDirectory("Images\\2DUI_Skills_Barbarian_All.dds")
+  local barbSkillAtlas = Radar.GetSkillAtlas(barb)
+
+  table.insert(skills, {Texture = barb, SkillAtlas = barbSkillAtlas})
+
+  local crusader = RenderHelper.LoadDDSFileFromCurrentScriptDirectory("Images\\2DUI_Skills_Crusader_All_X1.dds")
+  local crusaderSkillAtlas = Radar.GetSkillAtlas(crusader)
+
+  table.insert(skills, {Texture = crusader, SkillAtlas = crusaderSkillAtlas})
+
+  local witchdoc = RenderHelper.LoadDDSFileFromCurrentScriptDirectory("Images\\2DUI_Skills_Witchdoctor_All.dds")
+  local witchdocSkillAtlas = Radar.GetSkillAtlas(witchdoc)
+
+  table.insert(skills, {Texture = witchdoc, SkillAtlas = witchdocSkillAtlas})
+
+  local necromancer = RenderHelper.LoadDDSFileFromCurrentScriptDirectory("Images\\2DUI_Skills_Necromancer.dds")
+  local necromancerSkillAtlas = Radar.GetSkillAtlas(necromancer)
+
+  table.insert(skills, {Texture = necromancer, SkillAtlas = necromancerSkillAtlas})
+
+  local monk = RenderHelper.LoadDDSFileFromCurrentScriptDirectory("Images\\2DUI_Skills_Monk.dds")
+  local monkSkillAtlas = Radar.GetSkillAtlas(monk)
+
+  table.insert(skills, {Texture = monk, SkillAtlas = monkSkillAtlas})
+
+  local demonhunter = RenderHelper.LoadDDSFileFromCurrentScriptDirectory("Images\\2DUI_Skills_DemonHunter.dds")
+  local demonhunterSkillAtlas = Radar.GetSkillAtlas(demonhunter)
+
+  table.insert(skills, {Texture = demonhunter, SkillAtlas = demonhunterSkillAtlas})
+
+  local scoundrel = RenderHelper.LoadDDSFileFromCurrentScriptDirectory("Images\\2DUI_Skills_Scoundrel.dds")
+  local scoundrelSkillAtlas = Radar.GetSkillAtlas(scoundrel)
+
+  table.insert(skills, {Texture = scoundrel, SkillAtlas = scoundrelSkillAtlas})
+
+  local templar = RenderHelper.LoadDDSFileFromCurrentScriptDirectory("Images\\2DUI_Skills_Templar.dds")
+  local templarSkillAtlas = Radar.GetSkillAtlas(templar)
+
+  table.insert(skills, {Texture = templar, SkillAtlas = templarSkillAtlas})
+
+  local enchantress = RenderHelper.LoadDDSFileFromCurrentScriptDirectory("Images\\2DUI_Skills_Enchantress.dds")
+  local enchantressSkillAtlas = Radar.GetSkillAtlas(enchantress)
+
+  table.insert(skills, {Texture = enchantress, SkillAtlas = enchantressSkillAtlas})
+
+  for k,v in pairs(skills) do
+    for a,b in pairs(v.SkillAtlas) do
+      Radar.SkillTextures[b.PowerSNO] = {Texture = v.Texture, AtlasIndex = b.AtlasIndex}
+    end
+  end
+
+  print("Skill Textures Loaded! (" .. table.length(Radar.SkillTextures) .. ")")
+end
+
+function Radar.LoadBuffTextures()
+
+end
+
+function Radar.LoadTextures()
+  Radar.LoadSkillTextures()
 end
 
 function Radar.TTS()
@@ -752,19 +865,6 @@ function Radar.RenderGoblins()
   end  
 end
 
-function Radar.MinimapTest()
-  --for k,v in pairs(Radar.Collector.Actors.Monster.Normal) do      
-    --RenderHelper.DrawSquare(RenderHelper.ToMinimap(v:GetPosition()), 6, {A = 0xFF, R = 0x99, G = 0x99, B = 0x99}, 1, false)
-  --end
-end
-
-function Radar.RenderMarkers()
-  for k,v in pairs(Radar.Collector.Actors.Marker) do      
-    RenderHelper.DrawWorldSquareFilledMulticolor(v:GetPosition(), Radar.Settings.Goblins.CustomRadiusValue, Radar.Settings.Goblins.ColorOutline, Radar.Settings.Goblins.ColorFill, Radar.Settings.Goblins.Thickness)
-    Radar.RenderACDOnMinimap("Square", v, 5, Radar.Settings.Goblins.ColorMinimap, Radar.Settings.Goblins.Thickness, true)
-  end
-end
-
 function Radar.RenderACDOnMinimap(geometry, acd, size, color, thickness, filled)
   if geometry == "Circle" then
     RenderHelper.DrawCircle(RenderHelper.ToMinimap(acd:GetPosition()), size, color, thickness, filled)
@@ -801,7 +901,4 @@ end
 if Radar.Settings.Goblins.Enabled then
   Radar.RenderGoblins()
 end
-
---Radar.MinimapTest()
---Radar.RenderMarkers()
 end

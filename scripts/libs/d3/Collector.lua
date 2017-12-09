@@ -10,6 +10,15 @@ setmetatable(Collector, {
 function Collector.new()
     local self = setmetatable({}, Collector)
 
+    self.ClientRect = nil
+    self.CurrentGameTick = 0
+
+    self.LocalAttributes = {}
+    self.LocalAttributes.All = {}
+    self.LocalAttributes.BuffCount = {}
+    self.LocalAttributes.BuffStartTick = {}
+    self.LocalAttributes.BuffEndTick = {}
+
     self.Actors = {}
     self.Actors.Monster = {}
     self.Actors.Item = {}
@@ -67,6 +76,11 @@ function Collector.new()
 end
 
 function Collector:ClearTables()
+    self.LocalAttributes.All = {}
+    self.LocalAttributes.BuffCount = {}
+    self.LocalAttributes.BuffStartTick = {}
+    self.LocalAttributes.BuffEndTick = {}
+
     self.Actors.Monster.All = {}
     self.Actors.Monster.Normal = {}
     self.Actors.Monster.Champion = {}
@@ -224,14 +238,67 @@ function Collector:GetActors()
     end
 end
 
+function Collector:GetClientRect()
+    self.ClientRect = Infinity.D3.GetClientRect()
+end
+
+function Collector:GetTicks()
+    self.CurrentGameTick = Infinity.D3.GetGameTick()
+end
+
+function Collector:GetLocalAttributes()
+    local attributes = Infinity.D3.GetLocalACD():GetAttributes()
+
+    for k,v in pairs(attributes) do
+        local attribDescriptor = AttributeHelper.AttributeDescriptors[v:GetId()]
+
+        if attribDescriptor ~= nil then
+            local value = v:GetValueInt32()
+
+            if attribDescriptor:GetDataType() == 0 then
+                value = v:GetValueFloat()
+            end
+
+            if value > 0 then
+                local powerName = AttributeHelper.PowerSNOs[v:GetModifier()]
+
+                if v:GetModifier() == -1 or powerName == nil then
+                  powerName = ""
+              end
+
+              table.insert(self.LocalAttributes.All, {Address = v.Address, AttributeId = v:GetId(), AttributeName = attribDescriptor:GetName(), PowerSNO = v:GetModifier(), PowerName = powerName, Value = value})           
+
+              if v:GetModifier() ~= -1 and v:GetId() >= Enums.AttributeId.Buff_Icon_Count0 and v:GetId() <= Enums.AttributeId.Buff_Icon_Count31 then 
+                table.insert(self.LocalAttributes.BuffCount, {Address = v.Address, AttributeId = v:GetId(), AttributeName = attribDescriptor:GetName(), PowerSNO = v:GetModifier(), PowerName = powerName, Value = value})
+                elseif v:GetModifier() ~= -1 and v:GetId() >= Enums.AttributeId.Buff_Icon_Start_Tick0 and v:GetId() <= Enums.AttributeId.Buff_Icon_Start_Tick31 then
+                    table.insert(self.LocalAttributes.BuffStartTick, {Address = v.Address, AttributeId = v:GetId(), AttributeName = attribDescriptor:GetName(), PowerSNO = v:GetModifier(), PowerName = powerName, Value = value})
+                    elseif v:GetModifier() ~= -1 and v:GetId() >= Enums.AttributeId.Buff_Icon_End_Tick0 and v:GetId() <= Enums.AttributeId.Buff_Icon_End_Tick31 then
+                        table.insert(self.LocalAttributes.BuffEndTick, {Address = v.Address, AttributeId = v:GetId(), AttributeName = attribDescriptor:GetName(), PowerSNO = v:GetModifier(), PowerName = powerName, Value = value})
+                    end 
+                end
+            end
+        end
+    end
+
 function Collector:InitReloads()
     UIControlHelper.Reload()
 end
 
-function Collector:Collect()
+function Collector:Collect(getLocalAttributes)
+    if getLocalAttributes == nil then
+        getLocalAttributes = false
+    end
+
     self:InitReloads()
 
     self:ClearTables()
 
     self:GetActors()
+
+    if getLocalAttributes then
+        self:GetLocalAttributes()
+    end
+
+    self:GetClientRect()
+    self:GetTicks()
 end

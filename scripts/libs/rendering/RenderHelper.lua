@@ -32,21 +32,25 @@ function RenderHelper.LoadDDSAtlas(filePath)
 
 	local index = 0
 
-	for i in string.gmatch(content,  "[^\r\n]+") do
+	for i in string.gmatch(content,  "[^\n]+") do --"[^\r\n]+"
 		if index > 0 then
 			local words = {}
 
    			for w in string.gmatch(i,  "(.-)%c") do
    				table.insert(words, w)	
    			end
-
-   			table.insert(atlas, {Name = words[1], A = ImVec2(tonumber(words[2]), tonumber(words[3])), B = ImVec2(tonumber(words[4]), tonumber(words[5]))})
+   			
+   			table.insert(atlas, {Name = words[1], A = ImVec2(tonumber(words[2]), tonumber(words[3])), B = ImVec2(tonumber(words[4]), tonumber(words[5])), pA = ImVec2(tonumber(words[6]), tonumber(words[7])), pB = ImVec2(tonumber(words[8]), tonumber(words[9]))})
    		end
 
    		index = index + 1
 	end
 
-	return atlas
+	if table.length(atlas) ~= 0 then
+		return atlas
+	end
+
+	return nil
 end
 
 function RenderHelper.GetAtlasIndexByName(atlas, name)
@@ -82,7 +86,7 @@ function RenderHelper.DrawImage(imageTexture, screenPos, renderSize, originalSiz
 	Infinity.Rendering.DrawImage(imageTexture, a, b, uv_a, uv_b, ImVec4(1.0, 1.0, 1.0, 1.0))
 end
 
-function RenderHelper.DrawImageFromDDS(dds, screenPos, renderSize, originalSize, atlasIndex)
+function RenderHelper.DrawImageFromDDS(dds, screenPos, renderSize, atlasIndex)
 	if dds == nil then
 		return
 	end
@@ -230,6 +234,20 @@ function RenderHelper.DrawWorldText(text, size, textColor, startpos, offsetx, of
 	screen = Vector2(screen.X + offsetx, screen.Y + offsety)
 	
 	Infinity.Rendering.DrawText(text, screen, size, RenderHelper.GetColorImVec4FromHexColorString(textColor), true)	
+end
+
+function RenderHelper.DrawText(text, size, textColor, startpos, offsetx, offsety)	
+	if offsetx == nil then
+		offsetx = 0
+	end
+
+	if offsety == nil then
+		offsety = 0
+	end
+	
+	startpos = Vector2(startpos.X + offsetx, startpos.Y + offsety)
+	
+	Infinity.Rendering.DrawText(text, startpos, size, RenderHelper.GetColorImVec4FromHexColorString(textColor), true)	
 end
 
 function RenderHelper.DrawSquare(center, size, color, thickness, filled)

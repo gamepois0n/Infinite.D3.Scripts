@@ -3,7 +3,8 @@ RadarSettings = { }
 function RadarSettings.DrawMainWindow()  
   ImGui.Begin("Radar Settings", true)  
 
-  	_, Radar.Settings.MapReveal = ImGui.Checkbox("Enable Auto MapReveal (Current Use at own Risk)##id_settings_mapreveal", Radar.Settings.MapReveal)  
+  	_, Radar.Settings.MapReveal = ImGui.Checkbox("Enable Auto MapReveal (Current Use at own Risk)##id_settings_mapreveal", Radar.Settings.MapReveal)
+ 	
     --[[if ImGui.Button("Save settings", ImVec2(ImGui.GetContentRegionAvailWidth() / 2, 20)) then
 		RadarSettings.SaveSettings()
 		print("Settings saved")

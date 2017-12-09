@@ -55,6 +55,166 @@ function AttributeHelper.GetAllAttributes(acd)
   return buffer
 end
 
+function AttributeHelper.GetAllBuffCountAttributes(acd)  
+  local buffer = {}
+
+    local attributes = acd:GetAttributes()
+
+    for k,v in pairs(attributes) do
+      if v:GetModifier() ~= -1 and v:GetId() >= Enums.AttributeId.Buff_Icon_Count0 and v:GetId() <= Enums.AttributeId.Buff_Icon_Count31 then         
+        local attribDescriptor = AttributeHelper.AttributeDescriptors[v:GetId()]
+   
+      if attribDescriptor ~= nil then
+        local value = v:GetValueInt32()
+
+          if attribDescriptor:GetDataType() == 0 then
+            value = v:GetValueFloat()
+          end
+
+          if value > 0 then
+            local powerName = AttributeHelper.PowerSNOs[v:GetModifier()]
+
+            if v:GetModifier() == -1 or powerName == nil then
+              powerName = ""
+            end
+          
+            table.insert(buffer, {Address = v.Address, AttributeId = v:GetId(), AttributeName = attribDescriptor:GetName(), PowerSNO = v:GetModifier(), PowerName = powerName, Value = value})           
+          end
+        end
+        end       
+    end
+
+  return buffer
+end
+
+function AttributeHelper.GetAllBuffStartTickAttributes(acd)  
+  local buffer = {}
+
+    local attributes = acd:GetAttributes()
+
+    for k,v in pairs(attributes) do
+      if v:GetModifier() ~= -1 and v:GetId() >= Enums.AttributeId.Buff_Icon_Start_Tick0 and v:GetId() <= Enums.AttributeId.Buff_Icon_Start_Tick31 then         
+        local attribDescriptor = AttributeHelper.AttributeDescriptors[v:GetId()]
+   
+      if attribDescriptor ~= nil then
+        local value = v:GetValueInt32()
+
+          if attribDescriptor:GetDataType() == 0 then
+            value = v:GetValueFloat()
+          end
+
+          if value > 0 then
+            local powerName = AttributeHelper.PowerSNOs[v:GetModifier()]
+
+            if v:GetModifier() == -1 or powerName == nil then
+              powerName = ""
+            end
+          
+            table.insert(buffer, {Address = v.Address, AttributeId = v:GetId(), AttributeName = attribDescriptor:GetName(), PowerSNO = v:GetModifier(), PowerName = powerName, Value = value})           
+          end
+        end
+        end       
+    end
+
+  return buffer
+end
+
+function AttributeHelper.GetAllBuffEndTickAttributes(acd)  
+  local buffer = {}
+
+    local attributes = acd:GetAttributes()
+
+    for k,v in pairs(attributes) do
+      if v:GetModifier() ~= -1 and v:GetId() >= Enums.AttributeId.Buff_Icon_End_Tick0 and v:GetId() <= Enums.AttributeId.Buff_Icon_End_Tick31 then         
+        local attribDescriptor = AttributeHelper.AttributeDescriptors[v:GetId()]
+   
+      if attribDescriptor ~= nil then
+        local value = v:GetValueInt32()
+
+          if attribDescriptor:GetDataType() == 0 then
+            value = v:GetValueFloat()
+          end
+
+          if value > 0 then
+            local powerName = AttributeHelper.PowerSNOs[v:GetModifier()]
+
+            if v:GetModifier() == -1 or powerName == nil then
+              powerName = ""
+            end
+          
+            table.insert(buffer, {Address = v.Address, AttributeId = v:GetId(), AttributeName = attribDescriptor:GetName(), PowerSNO = v:GetModifier(), PowerName = powerName, Value = value})           
+          end
+        end
+        end       
+    end
+
+  return buffer
+end
+
+function AttributeHelper.GetAllBuffAttributes(acd)  
+  local buffer = {}
+
+    local attributes = acd:GetAttributes()
+
+    for k,v in pairs(attributes) do
+      if (v:GetId() >= Enums.AttributeId.Buff_Icon_End_Tick0 and v:GetId() <= Enums.AttributeId.Buff_Icon_End_Tick31) then         
+        local attribDescriptor = AttributeHelper.AttributeDescriptors[v:GetId()]
+   
+      if attribDescriptor ~= nil then
+        local value = v:GetValueInt32()
+
+          if attribDescriptor:GetDataType() == 0 then
+            value = v:GetValueFloat()
+          end
+
+          if value > 0 then
+            local powerName = AttributeHelper.PowerSNOs[v:GetModifier()]
+
+            if v:GetModifier() == -1 or powerName == nil then
+              powerName = ""
+            end
+          
+            table.insert(buffer, {Address = v.Address, AttributeId = v:GetId(), AttributeName = attribDescriptor:GetName(), PowerSNO = v:GetModifier(), PowerName = powerName, Value = value})           
+          end
+        end
+        end       
+    end
+
+  return buffer
+end
+
+function AttributeHelper.GetBuffCount0Attributes(acd)  
+  local buffer = {}
+
+    local attributes = acd:GetAttributes()
+
+    for k,v in pairs(attributes) do
+      if v:GetId() == Enums.AttributeId.Buff_Icon_Count0 then         
+        local attribDescriptor = AttributeHelper.AttributeDescriptors[v:GetId()]
+   
+      if attribDescriptor ~= nil then
+        local value = v:GetValueInt32()
+
+          if attribDescriptor:GetDataType() == 0 then
+            value = v:GetValueFloat()
+          end
+
+          if value > 0 then
+            local powerName = AttributeHelper.PowerSNOs[v:GetModifier()]
+
+            if v:GetModifier() == -1 or powerName == nil then
+              powerName = ""
+            end
+          
+            table.insert(buffer, {Address = v.Address, AttributeId = v:GetId(), AttributeName = attribDescriptor:GetName(), PowerSNO = v:GetModifier(), PowerName = powerName, Value = value})           
+          end
+        end
+        end       
+    end
+
+  return buffer
+end
+
 function AttributeHelper.GetNoModifierAttributes(acd)	
 	local buffer = {}
 
@@ -343,6 +503,36 @@ end
 
 function AttributeHelper.IsBuffActive(acd, powerSNO)
   return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Buff_Icon_Count0, powerSNO) ~= 0
+end
+
+function AttributeHelper.IsBuffEndTickPresent(acd, powerSNO)
+  for i = Enums.AttributeId.Buff_Icon_End_Tick0, Enums.AttributeId.Buff_Icon_End_Tick31 do
+    if AttributeHelper.GetAttributeValue(acd, i, powerSNO) ~= 0 then
+      return true
+    end
+  end
+
+  return false
+end
+
+function AttributeHelper.IsBuffStartTickPresent(acd, powerSNO)
+  for i = Enums.AttributeId.Buff_Icon_Start_Tick0, Enums.AttributeId.Buff_Icon_Start_Tick31 do
+    if AttributeHelper.GetAttributeValue(acd, i, powerSNO) ~= 0 then
+      return true
+    end
+  end
+
+  return false
+end
+
+function AttributeHelper.IsBuffCountPresent(acd, powerSNO)
+  for i = Enums.AttributeId.Buff_Icon_Count0, Enums.AttributeId.Buff_Icon_Count31 do
+    if AttributeHelper.GetAttributeValue(acd, i, powerSNO) ~= 0 then
+      return true
+    end
+  end
+
+  return false
 end
 
 function AttributeHelper.IsInTown(acd)
