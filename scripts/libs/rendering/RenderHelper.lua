@@ -144,7 +144,7 @@ end
 function RenderHelper.ToMinimap(pos)
 	local mmap = UIControlHelper.GetUIControlByName("Root.NormalLayer.map_dialog_mainPage.localmap")
 
-	if mmap:GetFlag() == 3 then
+	if not mmap:GetIsVisible() then
 	mmap = UIControlHelper.GetUIControlByName("Root.NormalLayer.minimap_dialog_backgroundScreen.minimap_dialog_pve.minimap_pve_main")
 	end
 	

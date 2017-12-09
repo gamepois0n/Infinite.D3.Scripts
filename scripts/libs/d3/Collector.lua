@@ -338,6 +338,12 @@ function Collector:Collect(getLocalAttributes, getriftprogress)
 
     self:GetLocalACD()
 
+    if getriftprogress == true then
+        if AttributeHelper.IsInGreaterRift(self.LocalACD) == false then
+            getriftprogress = false
+        end
+    end
+
     self:GetActors(getriftprogress)
     
     if getLocalAttributes == true then
