@@ -29,6 +29,7 @@ function Settings.new()
     self.Goblins = {Enabled = true, Minimap = true, MinimapRadius = 5, ColorMinimap = "FF0FA3A3", CustomRadius = true, CustomRadiusValue = 3, Thickness = 2, Fill = true, ColorOutline = "FF0FA3A3", ColorFill = "5031EBEB"}
 
     self.Pylons = {Enabled = true}
+    self.Pylons.SpawnMarker = {Enabled = true}
     self.Pylons.Power = {Enabled = true, Text = "Pwr", TextSize = 20, ColorOutline = "FFCA6D10", ColorFill = "78EB9E50", ColorText = "FFFFFFFF"}
     self.Pylons.Conduit = {Enabled = true, Text = "Cdt", TextSize = 20, ColorOutline = "FFCA6D10", ColorFill = "78EB9E50", ColorText = "FFFFFFFF"}
     self.Pylons.Channeling = {Enabled = true, Text = "Chn", TextSize = 20, ColorOutline = "FFCA6D10", ColorFill = "78EB9E50", ColorText = "FFFFFFFF"}
@@ -60,6 +61,7 @@ function Settings.new()
     self.GroundEffects.OccuCircle = {Enabled = true, CustomRadius = false, CustomRadiusValue = 1, Thickness = 3, Fill = false, ColorOutline = "FFD743DF", ColorFill = "78821687"}
 
     self.Items = {Enabled = true}
+    self.Items.RiftProgressOrb = {Enabled = true}
     self.Items.Legendary = {Enabled = true}
     self.Items.Legendary.Normal = {Enabled = true, CustomRadius = true, CustomRadiusValue = 1.5, Thickness = 1, Fill = false, ColorOutline = "FF753913", ColorFill = nil}
     self.Items.Legendary.Ancient = {Enabled = true, CustomRadius = true, CustomRadiusValue = 1.5, Thickness = 3, Fill = false, ColorOutline = "FF753913", ColorFill = nil}

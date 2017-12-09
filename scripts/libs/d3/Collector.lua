@@ -21,7 +21,7 @@ function Collector.new()
 
     self.Actors = {}
     self.Actors.Monster = {}
-    self.Actors.Item = {}
+    self.Actors.Item = {}    
     self.Actors.GroundEffect = {}
     self.Actors.Pylon = {}
     self.Actors.Shrine = {}
@@ -44,7 +44,8 @@ function Collector.new()
     self.Actors.Marker = {}
 
     self.Actors.Item.Ground = {}
-    
+    self.Actors.Item.RiftProgress = {}
+
     self.Actors.GroundEffect.Plagued = {}
     self.Actors.GroundEffect.Desecrator = {}
     self.Actors.GroundEffect.PoisonEnchanted = {}
@@ -58,6 +59,7 @@ function Collector.new()
     self.Actors.GroundEffect.Orbiter = {}
     self.Actors.GroundEffect.Thunderstorm = {}
 
+    self.Actors.Pylon.SpawnMarker = {}
     self.Actors.Pylon.Power = {}
     self.Actors.Pylon.Conduit = {}
     self.Actors.Pylon.Channeling = {}
@@ -99,6 +101,7 @@ function Collector:ClearTables()
     self.Actors.Marker = {}
 
     self.Actors.Item.Ground = {}
+    self.Actors.Item.RiftProgress = {}
 
     self.Actors.GroundEffect.Plagued = {}
     self.Actors.GroundEffect.Desecrator = {}
@@ -113,6 +116,7 @@ function Collector:ClearTables()
     self.Actors.GroundEffect.Orbiter = {}
     self.Actors.GroundEffect.Thunderstorm = {}
 
+    self.Actors.Pylon.SpawnMarker = {}
     self.Actors.Pylon.Power = {}
     self.Actors.Pylon.Conduit = {}
     self.Actors.Pylon.Channeling = {}
@@ -199,10 +203,9 @@ function Collector:GetActors()
                 end
             elseif aType == Enums.ActorType.ServerProp then
 
-                --if acd:GetActorSNO() == 4675 then
-                    --table.insert(self.Actors.Marker, acd)
-                --elseif  GroundEffectHelper.IsPlagued(acd) then
-                if  GroundEffectHelper.IsPlagued(acd) then
+                if AttributeHelper.IsPylonSpawnMarker(acd) then
+                    table.insert(self.Actors.Pylon.SpawnMarker, acd)
+                elseif  GroundEffectHelper.IsPlagued(acd) then
                     table.insert(self.Actors.GroundEffect.Plagued, acd)
                 elseif GroundEffectHelper.IsDesecrator(acd) then
                     table.insert(self.Actors.GroundEffect.Desecrator, acd)
@@ -230,7 +233,9 @@ function Collector:GetActors()
             elseif aType == Enums.ActorType.Player then
                 table.insert(self.Actors.Player, acd)
             elseif aType == Enums.ActorType.Item then
-                if acd:GetItemLocation() == -1 then
+                if AttributeHelper.IsRiftProgressOrb(acd) then
+                    table.insert(self.Actors.Item.RiftProgress, acd)
+                elseif acd:GetItemLocation() == -1 then
                     table.insert(self.Actors.Item.Ground, acd)
                 end
             end

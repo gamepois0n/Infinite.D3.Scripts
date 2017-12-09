@@ -137,6 +137,19 @@ function MainWindow.DrawMainWindow()
     end
   end
   
+  if ImGui.CollapsingHeader("RActors", "id_ractors", true, false) then
+   
+    for k,v in pairs(Infinity.D3.GetRActorList()) do
+      local ractor = v
+      
+      if ractor ~= nil then
+        if ImGui.CollapsingHeader("Name(" ..v:GetName() .. ") ActorSNO(" .. v:GetActorSNO() .. ")", "id_ractor_" .. v:GetActorId(), true, false) then
+        end
+      end
+    end
+  end
+          
+
   if ImGui.CollapsingHeader("UIControls", "id_uicontrols", true, false) then
     _, MainWindow.UIControlNameFilter = ImGui.InputText("Filter by Name##acds_name_filter", MainWindow.UIControlNameFilter)
 

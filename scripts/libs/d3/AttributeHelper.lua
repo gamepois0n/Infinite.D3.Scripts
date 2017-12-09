@@ -616,3 +616,12 @@ function AttributeHelper.IsGoblin(acd)
           acd:GetActorSNO() == 410574 or
           acd:GetActorSNO() == 429161 
 end
+
+function AttributeHelper.IsRiftProgressOrb(acd)
+  return acd:GetActorSNO() == 401751 or
+          acd:GetActorSNO() == 436807
+end
+
+function AttributeHelper.IsPylonSpawnMarker(acd)
+  return acd:GetActorSNO() == 428690 
+end

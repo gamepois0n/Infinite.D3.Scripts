@@ -683,6 +683,12 @@ if Radar.Settings.GroundEffects.Thunderstorm.Enabled then
 end
 end
 
+function Radar.RenderRiftProgressOrbItems()
+  for k,v in pairs(Radar.Collector.Actors.Item.RiftProgress) do
+    Radar.RenderACDOnMinimap("Circle", v, 5, "707F3FBF", 1, true)
+  end
+end
+
 function Radar.RenderGroundItems()
   for k,v in pairs(Radar.Collector.Actors.Item.Ground) do
     local labels = {}
@@ -740,6 +746,12 @@ function Radar.RenderGroundItems()
     end
 
     RenderHelper.DrawWorldTextLabels(labels, v:GetPosition(), false)
+  end
+end
+
+function Radar.RenderPylonSpawnMarker()
+  for k,v in pairs(Radar.Collector.Actors.Pylon.SpawnMarker) do  
+    Radar.RenderACDOnMinimapAsText(v, "?", 16, "FFFFFFFF")
   end
 end
 
@@ -873,6 +885,10 @@ function Radar.RenderACDOnMinimap(geometry, acd, size, color, thickness, filled)
   end
 end
 
+function Radar.RenderACDOnMinimapAsText(acd, text, size, color)
+  RenderHelper.DrawText(text, size, color, RenderHelper.ToMinimap(acd:GetPosition()))
+end
+
 function Radar.OnRenderD2D()
 if Radar.Settings.Monsters.Enabled then
   Radar.RenderMonsters()
@@ -888,10 +904,18 @@ end
 
 if Radar.Settings.Items.Enabled then
   Radar.RenderGroundItems()
+
+  if Radar.Settings.Items.RiftProgressOrb.Enabled then
+    Radar.RenderRiftProgressOrbItems()
+  end
 end
 
 if Radar.Settings.Pylons.Enabled then
   Radar.RenderPylons()
+
+  if Radar.Settings.Pylons.SpawnMarker.Enabled then
+    Radar.RenderPylonSpawnMarker()
+  end
 end
 
 if Radar.Settings.Shrines.Enabled then
