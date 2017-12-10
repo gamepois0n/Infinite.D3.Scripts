@@ -105,7 +105,7 @@ function MainWindow.DrawMainWindow()
       end
 
       if acd ~= nil then
-        if ImGui.CollapsingHeader("Name(" ..v:GetName() .. ") ActorSNO(" .. v:GetActorSNO() .. ") ActorType(" .. v:GetActorType() .. ") GameBalanceType(" .. v:GetGameBalanceType() .. ") GizmoType(" .. v:GetGizmoType() .. ")", "id_acd_" .. v:GetActorId(), true, false) then
+        if ImGui.CollapsingHeader("Name(" ..v:GetName() .. ") ActorSNO(" .. v:GetActorSNO() .. ") ActorType(" .. v:GetActorType() .. ") ActorId(" .. v:GetActorId() .. ") GameBalanceType(" .. v:GetGameBalanceType() .. ") GizmoType(" .. v:GetGizmoType() .. ")", "id_acd_" .. v:GetActorId(), true, false) then
           if ImGui.CollapsingHeader("Attributes", "id_acd_attributes" .. v:GetActorId(), true, false) then
             ImGui.Columns(5)
             ImGui.Text("AttributeId")
@@ -143,7 +143,7 @@ function MainWindow.DrawMainWindow()
       local ractor = v
       
       if ractor ~= nil then
-        if ImGui.CollapsingHeader("Name(" ..v:GetName() .. ") ActorSNO(" .. v:GetActorSNO() .. ")", "id_ractor_" .. v:GetActorId(), true, false) then
+        if ImGui.CollapsingHeader("Name(" ..v:GetName() .. ") ActorSNO(" .. v:GetActorSNO() .. ") ActorId(" .. v:GetActorId() .. ")", "id_ractor_" .. v:GetActorId(), true, false) then
         end
       end
     end

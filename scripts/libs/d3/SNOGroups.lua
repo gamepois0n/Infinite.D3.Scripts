@@ -1,6 +1,7 @@
 SNOGroups = {}
 SNOGroups.MonsterDefinitions = Infinity.D3.SNOGroups.GetMonsterDefinitions()
 SNOGroups.GlobalsDefinitions = Infinity.D3.SNOGroups.GetGlobalsDefinitions()
+--SNOGroups.SceneDefinitions = Infinity.D3.SNOGroups.GetSceneDefinitions()
 
 function SNOGroups.DumpToFile(table, filename)
     local json = JSON:new()
