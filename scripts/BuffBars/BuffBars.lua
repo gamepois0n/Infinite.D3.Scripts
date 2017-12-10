@@ -5,6 +5,12 @@ BuffBars.Collector = Collector()
 BuffBars.Settings = Settings()
 
 function BuffBars.Start()
+  local files = Infinity.FileSystem.GetFiles("Images\\*.dds")
+if files == nil or table.length(files) == 0 then
+  print("No Image folder exists in this ScriptFolder or it contains no .dds Texture files! Please download the seperate Images zip!")
+  return
+end
+
   BuffBars.Running = true
 
   BuffBarsSettings.LoadSettings()
