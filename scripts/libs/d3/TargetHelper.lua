@@ -8,16 +8,14 @@ function TargetHelper.GetMonsterTargetACD()
 		return nil
 	end
 
-	local target = acds[tActorId]
-
-	if target == nil then
-		return nil
-	end
-
-	if target:GetActorType() == Enums.ActorType.Monster and target:GetMonsterQuality() >= 0 then
-		return target
-	else
-		return nil
+	for k,v in pairs(acds) do
+		if v:GetActorId() == tActorId then
+			if v:GetActorType() == Enums.ActorType.Monster and v:GetMonsterQuality() >= 0 then
+				return v
+			else
+				return nil
+			end		
+		end
 	end	
 end
 

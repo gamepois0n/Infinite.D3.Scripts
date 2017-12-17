@@ -1,0 +1,8 @@
+[script]
+name=[Infinity] Navigation
+type=lib
+
+[files]
+file=Navigator.lua
+
+[dependencies]

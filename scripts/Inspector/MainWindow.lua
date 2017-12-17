@@ -18,7 +18,7 @@ MainWindow.RenderSelectedUIControl = false
 function MainWindow.DrawMainWindow()   
   ImGui.Begin("Inspector")
     
-  if ImGui.CollapsingHeader("Local Player", "id_localplayer", true, false) then  
+  if ImGui.CollapsingHeader("Local Player (X: " .. Inspector.Collector.LocalACD:GetPosition().X .. " Y: " .. Inspector.Collector.LocalACD:GetPosition().Y .. " Z: " .. Inspector.Collector.LocalACD:GetPosition().Z .. ")", "id_localplayer", true, false) then  
     if ImGui.CollapsingHeader("Active Skills", "id_localplayer_activeskills", true, false) then
       for k,v in pairs(SkillHelper.GetActiveSkills()) do
         ImGui.Text(AttributeHelper.PowerSNOs[v.PowerSNO] .. "(" .. v.PowerSNO .. ") Rune: " .. v.Rune .. " IsOnCooldown: " .. tostring(SkillHelper.IsOnCooldown(v.PowerSNO)))
@@ -81,6 +81,41 @@ function MainWindow.DrawMainWindow()
             ImGui.NextColumn()   
             end       
       end
+    end
+
+    if ImGui.CollapsingHeader("Items Backpack", "id_localplayer_items_backpack", true, false) then
+      for k,v in pairs(Inspector.Collector.Actors.Item.Backpack) do
+        if v ~= nil then
+        if ImGui.CollapsingHeader("Name(" ..v:GetName() .. ") ActorSNO(" .. v:GetActorSNO() .. ")", "id_item_backpack_" .. v:GetActorId(), true, false) then
+          if ImGui.CollapsingHeader("Attributes", "id_item_backpack_attributes" .. v:GetActorId(), true, false) then
+            ImGui.Columns(5)
+            ImGui.Text("AttributeId")
+            ImGui.NextColumn()
+            ImGui.Text("AttributeName")
+            ImGui.NextColumn()
+            ImGui.Text("PowerSNO")
+            ImGui.NextColumn()
+            ImGui.Text("PowerName")
+            ImGui.NextColumn()
+            ImGui.Text("Value")      
+            ImGui.NextColumn()
+                        
+            for k,v in pairs(AttributeHelper.GetAllAttributes(v)) do 
+              ImGui.Text(v.AttributeId)
+              ImGui.NextColumn()
+              ImGui.Text(v.AttributeName)
+              ImGui.NextColumn()
+              ImGui.Text(v.PowerSNO)
+              ImGui.NextColumn()
+              ImGui.Text(v.PowerName)
+              ImGui.NextColumn()
+              ImGui.Text(v.Value)
+              ImGui.NextColumn()          
+            end
+          end
+        end
+      end
+      end
     end    
   end
 
@@ -89,7 +124,7 @@ function MainWindow.DrawMainWindow()
     _, MainWindow.GBIdFilter = ImGui.InputText("Filter by GameBalanceID##acds_gbid_filter", MainWindow.GBIdFilter)
     _, MainWindow.NameFilter = ImGui.InputText("Filter by Name##acds_name_filter", MainWindow.NameFilter)
 
-    for k,v in pairs(Infinity.D3.GetACDList()) do
+    for k,v in pairs(Inspector.Collector.Actors.All) do
       local acd = v
 
       if MainWindow.SNOFilter ~= "" and string.find(tostring(v:GetActorSNO()), MainWindow.SNOFilter) == nil then

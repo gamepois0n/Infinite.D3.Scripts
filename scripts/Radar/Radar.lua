@@ -691,7 +691,7 @@ end
 
 function Radar.RenderRiftProgressOrbItems()
   for k,v in pairs(Radar.Collector.Actors.Item.RiftProgress) do
-    Radar.RenderACDOnMinimap("Circle", v, 5, "707F3FBF", 1, true)
+    Radar.RenderACDOnMinimap("Circle", v, 6, "FF7F3FBF", 1, true)
   end
 end
 

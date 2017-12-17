@@ -273,6 +273,44 @@ local b = ImVec2(center.X + (width / 2), center.Y + (height / 2))
 Infinity.Rendering.DrawRect(a, b, RenderHelper.GetColorImVec4FromHexColorString(color), thickness, rounding, filled)
 end
 
+function RenderHelper.DrawRectFromAB(a, b, color, thickness, rounding, filled)
+if filled == nil then
+	filled = false
+end
+
+if rounding == nil then
+	rounding = 0
+end
+
+local A = ImVec2(a.X, a.Y)
+local B = ImVec2(b.X, b.Y)
+
+Infinity.Rendering.DrawRect(A, B, RenderHelper.GetColorImVec4FromHexColorString(color), thickness, rounding, filled)
+end
+
+function RenderHelper.DrawRectFromA(a, width, height, color, thickness, rounding, filled)
+if filled == nil then
+	filled = false
+end
+
+if rounding == nil then
+	rounding = 0
+end
+
+local A = ImVec2(a.X, a.Y)
+local B = ImVec2(a.X + width, a.Y + height)
+
+Infinity.Rendering.DrawRect(A, B, RenderHelper.GetColorImVec4FromHexColorString(color), thickness, rounding, filled)
+end
+
+function RenderHelper.DrawQuad(a, b, c, d, color, thickness, filled)
+if filled == nil then
+	filled = false
+end
+
+Infinity.Rendering.DrawQuad(ImVec2(a.X, a.Y), ImVec2(b.X, b.Y), ImVec2(c.X, c.Y), ImVec2(d.X, d.Y), RenderHelper.GetColorImVec4FromHexColorString(color), thickness, filled)
+end
+
 function RenderHelper.DrawCircle(center, size, color, thickness, filled)
 if filled == nil then
 	filled = false

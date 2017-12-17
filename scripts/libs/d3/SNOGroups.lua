@@ -1,7 +1,7 @@
 SNOGroups = {}
 SNOGroups.MonsterDefinitions = Infinity.D3.SNOGroups.GetMonsterDefinitions()
 SNOGroups.GlobalsDefinitions = Infinity.D3.SNOGroups.GetGlobalsDefinitions()
---SNOGroups.SceneDefinitions = Infinity.D3.SNOGroups.GetSceneDefinitions()
+SNOGroups.SceneDefinitions = Infinity.D3.SNOGroups.GetSceneDefinitions()
 
 function SNOGroups.DumpToFile(table, filename)
     local json = JSON:new()
@@ -46,4 +46,16 @@ function SNOGroups.GetMonsterRiftProgressPercentByActorSNO(actorSNO)
 	end
 	
 	return (mDef:GetRiftProgress() / SNOGroups.GlobalsDefinitions[1]:GetMaxRiftPoints()) * 100
+end
+
+function SNOGroups.GetSceneDefBySceneSNO(sceneSNO)
+	local sDef = SNOGroups.SceneDefinitions[sceneSNO]
+
+	if sDef == nil then
+		SNOGroups.SceneDefinitions = Infinity.D3.SNOGroups.GetSceneDefinitions()
+
+		sDef = SNOGroups.SceneDefinitions[sceneSNO]
+	end
+
+	return sDef
 end

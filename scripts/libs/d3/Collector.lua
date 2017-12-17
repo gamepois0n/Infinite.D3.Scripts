@@ -13,7 +13,12 @@ function Collector.new()
     self.ClientRect = nil
     self.CurrentGameTick = 0
     self.LocalACD = nil
+    self.LevelAreaSNO = 0
+    self.WorldId = 0
     self.MonsterRiftProgress = 0.0
+
+    self.NavMesh = nil
+    self.NavMeshCells = {}
 
     self.LocalAttributes = {}
     self.LocalAttributes.All = {}
@@ -22,6 +27,7 @@ function Collector.new()
     self.LocalAttributes.BuffEndTick = {}
 
     self.Actors = {}
+    self.Actors.All = {}
     self.Actors.Monster = {}
     self.Actors.Item = {}    
     self.Actors.GroundEffect = {}
@@ -46,7 +52,9 @@ function Collector.new()
 
     self.Actors.Marker = {}
 
+    self.Actors.Item.All = {}
     self.Actors.Item.Ground = {}
+    self.Actors.Item.Backpack = {}
     self.Actors.Item.RiftProgress = {}
 
     self.Actors.GroundEffect.Plagued = {}
@@ -81,12 +89,16 @@ function Collector.new()
 end
 
 function Collector:ClearTables()
+    self.NavMeshCells = {}
+
     self.MonsterRiftProgress = 0.0
 
     self.LocalAttributes.All = {}
     self.LocalAttributes.BuffCount = {}
     self.LocalAttributes.BuffStartTick = {}
     self.LocalAttributes.BuffEndTick = {}
+
+    self.Actors.All = {}
 
     self.Actors.Monster.All = {}
     self.Actors.Monster.Normal = {}
@@ -106,7 +118,9 @@ function Collector:ClearTables()
     
     self.Actors.Marker = {}
 
+    self.Actors.Item.All = {}
     self.Actors.Item.Ground = {}
+    self.Actors.Item.Backpack = {}
     self.Actors.Item.RiftProgress = {}
 
     self.Actors.GroundEffect.Plagued = {}
@@ -141,6 +155,8 @@ end
 function Collector:GetActors(getriftprogress)
     for k, acd in pairs(Infinity.D3.GetACDList()) do
         if acd:GetActorId() ~= -1 then
+            table.insert(self.Actors.All, acd)
+
         local aType = acd:GetActorType()
 
             if aType == Enums.ActorType.Monster then
@@ -267,6 +283,8 @@ function Collector:GetActors(getriftprogress)
             elseif aType == Enums.ActorType.Player then
                 table.insert(self.Actors.Player, acd)
             elseif aType == Enums.ActorType.Item then
+                table.insert(self.Actors.Item.All, acd)
+
                 if AttributeHelper.IsRiftProgressOrb(acd) then
                     table.insert(self.Actors.Item.RiftProgress, acd)
 
@@ -275,6 +293,8 @@ function Collector:GetActors(getriftprogress)
                     end
                 elseif acd:GetItemLocation() == -1 then
                     table.insert(self.Actors.Item.Ground, acd)
+                elseif acd:GetItemLocation() == 0 then
+                    table.insert(self.Actors.Item.Backpack, acd)
                 end
             end
         end
@@ -327,16 +347,35 @@ function Collector:GetLocalACD()
     self.LocalACD = Infinity.D3.GetLocalACD()
 end
 
+function Collector:GetLevelArea()
+    self.LevelAreaSNO = Infinity.D3.GetCurrentLevelAreaSNO()
+    self.WorldId = Infinity.D3.GetWorldId()
+end
+
+function Collector:GetNavMesh()
+    if self.NavMesh == nil then
+        self.NavMesh = Infinity.D3.NavMesh()
+    end
+
+    self.NavMeshCells = self.NavMesh:GetNavMeshCells()
+end
+
 function Collector:InitReloads()
     UIControlHelper.Reload()
 end
 
-function Collector:Collect(getLocalAttributes, getriftprogress)    
+function Collector:Collect(getLocalAttributes, getriftprogress, getnavmesh)
+    if getnavmesh == nil then
+        getnavmesh = false
+    end
+
     self:InitReloads()
 
     self:ClearTables()
 
     self:GetLocalACD()
+
+    self:GetLevelArea()
 
     if getriftprogress == true then
         if AttributeHelper.IsInGreaterRift(self.LocalACD) == false then
@@ -352,4 +391,8 @@ function Collector:Collect(getLocalAttributes, getriftprogress)
 
     self:GetClientRect()
     self:GetTicks()
+
+    if getnavmesh == true then
+        self:GetNavMesh()
+    end
 end

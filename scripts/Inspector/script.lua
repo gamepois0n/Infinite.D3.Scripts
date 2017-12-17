@@ -3,6 +3,7 @@ Inspector.Running = false
 Inspector.AllAttributes = {}
 Inspector.NoModAttributes = {}
 Inspector.ModAttributes = {}
+Inspector.Collector = Collector()
 
 function Inspector.Start()
   Inspector.Running = true
@@ -16,6 +17,8 @@ function Inspector.OnPulse()
   if Inspector.Running == false then
     return
   end     
+
+  Inspector.Collector:Collect(false, false)
 end
 
 function Inspector.OnRenderD2D()
