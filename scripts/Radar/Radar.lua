@@ -324,7 +324,13 @@ if Radar.Settings.Monsters.Elite.Champion.Enabled then
       end
 
       if Radar.Settings.Monsters.Elite.Champion.Minimap == true then
-        Radar.RenderACDOnMinimap("Circle", v, Radar.Settings.Monsters.Elite.Champion.MinimapRadius, Radar.Settings.Monsters.Elite.Champion.ColorMinimap, Radar.Settings.Monsters.Elite.Champion.Thickness, true)
+        local minimapColor = Radar.Settings.Monsters.Elite.Champion.ColorMinimap
+
+        if AttributeHelper.HasJuggernaut(v) then
+          minimapColor = "FFFF0000"
+        end
+
+        Radar.RenderACDOnMinimap("Circle", v, Radar.Settings.Monsters.Elite.Champion.MinimapRadius, minimapColor, Radar.Settings.Monsters.Elite.Champion.Thickness, true)
       end
 
       Radar.RenderAffixLabels(v)
@@ -351,7 +357,13 @@ if Radar.Settings.Monsters.Elite.Rare.Enabled then
       end
 
       if Radar.Settings.Monsters.Elite.Rare.Minimap == true then
-        Radar.RenderACDOnMinimap("Circle", v, Radar.Settings.Monsters.Elite.Rare.MinimapRadius, Radar.Settings.Monsters.Elite.Rare.ColorMinimap, Radar.Settings.Monsters.Elite.Rare.Thickness, true)
+        local minimapColor = Radar.Settings.Monsters.Elite.Rare.ColorMinimap
+
+        if AttributeHelper.HasJuggernaut(v) then
+          minimapColor = "FFFF0000"
+        end
+        
+        Radar.RenderACDOnMinimap("Circle", v, Radar.Settings.Monsters.Elite.Rare.MinimapRadius, minimapColor, Radar.Settings.Monsters.Elite.Rare.Thickness, true)
       end
 
       Radar.RenderAffixLabels(v)
