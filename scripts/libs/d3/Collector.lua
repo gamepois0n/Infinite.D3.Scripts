@@ -26,6 +26,11 @@ function Collector.new()
     self.LocalAttributes.BuffStartTick = {}
     self.LocalAttributes.BuffEndTick = {}
 
+    self.PlayerData = {}
+    self.PlayerData.All = {}
+    self.PlayerData.Others = {}
+    self.PlayerData.OthersCount = 0
+
     self.Actors = {}
     self.Actors.All = {}
     self.Actors.Monster = {}
@@ -97,6 +102,10 @@ function Collector:ClearTables()
     self.LocalAttributes.BuffCount = {}
     self.LocalAttributes.BuffStartTick = {}
     self.LocalAttributes.BuffEndTick = {}
+
+    self.PlayerData.All = {}
+    self.PlayerData.Others = {}
+    self.PlayerData.OthersCount = 0
 
     self.Actors.All = {}
 
@@ -310,6 +319,10 @@ function Collector:GetTicks()
 end
 
 function Collector:GetLocalAttributes()
+    if self.LocalACD == nil or self.LocalACD.Address == 0 then
+        return
+    end
+
     local attributes = self.LocalACD:GetAttributes()
 
     for k,v in pairs(attributes) do
@@ -360,6 +373,21 @@ function Collector:GetNavMesh()
     self.NavMeshCells = self.NavMesh:GetNavMeshCells()
 end
 
+function Collector:GetPlayers()
+    self.PlayerData.All = Infinity.D3.GetPlayers()
+
+    for k,playerdata in pairs(self.PlayerData.All) do
+      local acd = Infinity.D3.GetACDbyACDId(playerdata:GetACDId())
+
+        if acd.Address ~= 0 then
+            if acd:GetActorId() ~= self.LocalACD:GetActorId() then
+                table.insert(self.PlayerData.Others, playerdata)
+                self.PlayerData.OthersCount = self.PlayerData.OthersCount + 1
+            end
+        end
+    end
+end
+
 function Collector:InitReloads()
     UIControlHelper.Reload()
 end
@@ -382,6 +410,8 @@ function Collector:Collect(getLocalAttributes, getriftprogress, getnavmesh)
             getriftprogress = false
         end
     end
+
+    self:GetPlayers()
 
     self:GetActors(getriftprogress)
     

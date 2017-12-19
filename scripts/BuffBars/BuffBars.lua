@@ -60,13 +60,44 @@ function BuffBars.DrawBuffBar(index, buffbar)
 end
 
 function BuffBars.RenderBuffBars()
-  for k,v in pairs(BuffBars.Settings.BuffBars) do      
+  for k,v in pairs(BuffBars.Settings.BuffBars) do
+    if v.Enabled then      
       BuffBars.DrawBuffBar(k, v)
+      end
     end
+end
+
+function BuffBars.RenderPartyMemberBuffBars()
+  for k, playerdata in pairs(BuffBars.Collector.PlayerData.Others) do
+    local portraitUIRect = UIControlHelper.GetPortraitUIRectByIndex(playerdata:GetIndex())
+
+    if portraitUIRect ~= nil then
+      portraitUIRect = RenderHelper.TransformUIRectToClientRect(portraitUIRect)
+
+      local startX = portraitUIRect.Right + (portraitUIRect.Width * 1.2) + BuffBars.Settings.PartyMemberBuffBar.OffsetX
+      local startY = portraitUIRect.Top + BuffBars.Settings.PartyMemberBuffBar.OffsetY
+
+      local acd = Infinity.D3.GetACDbyACDId(playerdata:GetACDId())
+
+      if acd.Address ~= 0 then
+        for k,power in pairs(BuffBarsSettings.PartyMemberBuffBarTextures.Powers) do
+          if power.BuffIcon ~= nil and AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Buff_Icon_Count0 + power.BuffIcon.PowerLayer, power.BuffIcon.PowerSNO) ~= 0 then
+            power.BuffIcon:Draw(ImVec2(startX, startY), ImVec2(BuffBars.Settings.PartyMemberBuffBar.IconSize, BuffBars.Settings.PartyMemberBuffBar.IconSize), acd)
+
+            startX = startX + BuffBars.Settings.PartyMemberBuffBar.IconSize
+          end
+        end
+      end
+    end
+  end
 end
 
 function BuffBars.OnRenderD2D()
 if BuffBars.Collector.ClientRect ~= nil then
   BuffBars.RenderBuffBars()
+end
+
+if BuffBars.Collector.PlayerData.OthersCount > 0 then
+  BuffBars.RenderPartyMemberBuffBars()
 end
 end

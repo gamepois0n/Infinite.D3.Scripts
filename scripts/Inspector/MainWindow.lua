@@ -119,6 +119,43 @@ function MainWindow.DrawMainWindow()
     end    
   end
 
+  if ImGui.CollapsingHeader("Other Players", "id_otherplayers", true, false) then   
+     for k,playerdata in pairs(Inspector.Collector.PlayerData.Others) do
+      local acd = Infinity.D3.GetACDbyACDId(playerdata:GetACDId())
+
+      if acd ~= nil then
+        if ImGui.CollapsingHeader("Index(" .. playerdata:GetIndex() .. ") Name(" ..playerdata:GetHeroName() .. ") ActorSNO(" .. acd:GetActorSNO() .. ")  ActorId(" .. acd:GetActorId() .. ")", "id_acd_player_" .. acd:GetActorId(), true, false) then
+          if ImGui.CollapsingHeader("Attributes", "id_acd_player_attributes" .. acd:GetActorId(), true, false) then
+            ImGui.Columns(5)
+            ImGui.Text("AttributeId")
+            ImGui.NextColumn()
+            ImGui.Text("AttributeName")
+            ImGui.NextColumn()
+            ImGui.Text("PowerSNO")
+            ImGui.NextColumn()
+            ImGui.Text("PowerName")
+            ImGui.NextColumn()
+            ImGui.Text("Value")      
+            ImGui.NextColumn()
+                        
+            for k,v in pairs(AttributeHelper.GetAllAttributes(acd)) do 
+              ImGui.Text(v.AttributeId)
+              ImGui.NextColumn()
+              ImGui.Text(v.AttributeName)
+              ImGui.NextColumn()
+              ImGui.Text(v.PowerSNO)
+              ImGui.NextColumn()
+              ImGui.Text(v.PowerName)
+              ImGui.NextColumn()
+              ImGui.Text(v.Value)
+              ImGui.NextColumn()          
+            end
+          end
+        end
+      end
+     end
+  end
+
   if ImGui.CollapsingHeader("ACDs", "id_acds", true, false) then
     _, MainWindow.SNOFilter = ImGui.InputText("Filter by ActorSNO##acds_sno_filter", MainWindow.SNOFilter)
     _, MainWindow.GBIdFilter = ImGui.InputText("Filter by GameBalanceID##acds_gbid_filter", MainWindow.GBIdFilter)

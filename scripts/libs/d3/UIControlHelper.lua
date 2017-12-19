@@ -25,3 +25,13 @@ end
 function UIControlHelper.GetUIControlByName(name)
 	return UIControlHelper.UIControls[name]
 end
+
+function UIControlHelper.GetPortraitUIRectByIndex(index)
+	local control = UIControlHelper.GetUIControlByName("Root.NormalLayer.portraits.stack.party_stack.portrait_" .. index .. ".icon")
+
+	if control == nil then
+		return nil
+	end
+
+	return control:GetUIRect()
+end

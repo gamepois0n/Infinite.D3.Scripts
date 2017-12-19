@@ -4,13 +4,20 @@ BuffBarsSettings.EnabledTextureView = false
 BuffBarsSettings.BuffBarsTextures = {}
 BuffBarsSettings.SelectedBuffBar = 1
 
+BuffBarsSettings.PartyMemberBuffBarTextures = {}
+
 BuffBarsSettings.BuffTypes = {"Count", "StartTick", "EndTick"}
 BuffBarsSettings.BuffTypesSelectedIndex = 1
+BuffBarsSettings.PartyMemberBuffTypesSelectedIndex = 1
 
 BuffBarsSettings.BuffPowers = {}
 BuffBarsSettings.BuffPowersLayers = {}
 BuffBarsSettings.BuffPowersNames = {}
+BuffBarsSettings.PartyMemberBuffPowers = {}
+BuffBarsSettings.PartyMemberBuffPowersLayers = {}
+BuffBarsSettings.PartyMemberBuffPowersNames = {}
 BuffBarsSettings.BuffPowersSelectedIndex = 0
+BuffBarsSettings.PartyMemberBuffPowersSelectedIndex = 0
 
 function BuffBarsSettings.DrawMainWindow()  
   ImGui.Begin("BuffBars Settings", true)  
@@ -23,14 +30,75 @@ function BuffBarsSettings.DrawMainWindow()
   		end
   	end]]--
     
-    if ImGui.Button("New##new_buffbar") then
-      table.insert(BuffBars.Settings.BuffBars, {Name = "New Buffbar_" .. (table.length(BuffBars.Settings.BuffBars) + 1), ContainerTextureFile = "", ContainerImageAtlasIndex = 0,ContainerSize = 50, IconSize = 40, ScreenX = 0.5, ScreenY = 0.5, LimitX = 10, LimitY = 3, Powers = {}})
+    if ImGui.CollapsingHeader("Local Player", "id_buffbars_local_player", true, false) then
+
+      if ImGui.Button("New##new_buffbar") then
+        table.insert(BuffBars.Settings.BuffBars, {Name = "New Buffbar_" .. (table.length(BuffBars.Settings.BuffBars) + 1), ContainerTextureFile = "", ContainerImageAtlasIndex = 0,ContainerSize = 50, IconSize = 40, ScreenX = 0.5, ScreenY = 0.5, LimitX = 10, LimitY = 3, Powers = {}})
+
+        BuffBarsSettings.LoadBarsFromSettings()
+      end
+
+      for k,v in pairs(BuffBars.Settings.BuffBars) do      
+        BuffBarsSettings.DrawBuffBarEntry(k, v)
+      end    
+    end
+
+    if ImGui.CollapsingHeader("Party Member", "id_buffbars_party_member", true, false) then
+      ImGui.Text("Parameters")
+      ImGui.Text(" ")
+    
+      _, BuffBars.Settings.PartyMemberBuffBar.IconSize = ImGui.SliderInt("IconSize##iconsize_pmbb", BuffBars.Settings.PartyMemberBuffBar.IconSize, 10, 100)
+      _, BuffBars.Settings.PartyMemberBuffBar.OffsetX = ImGui.SliderInt("OffsetX##offsetx_pmbb", BuffBars.Settings.PartyMemberBuffBar.OffsetX, 0, 100) 
+      _, BuffBars.Settings.PartyMemberBuffBar.OffsetY = ImGui.SliderInt("OffsetY##offsety_pmbb", BuffBars.Settings.PartyMemberBuffBar.OffsetY, 0, 100) 
+
+      ImGui.Text(" ")
+      ImGui.Text("Powers")
+      ImGui.Text(" ")
+
+      BuffBarsSettings.LoadPartyMemberBuffPowers()
+
+      _, BuffBarsSettings.PartyMemberBuffTypesSelectedIndex = ImGui.Combo("Select Buff Type##buff_power_type_select_pmbb", BuffBarsSettings.PartyMemberBuffTypesSelectedIndex, BuffBarsSettings.BuffTypes)
+
+    valueChanged, BuffBarsSettings.PartyMemberBuffPowersSelectedIndex = ImGui.Combo("Select Active Power##buff_power_select_pmbb", BuffBarsSettings.PartyMemberBuffPowersSelectedIndex, BuffBarsSettings.PartyMemberBuffPowersNames)
+    if valueChanged then
+      table.insert(BuffBars.Settings.PartyMemberBuffBar.Powers, {TextureFile = "", AtlasIndex = 0, PowerSNO = BuffBarsSettings.PartyMemberBuffPowers[BuffBarsSettings.PartyMemberBuffPowersSelectedIndex].PowerSNO, Layer = BuffBarsSettings.PartyMemberBuffPowersLayers[BuffBarsSettings.PartyMemberBuffPowersSelectedIndex].Layer})
 
       BuffBarsSettings.LoadBarsFromSettings()
     end
 
-    for k,v in pairs(BuffBars.Settings.BuffBars) do      
-      BuffBarsSettings.DrawBuffBarEntry(k, v)
+    ImGui.Text(" ")
+    ImGui.Text("Selected Powers")
+    ImGui.Text(" ")
+    
+    for k,v in pairs(BuffBars.Settings.PartyMemberBuffBar.Powers) do
+      if ImGui.Button("X##delete_" .. k) then
+        table.remove(BuffBars.Settings.PartyMemberBuffBar.Powers, k)
+
+        BuffBarsSettings.LoadBarsFromSettings()
+      end
+      
+      ImGui.SameLine()
+
+      ImGui.Text(v.PowerSNO)
+      
+      ImGui.SameLine()
+
+      ImGui.Text(AttributeHelper.PowerSNOs[v.PowerSNO])
+      
+      ImGui.SameLine()
+
+      if ImGui.Button("Image##power_image_" .. k) then
+        TextureViewer.BuffBarsSettingsPartyMemberBuffBarIndex = 1
+        TextureViewer.BuffBarsSettingsPowerIndex = k
+      end
+      
+      if BuffBarsSettings.PartyMemberBuffBarTextures.Powers[k].Texture ~= nil then
+        ImGui.SameLine()
+        
+        ImGuiHelper.Image(BuffBarsSettings.PartyMemberBuffBarTextures.Powers[k].Texture.Texture, ImVec2(22, 22), BuffBarsSettings.PartyMemberBuffBarTextures.Powers[k].Texture.Atlas[BuffBarsSettings.PartyMemberBuffBarTextures.Powers[k].AtlasIndex].A, BuffBarsSettings.PartyMemberBuffBarTextures.Powers[k].Texture.Atlas[BuffBarsSettings.PartyMemberBuffBarTextures.Powers[k].AtlasIndex].B)
+      
+      end
+    end
     end
 
   ImGui.End()
@@ -62,6 +130,7 @@ function BuffBarsSettings.DrawBuffBarEntry(index, buffbar)
     ImGui.Text("Parameters")
     ImGui.Text(" ")
 
+    _, buffbar.Enabled = ImGui.Checkbox("Enabled##name", buffbar.Enabled)
     _, buffbar.Name = ImGui.InputText("Name##name", buffbar.Name)
     _, buffbar.ContainerSize = ImGui.SliderInt("ContainerSize##containersize", buffbar.ContainerSize, 10, 100)
     _, buffbar.IconSize = ImGui.SliderInt("IconSize##iconsize", buffbar.IconSize, 10, 100)
@@ -130,6 +199,10 @@ function BuffBarsSettings.DrawBuffBarEntry(index, buffbar)
 end
 
 function BuffBarsSettings.SaveSettings()
+  if table.length(BuffBars.Settings.BuffBars) == 0 then
+    BuffBars.Settings.BuffBars = {}
+  end
+
     local json = JSON:new()
     Infinity.FileSystem.WriteFile("Settings.json", json:encode_pretty(BuffBars.Settings))
 end
@@ -167,6 +240,21 @@ function BuffBarsSettings.LoadBarsFromSettings()
   end
 
   BuffBarsSettings.BuffBarsTextures = barsTex
+
+  
+  powers = {}
+
+    for a,power in pairs(BuffBars.Settings.PartyMemberBuffBar.Powers) do
+      if power.TextureFile ~= "" then
+        local tex = RenderHelper.LoadDDSFileFromCurrentScriptDirectory(power.TextureFile)
+
+        table.insert(powers, {Texture = tex, AtlasIndex = power.AtlasIndex, BuffIcon = BuffIcon:new(tex, power.AtlasIndex, power.PowerSNO, power.Layer, BuffBars.Collector)})
+      else
+        table.insert(powers, {Texture = nil, AtlasIndex = 0, BuffIcon = nil})
+      end
+    end    
+    
+  BuffBarsSettings.PartyMemberBuffBarTextures = {Powers = powers}
 end
 
 function BuffBarsSettings.LoadBuffPowers()
@@ -206,3 +294,49 @@ function BuffBarsSettings.LoadBuffPowers()
   BuffBarsSettings.BuffPowersLayers = layers
   BuffBarsSettings.BuffPowersNames = powersNames
 end
+
+function BuffBarsSettings.LoadPartyMemberBuffPowers()
+  local powers = {}
+  local layers = {}
+  local powersNames = {}
+
+  local buffLayer = 0
+
+  for k, playerdata in pairs(BuffBars.Collector.PlayerData.Others) do
+
+    local acd = Infinity.D3.GetACDbyACDId(playerdata:GetACDId())
+
+    if acd.Address ~= 0 then
+
+      if BuffBarsSettings.PartyMemberBuffTypesSelectedIndex == 1 then
+        for k,v in pairs(AttributeHelper.GetAllBuffCountAttributes(acd)) do
+          buffLayer = v.AttributeId - Enums.AttributeId.Buff_Icon_Count0
+          
+          table.insert(powers, v)
+          table.insert(layers, {Layer = buffLayer})
+          table.insert(powersNames, "Layer: " .. buffLayer .. " SNO: " .. v.PowerSNO .. " Name: " .. v.PowerName .. " Value: " .. v.Value)        
+        end
+        elseif BuffBarsSettings.PartyMemberBuffTypesSelectedIndex == 2 then
+          for k,v in pairs(AttributeHelper.GetAllBuffStartTickAttributes(acd)) do
+            buffLayer = v.AttributeId - Enums.AttributeId.Buff_Icon_Start_Tick0
+
+            table.insert(powers, v)
+            table.insert(layers, {Layer = buffLayer})
+            table.insert(powersNames, "Layer: " .. buffLayer .. " SNO: " .. v.PowerSNO .. " Name: " .. v.PowerName .. " Value: " .. v.Value)
+          end
+          elseif BuffBarsSettings.PartyMemberBuffTypesSelectedIndex == 3 then
+            for k,v in pairs(GetAllBuffEndTickAttributes(acd)) do
+              buffLayer = v.AttributeId - Enums.AttributeId.Buff_Icon_End_Tick0
+
+              table.insert(powers, v)
+              table.insert(layers, {Layer = buffLayer})
+              table.insert(powersNames, "Layer: " .. buffLayer .. " SNO: " .. v.PowerSNO .. " Name: " .. v.PowerName .. " Value: " .. v.Value)
+            end
+          end
+        end
+      end
+
+      BuffBarsSettings.PartyMemberBuffPowers = powers
+      BuffBarsSettings.PartyMemberBuffPowersLayers = layers
+      BuffBarsSettings.PartyMemberBuffPowersNames = powersNames
+    end

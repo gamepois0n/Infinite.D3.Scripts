@@ -16,7 +16,8 @@ function BuffIcon:new(texture, atlasindex, powersno, powerlayer, collector)
   self.PowerLayer = powerlayer
 
   self.Collector = collector  
-
+  self.ACD = nil
+  
   return self  
 end
 
@@ -31,7 +32,7 @@ function BuffIcon:GetStackedCount()
 	
 	return 0]]--
 
-	return AttributeHelper.GetAttributeValue(Infinity.D3.GetLocalACD(), Enums.AttributeId.Buff_Icon_Count0 + self.PowerLayer, self.PowerSNO)
+	return AttributeHelper.GetAttributeValue(self.ACD, Enums.AttributeId.Buff_Icon_Count0 + self.PowerLayer, self.PowerSNO)
 end
 
 function BuffIcon:GetEndTick()	
@@ -45,11 +46,17 @@ function BuffIcon:GetEndTick()
 	
 	return 0]]--
 
-	return AttributeHelper.GetAttributeValue(Infinity.D3.GetLocalACD(), Enums.AttributeId.Buff_Icon_End_Tick0 + self.PowerLayer, self.PowerSNO)
+	return AttributeHelper.GetAttributeValue(self.ACD, Enums.AttributeId.Buff_Icon_End_Tick0 + self.PowerLayer, self.PowerSNO)
 end
 
-function BuffIcon:Draw(renderPosition, renderSize)
+function BuffIcon:Draw(renderPosition, renderSize, acd)
 	RenderHelper.DrawImageFromDDS(self.Texture, renderPosition, renderSize, self.AtlasIndex)
+
+	if acd == nil then
+		self.ACD = Infinity.D3.GetLocalACD()
+	else
+		self.ACD = acd
+	end
 
 	local count = self:GetStackedCount()
 	local endtick = self:GetEndTick()
