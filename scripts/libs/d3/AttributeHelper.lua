@@ -552,7 +552,7 @@ function AttributeHelper.GetSkillCharges(acd, powerSNO)
 end
 
 function AttributeHelper.IsOperated(acd)
-  return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Gizmo_Has_Been_Operated , -1) == 1
+  return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Gizmo_Has_Been_Operated , -1) == 1 or AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Gizmo_State, -1) == 1
 end
 
 function AttributeHelper.IsPowerPylon(acd)
@@ -628,4 +628,8 @@ end
 
 function AttributeHelper.IsPylonSpawnMarker(acd)
   return acd:GetActorSNO() == 428690 
+end
+
+function AttributeHelper.IsPoolOfReflection(acd)
+  return acd:GetActorSNO() == 373463 
 end

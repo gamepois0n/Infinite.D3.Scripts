@@ -92,6 +92,8 @@ function Collector.new()
     self.Actors.Shrine.Empowered = {}
     self.Actors.Shrine.Bandit = {}
 
+    self.Actors.PoolOfReflection = {}
+
     return self
 end
 
@@ -163,6 +165,8 @@ function Collector:ClearTables()
     self.Actors.Shrine.Fleeting = {}
     self.Actors.Shrine.Empowered = {}
     self.Actors.Shrine.Bandit = {}
+
+    self.Actors.PoolOfReflection = {}
 end
 
 function Collector:GetActors(getriftprogress)
@@ -238,6 +242,8 @@ function Collector:GetActors(getriftprogress)
 
                 if acd:GetGizmoType() == 84 then
                     table.insert(self.Actors.Corpse, acd)
+                elseif acd:GetGizmoType() == 79 then
+                    table.insert(self.Actors.PoolOfReflection, acd)    
                 elseif  AttributeHelper.IsPowerPylon(acd) then
                     table.insert(self.Actors.Pylon.Power, acd)
                 elseif AttributeHelper.IsConduitPylon(acd) then
