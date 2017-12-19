@@ -60,6 +60,8 @@ function Collector.new()
     self.Actors.Item.All = {}
     self.Actors.Item.Ground = {}
     self.Actors.Item.Backpack = {}
+    self.Actors.Item.Equip = {}
+    self.Actors.Item.Stash = {}
     self.Actors.Item.RiftProgress = {}
 
     self.Actors.GroundEffect.Plagued = {}
@@ -130,6 +132,8 @@ function Collector:ClearTables()
     self.Actors.Item.All = {}
     self.Actors.Item.Ground = {}
     self.Actors.Item.Backpack = {}
+    self.Actors.Item.Equip = {}
+    self.Actors.Item.Stash = {}
     self.Actors.Item.RiftProgress = {}
 
     self.Actors.GroundEffect.Plagued = {}
@@ -162,13 +166,12 @@ function Collector:ClearTables()
 end
 
 function Collector:GetActors(getriftprogress)
-    for k, acd in pairs(Infinity.D3.GetACDList()) do
-        if acd:GetActorId() ~= -1 then
-            table.insert(self.Actors.All, acd)
+    for k, acd in pairs(Infinity.D3.GetACDList()) do        
+        table.insert(self.Actors.All, acd)
 
         local aType = acd:GetActorType()
 
-            if aType == Enums.ActorType.Monster then
+            if aType == Enums.ActorType.Monster and acd:GetActorId() ~= -1 then
                 local mQuality = acd:GetMonsterQuality()
 
                 if GroundEffectHelper.IsOccuCircle(acd) then
@@ -231,7 +234,7 @@ function Collector:GetActors(getriftprogress)
                     table.insert(self.Actors.Monster.Boss, acd)
                     table.insert(self.Actors.Monster.All, acd)
                 end
-            elseif aType == Enums.ActorType.Gizmo then
+            elseif aType == Enums.ActorType.Gizmo and acd:GetActorId() ~= -1 then
 
                 if acd:GetGizmoType() == 84 then
                     table.insert(self.Actors.Corpse, acd)
@@ -260,7 +263,7 @@ function Collector:GetActors(getriftprogress)
                 elseif AttributeHelper.IsBanditShrine(acd) then
                     table.insert(self.Actors.Shrine.Bandit, acd)
                 end
-            elseif aType == Enums.ActorType.ServerProp then
+            elseif aType == Enums.ActorType.ServerProp and acd:GetActorId() ~= -1 then
 
                 if AttributeHelper.IsPylonSpawnMarker(acd) then
                     table.insert(self.Actors.Pylon.SpawnMarker, acd)
@@ -287,9 +290,9 @@ function Collector:GetActors(getriftprogress)
                 elseif GroundEffectHelper.IsThunderstorm(acd) then
                     table.insert(self.Actors.GroundEffect.Thunderstorm, acd)
                 end
-            elseif aType == Enums.ActorType.Environment then
-            elseif aType == Enums.ActorType.Critter then
-            elseif aType == Enums.ActorType.Player then
+            elseif aType == Enums.ActorType.Environment and acd:GetActorId() ~= -1 then
+            elseif aType == Enums.ActorType.Critter and acd:GetActorId() ~= -1 then
+            elseif aType == Enums.ActorType.Player and acd:GetActorId() ~= -1 then
                 table.insert(self.Actors.Player, acd)
             elseif aType == Enums.ActorType.Item then
                 table.insert(self.Actors.Item.All, acd)
@@ -304,10 +307,13 @@ function Collector:GetActors(getriftprogress)
                     table.insert(self.Actors.Item.Ground, acd)
                 elseif acd:GetItemLocation() == 0 then
                     table.insert(self.Actors.Item.Backpack, acd)
+                elseif acd:GetItemLocation() == 15 then
+                    table.insert(self.Actors.Item.Stash, acd)
+                elseif acd:GetItemLocation() >= 1 and acd:GetItemLocation() <= 13 then
+                    table.insert(self.Actors.Item.Equip, acd)
                 end
             end
-        end
-    end
+        end    
 end
 
 function Collector:GetClientRect()

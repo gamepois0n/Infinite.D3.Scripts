@@ -86,7 +86,7 @@ function MainWindow.DrawMainWindow()
     if ImGui.CollapsingHeader("Items Backpack", "id_localplayer_items_backpack", true, false) then
       for k,v in pairs(Inspector.Collector.Actors.Item.Backpack) do
         if v ~= nil then
-        if ImGui.CollapsingHeader("Name(" ..v:GetName() .. ") ActorSNO(" .. v:GetActorSNO() .. ")", "id_item_backpack_" .. v:GetActorId(), true, false) then
+        if ImGui.CollapsingHeader("Name(" ..v:GetName() .. ") ActorSNO(" .. v:GetActorSNO() .. ") ItemSlotX(" .. v:GetItemSlotX() .. ") ItemSlotY(" .. v:GetItemSlotY() .. ")", "id_item_backpack_" .. v:GetActorId(), true, false) then
           if ImGui.CollapsingHeader("Attributes", "id_item_backpack_attributes" .. v:GetActorId(), true, false) then
             ImGui.Columns(5)
             ImGui.Text("AttributeId")
@@ -117,6 +117,76 @@ function MainWindow.DrawMainWindow()
       end
       end
     end    
+
+    if ImGui.CollapsingHeader("Items Equip", "id_localplayer_items_equip", true, false) then
+      for k,v in pairs(Inspector.Collector.Actors.Item.Equip) do
+        if v ~= nil then
+        if ImGui.CollapsingHeader("Name(" ..v:GetName() .. ") ActorSNO(" .. v:GetActorSNO() .. ")", "id_item_Equip_" .. v:GetActorId(), true, false) then
+          if ImGui.CollapsingHeader("Attributes", "id_item_Equip_attributes" .. v:GetActorId(), true, false) then
+            ImGui.Columns(5)
+            ImGui.Text("AttributeId")
+            ImGui.NextColumn()
+            ImGui.Text("AttributeName")
+            ImGui.NextColumn()
+            ImGui.Text("PowerSNO")
+            ImGui.NextColumn()
+            ImGui.Text("PowerName")
+            ImGui.NextColumn()
+            ImGui.Text("Value")      
+            ImGui.NextColumn()
+                        
+            for k,v in pairs(AttributeHelper.GetAllAttributes(v)) do 
+              ImGui.Text(v.AttributeId)
+              ImGui.NextColumn()
+              ImGui.Text(v.AttributeName)
+              ImGui.NextColumn()
+              ImGui.Text(v.PowerSNO)
+              ImGui.NextColumn()
+              ImGui.Text(v.PowerName)
+              ImGui.NextColumn()
+              ImGui.Text(v.Value)
+              ImGui.NextColumn()          
+            end
+          end
+        end
+      end
+      end
+    end   
+
+    if ImGui.CollapsingHeader("Items Stash", "id_localplayer_items_stash", true, false) then
+      for k,v in pairs(Inspector.Collector.Actors.Item.Stash) do
+        if v ~= nil then
+        if ImGui.CollapsingHeader("Name(" ..v:GetName() .. ") ActorSNO(" .. v:GetActorSNO() .. ") ItemSlotX(" .. v:GetItemSlotX() .. ") ItemSlotY(" .. v:GetItemSlotY() .. ")", "id_item_stash_" .. v:GetActorId(), true, false) then
+          if ImGui.CollapsingHeader("Attributes", "id_item_stash_attributes" .. v:GetActorId(), true, false) then
+            ImGui.Columns(5)
+            ImGui.Text("AttributeId")
+            ImGui.NextColumn()
+            ImGui.Text("AttributeName")
+            ImGui.NextColumn()
+            ImGui.Text("PowerSNO")
+            ImGui.NextColumn()
+            ImGui.Text("PowerName")
+            ImGui.NextColumn()
+            ImGui.Text("Value")      
+            ImGui.NextColumn()
+                        
+            for k,v in pairs(AttributeHelper.GetAllAttributes(v)) do 
+              ImGui.Text(v.AttributeId)
+              ImGui.NextColumn()
+              ImGui.Text(v.AttributeName)
+              ImGui.NextColumn()
+              ImGui.Text(v.PowerSNO)
+              ImGui.NextColumn()
+              ImGui.Text(v.PowerName)
+              ImGui.NextColumn()
+              ImGui.Text(v.Value)
+              ImGui.NextColumn()          
+            end
+          end
+        end
+      end
+      end
+    end   
   end
 
   if ImGui.CollapsingHeader("Other Players", "id_otherplayers", true, false) then   

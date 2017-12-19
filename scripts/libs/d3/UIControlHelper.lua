@@ -35,3 +35,35 @@ function UIControlHelper.GetPortraitUIRectByIndex(index)
 
 	return control:GetUIRect()
 end
+
+function UIControlHelper.GetUIControlByItemLocation(itemlocation)
+	if itemlocation == 1 then --PlayerHead
+		return UIControlHelper.GetUIControlByName("Root.NormalLayer.inventory_dialog_mainPage.inventory_button_head")
+	elseif itemlocation == 2 then --PlayerTorso
+		return UIControlHelper.GetUIControlByName("Root.NormalLayer.inventory_dialog_mainPage.inventory_button_torso")
+	elseif itemlocation == 3 then --PlayerRightHand
+		return UIControlHelper.GetUIControlByName("Root.NormalLayer.inventory_dialog_mainPage.inventory_button_armRight")
+	elseif itemlocation == 4 then --PlayerLeftHand
+		return UIControlHelper.GetUIControlByName("Root.NormalLayer.inventory_dialog_mainPage.inventory_button_armLeft")
+	elseif itemlocation == 5 then --PlayerHands
+		return UIControlHelper.GetUIControlByName("Root.NormalLayer.inventory_dialog_mainPage.inventory_button_hands")
+	elseif itemlocation == 6 then --PlayerWaist
+		return UIControlHelper.GetUIControlByName("Root.NormalLayer.inventory_dialog_mainPage.inventory_button_waist")
+	elseif itemlocation == 7 then --PlayerFeet
+		return UIControlHelper.GetUIControlByName("Root.NormalLayer.inventory_dialog_mainPage.inventory_button_feet")
+	elseif itemlocation == 8 then --PlayerShoulders
+		return UIControlHelper.GetUIControlByName("Root.NormalLayer.inventory_dialog_mainPage.inventory_button_shoulders")
+	elseif itemlocation == 9 then --PlayerLegs
+		return UIControlHelper.GetUIControlByName("Root.NormalLayer.inventory_dialog_mainPage.inventory_button_legs")
+	elseif itemlocation == 10 then --PlayerBracers
+		return UIControlHelper.GetUIControlByName("Root.NormalLayer.inventory_dialog_mainPage.inventory_button_bracers")
+	elseif itemlocation == 11 then --PlayerLeftFinger
+		return UIControlHelper.GetUIControlByName("Root.NormalLayer.inventory_dialog_mainPage.inventory_button_fingerLeft")
+	elseif itemlocation == 12 then --PlayerRightFinger
+		return UIControlHelper.GetUIControlByName("Root.NormalLayer.inventory_dialog_mainPage.inventory_button_fingerRight")
+	elseif itemlocation == 13 then --PlayerNeck
+		return UIControlHelper.GetUIControlByName("Root.NormalLayer.inventory_dialog_mainPage.inventory_button_neck")
+	end
+
+	return nil;
+end

@@ -23,7 +23,7 @@ end
 
 function Inspector.OnRenderD2D()
 	if MainWindow.RenderSelectedUIControl and MainWindow.SelectedUIControl ~= nil then
-		local uirect = MainWindow.SelectedUIControl:GetUIRect()
+		local uirect = RenderHelper.TransformUIRectToClientRect(MainWindow.SelectedUIControl:GetUIRect())
 		
 		local center = Vector2(math.floor(uirect.Left + (uirect.Width / 2)), math.floor(uirect.Top + (uirect.Height / 2)))
 

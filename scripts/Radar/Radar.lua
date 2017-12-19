@@ -952,6 +952,125 @@ function Radar.RenderOnScreenRiftProgressAtCursor()
   end
 end
 
+function Radar.MarkEquippedItems()
+  local inventoryMainPage = UIControlHelper.GetUIControlByName("Root.NormalLayer.inventory_dialog_mainPage")
+
+  if inventoryMainPage == nil or not inventoryMainPage:GetIsVisible() then
+    return
+  end
+
+  for k,v in pairs(Radar.Collector.Actors.Item.Equip) do
+    local isAncient = AttributeHelper.IsAncientLegendaryItem(v)
+    local isPrimal = AttributeHelper.IsPrimalLegendaryItem(v)
+
+      if isAncient or isPrimal then
+        local control = UIControlHelper.GetUIControlByItemLocation(v:GetItemLocation())
+
+        if control ~= nil then
+          local uirect = RenderHelper.TransformUIRectToClientRect(control:GetUIRect())
+          local color = "FF8F4509"
+          local text = "A"
+
+          if isPrimal then
+            color = "FFFF0000"
+            text = "P"
+          end
+
+          RenderHelper.DrawRectFromAB(Vector2(math.floor(uirect.Left), math.floor(uirect.Top)), Vector2(math.floor(uirect.Right), math.floor(uirect.Bottom)), color, 2, 5, false)
+          RenderHelper.DrawText(text, 16, color, Vector2(math.floor(uirect.Left), math.floor(uirect.Top)), 10)
+        end
+      end
+  end
+end
+
+function Radar.MarkBackpackItems()
+  local inventoryMainPage = UIControlHelper.GetUIControlByName("Root.NormalLayer.inventory_dialog_mainPage")
+
+  if inventoryMainPage == nil or not inventoryMainPage:GetIsVisible() then
+    return
+  end
+
+  local control = UIControlHelper.GetUIControlByName("Root.NormalLayer.inventory_dialog_mainPage.inventory_button_backpack")
+
+  if control == nil then
+    return
+  end
+
+  local uirect = RenderHelper.TransformUIRectToClientRect(control:GetUIRect())
+
+  for k,v in pairs(Radar.Collector.Actors.Item.Backpack) do
+    local isAncient = AttributeHelper.IsAncientLegendaryItem(v)
+    local isPrimal = AttributeHelper.IsPrimalLegendaryItem(v)
+
+      if isAncient or isPrimal then
+          local color = "FF8F4509"
+          local text = "A"
+
+          if isPrimal then
+            color = "FFFF0000"
+            text = "P"
+          end
+          
+          RenderHelper.DrawText(text, 16, color, Vector2(math.floor(uirect.Left + ((uirect.Width/10) * v:GetItemSlotX())), math.floor(uirect.Top + ((uirect.Height / 6) * v:GetItemSlotY()) )), 10, 2)
+        
+      end
+  end
+end
+
+function Radar.MarkStashItems()
+  local stashMainPage = UIControlHelper.GetUIControlByName("Root.NormalLayer.stash_dialog_mainPage")
+
+  if stashMainPage == nil or not stashMainPage:GetIsVisible() then
+    return
+  end
+
+  local control = UIControlHelper.GetUIControlByName("Root.NormalLayer.stash_dialog_mainPage.button_stash")
+
+  if control == nil then
+    return
+  end
+
+  local playerStash = Infinity.D3.PlayerStash()
+
+  local stashIndex = playerStash:GetStashIndex()
+
+  local tabIndex = 0
+  
+  if stashIndex == 0 then
+    tabIndex = playerStash:GetStash0TabIndex()
+  elseif stashIndex == 1 then
+    tabIndex = playerStash:GetStash1TabIndex() + 5
+  elseif stashIndex == 2 then
+    tabIndex = playerStash:GetStash2TabIndex() + 10
+  end
+  
+  local minY = tabIndex * 10
+  local maxY = minY + 10
+
+  local uirect = RenderHelper.TransformUIRectToClientRect(control:GetUIRect())
+  
+  for k,v in pairs(Radar.Collector.Actors.Item.Stash) do
+    if v:GetItemSlotY() >= minY and v:GetItemSlotY() < maxY then 
+
+    local isAncient = AttributeHelper.IsAncientLegendaryItem(v)
+    local isPrimal = AttributeHelper.IsPrimalLegendaryItem(v)
+
+      if isAncient or isPrimal then
+          local color = "FF8F4509"
+          local text = "A"
+
+          if isPrimal then
+            color = "FFFF0000"
+            text = "P"
+          end
+          
+          RenderHelper.DrawText(text, 16, color, Vector2(math.floor(uirect.Left + ((uirect.Width/7) * v:GetItemSlotX())), math.floor(uirect.Top + ((uirect.Height / 10) * (v:GetItemSlotY() - minY) ) )), 10, 2)
+        
+      end
+    end
+  end
+end
+
 function Radar.OnRenderD2D()
 if Radar.Settings.Monsters.Enabled then
   Radar.RenderMonsters()
@@ -988,6 +1107,10 @@ end
 if Radar.Settings.Goblins.Enabled then
   Radar.RenderGoblins()
 end
+
+Radar.MarkEquippedItems()
+Radar.MarkBackpackItems()
+Radar.MarkStashItems()
 
 Radar.RenderOnScreenRiftProgressAtCursor()
 
