@@ -59,6 +59,7 @@ function Settings.new()
     self.GroundEffects.Arcane = {Enabled = true, CustomRadius = false, CustomRadiusValue = 1, Thickness = 2, Fill = false, ColorOutline = "FF7F3FBF", ColorFill = "78AD7BDF"}
     self.GroundEffects.Wormwhole = {Enabled = true, CustomRadius = false, CustomRadiusValue = 1, Thickness = 2, Fill = false, ColorOutline = "787F3FBF", ColorFill = nil}
     self.GroundEffects.OccuCircle = {Enabled = true, CustomRadius = false, CustomRadiusValue = 1, Thickness = 3, Fill = false, ColorOutline = "FFD743DF", ColorFill = "78821687"}
+    self.GroundEffects.GrotesqueExplosion = {Enabled = true, CustomRadius = true, CustomRadiusValue = 20, Thickness = 2, Fill = false, ColorOutline = "FFFFFFFF", ColorFill = "588A8888"}
 
     self.Items = {Enabled = true}
     self.Items.RiftProgressOrb = {Enabled = true}

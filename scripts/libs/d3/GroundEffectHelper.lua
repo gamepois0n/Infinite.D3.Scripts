@@ -119,3 +119,11 @@ function GroundEffectHelper.IsThunderstorm(acd)
 
 	return false
 end
+
+function GroundEffectHelper.IsGrotesqueExplosion(acd)
+	if AttributeHelper.IsGrotesque(acd) and AttributeHelper.IsUntargetable(acd) then
+		return true
+	end
+
+	return false
+end

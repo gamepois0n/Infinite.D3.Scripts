@@ -76,6 +76,7 @@ function Collector.new()
     self.Actors.GroundEffect.FrozenPulse = {}
     self.Actors.GroundEffect.Orbiter = {}
     self.Actors.GroundEffect.Thunderstorm = {}
+    self.Actors.GroundEffect.GrotesqueExplosion = {}
 
     self.Actors.Pylon.SpawnMarker = {}
     self.Actors.Pylon.Power = {}
@@ -150,6 +151,7 @@ function Collector:ClearTables()
     self.Actors.GroundEffect.FrozenPulse = {}
     self.Actors.GroundEffect.Orbiter = {}
     self.Actors.GroundEffect.Thunderstorm = {}
+    self.Actors.GroundEffect.GrotesqueExplosion = {}
 
     self.Actors.Pylon.SpawnMarker = {}
     self.Actors.Pylon.Power = {}
@@ -170,7 +172,8 @@ function Collector:ClearTables()
 end
 
 function Collector:GetActors(getriftprogress)
-    for k, acd in pairs(Infinity.D3.GetACDList()) do        
+    for k, acd in pairs(Infinity.D3.GetACDList()) do
+        if acd:GetIndex() ~= -1 then        
         table.insert(self.Actors.All, acd)
 
         local aType = acd:GetActorType()
@@ -178,7 +181,9 @@ function Collector:GetActors(getriftprogress)
             if aType == Enums.ActorType.Monster and acd:GetActorId() ~= -1 then
                 local mQuality = acd:GetMonsterQuality()
 
-                if GroundEffectHelper.IsOccuCircle(acd) then
+                if GroundEffectHelper.IsGrotesqueExplosion(acd) then
+                    table.insert(self.Actors.GroundEffect.GrotesqueExplosion, acd)
+                elseif GroundEffectHelper.IsOccuCircle(acd) then
                     table.insert(self.Actors.GroundEffect.OccuCircle, acd)
                 elseif AttributeHelper.IsGoblin(acd) then
                     table.insert(self.Actors.Monster.Goblin, acd)
@@ -319,7 +324,8 @@ function Collector:GetActors(getriftprogress)
                     table.insert(self.Actors.Item.Equip, acd)
                 end
             end
-        end    
+        end  
+    end  
 end
 
 function Collector:GetClientRect()

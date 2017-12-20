@@ -299,6 +299,10 @@ function AttributeHelper.IsNPC(acd)
   return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Is_NPC, -1) == 1
 end
 
+function AttributeHelper.IsUntargetable(acd)
+  return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Untargetable, -1) == 1
+end
+
 function AttributeHelper.IsPet(acd)
   return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Pet_Type, -1) >= 0
 end
@@ -632,4 +636,19 @@ end
 
 function AttributeHelper.IsPoolOfReflection(acd)
   return acd:GetActorSNO() == 373463 
+end
+
+function AttributeHelper.IsGrotesque(acd)
+  return acd:GetActorSNO() == 3847 or
+          acd:GetActorSNO() == 218307 or
+          acd:GetActorSNO() == 218308 or
+          acd:GetActorSNO() == 365450 or
+          acd:GetActorSNO() == 3848 or
+          acd:GetActorSNO() == 218405 or
+          acd:GetActorSNO() == 3849 or
+          acd:GetActorSNO() == 113994 or
+          acd:GetActorSNO() == 3850 or
+          acd:GetActorSNO() == 195639 or
+          acd:GetActorSNO() == 365465 or
+          acd:GetActorSNO() == 191592
 end

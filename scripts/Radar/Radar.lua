@@ -631,6 +631,24 @@ if Radar.Settings.GroundEffects.Thunderstorm.Enabled then
     end 
   end    
 end
+
+if Radar.Settings.GroundEffects.GrotesqueExplosion.Enabled then
+  for k,v in pairs(Radar.Collector.Actors.GroundEffect.GrotesqueExplosion) do
+    local radius =  1
+
+    if Radar.Settings.GroundEffects.GrotesqueExplosion.CustomRadius then
+      radius = Radar.Settings.GroundEffects.GrotesqueExplosion.CustomRadiusValue
+    else
+      radius =  v:GetCollisionRadius()
+    end
+
+    if Radar.Settings.GroundEffects.GrotesqueExplosion.ColorFill == nil then
+      RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.GroundEffects.GrotesqueExplosion.ColorOutline, Radar.Settings.GroundEffects.GrotesqueExplosion.Thickness, Radar.Settings.GroundEffects.GrotesqueExplosion.Fill) 
+    else
+      RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.GroundEffects.GrotesqueExplosion.ColorOutline, Radar.Settings.GroundEffects.GrotesqueExplosion.ColorFill, Radar.Settings.GroundEffects.GrotesqueExplosion.Thickness) 
+    end 
+  end    
+end
 end
 
 function Radar.RenderRiftProgressOrbItems()
@@ -1003,6 +1021,12 @@ function Radar.MarkStashItems()
   end
 end
 
+function Radar.RenderTrickles()
+  for k,v in pairs(Infinity.D3.GetTrickles()) do
+    RenderHelper.DrawCircle(RenderHelper.ToMinimap(v:GetPosition()), 5, "FFFFFFFF", 1, true)
+  end
+end
+
 function Radar.OnRenderD2D()
 if Radar.Settings.Monsters.Enabled then
   Radar.RenderMonsters()
@@ -1045,6 +1069,8 @@ Radar.MarkBackpackItems()
 Radar.MarkStashItems()
 
 Radar.RenderOnScreenRiftProgressAtCursor()
+
+--Radar.RenderTrickles()
 
 --Radar.RenderRiftProgressOnMonsters()
 end
