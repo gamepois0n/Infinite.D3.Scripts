@@ -9,6 +9,9 @@ Radar.Settings = Settings()
 Radar.SkillTextures = {}
 Radar.BuffTextures = {}
 
+Radar.PlayerMarkerLabel = TextLabelAnimation:new()
+Radar.PlayerMarkerCircle = CircleAnimation:new()
+
 function Radar.Start()
   Radar.Running = true
 
@@ -394,25 +397,44 @@ end
 end
 
 function Radar.RenderPlayers()
-for k,v in pairs(Radar.Collector.Actors.Player) do
-  local radius =  1
+for k,v in pairs(Radar.Collector.PlayerData.Others) do
+  local acd = Infinity.D3.GetACDbyACDId(v:GetACDId())
 
-  if Radar.Settings.Players.CustomRadius then
-    radius = Radar.Settings.Players.CustomRadiusValue
-  else
-    radius =  v:GetRadius()
-  end
+  if acd ~= nil and acd.Address ~= 0 and acd:GetActorId() ~= -1 then
+    local radius =  1
 
-  if Radar.Settings.Players.ColorFill == nil then
-    RenderHelper.DrawWorldCircle(v:GetPosition(), radius, Radar.Settings.Players.ColorOutline, Radar.Settings.Players.Thickness, Radar.Settings.Players.Fill) 
-  else
-    RenderHelper.DrawWorldCircleFilledMulticolor(v:GetPosition(), radius, Radar.Settings.Players.ColorOutline, Radar.Settings.Players.ColorFill, Radar.Settings.Players.Thickness) 
-  end
+    if Radar.Settings.Players.CustomRadius then
+      radius = Radar.Settings.Players.CustomRadiusValue
+    else
+      radius =  acd:GetRadius()
+    end
 
-  if Radar.Settings.Players.Minimap == true then
-      Radar.RenderACDOnMinimap("Circle", v, Radar.Settings.Players.MinimapRadius, Radar.Settings.Players.ColorMinimap, Radar.Settings.Players.Thickness, true)
+    color = "FFFFFF"
+
+    if v:GetHeroClass() == 0 then --DemonHunter
+      color = "0000C8"
+    elseif v:GetHeroClass() == 1 then --Barbarian
+      color = "FA0A0A"
+    elseif v:GetHeroClass() == 2 then --Wizard
+      color = "FA32B4"
+    elseif v:GetHeroClass() == 3 then --Witchdoctor
+      color = "009B7D"
+    elseif v:GetHeroClass() == 4 then --Monk
+      color = "7800C8"
+    elseif v:GetHeroClass() == 5 then --Crusader
+      color = "00C8FA"
+    elseif v:GetHeroClass() == 6 then --Necromancer
+      color = "AFEEEE"
+    end
+
+      Radar.PlayerMarkerLabel:DrawPulse(acd:GetPosition(), v:GetHeroName(), 16, color, "FFFFFFFF", false)
+    
+
+    if Radar.Settings.Players.Minimap == true then
+      Radar.PlayerMarkerCircle:DrawPulse(acd:GetPosition(), 6, color, true)
     end         
   end
+end
 end
 
 function Radar.RenderGroundEffects()

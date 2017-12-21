@@ -24,7 +24,7 @@ function Settings.new()
 
     self.Monsters.Boss = {Enabled = true, Minimap = true, MinimapRadius = 5, ColorMinimap = "FF7E5250", CustomRadius = false, CustomRadiusValue = 1, Thickness = 1, Fill = false, ColorOutline = "FF7E5250", ColorFill = "78C78513"}
 
-    self.Players = {Enabled = false, Minimap = false, MinimapRadius = 5, ColorMinimap = "FF13C72B", CustomRadius = false, CustomRadiusValue = 1, Thickness = 1, Fill = false, ColorOutline = "FF13C72B", ColorFill = nil}
+    self.Players = {Enabled = true, Minimap = true, MinimapRadius = 5, ColorMinimap = "FF13C72B", CustomRadius = false, CustomRadiusValue = 5, Thickness = 1, Fill = false, ColorOutline = nil, ColorFill = nil}
     
     self.Goblins = {Enabled = true, Minimap = true, MinimapRadius = 5, ColorMinimap = "FF0FA3A3", CustomRadius = true, CustomRadiusValue = 3, Thickness = 2, Fill = true, ColorOutline = "FF0FA3A3", ColorFill = "5031EBEB"}
 

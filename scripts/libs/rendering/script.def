@@ -5,6 +5,8 @@ type=lib
 [files]
 file=RenderHelper.lua
 file=ImageAnimation.lua
+file=CircleAnimation.lua
+file=TextLabelAnimation.lua
 file=ImGuiHelper.lua
 file=BuffIcon.lua
 [dependencies]

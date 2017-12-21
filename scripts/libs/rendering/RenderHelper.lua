@@ -216,6 +216,49 @@ function RenderHelper.DrawWorldTextLabels(labels, startpos, vertical, offsetx, o
 	end
 end
 
+function RenderHelper.DrawTextLabels(labels, startpos, vertical, offsetx, offsety)	
+	if offsetx == nil then
+		offsetx = 0
+	end
+
+	if offsety == nil then
+		offsety = 0
+	end
+
+	if vertical == nil then
+		vertical = false
+	end
+
+	startpos = Vector2(startpos.X + offsetx, startpos.Y + offsety)
+
+	for k,v in pairs(labels) do
+		local width = (string.len(v.Text) * 10)
+		local height = v.Size
+		
+		RenderHelper.DrawRect(startpos, width + 2, height + 2, v.LabelColor, 1, 0, v.Filled)
+
+		if v.Border then
+			RenderHelper.DrawRect(startpos, width + 2 + (v.BorderThickness * 2), height + 2 + (v.BorderThickness * 2), v.LabelBorderColor, v.BorderThickness, 2, false)
+		end
+
+		Infinity.Rendering.DrawText(v.Text, Vector2(startpos.X , startpos.Y - (height/2)), height, RenderHelper.GetColorImVec4FromHexColorString(v.TextColor), true)
+
+		if not vertical then
+			startpos = Vector2(startpos.X + (width / 2), startpos.Y)
+
+			if v.Border then
+				startpos = Vector2(startpos.X + (width / 2) + (v.BorderThickness * 2), startpos.Y)
+			end
+		else
+			startpos = Vector2(startpos.X, startpos.Y + (height / 2))
+
+			if v.Border then
+				startpos = Vector2(startpos.X , startpos.Y + (height / 2) + (v.BorderThickness * 2))
+			end
+		end
+	end
+end
+
 function RenderHelper.DrawWorldText(text, size, textColor, startpos, offsetx, offsety)
 	local screen = RenderHelper.ToScreen(startpos)
 
