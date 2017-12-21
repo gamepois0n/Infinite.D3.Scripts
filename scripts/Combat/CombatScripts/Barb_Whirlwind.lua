@@ -26,29 +26,13 @@ function CombatScript:UseHealthPotion()
 	UIInteractionHelper.UseFunctionByName("UI_PotionButton_OnLeftClick")
 end
 
-function CombatScript:Defend(player, monsterTarget)	
-	if player == nil then
-		return
-	end
-
-	if AttributeHelper.IsInTown(player) or AttributeHelper.IsTeleportingTown(player) then
-		return
-	end
-
+function CombatScript:Defend(player, monsterTarget)		
 	if AttributeHelper.GetHitpointPercentage(player) <= 50 then
 		self:UseHealthPotion()
 	end
 end
 
 function CombatScript:Buff(player, monsterTarget)	
-	if player == nil then
-		return
-	end
-
-	if AttributeHelper.IsInTown(player) or AttributeHelper.IsTeleportingTown(player) then
-		return
-	end
-
 	local nearby = TargetHelper.GetMonsterCountAroundLocalPlayer(25)
 
 	if not AttributeHelper.IsBuffActive(player, self.BattleRage.PowerSNO) then
@@ -69,14 +53,6 @@ function CombatScript:Buff(player, monsterTarget)
 end
 
 function CombatScript:Attack(player, monsterTarget)		
-	if player == nil then
-		return
-	end
-	
-	if AttributeHelper.IsInTown(player) or AttributeHelper.IsTeleportingTown(player) then
-		return
-	end
-	
 	if monsterTarget ~= nil and monsterTarget:GetActorType() == Enums.ActorType.Monster and monsterTarget:GetMonsterQuality() == Boss then			
 		self.Whirlwind:CastAtLocation(monsterTarget:GetPosition())
 	end

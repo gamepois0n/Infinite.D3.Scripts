@@ -18,7 +18,8 @@ MainWindow.RenderSelectedUIControl = false
 function MainWindow.DrawMainWindow()   
   ImGui.Begin("Inspector")
     
-  if ImGui.CollapsingHeader("Local Player (X: " .. Inspector.Collector.LocalACD:GetPosition().X .. " Y: " .. Inspector.Collector.LocalACD:GetPosition().Y .. " Z: " .. Inspector.Collector.LocalACD:GetPosition().Z .. ")", "id_localplayer", true, false) then  
+  if ImGui.CollapsingHeader("Local Player", "id_localplayer", true, false) then
+    ImGui.Text("(X: " .. Inspector.Collector.LocalACD:GetPosition().X .. " Y: " .. Inspector.Collector.LocalACD:GetPosition().Y .. " Z: " .. Inspector.Collector.LocalACD:GetPosition().Z .. ")")  
     if ImGui.CollapsingHeader("Active Skills", "id_localplayer_activeskills", true, false) then
       for k,v in pairs(SkillHelper.GetActiveSkills()) do
         ImGui.Text(AttributeHelper.PowerSNOs[v.PowerSNO] .. "(" .. v.PowerSNO .. ") Rune: " .. v.Rune .. " IsOnCooldown: " .. tostring(SkillHelper.IsOnCooldown(v.PowerSNO)))

@@ -59,28 +59,30 @@ function Combat.OnPulse()
   if Combat.Running == false then
     return
   end
-
-  local player = Infinity.D3.GetLocalACD()
-
-  if Infinity.D3.GetIsGamePaused() or not Combat.LocalData:GetIsPlayerValid() or player == nil or AttributeHelper.GetHitpointPercentage(player) < 0.00001 then
+  
+  Combat.Collector:Collect(false, false)
+  
+  if Infinity.D3.GetIsGamePaused() or not Combat.LocalData:GetIsPlayerValid() or Combat.Collector.LocalACD == nil or AttributeHelper.GetHitpointPercentage(Combat.Collector.LocalACD) < 0.00001 then
     return
   end
 
-  Combat.Collector:Collect(false, false)
+  if AttributeHelper.IsInTown(Combat.Collector.LocalACD) or AttributeHelper.IsTeleportingTown(Combat.Collector.LocalACD) or AttributeHelper.IsOperatingGizmo(Combat.Collector.LocalACD) then
+    return
+  end
 
   if Combat.CombatScript ~= nil then
     local monsterTarget = TargetHelper.GetMonsterTargetACD()    
           
     if Combat.Settings.Defend.Enabled then
-      Combat.CombatScript:Defend(player, monsterTarget)
+      Combat.CombatScript:Defend(Combat.Collector.LocalACD, monsterTarget)
     end
 
     if Combat.Settings.Buff.Enabled then
-      Combat.CombatScript:Buff(player, monsterTarget)
+      Combat.CombatScript:Buff(Combat.Collector.LocalACD, monsterTarget)
     end
 
     if Combat.Settings.Attack.Enabled then
-      Combat.CombatScript:Attack(player, monsterTarget)
+      Combat.CombatScript:Attack(Combat.Collector.LocalACD, monsterTarget)
     end
   end    
 end

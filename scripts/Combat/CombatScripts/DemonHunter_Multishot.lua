@@ -27,29 +27,13 @@ function CombatScript:UseHealthPotion()
 	UIInteractionHelper.UseFunctionByName("UI_PotionButton_OnLeftClick")
 end
 
-function CombatScript:Defend(player, monsterTarget)	
-	if player == nil then
-		return
-	end
-
-	if AttributeHelper.IsInTown(player) or AttributeHelper.IsTeleportingTown(player) then
-		return
-	end
-
+function CombatScript:Defend(player, monsterTarget)		
 	if AttributeHelper.GetHitpointPercentage(player) <= 50 then
 		self:UseHealthPotion()
 	end
 end
 
 function CombatScript:Buff(player, monsterTarget)	
-	if player == nil then
-		return
-	end
-
-	if AttributeHelper.IsInTown(player) or AttributeHelper.IsTeleportingTown(player) then
-		return
-	end
-	
 	table.sort(Combat.Collector.Actors.Monster.Elites, function(a, b) return a:GetPosition():GetDistanceFromMe() < b:GetPosition():GetDistanceFromMe() end)
 	table.sort(Combat.Collector.Actors.Monster.All, function(a, b) return a:GetPosition():GetDistanceFromMe() < b:GetPosition():GetDistanceFromMe() end)
 
@@ -75,14 +59,6 @@ function CombatScript:Buff(player, monsterTarget)
 end
 
 function CombatScript:Attack(player, monsterTarget)		
-	if player == nil then
-		return
-	end
-	
-	if AttributeHelper.IsInTown(player) or AttributeHelper.IsTeleportingTown(player) then
-		return
-	end
-		
 	if InputHelper.IsSpacePressed() and table.length(Combat.Collector.Actors.Monster.Boss) > 0 and Combat.Collector.Actors.Monster.Boss[1]:GetPosition():GetDistanceFromMe() <= 60 then
 		self.Multishot:CastAtLocation(Combat.Collector.Actors.Monster.Boss[1]:GetPosition())
 	end

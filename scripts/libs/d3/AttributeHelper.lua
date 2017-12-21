@@ -551,6 +551,10 @@ function AttributeHelper.IsTeleportingTown(acd)
   return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Buff_Icon_Count0, 191590) ~= 0
 end
 
+function AttributeHelper.IsOperatingGizmo(acd)
+  return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Buff_Icon_Count0, 30021) ~= 0
+end
+
 function AttributeHelper.GetSkillCharges(acd, powerSNO)
   return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Skill_Charges , powerSNO)
 end

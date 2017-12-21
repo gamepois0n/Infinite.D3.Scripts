@@ -26,29 +26,13 @@ function CombatScript:UseHealthPotion()
 	UIInteractionHelper.UseFunctionByName("UI_PotionButton_OnLeftClick")
 end
 
-function CombatScript:Defend(player, monsterTarget)	
-	if player == nil then
-		return
-	end
-
-	if AttributeHelper.IsInTown(player) or AttributeHelper.IsTeleportingTown(player) then
-		return
-	end
-
+function CombatScript:Defend(player, monsterTarget)		
 	if AttributeHelper.GetHitpointPercentage(player) <= 50 then
 		self:UseHealthPotion()
 	end
 end
 
 function CombatScript:Buff(player, monsterTarget)	
-	if player == nil then
-		return
-	end
-
-	if AttributeHelper.IsInTown(player) or AttributeHelper.IsTeleportingTown(player) then
-		return
-	end
-	
 	table.sort(Combat.Collector.Actors.Monster.All, function(a, b) return a:GetPosition():GetDistanceFromMe() < b:GetPosition():GetDistanceFromMe() end)
 	table.sort(Combat.Collector.Actors.Monster.ElitesLeaders, function(a, b) return a:GetPosition():GetDistanceFromMe() < b:GetPosition():GetDistanceFromMe() end)
 	
@@ -78,14 +62,6 @@ function CombatScript:Buff(player, monsterTarget)
 end
 
 function CombatScript:Attack(player, monsterTarget)		
-	if player == nil then
-		return
-	end
-	
-	if AttributeHelper.IsInTown(player) or AttributeHelper.IsTeleportingTown(player) then
-		return
-	end
-		
 	
 end
 

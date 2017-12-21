@@ -10,6 +10,8 @@ setmetatable(Collector, {
 function Collector.new()
     local self = setmetatable({}, Collector)
 
+    self.CollectionTime = 0
+
     self.ClientRect = nil
     self.CurrentGameTick = 0
     self.LocalACD = nil
@@ -411,6 +413,8 @@ function Collector:InitReloads()
 end
 
 function Collector:Collect(getLocalAttributes, getriftprogress, getnavmesh)
+    --local startTick = Infinity.Win32.GetTickCount()
+
     if getnavmesh == nil then
         getnavmesh = false
     end
@@ -443,4 +447,6 @@ function Collector:Collect(getLocalAttributes, getriftprogress, getnavmesh)
     if getnavmesh == true then
         self:GetNavMesh()
     end
+
+    --self.CollectionTime = Infinity.Win32.GetTickCount() - startTick    
 end
