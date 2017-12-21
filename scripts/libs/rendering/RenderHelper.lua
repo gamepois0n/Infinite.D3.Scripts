@@ -482,7 +482,7 @@ end
 
 local pts = {}
 
-local segments = 20;
+local segments = math.floor(size * 10)
 --local angle = 0;
 local segmentSize = 360 / segments;
 
@@ -496,11 +496,13 @@ for angle = 0, 360, segmentSize do
 	local y = center.Y + (size * math.sin(angle / (180 / math.pi)))
 
 	local screen = RenderHelper.ToScreen(Vector3(x, y, center.Z))
-	if screen == nil then
-		return
-	end
+	--if screen == nil then
+		--return
+	--end
 
-	table.insert(pts, Vector2(screen.X, screen.Y))
+	if screen ~= nil then
+		table.insert(pts, Vector2(screen.X, screen.Y))
+	end
 
 	angle = angle + segmentSize
 end						
@@ -511,7 +513,7 @@ end
 function RenderHelper.DrawWorldCircleFilledMulticolor(center, size, colorOutline, colorFill, thickness)
 local pts = {}
 
-local segments = 20;
+local segments = math.floor(size * 10)
 --local angle = 0;
 local segmentSize = 360 / segments;
 
@@ -525,11 +527,13 @@ for angle = 0, 360, segmentSize do
 	local y = center.Y + (size * math.sin(angle / (180 / math.pi)))
 
 	local screen = RenderHelper.ToScreen(Vector3(x, y, center.Z))
-	if screen == nil then
-		return
-	end
+	--if screen == nil then
+		--return
+	--end
 
-	table.insert(pts, Vector2(screen.X, screen.Y))
+	if screen ~= nil then
+		table.insert(pts, Vector2(screen.X, screen.Y))
+	end
 
 	angle = angle + segmentSize
 end						
