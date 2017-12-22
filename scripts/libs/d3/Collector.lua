@@ -64,6 +64,8 @@ function Collector.new()
     self.Actors.Item.Backpack = {}
     self.Actors.Item.Equip = {}
     self.Actors.Item.Stash = {}
+    self.Actors.Item.Merchant = {}
+    self.Actors.Item.Gamble = {}
     self.Actors.Item.RiftProgress = {}
 
     self.Actors.GroundEffect.Plagued = {}
@@ -139,6 +141,8 @@ function Collector:ClearTables()
     self.Actors.Item.Backpack = {}
     self.Actors.Item.Equip = {}
     self.Actors.Item.Stash = {}
+    self.Actors.Item.Merchant = {}
+    self.Actors.Item.Gamble = {}
     self.Actors.Item.RiftProgress = {}
 
     self.Actors.GroundEffect.Plagued = {}
@@ -274,7 +278,7 @@ function Collector:GetActors(getriftprogress)
                 elseif AttributeHelper.IsEmpoweredShrine(acd) then
                     table.insert(self.Actors.Shrine.Empowered, acd)
                 elseif AttributeHelper.IsBanditShrine(acd) then
-                    table.insert(self.Actors.Shrine.Bandit, acd)
+                    table.insert(self.Actors.Shrine.Bandit, acd)                
                 end
             elseif aType == Enums.ActorType.ServerProp and acd:GetActorId() ~= -1 then
 
@@ -322,6 +326,12 @@ function Collector:GetActors(getriftprogress)
                     table.insert(self.Actors.Item.Backpack, acd)
                 elseif acd:GetItemLocation() == 15 then
                     table.insert(self.Actors.Item.Stash, acd)
+                elseif acd:GetItemLocation() == 17 then
+                    table.insert(self.Actors.Item.Merchant, acd)
+
+                    if AttributeHelper.IsGambleItem(acd) then
+                        table.insert(self.Actors.Item.Gamble, acd)
+                    end
                 elseif acd:GetItemLocation() >= 1 and acd:GetItemLocation() <= 13 then
                     table.insert(self.Actors.Item.Equip, acd)
                 end

@@ -31,4 +31,8 @@ function Inspector.OnRenderD2D()
 
 		RenderHelper.DrawRect(center, uirect.Width, uirect.Height, "FFFFFFFF", 2)
 	end
+
+	if MainWindow.DrawPlayerCircle then
+		RenderHelper.DrawWorldCircle(Inspector.Collector.LocalACD:GetPosition(), MainWindow.PlayerCircleRadius, "FFFFFFFF", 3, false) 
+	end
 end

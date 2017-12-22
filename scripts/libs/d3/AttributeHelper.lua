@@ -656,3 +656,23 @@ function AttributeHelper.IsGrotesque(acd)
           acd:GetActorSNO() == 365465 or
           acd:GetActorSNO() == 191592
 end
+
+function AttributeHelper.IsGambleItem(acd)
+  return acd:GetActorSNO() == 377347 or
+          acd:GetActorSNO() == 377345 or
+          acd:GetActorSNO() == 377344 or
+          acd:GetActorSNO() == 377348 or
+          acd:GetActorSNO() == 377346 or
+          acd:GetActorSNO() == 472445 or
+          acd:GetActorSNO() == 377360 or
+          acd:GetActorSNO() == 377359 or
+          acd:GetActorSNO() == 377358 or
+          acd:GetActorSNO() == 377357 or
+          acd:GetActorSNO() == 377356 or
+          acd:GetActorSNO() == 377355 or
+          acd:GetActorSNO() == 377353 or
+          acd:GetActorSNO() == 377352 or
+          acd:GetActorSNO() == 377351 or
+          acd:GetActorSNO() == 377350 or
+          acd:GetActorSNO() == 377349
+end

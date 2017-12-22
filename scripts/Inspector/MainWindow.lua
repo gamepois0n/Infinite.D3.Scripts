@@ -15,6 +15,9 @@ MainWindow.UIFunctionNameFilter = ""
 MainWindow.SelectedUIControl = nil
 MainWindow.RenderSelectedUIControl = false
 
+MainWindow.DrawPlayerCircle = false
+MainWindow.PlayerCircleRadius = 30
+
 function MainWindow.DrawMainWindow()   
   ImGui.Begin("Inspector")
     
@@ -119,6 +122,16 @@ function MainWindow.DrawMainWindow()
       end
     end    
 
+    if ImGui.CollapsingHeader("Items All", "id_localplayer_items_all", true, false) then
+      for k,v in pairs(Inspector.Collector.Actors.Item.All) do
+        if v ~= nil then
+        if ImGui.CollapsingHeader("Name(" ..v:GetName() .. ") ActorSNO(" .. v:GetActorSNO() .. ") ItemLocation(" .. v:GetItemLocation() .. ")", "id_item_all_" .. v:GetActorId(), true, false) then
+          
+        end
+      end
+      end
+    end  
+
     if ImGui.CollapsingHeader("Items Equip", "id_localplayer_items_equip", true, false) then
       for k,v in pairs(Inspector.Collector.Actors.Item.Equip) do
         if v ~= nil then
@@ -187,7 +200,19 @@ function MainWindow.DrawMainWindow()
         end
       end
       end
-    end   
+    end
+
+    --[[if ImGui.CollapsingHeader("Items Merchant", "id_localplayer_items_merchant", true, false) then
+      for k,v in pairs(Inspector.Collector.Actors.Item.Merchant) do
+        if v ~= nil then
+        if ImGui.CollapsingHeader("Name(" ..v:GetName() .. ") ActorSNO(" .. v:GetActorSNO() .. ") ItemSlotX(" .. v:GetItemSlotX() .. ") ItemSlotY(" .. v:GetItemSlotY() .. ")", "id_item_merchant_" .. v:GetActorId(), true, false) then
+          if ImGui.Button("Buy##id_item_merchant_" .. v:GetActorId()) then
+            Infinity.D3.BuyItem(v.Address, 2046296084)
+          end
+        end
+      end
+      end
+    end  ]]--  
   end
 
   if ImGui.CollapsingHeader("Other Players", "id_otherplayers", true, false) then   
@@ -329,6 +354,11 @@ function MainWindow.DrawMainWindow()
         end
       end
     end
+  end
+
+  if ImGui.CollapsingHeader("Test Draws", "id_testdraws", true, false) then
+    _, MainWindow.DrawPlayerCircle = ImGui.Checkbox("Draw Player Circle##id_draw_player_circle", MainWindow.DrawPlayerCircle)
+    _, MainWindow.PlayerCircleRadius = ImGui.SliderInt("Player Circle Radius##id_player_circle_radius", MainWindow.PlayerCircleRadius, 10, 150)
   end
   ImGui.End()
 end

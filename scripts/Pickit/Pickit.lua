@@ -1,7 +1,7 @@
 Pickit = { }
 Pickit.Running = false
 Pickit.Settings = Settings()
-Pickit.GroundItems = {}
+Pickit.Collector = Collector()
 
 function Pickit.Start()
   Pickit.Running = true
@@ -15,20 +15,8 @@ function Pickit.Stop()
   PickitSettings.SaveSettings()
 end
 
-function Pickit.GetGroundItems()
-  local t = {}
-
-  for k,v in pairs(Infinity.D3.GetACDList()) do
-      if v:GetActorId() ~= -1 and v:GetActorType() == Enums.ActorType.Item and v:GetItemLocation() == -1 then      
-        table.insert(t, v)
-      end
-    end
-
-  Pickit.GroundItems = t
-end
-
 function Pickit.TryPickupItems()
-  for k,v in pairs(Pickit.GroundItems) do
+  for k,v in pairs(Pickit.Collector.Actors.Item.Ground) do
     if v:GetPosition():GetDistanceFromMe() <= Pickit.Settings.PickupRadius then
       local pickup = false
 
@@ -65,10 +53,10 @@ function Pickit.OnPulse()
   if Pickit.Running == false then
     return
   end
+  
+  Pickit.Collector:Collect(false, false, false)
 
-  Pickit.GetGroundItems()
-
-  if not AttributeHelper.IsInTown(Infinity.D3.GetLocalACD()) then
+  if not AttributeHelper.IsInTown(Pickit.Collector.LocalACD) then
     Pickit.TryPickupItems()
   end  
 end

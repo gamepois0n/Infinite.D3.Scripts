@@ -15,6 +15,9 @@ function Navigator:new(collector)
   	self.NavMesh = Infinity.D3.NavMesh()
 	self.NavMeshCells = {}
 
+	self.Path = {}
+	self.StartCell = nil
+	self.DestinationCell = nil
   return self  
 end
 
@@ -38,12 +41,16 @@ function Navigator:GetClosestCell(pos)
 	return nil
 end
 
-function Navigator:GenerateCellWeight()
-	for k,acd in pairs(self.Collector.Actors.All) do
-		local cell = self:GetClosestCell(acd:GetPosition())
+function Navigator:SetCellWeight(acd, weight, customradius)
+	local cell = self:GetClosestCell(acd:GetPosition())
 
 		if cell ~= nil then
 			local radius = math.floor(acd:GetCollisionRadius() / 2.5)
+
+			if customradius ~= nil then
+				radius = math.floor(customradius / 2.5)
+			end
+
 			local startX = cell:GetCenterX() - (2.5 * radius)
 			local startY = cell:GetCenterY() - (2.5 * radius)
 
@@ -55,12 +62,74 @@ function Navigator:GenerateCellWeight()
 						local cell = mapX[startY + (y * 2.5)]
 
 						if cell ~= nil then
-							cell:SetWeight(1.0)
+							cell:SetWeight(weight)
 						end
 					end
 				end
 			end
 		end
+end
+
+function Navigator:GenerateCellWeight()
+	for k,acd in pairs(self.Collector.Actors.Monster.All) do
+		self:SetCellWeight(acd, 0.7)
+	end
+
+	for k,acd in pairs(self.Collector.Actors.GroundEffect.Plagued) do
+		self:SetCellWeight(acd, 1.0)
+	end
+
+	for k,acd in pairs(self.Collector.Actors.GroundEffect.Desecrator) do
+		self:SetCellWeight(acd, 1.0)
+	end
+
+	for k,acd in pairs(self.Collector.Actors.GroundEffect.PoisonEnchanted) do
+		self:SetCellWeight(acd, 1.0)
+	end
+
+	for k,acd in pairs(self.Collector.Actors.GroundEffect.Molten) do
+		self:SetCellWeight(acd, 1.0)
+	end
+
+	for k,acd in pairs(self.Collector.Actors.GroundEffect.Mortar) do
+		self:SetCellWeight(acd, 1.0)
+	end
+
+	for k,acd in pairs(self.Collector.Actors.GroundEffect.Frozen) do
+		self:SetCellWeight(acd, 1.0, 12)
+	end
+
+	for k,acd in pairs(self.Collector.Actors.GroundEffect.Wormwhole) do
+		self:SetCellWeight(acd, 1.0)
+	end
+
+	for k,acd in pairs(self.Collector.Actors.GroundEffect.Arcane) do
+		self:SetCellWeight(acd, 1.0, 18)
+	end
+
+	for k,acd in pairs(self.Collector.Actors.GroundEffect.FrozenPulse) do
+		self:SetCellWeight(acd, 1.0)
+	end
+
+	for k,acd in pairs(self.Collector.Actors.GroundEffect.Orbiter) do
+		self:SetCellWeight(acd, 1.0)
+	end
+
+	for k,acd in pairs(self.Collector.Actors.GroundEffect.Thunderstorm) do
+		self:SetCellWeight(acd, 1.0)
+	end
+
+	for k,acd in pairs(self.Collector.Actors.GroundEffect.GrotesqueExplosion) do
+		self:SetCellWeight(acd, 1.0, 20)
+	end
+end
+
+function Navigator:GetPath(start, destination)
+	self.StartCell = self:GetClosestCell(start)
+	self.DestinationCell = self:GetClosestCell(destination)
+
+	if self.StartCell ~= nil and self.DestinationCell ~= nil then
+		self.Path = self.NavMesh:GetPath(self.StartCell, self.DestinationCell, self.NavMeshCells)
 	end
 end
 
