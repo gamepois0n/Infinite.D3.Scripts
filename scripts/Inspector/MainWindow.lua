@@ -4,6 +4,7 @@ MainWindow.PowerSNOs = Infinity.D3.GetPowerSNOs()
 MainWindow.SNOFilter = ""
 MainWindow.GBIdFilter = ""
 MainWindow.NameFilter = ""
+MainWindow.ActorTypeFilter = ""
 
 MainWindow.AttributeIdFilter = ""
 MainWindow.AttributeNameFilter = ""
@@ -256,6 +257,7 @@ function MainWindow.DrawMainWindow()
     _, MainWindow.SNOFilter = ImGui.InputText("Filter by ActorSNO##acds_sno_filter", MainWindow.SNOFilter)
     _, MainWindow.GBIdFilter = ImGui.InputText("Filter by GameBalanceID##acds_gbid_filter", MainWindow.GBIdFilter)
     _, MainWindow.NameFilter = ImGui.InputText("Filter by Name##acds_name_filter", MainWindow.NameFilter)
+    _, MainWindow.ActorTypeFilter = ImGui.InputText("Filter by ActorType##acds_actortype_filter", MainWindow.ActorTypeFilter)
 
     for k,v in pairs(Inspector.Collector.Actors.All) do
       local acd = v
@@ -269,6 +271,10 @@ function MainWindow.DrawMainWindow()
       end
 
       if MainWindow.NameFilter ~= "" and string.find(v:GetName(), MainWindow.NameFilter) == nil then
+        acd = nil
+      end
+
+      if MainWindow.ActorTypeFilter ~= "" and tonumber(v:GetActorType()) ~= tonumber(MainWindow.ActorTypeFilter) then
         acd = nil
       end
 

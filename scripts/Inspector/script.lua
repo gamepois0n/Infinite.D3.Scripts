@@ -18,7 +18,7 @@ function Inspector.OnPulse()
     return
   end     
 
-  Inspector.Collector:Collect(false, false)
+  Inspector.Collector:Collect(false, false, false, false)
 end
 
 function Inspector.OnRenderD2D()

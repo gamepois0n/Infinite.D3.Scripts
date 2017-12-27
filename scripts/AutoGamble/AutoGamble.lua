@@ -53,7 +53,7 @@ function AutoGamble.OnPulse()
     return
   end
 
-  AutoGamble.Collector:Collect(false, false, false)
+  AutoGamble.Collector:Collect(false, false, false, false)
 
   if AttributeHelper.IsInTown(AutoGamble.Collector.LocalACD) then
     AutoGamble.DoRandomGamble()

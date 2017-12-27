@@ -58,7 +58,7 @@ function Pickit.OnPulse()
     return
   end
   
-  Pickit.Collector:Collect(false, false, false)
+  Pickit.Collector:Collect(false, false, false, false)
 
   --if not AttributeHelper.IsInTown(Pickit.Collector.LocalACD) then
     Pickit.TryPickupItems()

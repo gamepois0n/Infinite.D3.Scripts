@@ -87,7 +87,7 @@ function Radar.OnPulse()
     LevelAreaHelper.RevealAllScenes()
   end
 
-  Radar.Collector:Collect(false, true)
+  Radar.Collector:Collect(false, true, false, true)
     
   Radar.TTS()  
 end

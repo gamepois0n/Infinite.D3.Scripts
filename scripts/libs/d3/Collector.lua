@@ -189,7 +189,7 @@ function Collector:GetActors(getriftprogress)
 
         local aType = acd:GetActorType()
 
-            if aType == Enums.ActorType.Monster and acd:GetActorId() ~= -1 then
+            if aType == Enums.ActorType.Monster and acd:GetActorId() ~= -1 and acd:GetGameBalanceType() == -1 then
                 local mQuality = acd:GetMonsterQuality()
 
                 if GroundEffectHelper.IsGrotesqueExplosion(acd) then
@@ -470,13 +470,9 @@ function Collector:InitReloads()
     UIControlHelper.Reload()
 end
 
-function Collector:Collect(getLocalAttributes, getriftprogress, getnavmesh)
+function Collector:Collect(getLocalAttributes, getriftprogress, getnavmesh, getscenes)
     --local startTick = Infinity.Win32.GetTickCount()
-
-    if getnavmesh == nil then
-        getnavmesh = false
-    end
-
+    
     self:InitReloads()
 
     self:ClearTables()
@@ -485,7 +481,7 @@ function Collector:Collect(getLocalAttributes, getriftprogress, getnavmesh)
 
     self:GetLevelArea()
 
-    if Infinity.D3.GetIsNewScenes() then        
+    if getscenes and Infinity.D3.GetIsNewScenes() then        
         self:GetScenes()
     end
 
