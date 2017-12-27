@@ -19,6 +19,11 @@ function Collector.new()
     self.WorldId = 0
     self.MonsterRiftProgress = 0.0
 
+    self.LastWorldId = 0
+    self.LastLevelAreaSNO = 0
+    self.Scenes = {}
+    self.ExitScene = nil
+
     self.NavMesh = nil
     self.NavMeshCells = {}
 
@@ -418,6 +423,49 @@ function Collector:GetPlayers()
     end
 end
 
+function Collector:GetScenes()
+    if self.WorldId ~= self.LastWorldId then
+        self.LastWorldId = self.WorldId
+        self.Scenes = {}
+        self.ExitScene = nil
+    end
+
+    for index, scene in pairs(Infinity.D3.GetScenes()) do
+        local SnoId = scene:GetSceneSNO()
+
+        if  scene:GetSWorldID() == self.WorldId then            
+            if self.Scenes[SnoId] == nil then                
+                self.Scenes[SnoId] = {Scene = {SceneSno = SnoId, WorldId = scene:GetSWorldID(), LevelAreaSno = scene:GetLevelAreaSNO() ,Points = scene:GetPoints()}, SceneData = ScenesHelper.GetSceneData(SnoId)}
+
+                if self.Scenes[SnoId].SceneData ~= nil and self.Scenes[SnoId].SceneData:GetIsExit() then
+                    self.ExitScene = self.Scenes[SnoId]
+                    self.ExitScene.CellPoints = {}
+
+                    local sceneDef = SNOGroups.GetSceneDefBySceneSNO(SnoId)
+
+                    if sceneDef ~= nil then
+                        local meshMinX = scene:GetMeshMinX()
+                        local meshMinY = scene:GetMeshMinY()
+                        local meshMinZ = scene:GetMeshMinZ()
+
+                        for k,cell in pairs(sceneDef:GetNavCells()) do
+                            if cell:GetIsWalkable() then
+                                local points = {}
+
+                                for a, point in pairs(cell:GetPoints()) do
+                                    table.insert(points, Vector3(meshMinX + point.X, meshMinY + point.Y, meshMinZ))
+                                end
+
+                                table.insert(self.ExitScene.CellPoints, points)
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+end
+
 function Collector:InitReloads()
     UIControlHelper.Reload()
 end
@@ -436,6 +484,10 @@ function Collector:Collect(getLocalAttributes, getriftprogress, getnavmesh)
     self:GetLocalACD()
 
     self:GetLevelArea()
+
+    if Infinity.D3.GetIsNewScenes() then        
+        self:GetScenes()
+    end
 
     if getriftprogress == true then
         if AttributeHelper.IsInGreaterRift(self.LocalACD) == false then

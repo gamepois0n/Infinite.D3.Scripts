@@ -13,6 +13,15 @@ function table.find(t, value)
     return nil
 end
 
+function table.findkey(t, value)
+    for k,v in pairs(t) do
+        if k == value then
+            return v
+        end
+    end
+    return nil
+end
+
 function table.findIndex(t, value)
     local i = 1
     for k,v in pairs(t) do

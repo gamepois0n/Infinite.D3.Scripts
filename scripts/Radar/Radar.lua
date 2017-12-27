@@ -1049,6 +1049,24 @@ function Radar.RenderTrickles()
   end
 end
 
+function Radar.RenderLevelExit()
+    if Radar.Collector.ExitScene ~= nil then
+      
+        for k,points in pairs(Radar.Collector.ExitScene.CellPoints) do
+                      
+            local sA = RenderHelper.ToMinimap(points[1])
+            local sB = RenderHelper.ToMinimap(points[2])
+            local sC = RenderHelper.ToMinimap(points[3])
+            local sD = RenderHelper.ToMinimap(points[4])
+
+
+            RenderHelper.DrawQuad(sA, sB, sC, sD, "30FF0000", 1, true)
+          
+        end
+      
+    end   
+end
+
 function Radar.OnRenderD2D()
 if Radar.Settings.Monsters.Enabled then
   Radar.RenderMonsters()
@@ -1085,6 +1103,8 @@ end
 if Radar.Settings.Goblins.Enabled then
   Radar.RenderGoblins()
 end
+
+Radar.RenderLevelExit()
 
 Radar.MarkEquippedItems()
 Radar.MarkBackpackItems()
