@@ -19,8 +19,24 @@ function Pickit.TryPickupItems()
   for k,v in pairs(Pickit.Collector.Actors.Item.Ground) do
     if v:GetPosition():GetDistanceFromMe() <= Pickit.Settings.PickupRadius then
       local pickup = false
+      
+      if not pickup and AttributeHelper.IsGemItem(v) and Pickit.Settings.Gem.Enabled then
+        pickup = true
+      end
 
-      if AttributeHelper.IsLegendaryItem(v) then
+      if not pickup and AttributeHelper.IsCraftMaterial(v) and Pickit.Settings.CraftMaterial.Enabled then
+        pickup = true
+      end
+
+      if not pickup and AttributeHelper.IsRiftKey(v) and Pickit.Settings.RiftKey.Enabled then
+        pickup = true
+      end
+
+      if not pickup and AttributeHelper.IsWhiteItem(v) and Pickit.Settings.Normal.White then
+        pickup = true
+      end
+
+      if not pickup and AttributeHelper.IsLegendaryItem(v) then
         if AttributeHelper.IsPrimalLegendaryItem(v) and Pickit.Settings.Legendary.Primal then
           pickup = true
         elseif AttributeHelper.IsAncientLegendaryItem(v) and Pickit.Settings.Legendary.Ancient then
@@ -30,19 +46,7 @@ function Pickit.TryPickupItems()
         end
       end
 
-      if AttributeHelper.IsGemItem(v) and Pickit.Settings.Gem.Enabled then
-        pickup = true
-      end
-
-      if AttributeHelper.IsCraftMaterial(v) and Pickit.Settings.CraftMaterial.Enabled then
-        pickup = true
-      end
-
-      if AttributeHelper.IsRiftKey(v) and Pickit.Settings.RiftKey.Enabled then
-        pickup = true
-      end
-
-      if pickup then
+      if pickup and not AttributeHelper.GizmoHasBeenOperated(v) then
         PickitHelper.PickupItem(RActorHelper.GetRActorByACD(v))
       end
     end
@@ -56,9 +60,9 @@ function Pickit.OnPulse()
   
   Pickit.Collector:Collect(false, false, false)
 
-  if not AttributeHelper.IsInTown(Pickit.Collector.LocalACD) then
+  --if not AttributeHelper.IsInTown(Pickit.Collector.LocalACD) then
     Pickit.TryPickupItems()
-  end  
+  --end  
 end
 
 function Pickit.OnRenderD2D()

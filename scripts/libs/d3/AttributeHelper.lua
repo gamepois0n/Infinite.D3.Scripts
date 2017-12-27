@@ -484,13 +484,19 @@ function AttributeHelper.IsLegendaryItem(acd)
   return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Item_Quality_Level, -1) == 9
 end
 
+function AttributeHelper.IsWhiteItem(acd)
+  local quality = AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Item_Quality_Level, -1)
+  return  quality >= 0 and quality <= 2
+end
+
 function AttributeHelper.IsGemItem(acd)
   return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Item_Quality_Level, -1) == 1 and AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.GemQuality, -1) > 0
 end
 
 function AttributeHelper.IsCraftMaterial(acd)
   return acd:GetActorSNO() == 449044 or
-          acd:GetActorSNO() == 137958          
+          acd:GetActorSNO() == 137958 or
+          acd:GetActorSNO() == 405649   
 end
 
 function AttributeHelper.IsRiftKey(acd)
@@ -547,8 +553,11 @@ function AttributeHelper.IsInTown(acd)
   return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Buff_Icon_Count0, 220304) ~= 0
 end
 
-function AttributeHelper.IsTeleportingTown(acd)
-  return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Buff_Icon_Count0, 191590) ~= 0
+function AttributeHelper.IsTeleporting(acd)
+  return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Buff_Icon_Count0, 191590) ~= 0 or
+          AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Buff_Icon_Count0, 371141) ~= 0 or
+          AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Buff_Icon_Count0, 220318) ~= 0 or
+          AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Buff_Icon_Count0, 371139) ~= 0 
 end
 
 function AttributeHelper.IsOperatingGizmo(acd)
@@ -561,6 +570,10 @@ end
 
 function AttributeHelper.IsOperated(acd)
   return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Gizmo_Has_Been_Operated , -1) == 1 or AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Gizmo_State, -1) == 1
+end
+
+function AttributeHelper.GizmoHasBeenOperated(acd)
+  return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Gizmo_Has_Been_Operated , -1) == 1
 end
 
 function AttributeHelper.IsPowerPylon(acd)

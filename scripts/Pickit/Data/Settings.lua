@@ -11,6 +11,8 @@ function Settings.new()
   local self = setmetatable({}, Settings)
     
     self.PickupRadius = 15
+
+    self.Normal = {White = true}
     self.Legendary = {Normal = true, Ancient = true, Primal = true}
     
     self.Gem = {Enabled = true}

@@ -5,6 +5,7 @@ function PickitSettings.DrawMainWindow()
 
     _, Pickit.Settings.PickupRadius = ImGui.SliderInt("Pickup Radius##id_settings_pickup_radius", Pickit.Settings.PickupRadius, 1, 20)    
 
+    _, Pickit.Settings.Normal.White = ImGui.Checkbox("Pick Normal.White##id_settings_normal_white", Pickit.Settings.Normal.White)
     _, Pickit.Settings.Legendary.Normal = ImGui.Checkbox("Pick Legendary.Normal##id_settings_legendary_normal", Pickit.Settings.Legendary.Normal)
     _, Pickit.Settings.Legendary.Ancient = ImGui.Checkbox("Pick Legendary.Ancient##id_settings_legendary_ancient", Pickit.Settings.Legendary.Ancient)
     _, Pickit.Settings.Legendary.Primal = ImGui.Checkbox("Pick Legendary.Primal##id_settings_legendary_primal", Pickit.Settings.Legendary.Primal)

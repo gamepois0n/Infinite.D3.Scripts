@@ -21,31 +21,11 @@ function BuffIcon:new(texture, atlasindex, powersno, powerlayer, collector)
   return self  
 end
 
-function BuffIcon:GetStackedCount()	
-	--[[for k,v in pairs(self.Collector.LocalAttributes.BuffCount) do
-		if v.PowerSNO == self.PowerSNO then			
-			if v.Value > 1 then
-				return v.Value		
-			end	
-		end
-	end
-	
-	return 0]]--
-
+function BuffIcon:GetStackedCount()		
 	return AttributeHelper.GetAttributeValue(self.ACD, Enums.AttributeId.Buff_Icon_Count0 + self.PowerLayer, self.PowerSNO)
 end
 
 function BuffIcon:GetEndTick()	
-	--[[for k,v in pairs(self.Collector.LocalAttributes.BuffEndTick) do
-		if v.PowerSNO == self.PowerSNO then			
-			if v.Value > 0 then
-				return v.Value		
-			end	
-		end
-	end
-	
-	return 0]]--
-
 	return AttributeHelper.GetAttributeValue(self.ACD, Enums.AttributeId.Buff_Icon_End_Tick0 + self.PowerLayer, self.PowerSNO)
 end
 

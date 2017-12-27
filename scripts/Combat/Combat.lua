@@ -66,7 +66,13 @@ function Combat.OnPulse()
     return
   end
 
-  if AttributeHelper.IsInTown(Combat.Collector.LocalACD) or AttributeHelper.IsTeleportingTown(Combat.Collector.LocalACD) or AttributeHelper.IsOperatingGizmo(Combat.Collector.LocalACD) then
+  local logoutUIControl = UIControlHelper.GetUIControlByName("Root.TopLayer.BattleNetNotifications_main.LayoutRoot.LeaveGameWindow.LogoutContainer")
+
+  if logoutUIControl ~= nil and logoutUIControl:GetIsVisible() then
+    return
+  end  
+
+  if AttributeHelper.IsInTown(Combat.Collector.LocalACD) or AttributeHelper.IsTeleporting(Combat.Collector.LocalACD) or AttributeHelper.IsOperatingGizmo(Combat.Collector.LocalACD) then
     return
   end
 
