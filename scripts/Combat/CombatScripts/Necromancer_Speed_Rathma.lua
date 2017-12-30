@@ -55,7 +55,7 @@ function CombatScript:Buff(player, monsterTarget)
 			self.RaiseDead:CastAtLocation(player:GetPosition())
 		end	
 	else
-		if (AttributeHelper.GetAttributeValue(player, Enums.AttributeId.Resource_Cur, 8) / AttributeHelper.GetAttributeValue(player, Enums.AttributeId.Resource_Max_Total, 8)) >= 0.90 then
+		if AttributeHelper.GetAttributeValue(player, Enums.AttributeId.Resource_Cur, 8) / AttributeHelper.GetAttributeValue(player, Enums.AttributeId.Resource_Max_Total, 8) >= 0.90 then
 			self.RaiseDead:CastAtLocation(elites60yards[1]:GetPosition())
 		end	
 	end

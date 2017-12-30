@@ -123,7 +123,7 @@ function MainWindow.DrawMainWindow()
       end
     end    
 
-    if ImGui.CollapsingHeader("Items All", "id_localplayer_items_all", true, false) then
+    if ImGui.CollapsingHeader("Items All (" .. table.length(Inspector.Collector.Actors.Item.All) .. ")", "id_localplayer_items_all", true, false) then
       for k,v in pairs(Inspector.Collector.Actors.Item.All) do
         if v ~= nil then
         if ImGui.CollapsingHeader("Name(" ..v:GetName() .. ") ActorSNO(" .. v:GetActorSNO() .. ") ItemLocation(" .. v:GetItemLocation() .. ")", "id_item_all_" .. v:GetActorId(), true, false) then
@@ -279,7 +279,7 @@ function MainWindow.DrawMainWindow()
       end
 
       if acd ~= nil then
-        if ImGui.CollapsingHeader("Name(" ..v:GetName() .. ") ActorSNO(" .. v:GetActorSNO() .. ") ActorType(" .. v:GetActorType() .. ") ActorId(" .. v:GetActorId() .. ") GameBalanceType(" .. v:GetGameBalanceType() .. ") GizmoType(" .. v:GetGizmoType() .. ")", "id_acd_" .. v:GetActorId(), true, false) then
+        if ImGui.CollapsingHeader("Name(" ..v:GetName() .. ") ActorSNO(" .. v:GetActorSNO() .. ") ActorType(" .. v:GetActorType() .. ") ActorId(" .. v:GetActorId() .. ") GameBalanceType(" .. v:GetGameBalanceType() .. ") GizmoType(" .. v:GetGizmoType() .. ") MonsterQuality(" .. v:GetMonsterQuality() .. ")", "id_acd_" .. v:GetActorId(), true, false) then
           if ImGui.CollapsingHeader("Attributes", "id_acd_attributes" .. v:GetActorId(), true, false) then
             ImGui.Columns(5)
             ImGui.Text("AttributeId")

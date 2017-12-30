@@ -33,7 +33,7 @@ function CombatScript:Defend(player, monsterTarget)
 end
 
 function CombatScript:Buff(player, monsterTarget)	
-	local nearby = TargetHelper.GetMonsterCountAroundLocalPlayer(25)
+	local nearby = TargetHelper.GetACDsAroundLocalPlayer(Combat.Collector.Actors.Monster.All, 25)
 
 	if not AttributeHelper.IsBuffActive(player, self.BattleRage.PowerSNO) then
 		self.BattleRage:CastAtLocation(player:GetPosition())
@@ -43,7 +43,7 @@ function CombatScript:Buff(player, monsterTarget)
 		self.WarCry:CastAtLocation(player:GetPosition())
 	end
 
-	if not AttributeHelper.IsBuffActive(player, self.WoTB.PowerSNO) and nearby >= 1 then
+	if not AttributeHelper.IsBuffActive(player, self.WoTB.PowerSNO) and table.length(nearby) > 0 then
 		self.WoTB:CastAtLocation(player:GetPosition())
 	end
 

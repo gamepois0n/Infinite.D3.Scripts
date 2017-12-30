@@ -2,6 +2,7 @@ Pickit = { }
 Pickit.Running = false
 Pickit.Settings = Settings()
 Pickit.Collector = Collector()
+Pickit.LastPickup = 0
 
 function Pickit.Start()
   Pickit.Running = true
@@ -16,6 +17,10 @@ function Pickit.Stop()
 end
 
 function Pickit.TryPickupItems()
+if Pickit.LastPickup + 50 > Infinity.Win32.GetTickCount() then
+  return
+end
+
   for k,v in pairs(Pickit.Collector.Actors.Item.Ground) do
     if v:GetPosition():GetDistanceFromMe() <= Pickit.Settings.PickupRadius then
       local pickup = false
@@ -48,6 +53,7 @@ function Pickit.TryPickupItems()
 
       if pickup and not AttributeHelper.GizmoHasBeenOperated(v) then
         PickitHelper.PickupItem(RActorHelper.GetRActorByACD(v))
+        Pickit.LastPickup = Infinity.Win32.GetTickCount()
       end
     end
   end

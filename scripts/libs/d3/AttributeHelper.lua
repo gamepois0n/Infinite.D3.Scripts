@@ -515,8 +515,26 @@ function AttributeHelper.GetHitpointPercentage(acd)
   return (AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Hitpoints_Cur, -1) / AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Hitpoints_Max_Total, -1)) * 100
 end
 
-function AttributeHelper.IsBuffActive(acd, powerSNO)
-  return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Buff_Icon_Count0, powerSNO) ~= 0
+function AttributeHelper.IsBuffActive(acd, powerSNO, layer)
+if layer == nil then
+  layer = 0
+end
+
+  return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Buff_Icon_Count0 + layer, powerSNO) ~= 0
+end
+
+function AttributeHelper.GetBuffCount(acd, powerSNO, layer)
+if layer == nil then
+  layer = 0
+end
+
+  return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Buff_Icon_Count0 + layer, powerSNO)
+end
+
+function AttributeHelper.GetPrimaryResourcePercentage(acd)
+  local primaryType = AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Resource_Type_Primary, -1)
+
+  return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Resource_Cur, primaryType) / AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Resource_Max_Total, primaryType)
 end
 
 function AttributeHelper.IsBuffEndTickPresent(acd, powerSNO)

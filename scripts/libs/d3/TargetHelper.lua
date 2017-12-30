@@ -1,26 +1,21 @@
 TargetHelper = {}
 
-function TargetHelper.GetMonsterTargetACD()
-	local acds = Infinity.D3.GetACDList()
+function TargetHelper.GetTargetACD(acdTable)	
 	local tActorId = Infinity.D3.GetTargetActorId()
 
 	if tActorId == -1 then
 		return nil
 	end
 
-	for k,v in pairs(acds) do
+	for k,v in pairs(acdTable) do
 		if v:GetActorId() == tActorId then
-			if v:GetActorType() == Enums.ActorType.Monster and v:GetMonsterQuality() >= 0 then
-				return v
-			else
-				return nil
-			end		
+			return v
 		end
 	end	
 end
 
 function TargetHelper.GetMonsterCountAroundTarget(radius)
-	local target = TargetHelper.GetTargetACD()
+	local target = TargetHelper.GetMonsterTargetACD()
 
 	local nearby = {}
 
@@ -31,20 +26,6 @@ function TargetHelper.GetMonsterCountAroundTarget(radius)
 	for k,v in pairs(Infinity.D3.GetACDList()) do
 		if v:GetActorId() ~= -1 and v:GetActorType() == Enums.ActorType.Monster then
 			if v:GetPosition():GetDistance(target:GetPosition()) <= radius then
-				table.insert(nearby, v)
-			end
-		end
-	end
-
-	return table.length(nearby)
-end
-
-function TargetHelper.GetMonsterCountAroundLocalPlayer(radius)	
-	local nearby = {}
-
-	for k,v in pairs(Infinity.D3.GetACDList()) do
-		if v:GetActorId() ~= -1 and v:GetActorType() == Enums.ActorType.Monster and v:GetMonsterQuality() >= 0 then
-			if v:GetPosition():GetDistanceFromMe() <= radius then
 				table.insert(nearby, v)
 			end
 		end

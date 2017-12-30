@@ -60,7 +60,7 @@ function Combat.OnPulse()
     return
   end
   
-  Combat.Collector:Collect(false, false, false, false)
+  Combat.Collector:Collect(false, false, false)
   
   if Infinity.D3.GetIsGamePaused() or not Combat.LocalData:GetIsPlayerValid() or Combat.Collector.LocalACD == nil or AttributeHelper.GetHitpointPercentage(Combat.Collector.LocalACD) < 0.00001 then
     return
@@ -77,7 +77,7 @@ function Combat.OnPulse()
   end
 
   if Combat.CombatScript ~= nil then
-    local monsterTarget = TargetHelper.GetMonsterTargetACD()    
+    local monsterTarget = TargetHelper.GetTargetACD(Combat.Collector.Actors.Monster.All)    
           
     if Combat.Settings.Defend.Enabled then
       Combat.CombatScript:Defend(Combat.Collector.LocalACD, monsterTarget)

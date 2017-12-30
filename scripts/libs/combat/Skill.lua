@@ -14,7 +14,7 @@ function Skill:new(name, powersno )
   self.PowerSNO = powersno
 
   self.LastCast = 0
-  self.ForcedCooldown = 0
+  self.ForcedCooldown = 50
     
   return self
 end
