@@ -64,6 +64,10 @@ function Collector.new()
 
     self.Actors.Marker = {}
 
+    self.Actors.WizardMeteor = {}
+    self.Actors.WizardMeteor.ArcanePending = {}
+    self.Actors.WizardMeteor.ArcaneImpact = {}
+
     self.Actors.Item.All = {}
     self.Actors.Item.Ground = {}
     self.Actors.Item.Backpack = {}
@@ -140,6 +144,9 @@ function Collector:ClearTables()
     self.Actors.Corpse = {}
     
     self.Actors.Marker = {}
+
+    self.Actors.WizardMeteor.ArcanePending = {}
+    self.Actors.WizardMeteor.ArcaneImpact = {}
 
     self.Actors.Item.All = {}
     self.Actors.Item.Ground = {}
@@ -287,7 +294,11 @@ function Collector:GetActors(getriftprogress)
                 end
             elseif aType == Enums.ActorType.ServerProp and acd:GetActorId() ~= -1 then
 
-                if AttributeHelper.IsPylonSpawnMarker(acd) then
+                if acd:GetActorSno() == 217142 and AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Rune_D, 69190) == 1 then  
+                    table.insert(self.Actors.WizardMeteor.ArcanePending, acd)
+                elseif acd:GetActorSno() == 217139 and AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Rune_D, 69190) == 1 then  
+                    table.insert(self.Actors.WizardMeteor.ArcaneImpact, acd)
+                elseif AttributeHelper.IsPylonSpawnMarker(acd) then
                     table.insert(self.Actors.Pylon.SpawnMarker, acd)
                 elseif  GroundEffectHelper.IsPlagued(acd) then
                     table.insert(self.Actors.GroundEffect.Plagued, acd)
