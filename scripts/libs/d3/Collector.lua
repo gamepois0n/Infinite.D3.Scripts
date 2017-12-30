@@ -294,9 +294,9 @@ function Collector:GetActors(getriftprogress)
                 end
             elseif aType == Enums.ActorType.ServerProp and acd:GetActorId() ~= -1 then
 
-                if acd:GetActorSno() == 217142 and AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Rune_D, 69190) == 1 then  
+                if acd:GetActorSNO() == 217142 and AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Rune_D, 69190) == 1 then  
                     table.insert(self.Actors.WizardMeteor.ArcanePending, acd)
-                elseif acd:GetActorSno() == 217139 and AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Rune_D, 69190) == 1 then  
+                elseif acd:GetActorSNO() == 217139 and AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Rune_D, 69190) == 1 then  
                     table.insert(self.Actors.WizardMeteor.ArcaneImpact, acd)
                 elseif AttributeHelper.IsPylonSpawnMarker(acd) then
                     table.insert(self.Actors.Pylon.SpawnMarker, acd)
