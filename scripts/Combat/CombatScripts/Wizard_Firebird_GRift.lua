@@ -57,6 +57,7 @@ function CombatScript:Attack(player, monsterTarget)
 		end
 
 		if self.Target == nil then
+			print("Target = nil")
 			return
 		end
 
@@ -74,47 +75,64 @@ function CombatScript:Attack(player, monsterTarget)
 		local isMeteorPending = table.length(Combat.Collector.Actors.WizardMeteor.ArcanePending) ~= 0
 		local isMeteorImpact = table.length(Combat.Collector.Actors.WizardMeteor.ArcaneImpact) ~= 0
 
-		if fbStacks ~= 20 and AttributeHelper.GetAttributeValue(self.Target, Enums.AttributeId.Power_Buff_4_Visual_Effect_None, 359581) ~= 1 then
+		if fbStacks ~= 20 and AttributeHelper.GetAttributeValue(self.Target, Enums.AttributeId.Power_Buff_4_Visual_Effect_None, 359581) ~= 1 then			
 			if AttributeHelper.GetAttributeValue(self.Target, Enums.AttributeId.Power_Buff_1_Visual_Effect_None, 359581) > 0 then
-				self.ArcaneTorrent:CastAtLocation(self.Target:GetPosition())
-				return				
+				if self.ArcaneTorrent:CastAtLocation(self.Target:GetPosition()) then
+					print("Trying to get FB Stacks of 20")
+					return				
+				end
 			else
-				self.Electrocute:CastAtLocation(self.Target:GetPosition())
-				return
+				if self.Electrocute:CastAtLocation(self.Target:GetPosition()) then
+					print("Trying to get FB Stacks of 20")
+					return
+				end
 			end			
 		end
 
 		if not isMeteorPending then -- Execute this if no Arcane Meteor is Pending (was cast)
 			if fbStacks == 20 and wofStacks == 0 and self.Target:GetPosition():GetDistanceFromMe() <= 20 then
-				self.WaveOfForce:CastAtLocation(player:GetPosition())
-				return
+				if	self.WaveOfForce:CastAtLocation(player:GetPosition()) then
+					print("Trying to get WoF Stacks")
+					return
+				end
 			end
 
 			if fbStacks == 20 and wofStacks > 0 and (currentAP < 1.0 or dynStacks < 5) then
-				self.Electrocute:CastAtLocation(self.Target:GetPosition())
-				return
+				if	self.Electrocute:CastAtLocation(self.Target:GetPosition()) then
+					print("Trying to get max AP / Dyn Stacks")
+					return
+				end
 			end		
 		
 			if isCoELightningPhase then -- if CoE Lightning phase check for 90 ticks ( 1.5sec ) before Lightning ends
 				local tickLeft = coeLightningEndTick - Infinity.D3.GetGameTick()
 
-				if tickLeft <= 80 and fbStacks == 20 and 
-					dynStacks == 5 and currentAP == 1.0 then				
-					self.Meteor:CastAtLocation(self.Target:GetPosition())
-					return
+				if tickLeft <= 80 and fbStacks == 20 and dynStacks == 5 and currentAP == 1.0 then									
+					if self.Meteor:CastAtLocation(self.Target:GetPosition()) then
+						print("Pre-Arcane Phase Meteor Cast")
+						return
+					end
 				end
 			elseif isCoEArcanePhase then -- if CoE Arcane phase cast instant if true
-				if fbStacks == 20 and dynStacks == 5 and currentAP == 1.0 then				
-					self.Meteor:CastAtLocation(self.Target:GetPosition())
-					return
+				if fbStacks == 20 and dynStacks == 5 and currentAP == 1.0 then
+					if self.Meteor:CastAtLocation(self.Target:GetPosition()) then
+						print("Arcane Phase Meteor Cast")
+						return
+					end
 				end
 			end
 
 		elseif isMeteorPending and not isMeteorImpact then -- Execute this if a Meteor is Pending (was cast) and if there is no Meteor Impact yet
 			if currentAP <= 0.05 then -- if not enough ArcanePower for ArcaneTorrent
-				self.Electrocute:CastAtLocation(self.Target:GetPosition())
+				if self.Electrocute:CastAtLocation(self.Target:GetPosition()) then
+					print("Meteor Pending but not enough AP, casting Electrocute")
+					return
+				end
 			else
-				self.ArcaneTorrent:CastAtLocation(self.Target:GetPosition()) -- Cast Arcane Torrent until Meteor Impact
+				if self.ArcaneTorrent:CastAtLocation(self.Target:GetPosition()) then -- Cast Arcane Torrent until Meteor Impact
+					print("Meteor Pending casting Arcane Torrent")
+					return 
+				end
 			end					
 		end
 	else
