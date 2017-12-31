@@ -82,14 +82,14 @@ function Radar.OnPulse()
   if Radar.Running == false then
     return
   end   
-
+  
   if Radar.Settings.MapReveal == true then
     LevelAreaHelper.RevealAllScenes()
   end
 
-  Radar.Collector:Collect(false, true, false, true)
+  Radar.Collector:Collect(false, true, true, 5)
     
-  Radar.TTS()  
+  Radar.TTS()    
 end
 
 function Radar.RenderMonstersNormal()
@@ -1111,8 +1111,4 @@ Radar.MarkBackpackItems()
 Radar.MarkStashItems()
 
 Radar.RenderOnScreenRiftProgressAtCursor()
-
---Radar.RenderTrickles()
-
---Radar.RenderRiftProgressOnMonsters()
 end
