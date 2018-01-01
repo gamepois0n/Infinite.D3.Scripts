@@ -46,13 +46,18 @@ end
 function CombatScript:Attack(player, monsterTarget)		
 	if InputHelper.IsSpacePressed() then
 		if self.Target == nil then
-			if table.length(Combat.Collector.Actors.Monster.Boss) > 0 then
-				self.Target = Combat.Collector.Actors.Monster.Boss[1]
+			local bossTable = Combat.Collector.Actors.Monster.Boss
+			if Infinity.D3.GetAcdContainerSizeByName("Actors.Monster.Boss") > 0 then
+				self.Target = bossTable[1]
 			else
-				table.sort(Combat.Collector.Actors.Monster.Elites, function(a, b) return a:GetPosition():GetDistanceFromMe() < b:GetPosition():GetDistanceFromMe() end)
-				local elites60yards = TargetHelper.GetACDsAroundLocalPlayer(Combat.Collector.Actors.Monster.Elites, 60)
+				local elitesTable = Combat.Collector.Actors.Monster.Elites
 
-				self.Target = elites60yards[1]
+				if Infinity.D3.GetAcdContainerSizeByName("Actors.Monster.Elites") > 0 then
+					table.sort(elitesTable, function(a, b) return a:GetPosition():GetDistanceFromMe() < b:GetPosition():GetDistanceFromMe() end)
+					local elites60yards = TargetHelper.GetACDsAroundLocalPlayer(elitesTable, 60)
+
+					self.Target = elites60yards[1]
+				end
 			end
 		end
 
@@ -72,8 +77,8 @@ function CombatScript:Attack(player, monsterTarget)
 		local isCoEArcanePhase = coeArcaneEndTick > 0
 		local isCoELightningPhase = coeLightningEndTick > 0
 
-		local isMeteorPending = table.length(Combat.Collector.Actors.WizardMeteor.ArcanePending) ~= 0
-		local isMeteorImpact = table.length(Combat.Collector.Actors.WizardMeteor.ArcaneImpact) ~= 0
+		local isMeteorPending = Infinity.D3.GetAcdContainerSizeByName("Actors.WizardMeteor.ArcanePending") ~= 0
+		local isMeteorImpact = Infinity.D3.GetAcdContainerSizeByName("Actors.WizardMeteor.ArcaneImpact") ~= 0
 
 		if fbStacks ~= 20 and AttributeHelper.GetAttributeValue(self.Target, Enums.AttributeId.Power_Buff_4_Visual_Effect_None, 359581) ~= 1 then			
 			if AttributeHelper.GetAttributeValue(self.Target, Enums.AttributeId.Power_Buff_1_Visual_Effect_None, 359581) > 0 then

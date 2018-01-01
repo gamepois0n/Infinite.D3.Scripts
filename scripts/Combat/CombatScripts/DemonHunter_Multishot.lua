@@ -34,33 +34,36 @@ function CombatScript:Defend(player, monsterTarget)
 end
 
 function CombatScript:Buff(player, monsterTarget)	
-	table.sort(Combat.Collector.Actors.Monster.Elites, function(a, b) return a:GetPosition():GetDistanceFromMe() < b:GetPosition():GetDistanceFromMe() end)
-	table.sort(Combat.Collector.Actors.Monster.All, function(a, b) return a:GetPosition():GetDistanceFromMe() < b:GetPosition():GetDistanceFromMe() end)
+	local elitesTable = Combat.Collector.Actors.Monster.Elites
+	local allTable = Combat.Collector.Actors.Monster.All
+
+	table.sort(elitesTable, function(a, b) return a:GetPosition():GetDistanceFromMe() < b:GetPosition():GetDistanceFromMe() end)
+	table.sort(allTable, function(a, b) return a:GetPosition():GetDistanceFromMe() < b:GetPosition():GetDistanceFromMe() end)
 
 	if not AttributeHelper.IsBuffActive(player, self.Vengeance.PowerSNO) then
 		self.Vengeance:CastAtLocation(player:GetPosition())
 	end	
 
-	if table.length(Combat.Collector.Actors.Monster.Elites) > 0 and Combat.Collector.Actors.Monster.Elites[1]:GetPosition():GetDistanceFromMe() <= 30 then
+	if Infinity.D3.GetAcdContainerSizeByName("Actors.Monster.Elites") > 0 and elitesTable[1]:GetPosition():GetDistanceFromMe() <= 30 then
 		self.Companion:CastAtLocation(player:GetPosition())
 	end
 
-	if table.length(Combat.Collector.Actors.Monster.All) > 0 and AttributeHelper.GetAttributeValue(player, Enums.AttributeId.Buff_Icon_Count1, 359583) ~= 1 and Combat.Collector.Actors.Monster.All[1]:GetPosition():GetDistanceFromMe() <= 60 then
-		self.EvasiveFire:CastAtLocation(Combat.Collector.Actors.Monster.All[1]:GetPosition())
+	if Infinity.D3.GetAcdContainerSizeByName("Actors.Monster.All") > 0 and AttributeHelper.GetAttributeValue(player, Enums.AttributeId.Buff_Icon_Count1, 359583) ~= 1 and allTable[1]:GetPosition():GetDistanceFromMe() <= 60 then
+		self.EvasiveFire:CastAtLocation(allTable[1]:GetPosition())
 	end	
 
-	if table.length(Combat.Collector.Actors.Monster.All) > 0 and (AttributeHelper.GetAttributeValue(player, Enums.AttributeId.Resource_Cur, 5) / AttributeHelper.GetAttributeValue(player, Enums.AttributeId.Resource_Max_Total, 5)) <= 0.20 and Combat.Collector.Actors.Monster.All[1]:GetPosition():GetDistanceFromMe() <= 60 then
-		self.EvasiveFire:CastAtLocation(Combat.Collector.Actors.Monster.All[1]:GetPosition())
+	if Infinity.D3.GetAcdContainerSizeByName("Actors.Monster.All") > 0 and AttributeHelper.GetPrimaryResourcePercentage(player) <= 0.20 and allTable[1]:GetPosition():GetDistanceFromMe() <= 60 then
+		self.EvasiveFire:CastAtLocation(allTable[1]:GetPosition())
 	end
 
-	if (AttributeHelper.GetAttributeValue(player, Enums.AttributeId.Resource_Cur, 6) / AttributeHelper.GetAttributeValue(player, Enums.AttributeId.Resource_Max_Total, 6)) <= 0.15 then
+	if AttributeHelper.GetPrimaryResourcePercentage(player) <= 0.15 then
 		self.Preparation:CastAtLocation(player:GetPosition())
 	end	
 end
 
 function CombatScript:Attack(player, monsterTarget)		
-	if InputHelper.IsSpacePressed() and table.length(Combat.Collector.Actors.Monster.Boss) > 0 and Combat.Collector.Actors.Monster.Boss[1]:GetPosition():GetDistanceFromMe() <= 60 then
-		self.Multishot:CastAtLocation(Combat.Collector.Actors.Monster.Boss[1]:GetPosition())
+	if InputHelper.IsSpacePressed() and Infinity.D3.GetAcdContainerSizeByName("Actors.Monster.Boss") > 0 and Infinity.D3.GetAcdContainerByName("Actors.Monster.Boss")[1]:GetPosition():GetDistanceFromMe() <= 60 then
+		self.Multishot:CastAtLocation(Infinity.D3.GetAcdContainerByName("Actors.Monster.Boss")[1]:GetPosition())
 	end
 end
 

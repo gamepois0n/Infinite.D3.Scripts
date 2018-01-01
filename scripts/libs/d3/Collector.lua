@@ -114,6 +114,7 @@ end
 
 function Collector:GetTables() 
     self.Actors.All = Infinity.D3.GetAcdContainerByName("Actors.All")
+
     self.Actors.Monster.All = Infinity.D3.GetAcdContainerByName("Actors.Monster.All")
     self.Actors.Monster.Normal = Infinity.D3.GetAcdContainerByName("Actors.Monster.Normal")
     self.Actors.Monster.Champion = Infinity.D3.GetAcdContainerByName("Actors.Monster.Champion")
@@ -293,19 +294,19 @@ function Collector:GetLevelArea()
 end
 
 function Collector:GetRiftProgress()
-    for k,acd in pairs(self.Actors.Monster.Elites) do
+    for k,acd in pairs(Infinity.D3.GetAcdContainerByName("Actors.Monster.Elites")) do
         if acd:GetPosition():GetDistance(self.LocalACD:GetPosition()) <= 60 then
             self.MonsterRiftProgress = self.MonsterRiftProgress + SNOGroups.GetMonsterRiftProgressByActorSNO(acd:GetActorSNO())
         end
     end
 
-    for k,acd in pairs(self.Actors.Monster.Normal) do
+    for k,acd in pairs(Infinity.D3.GetAcdContainerByName("Actors.Monster.Normal")) do
         if acd:GetPosition():GetDistance(self.LocalACD:GetPosition()) <= 60 then
             self.MonsterRiftProgress = self.MonsterRiftProgress + SNOGroups.GetMonsterRiftProgressByActorSNO(acd:GetActorSNO())
         end
     end
 
-    for k,acd in pairs(self.Actors.Item.RiftProgress) do
+    for k,acd in pairs(Infinity.D3.GetAcdContainerByName("Actors.Item.RiftProgress")) do
         if acd:GetPosition():GetDistance(self.LocalACD:GetPosition()) <= 60 then
             self.MonsterRiftProgress = self.MonsterRiftProgress + 6.5
         end
@@ -375,12 +376,14 @@ function Collector:InitReloads()
 end
 
 function Collector:Collect(getLocalAttributes, getriftprogress, getscenes, tickrate)
-    if self.LastCollect + (1000/tickrate) > Infinity.Win32.GetTickCount() then
-        return
+    if tickrate > 60 then
+        tickrate = 60
     end
 
-    --local startClock = Infinity.Win32.GetClock()
-
+    if tickrate ~= -1 and self.LastCollect + (1000/tickrate) > Infinity.Win32.GetTickCount() then
+        return
+    end
+    
     self:InitReloads()
 
     self:ClearTables()
@@ -411,16 +414,6 @@ function Collector:Collect(getLocalAttributes, getriftprogress, getscenes, tickr
 
     self:GetClientRect()
     self:GetTicks()
-
-    --[[self.TotalTicks = self.TotalTicks + 1
-    local currentClock = Infinity.Win32.GetClock() - startClock
-    self.TotalClock = self.TotalClock + currentClock
-
-    if currentClock > self.MaxClock then
-        self.MaxClock = currentClock
-    end]]--
-
+    
     self.LastCollect = Infinity.Win32.GetTickCount()
-
-    --print("Clock/Tick AVG: " .. (self.TotalClock / self.TotalTicks) .. "ms Max: " .. self.MaxClock .. "ms")
 end
