@@ -279,7 +279,7 @@ function MainWindow.DrawMainWindow()
       end
 
       if acd ~= nil then
-        if ImGui.CollapsingHeader("Name(" ..v:GetName() .. ") ActorSNO(" .. v:GetActorSNO() .. ") ActorType(" .. v:GetActorType() .. ") ActorId(" .. v:GetActorId() .. ") GameBalanceType(" .. v:GetGameBalanceType() .. ") GizmoType(" .. v:GetGizmoType() .. ") MonsterQuality(" .. v:GetMonsterQuality() .. ")", "id_acd_" .. v:GetActorId(), true, false) then
+        if ImGui.CollapsingHeader("Name(" ..v:GetName() .. ") Index(" .. v:GetIndex() .. ") ActorSNO(" .. v:GetActorSNO() .. ") ActorType(" .. v:GetActorType() .. ") ActorId(" .. v:GetActorId() .. ") GameBalanceType(" .. v:GetGameBalanceType() .. ") GizmoType(" .. v:GetGizmoType() .. ") MonsterQuality(" .. v:GetMonsterQuality() .. ")", "id_acd_" .. v:GetActorId(), true, false) then
           if ImGui.CollapsingHeader("Attributes", "id_acd_attributes" .. v:GetActorId(), true, false) then
             ImGui.Columns(5)
             ImGui.Text("AttributeId")

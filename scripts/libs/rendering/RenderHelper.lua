@@ -1,4 +1,5 @@
 RenderHelper = {}
+RenderHelper.CircleCache = {}
 
 function RenderHelper.LoadImageFileFromCurrentScriptDirectory(filePath)
 	return ImGui.LoadImageTexture(Infinity.Scripting.CurrentScript.Directory .. filePath)
