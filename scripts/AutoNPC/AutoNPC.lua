@@ -2,6 +2,7 @@ AutoNPC = { }
 AutoNPC.Running = false
 AutoNPC.Settings = Settings()
 AutoNPC.Collector = Collector()
+AutoNPC.LocalData = Infinity.D3.GetLocalData()
 
 AutoNPC.SalvageDone = false
 
@@ -84,8 +85,12 @@ function AutoNPC.OnPulse()
   if AutoNPC.Running == false then
     return
   end
-
+  
   AutoNPC.Collector:Collect(false, false, false, 5)
+
+  if not AutoNPC.LocalData:GetIsPlayerValid() or AutoNPC.LocalData:GetIsStartUpGame() or UIControlHelper.ReloadRequired then
+    return
+  end
 
   if AttributeHelper.IsInTown(AutoNPC.Collector.LocalACD) then
     AutoNPC.DoRandomGamble()

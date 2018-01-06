@@ -19,7 +19,11 @@ MainWindow.RenderSelectedUIControl = false
 MainWindow.DrawPlayerCircle = false
 MainWindow.PlayerCircleRadius = 30
 
-function MainWindow.DrawMainWindow()   
+function MainWindow.DrawMainWindow() 
+  if not Inspector.LocalData:GetIsPlayerValid() or Inspector.LocalData:GetIsStartUpGame() then
+    return
+  end
+  
   ImGui.Begin("Inspector")
     
   if ImGui.CollapsingHeader("Local Player", "id_localplayer", true, false) then
@@ -28,7 +32,7 @@ function MainWindow.DrawMainWindow()
     local animation = SNOGroups.GetAnimDefByAnimSNO(Inspector.Collector.LocalACD:GetAnimation():GetAnimSNO())
 
     if animation ~= nil then
-      ImGui.Text("Animation: AnimSNO(" .. animation:GetSnoId() .. ") Text(" .. animation:GetText() .. ")")
+      ImGui.Text("Animation: AnimSNO(" .. Inspector.Collector.LocalACD:GetAnimation():GetAnimSNO() .. ") Text(" .. animation .. ")")
     else
       ImGui.Text("Animation: AnimSNO(" .. Inspector.Collector.LocalACD:GetAnimation():GetAnimSNO() .. ") Text(--)")
     end

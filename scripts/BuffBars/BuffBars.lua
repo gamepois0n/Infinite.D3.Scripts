@@ -1,6 +1,7 @@
 BuffBars = { }
 BuffBars.Running = false
 BuffBars.Collector = Collector()
+BuffBars.LocalData = Infinity.D3.GetLocalData()  
 
 BuffBars.Settings = Settings()
 
@@ -27,8 +28,12 @@ function BuffBars.OnPulse()
   if BuffBars.Running == false then
     return
   end   
- 
+
   BuffBars.Collector:Collect(true, false, false, 5)
+
+  if not BuffBars.LocalData:GetIsPlayerValid() or BuffBars.LocalData:GetIsStartUpGame() then
+    return
+  end
 end
 
 function BuffBars.DrawBuffBar(index, buffbar)
@@ -93,6 +98,10 @@ function BuffBars.RenderPartyMemberBuffBars()
 end
 
 function BuffBars.OnRenderD2D()
+  if not BuffBars.LocalData:GetIsPlayerValid() or BuffBars.Collector.LocalACD == nil then
+    return
+  end
+
 if BuffBars.Collector.ClientRect ~= nil then
   BuffBars.RenderBuffBars()
 end

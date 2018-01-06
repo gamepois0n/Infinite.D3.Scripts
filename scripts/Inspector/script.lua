@@ -4,6 +4,7 @@ Inspector.AllAttributes = {}
 Inspector.NoModAttributes = {}
 Inspector.ModAttributes = {}
 Inspector.Collector = Collector()
+Inspector.LocalData = Infinity.D3.GetLocalData()
 
 function Inspector.Start()
   Inspector.Running = true
@@ -17,11 +18,15 @@ function Inspector.OnPulse()
   if Inspector.Running == false then
     return
   end     
-
+  
   Inspector.Collector:Collect(false, false, false, 10)
 end
 
 function Inspector.OnRenderD2D()
+	if not Inspector.LocalData:GetIsPlayerValid() or Inspector.LocalData:GetIsStartUpGame() then
+    return
+  end
+
 	if MainWindow.RenderSelectedUIControl and MainWindow.SelectedUIControl ~= nil then
 		local uirect = RenderHelper.TransformUIRectToClientRect(MainWindow.SelectedUIControl:GetUIRect())
 		

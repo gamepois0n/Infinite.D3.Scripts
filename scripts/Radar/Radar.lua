@@ -1,6 +1,7 @@
 Radar = { }
 Radar.Running = false
 Radar.Collector = Collector()
+Radar.LocalData = Infinity.D3.GetLocalData()
 
 Radar.TTSBlackList = {}
 
@@ -96,14 +97,16 @@ function Radar.OnPulse()
   if Radar.Running == false then
     return
   end   
-  
+    
+  Radar.Collector:Collect(false, true, true, 10)
+
+  if not Radar.LocalData:GetIsPlayerValid() or Radar.LocalData:GetIsStartUpGame() then
+    return
+  end
+
   if Radar.Settings.MapReveal == true then
     LevelAreaHelper.RevealAllScenes()
   end
-
-  Radar.Collector:Collect(false, true, true, 10)
-
-    --print(collectgarbage("count") / 1024)
 
   Radar.TTS()    
 end
@@ -1050,6 +1053,10 @@ for k,v in pairs(Radar.Collector.Actors.All) do
 end
 
 function Radar.OnRenderD2D()
+  if not Radar.LocalData:GetIsPlayerValid() or Radar.LocalData:GetIsStartUpGame() then
+    return
+  end
+
 if Radar.Settings.Monsters.Enabled then
   Radar.RenderMonsters()
 end

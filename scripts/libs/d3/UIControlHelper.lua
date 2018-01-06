@@ -10,11 +10,11 @@ function UIControlHelper.Reload()
 		UIControlHelper.ReloadRequired = true
 	end
 
-	if UIControlHelper.ReloadRequired and not UIControlHelper.LocalData:GetIsStartUpGame() and UIControlHelper.LocalData:GetIsPlayerValid() then
-		UIControlHelper.ReloadRequired = false
-
+	if UIControlHelper.ReloadRequired and not UIControlHelper.LocalData:GetIsStartUpGame() and UIControlHelper.LocalData:GetIsPlayerValid() then		
 		print("Reloading UIControls!")
 		UIControlHelper.UIControls = Infinity.D3.GetUIControls()
+
+		UIControlHelper.ReloadRequired = false
 	end
 end
 

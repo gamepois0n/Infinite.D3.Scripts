@@ -2,6 +2,8 @@ Pickit = { }
 Pickit.Running = false
 Pickit.Settings = Settings()
 Pickit.Collector = Collector()
+Pickit.LocalData = Infinity.D3.GetLocalData()
+
 Pickit.LastPickup = 0
 
 function Pickit.Start()
@@ -63,12 +65,14 @@ function Pickit.OnPulse()
   if Pickit.Running == false then
     return
   end
-  
+    
   Pickit.Collector:Collect(false, false, false, 5)
-
-  --if not AttributeHelper.IsInTown(Pickit.Collector.LocalACD) then
-    Pickit.TryPickupItems()
-  --end  
+  
+  if not Pickit.LocalData:GetIsPlayerValid() or Pickit.LocalData:GetIsStartUpGame() then
+    return
+  end
+  
+  Pickit.TryPickupItems()  
 end
 
 function Pickit.OnRenderD2D()
