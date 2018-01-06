@@ -1,11 +1,11 @@
 [script]
-name=AutoGamble
+name=AutoNPC
 type=script
 
 [files]
 file=Data/Settings.lua
-file=GUI/AutoGambleSettings.lua
-file=AutoGamble.lua
+file=GUI/AutoNPCSettings.lua
+file=AutoNPC.lua
 file=Main.lua
 
 [dependencies]

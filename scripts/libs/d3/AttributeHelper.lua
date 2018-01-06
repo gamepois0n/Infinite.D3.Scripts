@@ -489,8 +489,26 @@ function AttributeHelper.IsWhiteItem(acd)
   return  quality >= 0 and quality <= 2
 end
 
+function AttributeHelper.IsMagicItem(acd)
+  local quality = AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Item_Quality_Level, -1)
+  return  quality >= 3 and quality <= 5
+end
+
+function AttributeHelper.IsRareItem(acd)
+  local quality = AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Item_Quality_Level, -1)
+  return  quality >= 6 and quality <= 8
+end
+
 function AttributeHelper.IsGemItem(acd)
   return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Item_Quality_Level, -1) == 1 and AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.GemQuality, -1) > 0
+end
+
+function AttributeHelper.IsIdentifiedItem(acd)  
+  return  AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Unidentified, -1) ~= 1
+end
+
+function AttributeHelper.IsSpecialPotion(acd)  
+  return  AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Potion_Bonus_Buff_Duration, -1) > 0
 end
 
 function AttributeHelper.IsCraftMaterial(acd)
@@ -501,6 +519,10 @@ end
 
 function AttributeHelper.IsRiftKey(acd)
   return acd:GetActorSNO() == 408416
+end
+
+function AttributeHelper.IsNormalLegendaryItem(acd)
+  return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Ancient_Rank, -1) < 1
 end
 
 function AttributeHelper.IsAncientLegendaryItem(acd)
