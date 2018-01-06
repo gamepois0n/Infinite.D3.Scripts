@@ -23,7 +23,16 @@ function MainWindow.DrawMainWindow()
   ImGui.Begin("Inspector")
     
   if ImGui.CollapsingHeader("Local Player", "id_localplayer", true, false) then
-    ImGui.Text("(X: " .. Inspector.Collector.LocalACD:GetPosition().X .. " Y: " .. Inspector.Collector.LocalACD:GetPosition().Y .. " Z: " .. Inspector.Collector.LocalACD:GetPosition().Z .. ")")  
+    ImGui.Text("(X: " .. Inspector.Collector.LocalACD:GetPosition().X .. " Y: " .. Inspector.Collector.LocalACD:GetPosition().Y .. " Z: " .. Inspector.Collector.LocalACD:GetPosition().Z .. ")")
+
+    local animation = SNOGroups.GetAnimDefByAnimSNO(Inspector.Collector.LocalACD:GetAnimation():GetAnimSNO())
+
+    if animation ~= nil then
+      ImGui.Text("Animation: AnimSNO(" .. animation:GetSnoId() .. ") Text(" .. animation:GetText() .. ")")
+    else
+      ImGui.Text("Animation: AnimSNO(" .. Inspector.Collector.LocalACD:GetAnimation():GetAnimSNO() .. ") Text(--)")
+    end
+
     if ImGui.CollapsingHeader("Active Skills", "id_localplayer_activeskills", true, false) then
       for k,v in pairs(SkillHelper.GetActiveSkills()) do
         ImGui.Text(AttributeHelper.PowerSNOs[v.PowerSNO] .. "(" .. v.PowerSNO .. ") Rune: " .. v.Rune .. " IsOnCooldown: " .. tostring(SkillHelper.IsOnCooldown(v.PowerSNO)))
@@ -280,7 +289,22 @@ function MainWindow.DrawMainWindow()
 
       if acd ~= nil then
         if ImGui.CollapsingHeader("Name(" ..v:GetName() .. ") Index(" .. v:GetIndex() .. ") ActorSNO(" .. v:GetActorSNO() .. ") ActorType(" .. v:GetActorType() .. ") ActorId(" .. v:GetActorId() .. ") GameBalanceType(" .. v:GetGameBalanceType() .. ") GizmoType(" .. v:GetGizmoType() .. ") MonsterQuality(" .. v:GetMonsterQuality() .. ")", "id_acd_" .. v:GetActorId(), true, false) then
+
+          local animation = SNOGroups.GetAnimDefByAnimSNO(v:GetAnimation():GetAnimSNO())
+
+          if animation ~= nil then
+            ImGui.Text("Animation: AnimSNO(" .. animation:GetSnoId() .. ") Text(" .. animation:GetText() .. ")")
+          else
+            ImGui.Text("Animation: AnimSNO(" .. v:GetAnimation():GetAnimSNO() .. ") Text(--)")
+          end
+
           if ImGui.CollapsingHeader("Attributes", "id_acd_attributes" .. v:GetActorId(), true, false) then
+
+            _, MainWindow.AttributeIdFilter = ImGui.InputText("Filter by AttributeId##attribid" .. v:GetActorId(), MainWindow.AttributeIdFilter)
+            _, MainWindow.AttributeNameFilter = ImGui.InputText("Filter by AttributeName##attribname" .. v:GetActorId(), MainWindow.AttributeNameFilter)
+            _, MainWindow.AttributePowerSNOFilter = ImGui.InputText("Filter by PowerSNO##attrib_powersno" .. v:GetActorId(), MainWindow.AttributePowerSNOFilter)
+            _, MainWindow.AttributePowerNameFilter = ImGui.InputText("Filter by PowerName##attrib_powername" .. v:GetActorId(), MainWindow.AttributePowerNameFilter)
+
             ImGui.Columns(5)
             ImGui.Text("AttributeId")
             ImGui.NextColumn()
@@ -294,16 +318,36 @@ function MainWindow.DrawMainWindow()
             ImGui.NextColumn()
                         
             for k,v in pairs(AttributeHelper.GetAllAttributes(v)) do 
-              ImGui.Text(v.AttributeId)
-              ImGui.NextColumn()
-              ImGui.Text(v.AttributeName)
-              ImGui.NextColumn()
-              ImGui.Text(v.PowerSNO)
-              ImGui.NextColumn()
-              ImGui.Text(v.PowerName)
-              ImGui.NextColumn()
-              ImGui.Text(v.Value)
-              ImGui.NextColumn()          
+              local attrib = v
+
+          if MainWindow.AttributeIdFilter ~= "" and string.find(tostring(v.AttributeId), MainWindow.AttributeIdFilter) == nil then
+            attrib = nil
+          end
+
+          if MainWindow.AttributeNameFilter ~= "" and string.find(tostring(v.AttributeName), MainWindow.AttributeNameFilter) == nil then
+            attrib = nil
+          end
+
+          if MainWindow.AttributePowerSNOFilter ~= "" and string.find(tostring(v.PowerSNO), MainWindow.AttributePowerSNOFilter) == nil then
+            attrib = nil
+          end
+
+          if MainWindow.AttributePowerNameFilter ~= "" and string.find(tostring(v.PowerName), MainWindow.AttributePowerNameFilter) == nil then
+            attrib = nil
+          end
+
+            if attrib ~= nil then 
+            ImGui.Text(v.AttributeId)
+            ImGui.NextColumn()
+            ImGui.Text(v.AttributeName)
+            ImGui.NextColumn()
+            ImGui.Text(v.PowerSNO)
+            ImGui.NextColumn()
+            ImGui.Text(v.PowerName)
+            ImGui.NextColumn()
+            ImGui.Text(v.Value)
+            ImGui.NextColumn()   
+            end                
             end
           end
         end

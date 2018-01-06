@@ -2,6 +2,7 @@ SNOGroups = {}
 SNOGroups.MonsterDefinitions = Infinity.D3.SNOGroups.GetMonsterDefinitions()
 SNOGroups.GlobalsDefinitions = Infinity.D3.SNOGroups.GetGlobalsDefinitions()
 SNOGroups.SceneDefinitions = Infinity.D3.SNOGroups.GetSceneDefinitions()
+SNOGroups.AnimDefinitions = Infinity.D3.SNOGroups.GetAnimDefinitions()
 
 function SNOGroups.DumpToFile(table, filename)
     local json = JSON:new()
@@ -58,4 +59,10 @@ function SNOGroups.GetSceneDefBySceneSNO(sceneSNO)
 	end
 
 	return sDef
+end
+
+function SNOGroups.GetAnimDefByAnimSNO(animSNO)
+	local aDef = SNOGroups.AnimDefinitions[animSNO]
+	
+	return aDef
 end
