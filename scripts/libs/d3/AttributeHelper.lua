@@ -512,9 +512,10 @@ function AttributeHelper.IsSpecialPotion(acd)
 end
 
 function AttributeHelper.IsCraftMaterial(acd)
-  return acd:GetActorSNO() == 449044 or
-          acd:GetActorSNO() == 137958 or
-          acd:GetActorSNO() == 405649   
+  return acd:GetActorSNO() == 449044 or -- Deaths Breath
+          acd:GetActorSNO() == 137958 or -- CraftingMaterials_Flippy_Global
+          acd:GetActorSNO() == 405649 or   -- Consumable_Add_Sockets_flippy
+          acd:GetActorSNO() == 403611  --Consumable_Add_Sockets
 end
 
 function AttributeHelper.IsRiftKey(acd)
