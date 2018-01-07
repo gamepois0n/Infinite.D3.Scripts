@@ -15,8 +15,10 @@ function CombatScript.new()
 	instance.IronSkin = Skill:new("IronSkin", 291804)--, Rune = 4, Slot = 1, LastCast = 0, ForcedCooldown = 0}
 	instance.Condemn = Skill:new("Condemn", 266627)--, Rune = 1, Slot = 2, LastCast = 0, ForcedCooldown = 0}
 	instance.LawsOfHope = Skill:new("LawsOfHope", 342279)--, Rune = 0, Slot = 3, LastCast = 0, ForcedCooldown = 0}
+	instance.LawsOfHope:SetForcedCooldown(500)
 	instance.Provoke = Skill:new("Provoke", 290545)--, Rune = 4, Slot = 5, LastCast = 0, ForcedCooldown = 0}
 	instance.AkaratsChamp = Skill:new("AkaratsChampion", 269032)--, Rune = 2, Slot = 4, LastCast = 0, ForcedCooldown = 0}
+	instance.AkaratsChamp:SetForcedCooldown(500)
 	return self
 end
 

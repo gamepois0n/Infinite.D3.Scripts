@@ -18,5 +18,6 @@ file=TTSHelper.lua
 file=Collector.lua
 file=SNOGroups.lua
 file=ScenesHelper.lua
+file=GameBalance.lua
 
 [dependencies]

@@ -65,12 +65,10 @@ function Combat.OnPulse()
   if Infinity.D3.GetIsGamePaused() or not Combat.LocalData:GetIsPlayerValid() or Combat.Collector.LocalACD == nil or AttributeHelper.GetHitpointPercentage(Combat.Collector.LocalACD) < 0.00001 then
     return
   end
-
-  local logoutUIControl = UIControlHelper.GetUIControlByName("Root.TopLayer.BattleNetNotifications_main.LayoutRoot.LeaveGameWindow.LogoutContainer")
-
-  if logoutUIControl ~= nil and logoutUIControl:GetIsVisible() then
+  
+  if Infinity.D3.GetHoveredUIControlKey() ~= -1 or Infinity.D3.GetGrabbedItemACDIndex() ~= -1 then
     return
-  end  
+  end
 
   if AttributeHelper.IsInTown(Combat.Collector.LocalACD) or AttributeHelper.IsTeleporting(Combat.Collector.LocalACD) or AttributeHelper.IsOperatingGizmo(Combat.Collector.LocalACD) then
     return
