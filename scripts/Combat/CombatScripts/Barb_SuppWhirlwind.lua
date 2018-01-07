@@ -1,3 +1,7 @@
+--[[
+AUTHOR		Pete
+]]--
+
 CombatScript = { }
 CombatScript.__index = CombatScript
 
