@@ -52,11 +52,11 @@ function CombatScript:Buff(player, monsterTarget)
 		self.EvasiveFire:CastAtLocation(allTable[1]:GetPosition())
 	end	
 
-	if Infinity.D3.GetAcdContainerSizeByName("Actors.Monster.All") > 0 and AttributeHelper.GetPrimaryResourcePercentage(player) <= 0.20 and allTable[1]:GetPosition():GetDistanceFromMe() <= 60 then
+	if Infinity.D3.GetAcdContainerSizeByName("Actors.Monster.All") > 0 and AttributeHelper.GetPrimaryResourcePercentage(player) <= 20 and allTable[1]:GetPosition():GetDistanceFromMe() <= 60 then
 		self.EvasiveFire:CastAtLocation(allTable[1]:GetPosition())
 	end
 
-	if AttributeHelper.GetPrimaryResourcePercentage(player) <= 0.15 then
+	if AttributeHelper.GetPrimaryResourcePercentage(player) <= 15 then
 		self.Preparation:CastAtLocation(player:GetPosition())
 	end	
 end

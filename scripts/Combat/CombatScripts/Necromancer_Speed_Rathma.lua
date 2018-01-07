@@ -54,11 +54,11 @@ function CombatScript:Buff(player, monsterTarget)
 	local skeletalMages = TargetHelper.FilterACDsByActorSNO(Combat.Collector.Actors.Monster.Pets, 472606)	
 
 	if table.length(elites60yards) == 0 then
-		if table.length(skeletalMages) < 10 and AttributeHelper.GetPrimaryResourcePercentage(player) >= 0.90 and table.length(all60yards) >= 1 then
+		if table.length(skeletalMages) < 10 and AttributeHelper.GetPrimaryResourcePercentage(player) >= 90 and table.length(all60yards) >= 1 then
 			self.RaiseDead:CastAtLocation(player:GetPosition())
 		end	
 	else
-		if AttributeHelper.GetPrimaryResourcePercentage(player) >= 0.90 then
+		if AttributeHelper.GetPrimaryResourcePercentage(player) >= 90 then
 			self.RaiseDead:CastAtLocation(elites60yards[1]:GetPosition())
 		end	
 	end

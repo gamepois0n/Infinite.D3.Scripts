@@ -102,7 +102,7 @@ function CombatScript:Attack(player, monsterTarget)
 				end
 			end
 
-			if fbStacks == 20 and wofStacks > 0 and (currentAP < 1.0 or dynStacks < 5) then
+			if fbStacks == 20 and wofStacks > 0 and (currentAP < 100 or dynStacks < 5) then
 				if	self.Electrocute:CastAtLocation(self.Target:GetPosition()) then
 					print("Trying to get max AP / Dyn Stacks")
 					return
@@ -112,14 +112,14 @@ function CombatScript:Attack(player, monsterTarget)
 			if isCoELightningPhase then -- if CoE Lightning phase check for 90 ticks ( 1.5sec ) before Lightning ends
 				local tickLeft = coeLightningEndTick - Infinity.D3.GetGameTick()
 
-				if tickLeft <= 80 and fbStacks == 20 and dynStacks == 5 and currentAP == 1.0 then									
+				if tickLeft <= 80 and fbStacks == 20 and dynStacks == 5 and currentAP == 100 then									
 					if self.Meteor:CastAtLocation(self.Target:GetPosition()) then
 						print("Pre-Arcane Phase Meteor Cast")
 						return
 					end
 				end
 			elseif isCoEArcanePhase then -- if CoE Arcane phase cast instant if true
-				if fbStacks == 20 and dynStacks == 5 and currentAP == 1.0 then
+				if fbStacks == 20 and dynStacks == 5 and currentAP == 100 then
 					if self.Meteor:CastAtLocation(self.Target:GetPosition()) then
 						print("Arcane Phase Meteor Cast")
 						return
@@ -128,7 +128,7 @@ function CombatScript:Attack(player, monsterTarget)
 			end
 
 		elseif isMeteorPending and not isMeteorImpact then -- Execute this if a Meteor is Pending (was cast) and if there is no Meteor Impact yet
-			if currentAP <= 0.05 then -- if not enough ArcanePower for ArcaneTorrent
+			if currentAP <= 5 then -- if not enough ArcanePower for ArcaneTorrent
 				if self.Electrocute:CastAtLocation(self.Target:GetPosition()) then
 					print("Meteor Pending but not enough AP, casting Electrocute")
 					return

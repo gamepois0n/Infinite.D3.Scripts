@@ -557,7 +557,7 @@ end
 function AttributeHelper.GetPrimaryResourcePercentage(acd)
   local primaryType = AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Resource_Type_Primary, -1)
 
-  return AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Resource_Cur, primaryType) / AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Resource_Max_Total, primaryType)
+  return (AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Resource_Cur, primaryType) / AttributeHelper.GetAttributeValue(acd, Enums.AttributeId.Resource_Max_Total, primaryType)) * 100
 end
 
 function AttributeHelper.IsBuffEndTickPresent(acd, powerSNO)
