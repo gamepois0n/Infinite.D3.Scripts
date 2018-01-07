@@ -74,6 +74,10 @@ function Combat.OnPulse()
     return
   end
 
+  if AttributeHelper.GetAttributeValue(Combat.Collector.LocalACD, Enums.AttributeId.CantStartDisplayedPowers, -1) == 1 then
+    return
+  end
+
   if Combat.CombatScript ~= nil then
     local monsterTarget = TargetHelper.GetTargetACD(Combat.Collector.Actors.Monster.All)    
           
