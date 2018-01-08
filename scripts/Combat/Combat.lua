@@ -22,6 +22,7 @@ Combat.Hotkeys = {
 Combat.ApplySet = false
 Combat.ApplySetIndex = 0
 Combat.OldAvailablePoints = 0
+Combat.CalledReset = false
 
 function Combat.Start()
   Combat.Running = true
@@ -76,7 +77,11 @@ end
 function Combat.ApplyParagonPointSet(index)
   local availablePoints0 = AttributeHelper.GetAttributeValue(Combat.Collector.LocalACD, Enums.AttributeId.Paragon_Bonus_Points_Available, 0)
 
-  ParagonPointHelper.ResetCurrentTab()
+  if not Combat.CalledReset then
+    ParagonPointHelper.ResetCurrentTab()
+
+    Combat.CalledReset = true
+  end
   
   if Combat.OldAvailablePoints == availablePoints0 then
     return false
@@ -120,6 +125,7 @@ function Combat.ApplyParagonPointSet(index)
 
   Combat.OldAvailablePoints = 0
   Combat.ApplySet = false
+  Combat.CalledReset = false
 
   return true
 end
