@@ -25,6 +25,24 @@ function AttributeHelper.GetAttributeValue(acd, attribid, modifier)
 	return acd:GetAttributeValueFloat(attribid, modifier)
 end
 
+function AttributeHelper.SetAttributeValue(acd, attribid, modifier, value) 
+  if modifier == nil then
+    modifier = -1
+  end
+
+  if acd == nil or acd.Address == 0 then
+    return 0
+  end
+
+  local valueType = AttributeHelper.AttributeDescriptors[attribid]:GetDataType()
+
+  if valueType == 1 then
+    return acd:SetAttributeValueInt32(attribid, modifier, value)
+  end
+
+  return acd:SetAttributeValueFloat(attribid, modifier, value)
+end
+
 function AttributeHelper.GetAllAttributes(acd)	
 	local buffer = {}
 

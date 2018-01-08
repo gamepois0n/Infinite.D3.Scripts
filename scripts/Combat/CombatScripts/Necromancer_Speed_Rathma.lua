@@ -31,13 +31,13 @@ function CombatScript:UseHealthPotion()
 	UIInteractionHelper.UseFunctionByName("UI_PotionButton_OnLeftClick")
 end
 
-function CombatScript:Defend(player, monsterTarget)		
+function CombatScript:Defend(player, monsterTarget, isMoving)		
 	if AttributeHelper.GetHitpointPercentage(player) <= 50 then
 		self:UseHealthPotion()
 	end
 end
 
-function CombatScript:Buff(player, monsterTarget)	
+function CombatScript:Buff(player, monsterTarget, isMoving)	
 	local elitesleadersTable = Combat.Collector.Actors.Monster.ElitesLeaders
 	local allTable = Combat.Collector.Actors.Monster.All
 
@@ -69,7 +69,7 @@ function CombatScript:Buff(player, monsterTarget)
 	end
 end
 
-function CombatScript:Attack(player, monsterTarget)		
+function CombatScript:Attack(player, monsterTarget, isMoving)		
 	
 end
 

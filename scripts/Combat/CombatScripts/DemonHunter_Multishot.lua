@@ -31,13 +31,13 @@ function CombatScript:UseHealthPotion()
 	UIInteractionHelper.UseFunctionByName("UI_PotionButton_OnLeftClick")
 end
 
-function CombatScript:Defend(player, monsterTarget)		
+function CombatScript:Defend(player, monsterTarget, isMoving)		
 	if AttributeHelper.GetHitpointPercentage(player) <= 50 then
 		self:UseHealthPotion()
 	end
 end
 
-function CombatScript:Buff(player, monsterTarget)	
+function CombatScript:Buff(player, monsterTarget, isMoving)	
 	local elitesTable = Combat.Collector.Actors.Monster.Elites
 	local allTable = Combat.Collector.Actors.Monster.All
 
@@ -65,7 +65,7 @@ function CombatScript:Buff(player, monsterTarget)
 	end	
 end
 
-function CombatScript:Attack(player, monsterTarget)		
+function CombatScript:Attack(player, monsterTarget, isMoving)		
 	if InputHelper.IsSpacePressed() and Infinity.D3.GetAcdContainerSizeByName("Actors.Monster.Boss") > 0 and Infinity.D3.GetAcdContainerByName("Actors.Monster.Boss")[1]:GetPosition():GetDistanceFromMe() <= 60 then
 		self.Multishot:CastAtLocation(Infinity.D3.GetAcdContainerByName("Actors.Monster.Boss")[1]:GetPosition())
 	end

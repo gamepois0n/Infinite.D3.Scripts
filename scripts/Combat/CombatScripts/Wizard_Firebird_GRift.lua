@@ -32,13 +32,13 @@ function CombatScript:UseHealthPotion()
 	UIInteractionHelper.UseFunctionByName("UI_PotionButton_OnLeftClick")
 end
 
-function CombatScript:Defend(player, monsterTarget)		
+function CombatScript:Defend(player, monsterTarget, isMoving)		
 	if AttributeHelper.GetHitpointPercentage(player) <= 50 then
 		self:UseHealthPotion()
 	end
 end
 
-function CombatScript:Buff(player, monsterTarget)	
+function CombatScript:Buff(player, monsterTarget, isMoving)	
 	if not AttributeHelper.IsBuffActive(player, self.StormArmor.PowerSNO, 3) then
 		self.StormArmor:CastAtLocation(player:GetPosition())
 	end
@@ -48,7 +48,7 @@ function CombatScript:Buff(player, monsterTarget)
 	end
 end
 
-function CombatScript:Attack(player, monsterTarget)		
+function CombatScript:Attack(player, monsterTarget, isMoving)		
 	if InputHelper.IsSpacePressed() then
 		if self.Target == nil then
 			local bossTable = Combat.Collector.Actors.Monster.Boss

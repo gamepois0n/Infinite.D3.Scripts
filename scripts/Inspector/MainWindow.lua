@@ -19,6 +19,26 @@ MainWindow.RenderSelectedUIControl = false
 MainWindow.DrawPlayerCircle = false
 MainWindow.PlayerCircleRadius = 30
 
+MainWindow.LocalAttributesBlacklist = {}
+
+function MainWindow.SetBlacklist()
+  for k,v in pairs(AttributeHelper.GetAllAttributes(Infinity.D3.GetLocalACD())) do
+    if not MainWindow.BlacklistContains(v.AttributeId, v.PowerSNO) then
+      table.insert(MainWindow.LocalAttributesBlacklist, {AttributeId = v.AttributeId, Modifier = v.PowerSNO})
+    end
+  end
+end
+
+function MainWindow.BlacklistContains(attribId, Modifier)
+  for k,v in pairs(MainWindow.LocalAttributesBlacklist) do
+    if v.AttributeId == attribId and v.Modifier == Modifier then
+      return true
+    end
+  end
+
+  return false
+end
+
 function MainWindow.DrawMainWindow() 
   if not Inspector.LocalData:GetIsPlayerValid() or Inspector.LocalData:GetIsStartUpGame() then
     return
@@ -50,6 +70,16 @@ function MainWindow.DrawMainWindow()
     end
 
     if ImGui.CollapsingHeader("All Attributes", "id_localplayer_all_attributes", true, false) then
+      if ImGui.Button("Set Blacklist##set_blacklist") then
+        MainWindow.SetBlacklist()
+      end
+
+      ImGui.SameLine()
+
+      if ImGui.Button("Clear Blacklist (" .. table.length(MainWindow.LocalAttributesBlacklist) .. ")##clear_blacklist") then
+        MainWindow.LocalAttributesBlacklist = {}
+      end
+
       _, MainWindow.AttributeIdFilter = ImGui.InputText("Filter by AttributeId##attribid", MainWindow.AttributeIdFilter)
       _, MainWindow.AttributeNameFilter = ImGui.InputText("Filter by AttributeName##attribname", MainWindow.AttributeNameFilter)
       _, MainWindow.AttributePowerSNOFilter = ImGui.InputText("Filter by PowerSNO##attrib_powersno", MainWindow.AttributePowerSNOFilter)
@@ -68,7 +98,8 @@ function MainWindow.DrawMainWindow()
       ImGui.NextColumn()
       
       for k,v in pairs(AttributeHelper.GetAllAttributes(Infinity.D3.GetLocalACD())) do
-        local attrib = v
+        if not MainWindow.BlacklistContains(v.AttributeId, v.PowerSNO) then
+          local attrib = v
 
           if MainWindow.AttributeIdFilter ~= "" and string.find(tostring(v.AttributeId), MainWindow.AttributeIdFilter) == nil then
             attrib = nil
@@ -97,7 +128,8 @@ function MainWindow.DrawMainWindow()
             ImGui.NextColumn()
             ImGui.Text(v.Value)
             ImGui.NextColumn()   
-            end       
+            end   
+          end                
       end
     end
 
@@ -297,9 +329,9 @@ function MainWindow.DrawMainWindow()
           local animation = SNOGroups.GetAnimDefByAnimSNO(v:GetAnimation():GetAnimSNO())
 
           if animation ~= nil then
-            ImGui.Text("Animation: AnimSNO(" .. animation:GetSnoId() .. ") Text(" .. animation:GetText() .. ")")
+            ImGui.Text("Animation: AnimSNO(" .. Inspector.Collector.LocalACD:GetAnimation():GetAnimSNO() .. ") Text(" .. animation .. ")")
           else
-            ImGui.Text("Animation: AnimSNO(" .. v:GetAnimation():GetAnimSNO() .. ") Text(--)")
+            ImGui.Text("Animation: AnimSNO(" .. Inspector.Collector.LocalACD:GetAnimation():GetAnimSNO() .. ") Text(--)")
           end
 
           if ImGui.CollapsingHeader("Attributes", "id_acd_attributes" .. v:GetActorId(), true, false) then

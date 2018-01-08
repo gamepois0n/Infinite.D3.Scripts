@@ -71,7 +71,7 @@ function AutoNPC.DoSalvage()
     elseif AutoNPC.Settings.Salvage.Rare.Enabled and AttributeHelper.IsRareItem(v) and AttributeHelper.GetAttributeValue(v, Enums.AttributeId.ItemStackQuantityLo, -1) <= 0 then
       Infinity.D3.SalvageItem(v.Address, AutoNPC.Collector.LocalACD.Address)
     elseif AutoNPC.Settings.Salvage.LegendaryNormal.Enabled and AttributeHelper.IsLegendaryItem(v) and v:GetActorSNO() ~= 403611  and AttributeHelper.IsNormalLegendaryItem(v) and not AttributeHelper.IsSpecialPotion(v) and string.find(v:GetName(), "Unique_Gem") == nil then
-      v:SetAttributeValue(Enums.AttributeId.Item_Quality_Level, -1, 0)
+      AttributeHelper.SetAttributeValue(v, Enums.AttributeId.Item_Quality_Level, -1, 0) 
       v:SetGameBalanceID(1565454583)
 
       Infinity.D3.SalvageItem(v.Address, AutoNPC.Collector.LocalACD.Address)

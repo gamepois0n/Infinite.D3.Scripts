@@ -9,3 +9,13 @@ function RActorHelper.GetRActorByACD(acd)
 
 	return ractor
 end
+
+function RActorHelper.IsMoving(acd)
+	local rActor = RActorHelper.GetRActorByACD(acd)
+
+	if rActor == nil then
+		return false
+	end
+
+	return rActor:GetIsMoving()
+end

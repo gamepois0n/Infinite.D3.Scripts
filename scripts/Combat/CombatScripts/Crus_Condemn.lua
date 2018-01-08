@@ -32,13 +32,13 @@ function CombatScript:UseHealthPotion()
 	UIInteractionHelper.UseFunctionByName("UI_PotionButton_OnLeftClick")
 end
 
-function CombatScript:Defend(player, monsterTarget)		
+function CombatScript:Defend(player, monsterTarget, isMoving)		
 	if AttributeHelper.GetHitpointPercentage(player) <= 50 then
 		self:UseHealthPotion()
 	end
 end
 
-function CombatScript:Buff(player, monsterTarget)	
+function CombatScript:Buff(player, monsterTarget, isMoving)	
 	table.sort(Combat.Collector.Actors.Monster.All, function(a, b) return a:GetPosition():GetDistanceFromMe() < b:GetPosition():GetDistanceFromMe() end)
 	table.sort(Combat.Collector.Actors.Monster.ElitesLeaders, function(a, b) return a:GetPosition():GetDistanceFromMe() < b:GetPosition():GetDistanceFromMe() end)
 	table.sort(Combat.Collector.Actors.Monster.Boss, function(a, b) return a:GetPosition():GetDistanceFromMe() < b:GetPosition():GetDistanceFromMe() end)
@@ -92,7 +92,7 @@ function CombatScript:Buff(player, monsterTarget)
 	end
 end
 
-function CombatScript:Attack(player, monsterTarget)
+function CombatScript:Attack(player, monsterTarget, isMoving)
 	if monsterTarget ~= nil and monsterTarget:GetActorType() == Enums.ActorType.Monster then
 --		self.Slash:CastAtLocation(monsterTarget:GetPosition())
 	end

@@ -81,16 +81,18 @@ function Combat.OnPulse()
   if Combat.CombatScript ~= nil then
     local monsterTarget = TargetHelper.GetTargetACD(Combat.Collector.Actors.Monster.All)    
           
+    local isMoving = RActorHelper.IsMoving(Combat.Collector.LocalACD)
+
     if Combat.Settings.Defend.Enabled then
-      Combat.CombatScript:Defend(Combat.Collector.LocalACD, monsterTarget)
+      Combat.CombatScript:Defend(Combat.Collector.LocalACD, monsterTarget, isMoving)
     end
 
     if Combat.Settings.Buff.Enabled then
-      Combat.CombatScript:Buff(Combat.Collector.LocalACD, monsterTarget)
+      Combat.CombatScript:Buff(Combat.Collector.LocalACD, monsterTarget, isMoving)
     end
 
     if Combat.Settings.Attack.Enabled then
-      Combat.CombatScript:Attack(Combat.Collector.LocalACD, monsterTarget)
+      Combat.CombatScript:Attack(Combat.Collector.LocalACD, monsterTarget, isMoving)
     end
   end    
 end

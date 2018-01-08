@@ -1,16 +1,12 @@
 ParagonPointHelper = {}
 ParagonPointHelper.ParagonPointWindow = Infinity.D3.GetParagonPointWindow()
 
-function ParagonPointHelper.OpenParagonPointSelect()
-	UIInteractionHelper.UseFunctionByName("UIParagon_Toggle")
-end
-
 function ParagonPointHelper.ResetCurrentTab()
 	UIInteractionHelper.UseFunctionByName("UIParagon_OnClick_ResetParagonPointsButton")
 end
 
 function ParagonPointHelper.ApplyPoints()
-	UIInteractionHelper.UseFunctionByName("UIParagon_OnClick_ParagonAssignPointsButton")
+	UIInteractionHelper.UseFunctionByName("UIParagon_OnClick_AcceptParagonPointsButton")
 end
 
 function ParagonPointHelper.SetMainstat(value)
