@@ -17,5 +17,5 @@ function RActorHelper.IsMoving(acd)
 		return false
 	end
 
-	return rActor:GetIsMoving()
+	return rActor:GetMovementStruct():GetIsMoving()
 end

@@ -36,7 +36,28 @@ function CombatScript:Defend(player, monsterTarget, isMoving)
 	end
 end
 
+CombatScript.MoveSet = false
+CombatScript.NonMoveSet = false
+
 function CombatScript:Buff(player, monsterTarget, isMoving)	
+	if isMoving and not self.MoveSet then		
+		if Combat.ApplyParagonPointSet(1) then
+			self.MoveSet = true
+			self.NonMoveSet = false
+		else
+			self.MoveSet = false
+			self.NonMoveSet = false
+		end
+	elseif not isMoving and not self.NonMoveSet then		
+		if Combat.ApplyParagonPointSet(2) then
+			self.MoveSet = false
+			self.NonMoveSet = true
+		else
+			self.MoveSet = false
+			self.NonMoveSet = false
+		end
+	end
+
 	if not isMoving then
 		return
 	end
