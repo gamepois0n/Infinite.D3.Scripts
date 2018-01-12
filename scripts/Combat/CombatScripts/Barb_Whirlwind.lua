@@ -40,7 +40,7 @@ CombatScript.MoveSet = false
 CombatScript.NonMoveSet = false
 
 function CombatScript:Buff(player, monsterTarget, isMoving)	
-	if isMoving and not self.MoveSet then		
+	--[[if isMoving and not self.MoveSet then		
 		if Combat.ApplyParagonPointSet(1) then
 			self.MoveSet = true
 			self.NonMoveSet = false
@@ -56,7 +56,7 @@ function CombatScript:Buff(player, monsterTarget, isMoving)
 			self.MoveSet = false
 			self.NonMoveSet = false
 		end
-	end
+	end]]--
 
 	if not isMoving then
 		return

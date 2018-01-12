@@ -30,24 +30,29 @@ function Radar.TTS()
     local Id = math.floor(v:GetPosition().X) + Radar.Collector.WorldId
 
     if AttributeHelper.IsAncientLegendaryItem(v) and not table.find(Radar.TTSBlackList, Id) then
-      TTSHelper.Speak("Ancient " .. AttributeHelper.GetItemName(v))
-      table.insert(Radar.TTSBlackList, Id)
+    TTSHelper.Speak("Ancient " .. AttributeHelper.GetItemName(v))
+    table.insert(Radar.TTSBlackList, Id)
     elseif AttributeHelper.IsPrimalLegendaryItem(v) and not table.find(Radar.TTSBlackList, Id) then
-      TTSHelper.Speak("Primal " .. AttributeHelper.GetItemName(v))
-      table.insert(Radar.TTSBlackList, Id)
-    end
+    TTSHelper.Speak("Primal " .. AttributeHelper.GetItemName(v))
+    table.insert(Radar.TTSBlackList, Id)
   end
+end
 
-  for k,v in pairs(Radar.Collector.Actors.Pylon.Power) do
+for k,v in pairs(Radar.Collector.Actors.Pylon.Power) do
+  if AttributeHelper.IsPowerPylon(v) then
+
     local Id = math.floor(v:GetPosition().X) + Radar.Collector.WorldId
 
     if not table.find(Radar.TTSBlackList, Id) and not AttributeHelper.IsOperated(v) then
-      TTSHelper.Speak("Power Pylon")
+      TTSHelper.Speak("Power Pylon")      
       table.insert(Radar.TTSBlackList, Id)
     end
   end
+end
 
-  for k,v in pairs(Radar.Collector.Actors.Pylon.Conduit) do
+for k,v in pairs(Radar.Collector.Actors.Pylon.Conduit) do
+  if AttributeHelper.IsConduitPylon(v) then
+
     local Id = math.floor(v:GetPosition().X) + Radar.Collector.WorldId
 
     if not table.find(Radar.TTSBlackList, Id) and not AttributeHelper.IsOperated(v) then
@@ -55,8 +60,11 @@ function Radar.TTS()
       table.insert(Radar.TTSBlackList, Id)
     end
   end
+end
 
-  for k,v in pairs(Radar.Collector.Actors.Pylon.Channeling) do
+for k,v in pairs(Radar.Collector.Actors.Pylon.Channeling) do
+  if AttributeHelper.IsChannelingPylon(v) then
+
     local Id = math.floor(v:GetPosition().X) + Radar.Collector.WorldId
 
     if not table.find(Radar.TTSBlackList, Id) and not AttributeHelper.IsOperated(v) then
@@ -64,8 +72,11 @@ function Radar.TTS()
       table.insert(Radar.TTSBlackList, Id)
     end
   end
+end
 
-  for k,v in pairs(Radar.Collector.Actors.Pylon.Shield) do
+for k,v in pairs(Radar.Collector.Actors.Pylon.Shield) do
+  if AttributeHelper.IsShieldPylon(v) then
+
     local Id = math.floor(v:GetPosition().X) + Radar.Collector.WorldId
 
     if not table.find(Radar.TTSBlackList, Id) and not AttributeHelper.IsOperated(v) then
@@ -73,8 +84,11 @@ function Radar.TTS()
       table.insert(Radar.TTSBlackList, Id)
     end
   end
+end
 
-  for k,v in pairs(Radar.Collector.Actors.Pylon.Speed) do
+for k,v in pairs(Radar.Collector.Actors.Pylon.Speed) do
+  if AttributeHelper.IsSpeedPylon(v) then
+
     local Id = math.floor(v:GetPosition().X) + Radar.Collector.WorldId
 
     if not table.find(Radar.TTSBlackList, Id) and not AttributeHelper.IsOperated(v) then
@@ -82,8 +96,11 @@ function Radar.TTS()
       table.insert(Radar.TTSBlackList, Id)
     end
   end
+end
 
-  for k,v in pairs(Radar.Collector.Actors.PoolOfReflection) do
+for k,v in pairs(Radar.Collector.Actors.PoolOfReflection) do
+  if AttributeHelper.IsPoolOfReflection(v) then
+
     local Id = math.floor(v:GetPosition().X) + Radar.Collector.WorldId
     
     if not table.find(Radar.TTSBlackList, Id) and not AttributeHelper.IsOperated(v) then
@@ -91,6 +108,7 @@ function Radar.TTS()
       table.insert(Radar.TTSBlackList, Id)
     end
   end
+end
 end
 
 function Radar.OnPulse()
