@@ -8,7 +8,7 @@ function TargetHelper.GetTargetACD(acdTable)
 	end
 
 	for k,v in pairs(acdTable) do
-		if v:GetActorId() == tActorId then
+		if v ~= nil and v.Address ~= 0 and v:GetActorId() == tActorId then
 			return v
 		end
 	end	
