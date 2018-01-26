@@ -19,6 +19,18 @@ function Skill:new(name, powersno )
   return self
 end
 
+function Skill:CastAtLocationViaPacket(annid, position, worldid) -- annid = acd:GetANNId() or -1 if target isnt acd || worldid = *script*.Collector.WorldId
+	if not self:isUsable() then
+		return false
+	end
+
+	TargetMessage:new(3, annid, position, worldid, self.PowerSNO):Send()
+		
+	self.LastCast = Infinity.Win32.GetTickCount()
+
+	return true
+end
+
 function Skill:CastAtLocation(targetPosition)
 	if not self:isUsable() then
 		return false

@@ -55,6 +55,9 @@ end
 
       if pickup and not AttributeHelper.GizmoHasBeenOperated(v) then
         PickitHelper.PickupItem(RActorHelper.GetRActorByACD(v))
+
+        --TargetMessage:new(2, v:GetANNId(), v:GetPosition(), Pickit.Collector.WorldId, 30021):Send()
+
         Pickit.LastPickup = Infinity.Win32.GetTickCount()
       end
     end

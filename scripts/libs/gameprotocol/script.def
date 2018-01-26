@@ -1,0 +1,9 @@
+[script]
+name=[Infinity] GameProtocol
+type=lib
+
+[files]
+file=TargetMessage.lua
+file=ACDClientTranslateMessage.lua
+
+[dependencies]

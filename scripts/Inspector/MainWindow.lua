@@ -52,7 +52,7 @@ function MainWindow.DrawMainWindow()
     local animation = SNOGroups.GetAnimDefByAnimSNO(Inspector.Collector.LocalACD:GetAnimation():GetAnimSNO())
 
     if animation ~= nil then
-      ImGui.Text("Animation: AnimSNO(" .. Inspector.Collector.LocalACD:GetAnimation():GetAnimSNO() .. ") Text(" .. animation .. ")")
+      ImGui.Text("Animation: AnimSNO(" .. Inspector.Collector.LocalACD:GetAnimation():GetAnimSNO() .. ") AnimTag(" .. Inspector.Collector.LocalACD:GetAnimation():GetAnimTag() .. ") Text(" .. animation .. ")")
     else
       ImGui.Text("Animation: AnimSNO(" .. Inspector.Collector.LocalACD:GetAnimation():GetAnimSNO() .. ") Text(--)")
     end
@@ -324,7 +324,7 @@ function MainWindow.DrawMainWindow()
       end
 
       if acd ~= nil then
-        if ImGui.CollapsingHeader("Name(" ..v:GetName() .. ") Index(" .. v:GetIndex() .. ") ActorSNO(" .. v:GetActorSNO() .. ") ActorType(" .. v:GetActorType() .. ") ActorId(" .. v:GetActorId() .. ") GameBalanceType(" .. v:GetGameBalanceType() .. ") GizmoType(" .. v:GetGizmoType() .. ") MonsterQuality(" .. v:GetMonsterQuality() .. ")", "id_acd_" .. v:GetActorId(), true, false) then
+        if ImGui.CollapsingHeader("Name(" ..v:GetName() .. ") Index(" .. v:GetIndex() .. ") ActorSNO(" .. v:GetActorSNO() .. ") ActorType(" .. v:GetActorType() .. ") ActorId(" .. v:GetActorId() .. ") ANNId(" .. v:GetANNId() .. ") GameBalanceType(" .. v:GetGameBalanceType() .. ") GizmoType(" .. v:GetGizmoType() .. ") MonsterQuality(" .. v:GetMonsterQuality() .. ")", "id_acd_" .. v:GetActorId(), true, false) then
 
           local animation = SNOGroups.GetAnimDefByAnimSNO(v:GetAnimation():GetAnimSNO())
 
