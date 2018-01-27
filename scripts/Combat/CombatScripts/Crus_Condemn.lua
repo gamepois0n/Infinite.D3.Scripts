@@ -1,7 +1,3 @@
---[[
-AUTHOR		Pete
-]]--
-
 CombatScript = { }
 CombatScript.__index = CombatScript
 
@@ -19,12 +15,14 @@ function CombatScript.new()
 	instance.IronSkin = Skill:new("IronSkin", 291804)--, Rune = 4, Slot = 1, LastCast = 0, ForcedCooldown = 0}
 	instance.IronSkin:SetForcedCooldown(500)
 	instance.Condemn = Skill:new("Condemn", 266627)--, Rune = 1, Slot = 2, LastCast = 0, ForcedCooldown = 0}
+	instance.Condemn:SetForcedCooldown(500)
 	instance.LawsOfHope = Skill:new("LawsOfHope", 342279)--, Rune = 0, Slot = 3, LastCast = 0, ForcedCooldown = 0}
 	instance.LawsOfHope:SetForcedCooldown(500)
 	instance.Provoke = Skill:new("Provoke", 290545)--, Rune = 4, Slot = 5, LastCast = 0, ForcedCooldown = 0}
 	instance.Provoke:SetForcedCooldown(500)
 	instance.AkaratsChamp = Skill:new("AkaratsChampion", 269032)--, Rune = 2, Slot = 4, LastCast = 0, ForcedCooldown = 0}
 	instance.AkaratsChamp:SetForcedCooldown(500)
+	
 	return self
 end
 
@@ -32,13 +30,15 @@ function CombatScript:UseHealthPotion()
 	UIInteractionHelper.UseFunctionByName("UI_PotionButton_OnLeftClick")
 end
 
-function CombatScript:Defend(player, monsterTarget, isMoving)		
+function CombatScript:Defend(player, monsterTarget, isMoving)
 	if AttributeHelper.GetHitpointPercentage(player) <= 50 then
 		self:UseHealthPotion()
 	end
 end
 
-function CombatScript:Buff(player, monsterTarget, isMoving)	
+CombatScript.StandingStart = nil
+
+function CombatScript:Buff(player, monsterTarget, isMoving)
 	table.sort(Combat.Collector.Actors.Monster.All, function(a, b) return a:GetPosition():GetDistanceFromMe() < b:GetPosition():GetDistanceFromMe() end)
 	table.sort(Combat.Collector.Actors.Monster.ElitesLeaders, function(a, b) return a:GetPosition():GetDistanceFromMe() < b:GetPosition():GetDistanceFromMe() end)
 	table.sort(Combat.Collector.Actors.Monster.Boss, function(a, b) return a:GetPosition():GetDistanceFromMe() < b:GetPosition():GetDistanceFromMe() end)
@@ -51,6 +51,15 @@ function CombatScript:Buff(player, monsterTarget, isMoving)
 	local elites60yards = TargetHelper.GetACDsAroundLocalPlayer(Combat.Collector.Actors.Monster.ElitesLeaders, 60)
 	local boss60yards = TargetHelper.GetACDsAroundLocalPlayer(Combat.Collector.Actors.Monster.Boss, 60)
 
+	local standingtime = 0
+	
+	if self.StandingStart == nil or isMoving then
+		self.StandingStart = os.clock()
+	end
+	
+	standingtime = os.clock() - self.StandingStart
+	
+--	print("moving: " .. tostring(isMoving) .. ", " .. tostring(standingtime))
 	
 	if not AttributeHelper.IsBuffActive(player, self.AkaratsChamp.PowerSNO) then
 		self.AkaratsChamp:CastAtLocation(player:GetPosition())
@@ -79,15 +88,15 @@ function CombatScript:Buff(player, monsterTarget, isMoving)
 
 	if table.length(elites10yards) >= 1 or table.length(all10yards) >= 4 then
 		self.Provoke:CastAtLocation(player:GetPosition())
-	elseif rescur + 30*resgai < resmax then
+	elseif standingtime < 1.0 and rescur + 30*resgai < resmax then
 		self.Provoke:CastAtLocation(player:GetPosition())
 	end
-	
+
 	if table.length(all15yards) >= 1 and rescur >= 40*(1-resred) then
 		self.Condemn:CastAtLocation(player:GetPosition())
-	elseif (table.length(elites15yards) >= 1 or table.length(all15yards) >= 4) and rescur >= 2*40*(1-resred) then
+	elseif (table.length(elites60yards) >= 1 and table.length(all60yards) >= 4) and rescur >= 2*40*(1-resred) then
 		self.Condemn:CastAtLocation(player:GetPosition())
-	elseif AttributeHelper.GetPrimaryResourcePercentage(player) > 80 then
+	elseif standingtime < 1.0 and rescur > 80 then
 		self.Condemn:CastAtLocation(player:GetPosition())
 	end
 end
