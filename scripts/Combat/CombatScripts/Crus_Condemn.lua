@@ -92,7 +92,11 @@ function CombatScript:Buff(player, monsterTarget, isMoving)
 		self.Provoke:CastAtLocation(player:GetPosition())
 	end
 
-	if table.length(all15yards) >= 1 and rescur >= 40*(1-resred) then
+	if monsterTarget ~= nil and monsterTarget:GetActorType() == Enums.ActorType.Monster and monsterTarget:GetMonsterQuality() == Boss then			
+		if monsterTarget:GetPosition():GetDistanceFromMe() - monsterTarget:GetCollisionRadius() < 15 and rescur >= 40*(1-resred) then
+			self.Condemn:CastAtLocation(player:GetPosition())
+		end
+	elseif table.length(all15yards) >= 1 and rescur >= 40*(1-resred) then
 		self.Condemn:CastAtLocation(player:GetPosition())
 	elseif (table.length(elites60yards) >= 1 and table.length(all60yards) >= 4) and rescur >= 2*40*(1-resred) then
 		self.Condemn:CastAtLocation(player:GetPosition())
